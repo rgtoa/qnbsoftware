@@ -94,11 +94,6 @@ public class Login extends javax.swing.JFrame {
 
         jTextField1.setBackground(new java.awt.Color(23, 90, 115));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextField1, java.awt.BorderLayout.CENTER);
 
         jLabel2.setForeground(new java.awt.Color(10, 64, 83));
@@ -117,11 +112,6 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setBackground(new java.awt.Color(23, 90, 115));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
         jPanel2.add(jPasswordField1, java.awt.BorderLayout.CENTER);
 
         jPanel9.add(jPanel2);
@@ -132,11 +122,6 @@ public class Login extends javax.swing.JFrame {
 
         jCheckBox1.setForeground(new java.awt.Color(10, 64, 83));
         jCheckBox1.setText("Remember me");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
         jPanel3.add(jCheckBox1, java.awt.BorderLayout.CENTER);
 
         jLabel4.setForeground(new java.awt.Color(10, 64, 83));
@@ -146,6 +131,11 @@ public class Login extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(66, 155, 186));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, java.awt.BorderLayout.PAGE_END);
 
         jPanel9.add(jPanel3);
@@ -165,17 +155,16 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        // Database details
+        System.out.println("login button clicked");
+        String name = jTextField1.getText();
+        char[] pass = jPasswordField1.getPassword(); // set each char to 0 after for security
+        boolean equal = jPasswordField1.
+        System.out.println("name: " + name);
+        System.out.println("pass: " + pass);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
