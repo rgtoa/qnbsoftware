@@ -4,11 +4,6 @@
  */
 package software1;
 
-import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author 97433
@@ -123,6 +118,11 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setBackground(new java.awt.Color(23, 90, 115));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jPasswordField1, java.awt.BorderLayout.CENTER);
 
         jPanel9.add(jPanel2);
@@ -133,6 +133,11 @@ public class Login extends javax.swing.JFrame {
 
         jCheckBox1.setForeground(new java.awt.Color(10, 64, 83));
         jCheckBox1.setText("Remember me");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jCheckBox1, java.awt.BorderLayout.CENTER);
 
         jLabel4.setForeground(new java.awt.Color(10, 64, 83));
@@ -142,11 +147,6 @@ public class Login extends javax.swing.JFrame {
         login.setBackground(new java.awt.Color(66, 155, 186));
         login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("Login");
-        login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
-            }
-        });
         jPanel3.add(login, java.awt.BorderLayout.PAGE_END);
 
         jPanel9.add(jPanel3);
@@ -177,32 +177,6 @@ public class Login extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        // TODO add your handling code here:
-        System.out.println("login button clicked");
-        String name = userfield.getText();
-        String pass = jPasswordField1.getText(); // set each char to 0 after for security
-        
-        System.out.println("name: " + name);
-        System.out.println("pass: " + pass);
-        // Database details
-        Database db;
-        db = new Database(
-                "com.mysql.cj.jdbc.Driver",
-                "root",
-                "root",
-                "jdbc:mysql://localhost:3306/db_qnb"
-        );
-        if (db.verifyUser(name, pass)) {
-            System.out.println("VERIFY SUCCESS");
-        }
-        else {
-            System.out.println("WRONG USERNAME OR PASSWORD");
-        }
-        db = null;
-        
-    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
