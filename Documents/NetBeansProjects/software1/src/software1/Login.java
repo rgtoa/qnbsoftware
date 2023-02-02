@@ -204,7 +204,7 @@ public class Login extends javax.swing.JFrame {
             System.out.println("WRONG USERNAME OR PASSWORD");
         }
         db = null;
-        System.out.println("end");
+        System.out.println("login end");
     }//GEN-LAST:event_loginActionPerformed
 
     /**
