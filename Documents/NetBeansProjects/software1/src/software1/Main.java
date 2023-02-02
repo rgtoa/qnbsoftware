@@ -26,31 +26,37 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        popupmenu1 = new javax.swing.JPopupMenu();
         maintabs = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        qnb = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         invoicetab = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        invoicebtn = new javax.swing.JLabel();
         transactab = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        transacbtn = new javax.swing.JLabel();
         delivertab = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        deliverbtn = new javax.swing.JLabel();
         authentictab = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        authenticbtn = new javax.swing.JLabel();
         signout = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        signoutbtn = new javax.swing.JLabel();
         tabcontent = new javax.swing.JPanel();
         invoices = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         productimg = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         productdesc = new javax.swing.JLabel();
         productname1 = new javax.swing.JLabel();
         productqty = new javax.swing.JSpinner();
-        productprice = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        productprice = new javax.swing.JLabel();
         productselect = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         form = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -70,67 +76,95 @@ public class Main extends javax.swing.JFrame {
         submitform = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
         productimg1 = new javax.swing.JLabel();
-        transaclist = new javax.swing.JPanel();
-        completetransac = new javax.swing.JLabel();
+        pendingtransac = new javax.swing.JPanel();
+        completebtn1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        pendingtransac = new javax.swing.JLabel();
+        pendingtransactbl = new javax.swing.JTable();
+        pendingbtn1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        deliverylist = new javax.swing.JPanel();
+        generatebtn = new javax.swing.JButton();
+        editmodule1 = new javax.swing.JButton();
+        completetransac = new javax.swing.JPanel();
+        completebtn2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        pendingtransactbl1 = new javax.swing.JTable();
+        pendingbtn2 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        generatebtn1 = new javax.swing.JButton();
+        editmodule2 = new javax.swing.JButton();
+        pendingdeliver = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        pendingdeliver = new javax.swing.JLabel();
-        completedeliver = new javax.swing.JLabel();
+        pendingdelivertbl = new javax.swing.JTable();
+        pendingbtn3 = new javax.swing.JLabel();
+        completebtn3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        generatebtn2 = new javax.swing.JButton();
+        editmodule3 = new javax.swing.JButton();
+        completedeliver = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        pendingdelivertbl1 = new javax.swing.JTable();
+        pendingbtn4 = new javax.swing.JLabel();
+        completebtn4 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        generatebtn3 = new javax.swing.JButton();
+        editmodule4 = new javax.swing.JButton();
         authenticate = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         authpassbtn = new javax.swing.JButton();
         authpass = new javax.swing.JPasswordField();
+        authreports = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        genreport1 = new javax.swing.JButton();
+        genreport2 = new javax.swing.JButton();
+        genreport3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1250, 750));
+        setTitle("QNB System");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         maintabs.setBackground(new java.awt.Color(255, 255, 255));
         maintabs.setPreferredSize(new java.awt.Dimension(1250, 75));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        qnb.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("QNB");
         jLabel1.setPreferredSize(new java.awt.Dimension(175, 70));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout qnbLayout = new javax.swing.GroupLayout(qnb);
+        qnb.setLayout(qnbLayout);
+        qnbLayout.setHorizontalGroup(
+            qnbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(qnbLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        qnbLayout.setVerticalGroup(
+            qnbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(qnbLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        maintabs.add(jPanel7);
+        maintabs.add(qnb);
 
         invoicetab.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Invoices");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel2.setPreferredSize(new java.awt.Dimension(175, 70));
+        invoicebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 18)); // NOI18N
+        invoicebtn.setForeground(new java.awt.Color(10, 64, 83));
+        invoicebtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        invoicebtn.setText("Invoices");
+        invoicebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        invoicebtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        invoicebtn.setPreferredSize(new java.awt.Dimension(175, 70));
+        invoicebtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                invoicebtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout invoicetabLayout = new javax.swing.GroupLayout(invoicetab);
         invoicetab.setLayout(invoicetabLayout);
@@ -138,14 +172,14 @@ public class Main extends javax.swing.JFrame {
             invoicetabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(invoicetabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(invoicebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         invoicetabLayout.setVerticalGroup(
             invoicetabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(invoicetabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(invoicebtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -153,11 +187,11 @@ public class Main extends javax.swing.JFrame {
 
         transactab.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel4.setText("Transactions");
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel4.setPreferredSize(new java.awt.Dimension(175, 70));
+        transacbtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        transacbtn.setForeground(new java.awt.Color(10, 64, 83));
+        transacbtn.setText("Transactions");
+        transacbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        transacbtn.setPreferredSize(new java.awt.Dimension(175, 70));
 
         javax.swing.GroupLayout transactabLayout = new javax.swing.GroupLayout(transactab);
         transactab.setLayout(transactabLayout);
@@ -165,14 +199,14 @@ public class Main extends javax.swing.JFrame {
             transactabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transactabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transacbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         transactabLayout.setVerticalGroup(
             transactabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transactabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transacbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -180,25 +214,25 @@ public class Main extends javax.swing.JFrame {
 
         delivertab.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel3.setText("Deliveries");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel3.setPreferredSize(new java.awt.Dimension(175, 70));
+        deliverbtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        deliverbtn.setForeground(new java.awt.Color(10, 64, 83));
+        deliverbtn.setText("Deliveries");
+        deliverbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        deliverbtn.setPreferredSize(new java.awt.Dimension(175, 70));
 
         javax.swing.GroupLayout delivertabLayout = new javax.swing.GroupLayout(delivertab);
         delivertab.setLayout(delivertabLayout);
         delivertabLayout.setHorizontalGroup(
             delivertabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(delivertabLayout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deliverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 22, Short.MAX_VALUE))
         );
         delivertabLayout.setVerticalGroup(
             delivertabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(delivertabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deliverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -206,11 +240,11 @@ public class Main extends javax.swing.JFrame {
 
         authentictab.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel5.setText("Authenticate");
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel5.setPreferredSize(new java.awt.Dimension(175, 70));
+        authenticbtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        authenticbtn.setForeground(new java.awt.Color(10, 64, 83));
+        authenticbtn.setText("Authenticate");
+        authenticbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        authenticbtn.setPreferredSize(new java.awt.Dimension(175, 70));
 
         javax.swing.GroupLayout authentictabLayout = new javax.swing.GroupLayout(authentictab);
         authentictab.setLayout(authentictabLayout);
@@ -218,14 +252,14 @@ public class Main extends javax.swing.JFrame {
             authentictabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authentictabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(authenticbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         authentictabLayout.setVerticalGroup(
             authentictabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authentictabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(authenticbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -233,12 +267,12 @@ public class Main extends javax.swing.JFrame {
 
         signout.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Sign out");
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setPreferredSize(new java.awt.Dimension(175, 70));
+        signoutbtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        signoutbtn.setForeground(new java.awt.Color(10, 64, 83));
+        signoutbtn.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        signoutbtn.setText("Sign out");
+        signoutbtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        signoutbtn.setPreferredSize(new java.awt.Dimension(175, 70));
 
         javax.swing.GroupLayout signoutLayout = new javax.swing.GroupLayout(signout);
         signout.setLayout(signoutLayout);
@@ -246,13 +280,13 @@ public class Main extends javax.swing.JFrame {
             signoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signoutLayout.createSequentialGroup()
                 .addGap(0, 56, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(signoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         signoutLayout.setVerticalGroup(
             signoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signoutLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -273,10 +307,17 @@ public class Main extends javax.swing.JFrame {
         productimg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productimg.setText("img");
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(103, 143));
+
+        jLabel10.setText("jLabel10");
+        jPanel2.add(jLabel10);
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(156, 156, 156)
                 .addComponent(productimg, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,28 +328,49 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(149, 149, 149)
                 .addComponent(productimg, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         invoices.add(jPanel14);
 
+        jPanel12.setBackground(new java.awt.Color(229, 229, 229));
         jPanel12.setPreferredSize(new java.awt.Dimension(627, 675));
 
         productdesc.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        productdesc.setForeground(new java.awt.Color(10, 64, 83));
         productdesc.setText("Product Decription");
+        productdesc.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        productdesc.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         productname1.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 48)); // NOI18N
+        productname1.setForeground(new java.awt.Color(10, 64, 83));
         productname1.setText("Product");
 
-        productprice.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
-        productprice.setText(" ");
+        productqty.setModel(new javax.swing.SpinnerNumberModel(1, null, null, 1));
 
         jLabel8.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
-        jLabel8.setText("Price:");
+        jLabel8.setText(" ");
 
+        productprice.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        productprice.setForeground(new java.awt.Color(10, 64, 83));
+        productprice.setText("Price:");
+
+        productselect.setBackground(new java.awt.Color(66, 155, 186));
+        productselect.setForeground(new java.awt.Color(0, 0, 0));
         productselect.setText("Select");
+        productselect.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 155, 186), 1, true));
+        productselect.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jButton1.setBackground(new java.awt.Color(10, 64, 83));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Order");
+        jButton1.setComponentPopupMenu(popupmenu1);
+
+        jPanel1.setBackground(new java.awt.Color(229, 229, 229));
+
+        jLabel9.setText("jLabel9");
+        jPanel1.add(jLabel9);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -316,18 +378,20 @@ public class Main extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(112, 112, 112)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel12Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(productprice, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(productname1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(productdesc, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(productselect, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(productprice)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(productname1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(productselect, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(productdesc, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(165, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,18 +399,19 @@ public class Main extends javax.swing.JFrame {
                 .addGap(109, 109, 109)
                 .addComponent(productname1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(productdesc)
-                .addGap(137, 137, 137)
+                .addComponent(productdesc, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(productprice)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(productprice))
                 .addGap(18, 18, 18)
-                .addComponent(productselect)
-                .addGap(39, 39, 39)
+                .addComponent(productselect, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
         );
 
         invoices.add(jPanel12);
@@ -358,24 +423,31 @@ public class Main extends javax.swing.JFrame {
         form.setPreferredSize(new java.awt.Dimension(1250, 625));
         form.setLayout(new javax.swing.BoxLayout(form, javax.swing.BoxLayout.LINE_AXIS));
 
+        jPanel16.setBackground(new java.awt.Color(229, 229, 229));
         jPanel16.setPreferredSize(new java.awt.Dimension(623, 625));
 
         jLabel11.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(34, 73, 87));
         jLabel11.setText("Last name");
 
         jLabel12.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(34, 73, 87));
         jLabel12.setText("First name");
 
         jLabel13.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(34, 73, 87));
         jLabel13.setText("Barangay/Municipality");
 
         jLabel14.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(34, 73, 87));
         jLabel14.setText("House/Unit no., Street");
 
         jLabel15.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(34, 73, 87));
         jLabel15.setText("Mobile no.");
 
         jLabel16.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(34, 73, 87));
         jLabel16.setText("City");
 
         fnamefield.setBackground(new java.awt.Color(255, 255, 255));
@@ -396,12 +468,18 @@ public class Main extends javax.swing.JFrame {
         mobilefield.setBackground(new java.awt.Color(255, 255, 255));
         mobilefield.setForeground(new java.awt.Color(0, 0, 0));
 
+        buttonGroup1.add(radiowalkin);
         radiowalkin.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        radiowalkin.setForeground(new java.awt.Color(34, 73, 87));
         radiowalkin.setText("for Walk-in");
 
+        buttonGroup1.add(radiodeliver);
         radiodeliver.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        radiodeliver.setForeground(new java.awt.Color(34, 73, 87));
         radiodeliver.setText("for Delivery");
 
+        submitform.setBackground(new java.awt.Color(140, 208, 218));
+        submitform.setForeground(new java.awt.Color(34, 73, 87));
         submitform.setText("Submit");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -478,7 +556,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         form.add(jPanel16);
@@ -502,7 +580,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(149, 149, 149)
                 .addComponent(productimg1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         form.add(jPanel15);
@@ -510,16 +588,18 @@ public class Main extends javax.swing.JFrame {
         tabcontent.add(form, "card4");
         form.getAccessibleContext().setAccessibleName("Deliveries");
 
-        transaclist.setBackground(new java.awt.Color(255, 255, 255));
-        transaclist.setPreferredSize(new java.awt.Dimension(1250, 625));
+        pendingtransac.setBackground(new java.awt.Color(255, 255, 255));
+        pendingtransac.setPreferredSize(new java.awt.Dimension(1250, 625));
 
-        completetransac.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
-        completetransac.setForeground(new java.awt.Color(10, 64, 83));
-        completetransac.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        completetransac.setText("Completed");
+        completebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        completebtn1.setForeground(new java.awt.Color(10, 64, 83));
+        completebtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        completebtn1.setText("Completed");
 
-        jTable1.setBackground(new java.awt.Color(229, 229, 229));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        pendingtransactbl.setBackground(new java.awt.Color(229, 229, 229));
+        pendingtransactbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        pendingtransactbl.setForeground(new java.awt.Color(10, 64, 83));
+        pendingtransactbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -539,63 +619,173 @@ public class Main extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(pendingtransactbl);
 
-        pendingtransac.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
-        pendingtransac.setForeground(new java.awt.Color(10, 64, 83));
-        pendingtransac.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pendingtransac.setText("Pending");
+        pendingbtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        pendingbtn1.setForeground(new java.awt.Color(10, 64, 83));
+        pendingbtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pendingbtn1.setText("Pending");
 
+        jComboBox1.setBackground(new java.awt.Color(10, 64, 83));
         jComboBox1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setMaximumRowCount(3);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
 
-        jButton2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        jButton2.setText("Generate");
+        generatebtn.setBackground(new java.awt.Color(140, 208, 218));
+        generatebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        generatebtn.setForeground(new java.awt.Color(34, 73, 87));
+        generatebtn.setText("Generate");
 
-        javax.swing.GroupLayout transaclistLayout = new javax.swing.GroupLayout(transaclist);
-        transaclist.setLayout(transaclistLayout);
-        transaclistLayout.setHorizontalGroup(
-            transaclistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transaclistLayout.createSequentialGroup()
-                .addGroup(transaclistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(transaclistLayout.createSequentialGroup()
+        editmodule1.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule1.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule1.setText("Edit Module");
+
+        javax.swing.GroupLayout pendingtransacLayout = new javax.swing.GroupLayout(pendingtransac);
+        pendingtransac.setLayout(pendingtransacLayout);
+        pendingtransacLayout.setHorizontalGroup(
+            pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pendingtransacLayout.createSequentialGroup()
+                .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pendingtransacLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(pendingtransac, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pendingbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
-                        .addComponent(completetransac))
-                    .addGroup(transaclistLayout.createSequentialGroup()
+                        .addComponent(completebtn1))
+                    .addGroup(pendingtransacLayout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addGroup(transaclistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1064, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(transaclistLayout.createSequentialGroup()
+                        .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1076, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pendingtransacLayout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)))))
-                .addContainerGap(97, Short.MAX_VALUE))
+                                .addComponent(generatebtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
-        transaclistLayout.setVerticalGroup(
-            transaclistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transaclistLayout.createSequentialGroup()
+        pendingtransacLayout.setVerticalGroup(
+            pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pendingtransacLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(transaclistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(completetransac)
-                    .addComponent(pendingtransac))
+                .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(completebtn1)
+                    .addComponent(pendingbtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(transaclistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(generatebtn)
+                    .addComponent(editmodule1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
-        tabcontent.add(transaclist, "card5");
-        transaclist.getAccessibleContext().setAccessibleName("Authenticate");
+        tabcontent.add(pendingtransac, "card5");
+        pendingtransac.getAccessibleContext().setAccessibleName("Authenticate");
 
-        deliverylist.setBackground(new java.awt.Color(255, 255, 255));
+        completetransac.setBackground(new java.awt.Color(255, 255, 255));
+        completetransac.setPreferredSize(new java.awt.Dimension(1250, 625));
 
-        jTable2.setBackground(new java.awt.Color(229, 229, 229));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        completebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        completebtn2.setForeground(new java.awt.Color(10, 64, 83));
+        completebtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        completebtn2.setText("Completed");
+
+        pendingtransactbl1.setBackground(new java.awt.Color(229, 229, 229));
+        pendingtransactbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        pendingtransactbl1.setForeground(new java.awt.Color(10, 64, 83));
+        pendingtransactbl1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Action"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(pendingtransactbl1);
+
+        pendingbtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        pendingbtn2.setForeground(new java.awt.Color(10, 64, 83));
+        pendingbtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pendingbtn2.setText("Pending");
+
+        jComboBox3.setBackground(new java.awt.Color(10, 64, 83));
+        jComboBox3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox3.setMaximumRowCount(3);
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+
+        generatebtn1.setBackground(new java.awt.Color(140, 208, 218));
+        generatebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        generatebtn1.setForeground(new java.awt.Color(34, 73, 87));
+        generatebtn1.setText("Generate");
+
+        editmodule2.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule2.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule2.setText("Edit Module");
+
+        javax.swing.GroupLayout completetransacLayout = new javax.swing.GroupLayout(completetransac);
+        completetransac.setLayout(completetransacLayout);
+        completetransacLayout.setHorizontalGroup(
+            completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(completetransacLayout.createSequentialGroup()
+                .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(completetransacLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(pendingbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(completebtn2))
+                    .addGroup(completetransacLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1076, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(completetransacLayout.createSequentialGroup()
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(generatebtn1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        completetransacLayout.setVerticalGroup(
+            completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(completetransacLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(completebtn2)
+                    .addComponent(pendingbtn2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(generatebtn1)
+                    .addComponent(editmodule2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+
+        tabcontent.add(completetransac, "card5");
+
+        pendingdeliver.setBackground(new java.awt.Color(255, 255, 255));
+
+        pendingdelivertbl.setBackground(new java.awt.Color(229, 229, 229));
+        pendingdelivertbl.setForeground(new java.awt.Color(10, 64, 83));
+        pendingdelivertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -615,63 +805,168 @@ public class Main extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(pendingdelivertbl);
 
-        pendingdeliver.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
-        pendingdeliver.setForeground(new java.awt.Color(10, 64, 83));
-        pendingdeliver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pendingdeliver.setText("Pending");
+        pendingbtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        pendingbtn3.setForeground(new java.awt.Color(10, 64, 83));
+        pendingbtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pendingbtn3.setText("Pending");
 
-        completedeliver.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
-        completedeliver.setForeground(new java.awt.Color(10, 64, 83));
-        completedeliver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        completedeliver.setText("Completed");
+        completebtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        completebtn3.setForeground(new java.awt.Color(10, 64, 83));
+        completebtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        completebtn3.setText("Completed");
 
+        jComboBox2.setBackground(new java.awt.Color(10, 64, 83));
         jComboBox2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "On-Going" }));
 
-        jButton3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        jButton3.setText("Generate");
+        generatebtn2.setBackground(new java.awt.Color(140, 208, 218));
+        generatebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        generatebtn2.setForeground(new java.awt.Color(10, 64, 83));
+        generatebtn2.setText("Generate");
 
-        javax.swing.GroupLayout deliverylistLayout = new javax.swing.GroupLayout(deliverylist);
-        deliverylist.setLayout(deliverylistLayout);
-        deliverylistLayout.setHorizontalGroup(
-            deliverylistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(deliverylistLayout.createSequentialGroup()
-                .addGroup(deliverylistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(deliverylistLayout.createSequentialGroup()
+        editmodule3.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule3.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule3.setText("Edit Module");
+
+        javax.swing.GroupLayout pendingdeliverLayout = new javax.swing.GroupLayout(pendingdeliver);
+        pendingdeliver.setLayout(pendingdeliverLayout);
+        pendingdeliverLayout.setHorizontalGroup(
+            pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pendingdeliverLayout.createSequentialGroup()
+                .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pendingdeliverLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(pendingdeliver, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pendingbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
-                        .addComponent(completedeliver))
-                    .addGroup(deliverylistLayout.createSequentialGroup()
+                        .addComponent(completebtn3))
+                    .addGroup(pendingdeliverLayout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addGroup(deliverylistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(deliverylistLayout.createSequentialGroup()
+                        .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pendingdeliverLayout.createSequentialGroup()
                                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3))
+                                .addComponent(generatebtn2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1064, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(97, Short.MAX_VALUE))
         );
-        deliverylistLayout.setVerticalGroup(
-            deliverylistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(deliverylistLayout.createSequentialGroup()
+        pendingdeliverLayout.setVerticalGroup(
+            pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pendingdeliverLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(deliverylistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(completedeliver)
-                    .addComponent(pendingdeliver))
+                .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(completebtn3)
+                    .addComponent(pendingbtn3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(deliverylistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(generatebtn2)
+                    .addComponent(editmodule3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
-        tabcontent.add(deliverylist, "card2");
-        deliverylist.getAccessibleContext().setAccessibleName("Invoices");
+        tabcontent.add(pendingdeliver, "card2");
+        pendingdeliver.getAccessibleContext().setAccessibleName("Invoices");
+
+        completedeliver.setBackground(new java.awt.Color(255, 255, 255));
+
+        pendingdelivertbl1.setBackground(new java.awt.Color(229, 229, 229));
+        pendingdelivertbl1.setForeground(new java.awt.Color(10, 64, 83));
+        pendingdelivertbl1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(pendingdelivertbl1);
+
+        pendingbtn4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        pendingbtn4.setForeground(new java.awt.Color(10, 64, 83));
+        pendingbtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pendingbtn4.setText("Pending");
+
+        completebtn4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        completebtn4.setForeground(new java.awt.Color(10, 64, 83));
+        completebtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        completebtn4.setText("Completed");
+
+        jComboBox4.setBackground(new java.awt.Color(10, 64, 83));
+        jComboBox4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        jComboBox4.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "On-Going" }));
+
+        generatebtn3.setBackground(new java.awt.Color(140, 208, 218));
+        generatebtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        generatebtn3.setForeground(new java.awt.Color(10, 64, 83));
+        generatebtn3.setText("Generate");
+
+        editmodule4.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule4.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule4.setText("Edit Module");
+
+        javax.swing.GroupLayout completedeliverLayout = new javax.swing.GroupLayout(completedeliver);
+        completedeliver.setLayout(completedeliverLayout);
+        completedeliverLayout.setHorizontalGroup(
+            completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(completedeliverLayout.createSequentialGroup()
+                .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(completedeliverLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(pendingbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(completebtn4))
+                    .addGroup(completedeliverLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(completedeliverLayout.createSequentialGroup()
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(generatebtn3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1064, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
+        completedeliverLayout.setVerticalGroup(
+            completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(completedeliverLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(completebtn4)
+                    .addComponent(pendingbtn4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(generatebtn3)
+                    .addComponent(editmodule4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+
+        tabcontent.add(completedeliver, "card2");
 
         authenticate.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -679,46 +974,119 @@ public class Main extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(10, 64, 83));
         jLabel7.setText("Enter Password");
 
+        authpassbtn.setBackground(new java.awt.Color(140, 208, 218));
         authpassbtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 14)); // NOI18N
+        authpassbtn.setForeground(new java.awt.Color(34, 73, 87));
         authpassbtn.setText("Authenticate");
+        authpassbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 208, 218), 1, true));
 
+        authpass.setBackground(new java.awt.Color(229, 229, 229));
         authpass.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 24)); // NOI18N
+        authpass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 1, true));
 
         javax.swing.GroupLayout authenticateLayout = new javax.swing.GroupLayout(authenticate);
         authenticate.setLayout(authenticateLayout);
         authenticateLayout.setHorizontalGroup(
             authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(authenticateLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, authenticateLayout.createSequentialGroup()
+                .addContainerGap(467, Short.MAX_VALUE)
                 .addGroup(authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(authenticateLayout.createSequentialGroup()
-                        .addGap(499, 499, 499)
+                        .addGap(39, 39, 39)
                         .addComponent(jLabel7))
+                    .addComponent(authpass, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(authenticateLayout.createSequentialGroup()
-                        .addGap(460, 460, 460)
-                        .addComponent(authpass, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(authenticateLayout.createSequentialGroup()
-                        .addGap(560, 560, 560)
+                        .addGap(100, 100, 100)
                         .addComponent(authpassbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addGap(458, 458, 458))
         );
         authenticateLayout.setVerticalGroup(
             authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authenticateLayout.createSequentialGroup()
-                .addGap(192, 192, 192)
+                .addGap(208, 208, 208)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(authpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(authpassbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
 
         tabcontent.add(authenticate, "card6");
+
+        authreports.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel17.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(10, 64, 83));
+        jLabel17.setText("Reports");
+        jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        genreport1.setBackground(new java.awt.Color(140, 208, 218));
+        genreport1.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 14)); // NOI18N
+        genreport1.setForeground(new java.awt.Color(34, 73, 87));
+        genreport1.setText("Generate");
+        genreport1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 208, 218), 1, true));
+
+        genreport2.setBackground(new java.awt.Color(140, 208, 218));
+        genreport2.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 14)); // NOI18N
+        genreport2.setForeground(new java.awt.Color(34, 73, 87));
+        genreport2.setText("Generate");
+        genreport2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 208, 218), 1, true));
+        genreport2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genreport2ActionPerformed(evt);
+            }
+        });
+
+        genreport3.setBackground(new java.awt.Color(140, 208, 218));
+        genreport3.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 14)); // NOI18N
+        genreport3.setForeground(new java.awt.Color(34, 73, 87));
+        genreport3.setText("Generate");
+        genreport3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 208, 218), 1, true));
+
+        javax.swing.GroupLayout authreportsLayout = new javax.swing.GroupLayout(authreports);
+        authreports.setLayout(authreportsLayout);
+        authreportsLayout.setHorizontalGroup(
+            authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, authreportsLayout.createSequentialGroup()
+                .addContainerGap(342, Short.MAX_VALUE)
+                .addComponent(genreport2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addGroup(authreportsLayout.createSequentialGroup()
+                        .addComponent(genreport1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103)
+                        .addComponent(genreport3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(341, 341, 341))
+        );
+        authreportsLayout.setVerticalGroup(
+            authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(authreportsLayout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genreport1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genreport3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genreport2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(229, 229, 229))
+        );
+
+        tabcontent.add(authreports, "card6");
 
         getContentPane().add(tabcontent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_invoicebtnMouseClicked
+
+    private void genreport2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreport2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genreport2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -758,53 +1126,80 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel authenticate;
+    private javax.swing.JLabel authenticbtn;
     private javax.swing.JPanel authentictab;
     private javax.swing.JPasswordField authpass;
     private javax.swing.JButton authpassbtn;
+    private javax.swing.JPanel authreports;
     private javax.swing.JTextField brgyfield;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField cityfield;
-    private javax.swing.JLabel completedeliver;
-    private javax.swing.JLabel completetransac;
+    private javax.swing.JLabel completebtn1;
+    private javax.swing.JLabel completebtn2;
+    private javax.swing.JLabel completebtn3;
+    private javax.swing.JLabel completebtn4;
+    private javax.swing.JPanel completedeliver;
+    private javax.swing.JPanel completetransac;
+    private javax.swing.JLabel deliverbtn;
     private javax.swing.JPanel delivertab;
-    private javax.swing.JPanel deliverylist;
+    private javax.swing.JButton editmodule1;
+    private javax.swing.JButton editmodule2;
+    private javax.swing.JButton editmodule3;
+    private javax.swing.JButton editmodule4;
     private javax.swing.JTextField fnamefield;
     private javax.swing.JPanel form;
+    private javax.swing.JButton generatebtn;
+    private javax.swing.JButton generatebtn1;
+    private javax.swing.JButton generatebtn2;
+    private javax.swing.JButton generatebtn3;
+    private javax.swing.JButton genreport1;
+    private javax.swing.JButton genreport2;
+    private javax.swing.JButton genreport3;
     private javax.swing.JTextField housefield;
+    private javax.swing.JLabel invoicebtn;
     private javax.swing.JPanel invoices;
     private javax.swing.JPanel invoicetab;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField lnamefield;
     private javax.swing.JPanel maintabs;
     private javax.swing.JTextField mobilefield;
-    private javax.swing.JLabel pendingdeliver;
-    private javax.swing.JLabel pendingtransac;
+    private javax.swing.JLabel pendingbtn1;
+    private javax.swing.JLabel pendingbtn2;
+    private javax.swing.JLabel pendingbtn3;
+    private javax.swing.JLabel pendingbtn4;
+    private javax.swing.JPanel pendingdeliver;
+    private javax.swing.JTable pendingdelivertbl;
+    private javax.swing.JTable pendingdelivertbl1;
+    private javax.swing.JPanel pendingtransac;
+    private javax.swing.JTable pendingtransactbl;
+    private javax.swing.JTable pendingtransactbl1;
+    private javax.swing.JPopupMenu popupmenu1;
     private javax.swing.JLabel productdesc;
     private javax.swing.JLabel productimg;
     private javax.swing.JLabel productimg1;
@@ -812,12 +1207,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel productprice;
     private javax.swing.JSpinner productqty;
     private javax.swing.JToggleButton productselect;
+    private javax.swing.JPanel qnb;
     private javax.swing.JRadioButton radiodeliver;
     private javax.swing.JRadioButton radiowalkin;
     private javax.swing.JPanel signout;
+    private javax.swing.JLabel signoutbtn;
     private javax.swing.JButton submitform;
     private javax.swing.JPanel tabcontent;
-    private javax.swing.JPanel transaclist;
+    private javax.swing.JLabel transacbtn;
     private javax.swing.JPanel transactab;
     // End of variables declaration//GEN-END:variables
 }

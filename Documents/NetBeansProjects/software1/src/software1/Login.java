@@ -38,21 +38,20 @@ public class Login extends javax.swing.JFrame {
         passfield = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel4 = new javax.swing.JLabel();
         login = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("QNB Admin");
+        setTitle("QNB System");
         setBackground(new java.awt.Color(229, 229, 229));
+        setPreferredSize(new java.awt.Dimension(784, 475));
 
         jPanel7.setBackground(new java.awt.Color(229, 229, 229));
         jPanel7.setPreferredSize(new java.awt.Dimension(775, 440));
 
         jPanel8.setBackground(new java.awt.Color(229, 229, 229));
-        jPanel8.setPreferredSize(new java.awt.Dimension(784, 138));
+        jPanel8.setPreferredSize(new java.awt.Dimension(775, 138));
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro Light", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(10, 64, 83));
@@ -66,7 +65,7 @@ public class Login extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(294, Short.MAX_VALUE)
+                .addContainerGap(285, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -78,7 +77,7 @@ public class Login extends javax.swing.JFrame {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5))
@@ -95,6 +94,8 @@ public class Login extends javax.swing.JFrame {
 
         userfield.setBackground(new java.awt.Color(23, 90, 115));
         userfield.setForeground(new java.awt.Color(255, 255, 255));
+        userfield.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        userfield.setCaretColor(new java.awt.Color(23, 90, 115));
         userfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userfieldActionPerformed(evt);
@@ -118,6 +119,8 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setBackground(new java.awt.Color(23, 90, 115));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPasswordField1.setCaretColor(new java.awt.Color(23, 90, 115));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -129,25 +132,32 @@ public class Login extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(229, 229, 229));
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 45));
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jCheckBox1.setForeground(new java.awt.Color(10, 64, 83));
-        jCheckBox1.setText("Remember me");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jCheckBox1, java.awt.BorderLayout.CENTER);
-
-        jLabel4.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel4.setText("Forgot Password?");
-        jPanel3.add(jLabel4, java.awt.BorderLayout.LINE_END);
 
         login.setBackground(new java.awt.Color(66, 155, 186));
         login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("Login");
-        jPanel3.add(login, java.awt.BorderLayout.PAGE_END);
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(147, Short.MAX_VALUE)
+                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         jPanel9.add(jPanel3);
 
@@ -174,9 +184,34 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        System.out.println("login button clicked");
+        String name = userfield.getText();
+        String pass = jPasswordField1.getText(); // set each char to 0 after for security
+        
+        System.out.println("name: " + name);
+        System.out.println("pass: " + pass);
+        // Database details
+        Database db;
+        db = new Database(
+                "com.mysql.cj.jdbc.Driver",
+                "root",
+                "root",
+                "jdbc:mysql://localhost:3306/db_qnb"
+        );
+        if (db.verifyUser(name, pass)) {
+            System.out.println("VERIFY SUCCESS");
+            Main main = new Main();
+            main.setVisible(true);
+            this.dispose();
+        }
+        else {
+            System.out.println("WRONG USERNAME OR PASSWORD");
+        }
+        db = null;
+        System.out.println("login end");
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,10 +249,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
