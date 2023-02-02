@@ -196,12 +196,15 @@ public class Login extends javax.swing.JFrame {
         );
         if (db.verifyUser(name, pass)) {
             System.out.println("VERIFY SUCCESS");
+            Main main = new Main();
+            main.setVisible(true);
+            this.dispose();
         }
         else {
             System.out.println("WRONG USERNAME OR PASSWORD");
         }
         db = null;
-        
+        System.out.println("end");
     }//GEN-LAST:event_loginActionPerformed
 
     /**
