@@ -45,7 +45,6 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QNB System");
         setBackground(new java.awt.Color(229, 229, 229));
-        setPreferredSize(new java.awt.Dimension(784, 475));
 
         jPanel7.setBackground(new java.awt.Color(229, 229, 229));
         jPanel7.setPreferredSize(new java.awt.Dimension(775, 440));
@@ -55,7 +54,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro Light", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel1.setText("QBC");
+        jLabel1.setText("QNB");
 
         jLabel5.setForeground(new java.awt.Color(10, 64, 83));
         jLabel5.setText("Log in to start your water transactions!");
