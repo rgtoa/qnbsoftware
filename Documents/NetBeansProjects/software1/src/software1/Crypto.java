@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package software1;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import org.apache.commons.codec.binary.Base64;
+//import org.apache.commons.codec.binary.Base64;
 
-/**
- *
- * @author POLO
- */
 public class Crypto {
     static byte[] key = { 
         'q','n','b','w','a','t','e','r',
@@ -23,7 +16,7 @@ public class Crypto {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-            encryptedString = Base64.encodeBase64String(cipher.doFinal(strToEncrypt.getBytes()));
+            //encryptedString = Base64.encodeBase64String(cipher.doFinal(strToEncrypt.getBytes()));
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -36,7 +29,7 @@ public class Crypto {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
             final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
-            decryptedString = new String(cipher.doFinal(Base64.decodeBase64(codeDecrypt)));
+            //decryptedString = new String(cipher.doFinal(Base64.decodeBase64(codeDecrypt)));
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
