@@ -406,7 +406,13 @@ public class Login extends javax.swing.JFrame {
         );
         if (db.verifyUser(name, pass)) {
             System.out.println("VERIFY SUCCESS");
-            Main main = new Main();
+            db = new Database(
+                "com.mysql.cj.jdbc.Driver",
+                "root",
+                "root",
+                "jdbc:mysql://localhost:3306/db_qnb"
+            );
+            Main main = new Main(db.getRole(name), name);
             main.setVisible(true);
             this.dispose();
         }

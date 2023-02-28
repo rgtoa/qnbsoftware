@@ -5,8 +5,13 @@ import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
 
 public class Main extends javax.swing.JFrame {
-
-    public Main() {
+    
+    private final String role;
+    private final String  username;
+    
+    public Main(String role, String username) {
+        this.role = role;
+        this.username = username;
         initComponents();
         GlassPanePopup.install(this);
     }
@@ -125,7 +130,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel1.setText("QNB");
+        jLabel1.setText("QNB " + this.role);
         jLabel1.setPreferredSize(new java.awt.Dimension(175, 70));
 
         javax.swing.GroupLayout qnbLayout = new javax.swing.GroupLayout(qnb);
@@ -1207,7 +1212,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new Main("","").setVisible(true);
             }
         });
     }

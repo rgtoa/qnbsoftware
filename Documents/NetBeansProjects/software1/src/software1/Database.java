@@ -35,11 +35,28 @@ public class Database {
     public boolean verifyUser(String user, String pass) {
         boolean output = false;
         try {
-            ps = con.prepareStatement("SELECT * FROM users WHERE username=?");
+            ps = con.prepareStatement("SELECT password FROM users WHERE username=?");
             ps.setString(1, user);
             rs = ps.executeQuery();
             if (rs.next()) {
                 output = rs.getString("password").equals(pass);
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
+    public String getRole(String user) {
+        String output = "";
+        try {
+            ps = con.prepareStatement("SELECT role FROM users WHERE username=?");
+            ps.setString(1, user);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                output = rs.getString("role");
             }
             rs.close();
             ps.close();
