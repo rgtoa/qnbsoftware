@@ -85,6 +85,7 @@ public class Main extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         generatebtn = new javax.swing.JButton();
         editmodule1 = new javax.swing.JButton();
+        updatebtn1 = new javax.swing.JButton();
         completetransac = new javax.swing.JPanel();
         completebtn2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -94,11 +95,11 @@ public class Main extends javax.swing.JFrame {
         generatebtn1 = new javax.swing.JButton();
         editmodule2 = new javax.swing.JButton();
         pendingdeliver = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        pendingdelivertbl = new javax.swing.JTable();
         pendingbtn3 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        pendingtransactbl2 = new javax.swing.JTable();
         completebtn3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<>();
         generatebtn2 = new javax.swing.JButton();
         editmodule3 = new javax.swing.JButton();
         completedeliver = new javax.swing.JPanel();
@@ -106,7 +107,6 @@ public class Main extends javax.swing.JFrame {
         pendingdelivertbl1 = new javax.swing.JTable();
         pendingbtn4 = new javax.swing.JLabel();
         completebtn4 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
         generatebtn3 = new javax.swing.JButton();
         editmodule4 = new javax.swing.JButton();
         authreports = new javax.swing.JPanel();
@@ -271,9 +271,9 @@ public class Main extends javax.swing.JFrame {
         authentictabLayout.setHorizontalGroup(
             authentictabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authentictabLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(authenticbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         authentictabLayout.setVerticalGroup(
             authentictabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,7 +372,9 @@ public class Main extends javax.swing.JFrame {
         productname1.setForeground(new java.awt.Color(10, 64, 83));
         productname1.setText("Product");
 
-        productqty.setModel(new javax.swing.SpinnerNumberModel(1, null, null, 1));
+        productqty.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        productqty.setMinimumSize(new java.awt.Dimension(50, 22));
+        productqty.setPreferredSize(new java.awt.Dimension(50, 22));
 
         productprice.setBackground(new java.awt.Color(255, 255, 255));
         productprice.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
@@ -416,8 +418,8 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(productprice, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(productname1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(productdesc, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
@@ -429,7 +431,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(productdesc, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productprice)
@@ -439,7 +441,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
         );
 
         invoices.add(jPanel12);
@@ -621,35 +623,56 @@ public class Main extends javax.swing.JFrame {
         pendingtransac.setBackground(new java.awt.Color(255, 255, 255));
         pendingtransac.setPreferredSize(new java.awt.Dimension(1250, 625));
 
-        completebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        completebtn1.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
         completebtn1.setForeground(new java.awt.Color(10, 64, 83));
         completebtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         completebtn1.setText("Completed");
+        completebtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                completebtn1MouseClicked(evt);
+            }
+        });
 
         pendingtransactbl.setBackground(new java.awt.Color(229, 229, 229));
         pendingtransactbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
         pendingtransactbl.setForeground(new java.awt.Color(10, 64, 83));
         pendingtransactbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Action"
+                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        pendingtransactbl.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(pendingtransactbl);
+        pendingtransactbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (pendingtransactbl.getColumnModel().getColumnCount() > 0) {
+            pendingtransactbl.getColumnModel().getColumn(0).setResizable(false);
+            pendingtransactbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            pendingtransactbl.getColumnModel().getColumn(1).setResizable(false);
+            pendingtransactbl.getColumnModel().getColumn(2).setResizable(false);
+            pendingtransactbl.getColumnModel().getColumn(2).setPreferredWidth(5);
+            pendingtransactbl.getColumnModel().getColumn(3).setResizable(false);
+            pendingtransactbl.getColumnModel().getColumn(4).setResizable(false);
+            pendingtransactbl.getColumnModel().getColumn(5).setResizable(false);
+            pendingtransactbl.getColumnModel().getColumn(5).setPreferredWidth(5);
+        }
 
         pendingbtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
         pendingbtn1.setForeground(new java.awt.Color(10, 64, 83));
@@ -661,6 +684,11 @@ public class Main extends javax.swing.JFrame {
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setMaximumRowCount(3);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         generatebtn.setBackground(new java.awt.Color(140, 208, 218));
         generatebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -672,27 +700,37 @@ public class Main extends javax.swing.JFrame {
         editmodule1.setForeground(new java.awt.Color(34, 73, 87));
         editmodule1.setText("Edit Module");
 
+        updatebtn1.setBackground(new java.awt.Color(34, 73, 87));
+        updatebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        updatebtn1.setForeground(new java.awt.Color(255, 255, 255));
+        updatebtn1.setText("Update");
+        updatebtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatebtn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pendingtransacLayout = new javax.swing.GroupLayout(pendingtransac);
         pendingtransac.setLayout(pendingtransacLayout);
         pendingtransacLayout.setHorizontalGroup(
             pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pendingtransacLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
                 .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pendingtransacLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(pendingbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pendingbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
                         .addComponent(completebtn1))
-                    .addGroup(pendingtransacLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
-                            .addGroup(pendingtransacLayout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(generatebtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editmodule1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addGroup(pendingtransacLayout.createSequentialGroup()
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(generatebtn)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(updatebtn1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editmodule1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(85, 85, 85))
         );
         pendingtransacLayout.setVerticalGroup(
@@ -706,10 +744,11 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generatebtn)
-                    .addComponent(editmodule1))
+                    .addComponent(editmodule1)
+                    .addComponent(updatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addGap(80, 80, 80))
         );
 
         tabcontent.add(pendingtransac, "card5");
@@ -722,6 +761,7 @@ public class Main extends javax.swing.JFrame {
         completebtn2.setForeground(new java.awt.Color(10, 64, 83));
         completebtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         completebtn2.setText("Completed");
+        completebtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         pendingtransactbl1.setBackground(new java.awt.Color(229, 229, 229));
         pendingtransactbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
@@ -731,9 +771,25 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-
+                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Amount Paid", "Time/Date"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        pendingtransactbl1.setColumnSelectionAllowed(true);
         pendingtransactbl1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pendingtransactbl1.setEnabled(false);
         pendingtransactbl1.setFocusable(false);
@@ -742,14 +798,35 @@ public class Main extends javax.swing.JFrame {
         pendingtransactbl1.setRowSelectionAllowed(false);
         pendingtransactbl1.setSelectionBackground(new java.awt.Color(255, 255, 255));
         pendingtransactbl1.setShowGrid(false);
+        pendingtransactbl1.getTableHeader().setReorderingAllowed(false);
         pendingtransactbl1.setUpdateSelectionOnSort(false);
         pendingtransactbl1.setVerifyInputWhenFocusTarget(false);
         jScrollPane3.setViewportView(pendingtransactbl1);
+        pendingtransactbl1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (pendingtransactbl1.getColumnModel().getColumnCount() > 0) {
+            pendingtransactbl1.getColumnModel().getColumn(0).setResizable(false);
+            pendingtransactbl1.getColumnModel().getColumn(0).setPreferredWidth(5);
+            pendingtransactbl1.getColumnModel().getColumn(1).setResizable(false);
+            pendingtransactbl1.getColumnModel().getColumn(2).setResizable(false);
+            pendingtransactbl1.getColumnModel().getColumn(2).setPreferredWidth(5);
+            pendingtransactbl1.getColumnModel().getColumn(3).setResizable(false);
+            pendingtransactbl1.getColumnModel().getColumn(4).setResizable(false);
+            pendingtransactbl1.getColumnModel().getColumn(5).setResizable(false);
+            pendingtransactbl1.getColumnModel().getColumn(5).setPreferredWidth(5);
+            pendingtransactbl1.getColumnModel().getColumn(6).setResizable(false);
+            pendingtransactbl1.getColumnModel().getColumn(6).setPreferredWidth(5);
+        }
 
-        pendingbtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        pendingbtn2.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
         pendingbtn2.setForeground(new java.awt.Color(10, 64, 83));
         pendingbtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendingbtn2.setText("Pending");
+        pendingbtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pendingbtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendingbtn2MouseClicked(evt);
+            }
+        });
 
         jComboBox3.setBackground(new java.awt.Color(10, 64, 83));
         jComboBox3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -772,22 +849,20 @@ public class Main extends javax.swing.JFrame {
         completetransacLayout.setHorizontalGroup(
             completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, completetransacLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
                 .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(completetransacLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(pendingbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pendingbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
                         .addComponent(completebtn2))
-                    .addGroup(completetransacLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
-                            .addGroup(completetransacLayout.createSequentialGroup()
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(generatebtn1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editmodule2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addGroup(completetransacLayout.createSequentialGroup()
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(generatebtn1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editmodule2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(85, 85, 85))
         );
         completetransacLayout.setVerticalGroup(
@@ -803,52 +878,83 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(generatebtn1)
                     .addComponent(editmodule2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3)
+                .addGap(80, 80, 80))
         );
 
         tabcontent.add(completetransac, "card5");
 
         pendingdeliver.setBackground(new java.awt.Color(255, 255, 255));
-
-        pendingdelivertbl.setBackground(new java.awt.Color(229, 229, 229));
-        pendingdelivertbl.setForeground(new java.awt.Color(10, 64, 83));
-        pendingdelivertbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Status"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(pendingdelivertbl);
+        pendingdeliver.setPreferredSize(new java.awt.Dimension(1250, 625));
 
         pendingbtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
         pendingbtn3.setForeground(new java.awt.Color(10, 64, 83));
         pendingbtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendingbtn3.setText("Pending");
 
-        completebtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        pendingtransactbl2.setBackground(new java.awt.Color(229, 229, 229));
+        pendingtransactbl2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        pendingtransactbl2.setForeground(new java.awt.Color(10, 64, 83));
+        pendingtransactbl2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        pendingtransactbl2.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(pendingtransactbl2);
+        if (pendingtransactbl2.getColumnModel().getColumnCount() > 0) {
+            pendingtransactbl2.getColumnModel().getColumn(0).setResizable(false);
+            pendingtransactbl2.getColumnModel().getColumn(0).setPreferredWidth(5);
+            pendingtransactbl2.getColumnModel().getColumn(1).setResizable(false);
+            pendingtransactbl2.getColumnModel().getColumn(2).setResizable(false);
+            pendingtransactbl2.getColumnModel().getColumn(2).setPreferredWidth(5);
+            pendingtransactbl2.getColumnModel().getColumn(3).setResizable(false);
+            pendingtransactbl2.getColumnModel().getColumn(4).setResizable(false);
+            pendingtransactbl2.getColumnModel().getColumn(5).setResizable(false);
+            pendingtransactbl2.getColumnModel().getColumn(5).setPreferredWidth(5);
+            pendingtransactbl2.getColumnModel().getColumn(6).setResizable(false);
+            pendingtransactbl2.getColumnModel().getColumn(6).setPreferredWidth(5);
+        }
+
+        completebtn3.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
         completebtn3.setForeground(new java.awt.Color(10, 64, 83));
         completebtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         completebtn3.setText("Completed");
+        completebtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        completebtn3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                completebtn3MouseClicked(evt);
+            }
+        });
 
-        jComboBox2.setBackground(new java.awt.Color(10, 64, 83));
-        jComboBox2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "On-Going" }));
+        jComboBox5.setBackground(new java.awt.Color(10, 64, 83));
+        jComboBox5.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        jComboBox5.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox5.setMaximumRowCount(3);
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "On-going" }));
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
 
         generatebtn2.setBackground(new java.awt.Color(140, 208, 218));
         generatebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -864,24 +970,22 @@ public class Main extends javax.swing.JFrame {
         pendingdeliver.setLayout(pendingdeliverLayout);
         pendingdeliverLayout.setHorizontalGroup(
             pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pendingdeliverLayout.createSequentialGroup()
-                .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pendingdeliverLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(pendingbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pendingdeliverLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
+                        .addComponent(pendingbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
-                        .addComponent(completebtn3))
-                    .addGroup(pendingdeliverLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pendingdeliverLayout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(generatebtn2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editmodule3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE))))
-                .addGap(97, 97, 97))
+                        .addComponent(completebtn3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
+                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(generatebtn2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 793, Short.MAX_VALUE)
+                        .addComponent(editmodule3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(85, 85, 85))
         );
         pendingdeliverLayout.setVerticalGroup(
             pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -892,12 +996,12 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(pendingbtn3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generatebtn2)
-                    .addComponent(editmodule3))
+                    .addComponent(editmodule3)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane5)
+                .addGap(80, 80, 80))
         );
 
         tabcontent.add(pendingdeliver, "card2");
@@ -909,40 +1013,58 @@ public class Main extends javax.swing.JFrame {
         pendingdelivertbl1.setForeground(new java.awt.Color(10, 64, 83));
         pendingdelivertbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Status"
+                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Time/Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-        });
-        jScrollPane4.setViewportView(pendingdelivertbl1);
 
-        pendingbtn4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        pendingdelivertbl1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(pendingdelivertbl1);
+        if (pendingdelivertbl1.getColumnModel().getColumnCount() > 0) {
+            pendingdelivertbl1.getColumnModel().getColumn(0).setResizable(false);
+            pendingdelivertbl1.getColumnModel().getColumn(0).setPreferredWidth(5);
+            pendingdelivertbl1.getColumnModel().getColumn(1).setResizable(false);
+            pendingdelivertbl1.getColumnModel().getColumn(2).setResizable(false);
+            pendingdelivertbl1.getColumnModel().getColumn(2).setPreferredWidth(5);
+            pendingdelivertbl1.getColumnModel().getColumn(3).setResizable(false);
+            pendingdelivertbl1.getColumnModel().getColumn(4).setResizable(false);
+            pendingdelivertbl1.getColumnModel().getColumn(5).setResizable(false);
+            pendingdelivertbl1.getColumnModel().getColumn(5).setPreferredWidth(5);
+            pendingdelivertbl1.getColumnModel().getColumn(6).setResizable(false);
+            pendingdelivertbl1.getColumnModel().getColumn(6).setPreferredWidth(5);
+        }
+
+        pendingbtn4.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
         pendingbtn4.setForeground(new java.awt.Color(10, 64, 83));
         pendingbtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendingbtn4.setText("Pending");
+        pendingbtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pendingbtn4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendingbtn4MouseClicked(evt);
+            }
+        });
 
         completebtn4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
         completebtn4.setForeground(new java.awt.Color(10, 64, 83));
         completebtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         completebtn4.setText("Completed");
-
-        jComboBox4.setBackground(new java.awt.Color(10, 64, 83));
-        jComboBox4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        jComboBox4.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "On-Going" }));
 
         generatebtn3.setBackground(new java.awt.Color(140, 208, 218));
         generatebtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -959,23 +1081,19 @@ public class Main extends javax.swing.JFrame {
         completedeliverLayout.setHorizontalGroup(
             completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(completedeliverLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
                 .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(completedeliverLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(pendingbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pendingbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
                         .addComponent(completebtn4))
-                    .addGroup(completedeliverLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(completedeliverLayout.createSequentialGroup()
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(generatebtn3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editmodule4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE))))
-                .addGap(97, 97, 97))
+                    .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(completedeliverLayout.createSequentialGroup()
+                            .addComponent(generatebtn3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editmodule4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)))
+                .addGap(85, 85, 85))
         );
         completedeliverLayout.setVerticalGroup(
             completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -986,12 +1104,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(pendingbtn4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generatebtn3)
                     .addComponent(editmodule4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addGap(80, 80, 80))
         );
 
         tabcontent.add(completedeliver, "card2");
@@ -1139,8 +1256,10 @@ public class Main extends javax.swing.JFrame {
         invoices.setVisible(false);
         form.setVisible(false);
         pendingtransac.setVisible(true);
+        completetransac.setVisible(false);
         editmodule1.setVisible(false);
         pendingdeliver.setVisible(false);
+        completedeliver.setVisible(false);
         authenticate.setVisible(false);
     }//GEN-LAST:event_transacbtnMouseClicked
 
@@ -1148,7 +1267,9 @@ public class Main extends javax.swing.JFrame {
         invoices.setVisible(false);
         form.setVisible(false);
         pendingtransac.setVisible(false);
+        completetransac.setVisible(false);
         pendingdeliver.setVisible(true);
+        completedeliver.setVisible(false);
         editmodule3.setVisible(false);
         authenticate.setVisible(false);
     }//GEN-LAST:event_deliverbtnMouseClicked
@@ -1180,6 +1301,49 @@ public class Main extends javax.swing.JFrame {
         this.dispose();
         login.setVisible(true);
     }//GEN-LAST:event_signoutbtnMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void completebtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completebtn1MouseClicked
+        pendingtransac.setVisible(false);
+        editmodule2.setVisible(false);
+        completetransac.setVisible(true);
+    }//GEN-LAST:event_completebtn1MouseClicked
+
+    private void pendingbtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingbtn2MouseClicked
+        completetransac.setVisible(false);
+        pendingtransac.setVisible(true);
+    }//GEN-LAST:event_pendingbtn2MouseClicked
+
+    private void pendingbtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingbtn4MouseClicked
+        completedeliver.setVisible(false);
+        pendingdeliver.setVisible(true);
+    }//GEN-LAST:event_pendingbtn4MouseClicked
+
+    private void completebtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completebtn3MouseClicked
+        pendingdeliver.setVisible(false);
+        editmodule4.setVisible(false);
+        completedeliver.setVisible(true);
+    }//GEN-LAST:event_completebtn3MouseClicked
+
+    private void updatebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtn1ActionPerformed
+        TransacEditPopup obj = new TransacEditPopup();
+        /*obj.transacedit(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                GlassPanePopup.closePopupLast();
+                invoices.setVisible(false);
+                form.setVisible(true);
+            }
+        });*/
+        GlassPanePopup.showPopup(obj);
+    }//GEN-LAST:event_updatebtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1255,9 +1419,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel invoicetab;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1278,9 +1441,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField lnamefield;
     private javax.swing.JPanel maintabs;
     private javax.swing.JTextField mobilefield;
@@ -1290,11 +1453,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel pendingbtn3;
     private javax.swing.JLabel pendingbtn4;
     private javax.swing.JPanel pendingdeliver;
-    private javax.swing.JTable pendingdelivertbl;
     private javax.swing.JTable pendingdelivertbl1;
     private javax.swing.JPanel pendingtransac;
     private javax.swing.JTable pendingtransactbl;
     private javax.swing.JTable pendingtransactbl1;
+    private javax.swing.JTable pendingtransactbl2;
     private javax.swing.JPopupMenu popupmenu1;
     private javax.swing.JLabel productdesc;
     private javax.swing.JLabel productimg;
@@ -1311,5 +1474,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel tabcontent;
     private javax.swing.JLabel transacbtn;
     private javax.swing.JPanel transactab;
+    private javax.swing.JButton updatebtn1;
     // End of variables declaration//GEN-END:variables
 }
