@@ -284,18 +284,23 @@ public class Main extends javax.swing.JFrame {
 
         signoutbtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         signoutbtn.setForeground(new java.awt.Color(10, 64, 83));
-        signoutbtn.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        signoutbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         signoutbtn.setText("Sign out");
         signoutbtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         signoutbtn.setPreferredSize(new java.awt.Dimension(175, 70));
+        signoutbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signoutbtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout signoutLayout = new javax.swing.GroupLayout(signout);
         signout.setLayout(signoutLayout);
         signoutLayout.setHorizontalGroup(
             signoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signoutLayout.createSequentialGroup()
-                .addGap(0, 56, Short.MAX_VALUE)
-                .addComponent(signoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 117, Short.MAX_VALUE)
+                .addComponent(signoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         signoutLayout.setVerticalGroup(
             signoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,24 +473,6 @@ public class Main extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(34, 73, 87));
         jLabel16.setText("City");
 
-        fnamefield.setBackground(new java.awt.Color(255, 255, 255));
-        fnamefield.setForeground(new java.awt.Color(0, 0, 0));
-
-        lnamefield.setBackground(new java.awt.Color(255, 255, 255));
-        lnamefield.setForeground(new java.awt.Color(0, 0, 0));
-
-        housefield.setBackground(new java.awt.Color(255, 255, 255));
-        housefield.setForeground(new java.awt.Color(0, 0, 0));
-
-        brgyfield.setBackground(new java.awt.Color(255, 255, 255));
-        brgyfield.setForeground(new java.awt.Color(0, 0, 0));
-
-        cityfield.setBackground(new java.awt.Color(255, 255, 255));
-        cityfield.setForeground(new java.awt.Color(0, 0, 0));
-
-        mobilefield.setBackground(new java.awt.Color(255, 255, 255));
-        mobilefield.setForeground(new java.awt.Color(0, 0, 0));
-
         buttonGroup1.add(radiowalkin);
         radiowalkin.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         radiowalkin.setForeground(new java.awt.Color(34, 73, 87));
@@ -543,16 +530,15 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(radiowalkin, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(customerdetails, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
-                            .addComponent(jLabel12)
-                            .addGap(115, 115, 115)
-                            .addComponent(jLabel11))))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(customerdetails, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(115, 115, 115)
+                        .addComponent(jLabel11)))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
@@ -743,7 +729,6 @@ public class Main extends javax.swing.JFrame {
 
             }
         ));
-        pendingtransactbl1.setColumnSelectionAllowed(false);
         pendingtransactbl1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pendingtransactbl1.setEnabled(false);
         pendingtransactbl1.setFocusable(false);
@@ -751,7 +736,6 @@ public class Main extends javax.swing.JFrame {
         pendingtransactbl1.setRequestFocusEnabled(false);
         pendingtransactbl1.setRowSelectionAllowed(false);
         pendingtransactbl1.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        pendingtransactbl1.setSelectionForeground(new java.awt.Color(0, 0, 0));
         pendingtransactbl1.setShowGrid(false);
         pendingtransactbl1.setUpdateSelectionOnSort(false);
         pendingtransactbl1.setVerifyInputWhenFocusTarget(false);
@@ -1184,6 +1168,13 @@ public class Main extends javax.swing.JFrame {
         form.setVisible(false);
         pendingtransac.setVisible(true);
     }//GEN-LAST:event_submitformActionPerformed
+
+    private void signoutbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signoutbtnMouseClicked
+        // TODO add your handling code here:
+        Login login = new Login();
+        this.dispose();
+        login.setVisible(true);
+    }//GEN-LAST:event_signoutbtnMouseClicked
 
     /**
      * @param args the command line arguments

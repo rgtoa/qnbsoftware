@@ -390,6 +390,31 @@ public class Login extends javax.swing.JFrame {
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         // TODO add your handling code here:
+        System.out.println("login button clicked");
+        String name = userfield2.getText();
+        String pass = jPasswordField3.getText(); // set each char to 0 after for security
+        
+        System.out.println("name: " + name);
+        System.out.println("pass: " + pass);
+        // Database details
+        Database db;
+        db = new Database(
+                "com.mysql.cj.jdbc.Driver",
+                "root",
+                "root",
+                "jdbc:mysql://localhost:3306/db_qnb"
+        );
+        if (db.verifyUser(name, pass)) {
+            System.out.println("VERIFY SUCCESS");
+            Main main = new Main();
+            main.setVisible(true);
+            this.dispose();
+        }
+        else {
+            System.out.println("WRONG USERNAME OR PASSWORD");
+        }
+        db = null;
+        System.out.println("login end");
     }//GEN-LAST:event_loginbtnActionPerformed
 
     private void signupbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupbtnMouseClicked
