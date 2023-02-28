@@ -1234,7 +1234,9 @@ public class Main extends javax.swing.JFrame {
         invoices.setVisible(true);
         form.setVisible(false);
         pendingtransac.setVisible(false);
+        completetransac.setVisible(false);
         pendingdeliver.setVisible(false);
+        completedeliver.setVisible(false);
         authenticate.setVisible(false);
     }//GEN-LAST:event_invoicebtnMouseClicked
 
@@ -1278,7 +1280,9 @@ public class Main extends javax.swing.JFrame {
         invoices.setVisible(false);
         form.setVisible(false);
         pendingtransac.setVisible(false);
+        completetransac.setVisible(false);
         pendingdeliver.setVisible(false);
+        completedeliver.setVisible(false);
         authenticate.setVisible(true);
     }//GEN-LAST:event_authenticbtnMouseClicked
 
