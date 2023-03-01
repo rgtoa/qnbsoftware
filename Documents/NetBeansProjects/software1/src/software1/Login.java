@@ -3,18 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package software1;
-
+import javax.swing.ImageIcon;
 /**
  *
  * @author 97433
  */
 public class Login extends javax.swing.JFrame {
-
+    
+    ImageIcon loginwv = new ImageIcon("try1.png");
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        jLabel1.setText("");
+        jLabel1.setIcon(loginwv);
+        jLabel8.setIcon(loginwv);
     }
 
     /**
@@ -42,7 +47,7 @@ public class Login extends javax.swing.JFrame {
         loginbtn = new javax.swing.JButton();
         signupbtn = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         signup = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -205,8 +210,8 @@ public class Login extends javax.swing.JFrame {
         jPanel21.setBackground(new java.awt.Color(229, 229, 229));
         jPanel21.setPreferredSize(new java.awt.Dimension(784, 125));
 
-        jLabel12.setPreferredSize(new java.awt.Dimension(775, 160));
-        jPanel21.add(jLabel12);
+        jLabel1.setText("jLabel1");
+        jPanel21.add(jLabel1);
 
         login.add(jPanel21);
 
@@ -469,9 +474,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
