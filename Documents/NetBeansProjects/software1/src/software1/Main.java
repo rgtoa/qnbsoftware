@@ -1124,6 +1124,11 @@ public class Main extends javax.swing.JFrame {
         authpassbtn2.setText("Authenticate");
         authpassbtn2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 208, 218), 1, true));
         authpassbtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        authpassbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                authpassbtn2ActionPerformed(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(10, 64, 83));
@@ -1374,6 +1379,25 @@ public class Main extends javax.swing.JFrame {
         });*/
         GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_updatebtn1ActionPerformed
+
+    private void authpassbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authpassbtn2ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("authenticate button pressed");
+        String pass = authpass2.getText();
+        Database db;
+        db = new Database(
+                "com.mysql.cj.jdbc.Driver",
+                "root",
+                "root",
+                "jdbc:mysql://localhost:3306/db_qnb"
+        );
+        if (db.authenticate(pass)) {
+            System.out.println("Authenticate Success");
+            Main main = new Main("owner", "ownenr");
+            this.dispose();
+            main.setVisible(true);
+        }
+    }//GEN-LAST:event_authpassbtn2ActionPerformed
 
     /**
      * @param args the command line arguments
