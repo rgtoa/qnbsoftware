@@ -39,7 +39,7 @@ public class Database {
             ps.setString(1, user);
             rs = ps.executeQuery();
             if (rs.next()) {
-                output = rs.getString("password").equals(pass);
+                output = Crypto.decrypt(rs.getString("password")).equals(pass);
             }
             rs.close();
             ps.close();
