@@ -66,4 +66,20 @@ public class Database {
         }
         return output;
     }
+    public boolean authenticate(String pass) {
+        boolean output = false;
+        try {
+            s = con.createStatement();
+            rs = s.executeQuery("SELECT Password FROM users WHERE username='owner'");
+            if (rs.next()) {
+                output = Crypto.decrypt(rs.getString("password")).equals(pass);
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
 }
