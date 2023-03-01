@@ -26,7 +26,6 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        popupmenu1 = new javax.swing.JPopupMenu();
         maintabs = new javax.swing.JPanel();
         qnb = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -109,15 +108,16 @@ public class Main extends javax.swing.JFrame {
         completebtn4 = new javax.swing.JLabel();
         generatebtn3 = new javax.swing.JButton();
         editmodule4 = new javax.swing.JButton();
+        authenticate = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        authpassbtn2 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        authpass2 = new javax.swing.JPasswordField();
         authreports = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         genreport4 = new javax.swing.JButton();
         genreport5 = new javax.swing.JButton();
         genreport6 = new javax.swing.JButton();
-        authenticate = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        authpassbtn2 = new javax.swing.JButton();
-        authpass2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QNB System");
@@ -291,6 +291,7 @@ public class Main extends javax.swing.JFrame {
         signoutbtn.setForeground(new java.awt.Color(10, 64, 83));
         signoutbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         signoutbtn.setText("Sign out");
+        signoutbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signoutbtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         signoutbtn.setPreferredSize(new java.awt.Dimension(175, 70));
         signoutbtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -344,16 +345,16 @@ public class Main extends javax.swing.JFrame {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(productimg, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGap(150, 150, 150)
+                .addComponent(productimg, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                .addGap(150, 150, 150))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(productimg, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(120, 120, 120)
+                .addComponent(productimg, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addGap(120, 120, 120)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -388,7 +389,6 @@ public class Main extends javax.swing.JFrame {
         orderbtn.setBackground(new java.awt.Color(10, 64, 83));
         orderbtn.setForeground(new java.awt.Color(255, 255, 255));
         orderbtn.setText("Order");
-        orderbtn.setComponentPopupMenu(popupmenu1);
         orderbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderbtnActionPerformed(evt);
@@ -421,7 +421,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(productdesc, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,7 +441,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
         );
 
         invoices.add(jPanel12);
@@ -588,7 +588,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         form.add(jPanel16);
@@ -1107,11 +1107,83 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(generatebtn3)
                     .addComponent(editmodule4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                 .addGap(80, 80, 80))
         );
 
         tabcontent.add(completedeliver, "card2");
+
+        authenticate.setBackground(new java.awt.Color(255, 255, 255));
+        authenticate.setPreferredSize(new java.awt.Dimension(1250, 625));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        authpassbtn2.setBackground(new java.awt.Color(140, 208, 218));
+        authpassbtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 14)); // NOI18N
+        authpassbtn2.setForeground(new java.awt.Color(34, 73, 87));
+        authpassbtn2.setText("Authenticate");
+        authpassbtn2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 208, 218), 1, true));
+        authpassbtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel20.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(10, 64, 83));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Enter Password");
+
+        authpass2.setBackground(new java.awt.Color(229, 229, 229));
+        authpass2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 24)); // NOI18N
+        authpass2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        authpass2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(44, 44, 44))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(authpass2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(authpassbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(authpass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(authpassbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout authenticateLayout = new javax.swing.GroupLayout(authenticate);
+        authenticate.setLayout(authenticateLayout);
+        authenticateLayout.setHorizontalGroup(
+            authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(authenticateLayout.createSequentialGroup()
+                .addContainerGap(444, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(444, Short.MAX_VALUE))
+        );
+        authenticateLayout.setVerticalGroup(
+            authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(authenticateLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(314, Short.MAX_VALUE))
+        );
+
+        tabcontent.add(authenticate, "card9");
 
         authreports.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1178,52 +1250,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         tabcontent.add(authreports, "card6");
-
-        authenticate.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel20.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel20.setText("Enter Password");
-
-        authpassbtn2.setBackground(new java.awt.Color(140, 208, 218));
-        authpassbtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 14)); // NOI18N
-        authpassbtn2.setForeground(new java.awt.Color(34, 73, 87));
-        authpassbtn2.setText("Authenticate");
-        authpassbtn2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 208, 218), 1, true));
-
-        authpass2.setBackground(new java.awt.Color(229, 229, 229));
-        authpass2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 24)); // NOI18N
-        authpass2.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
-
-        javax.swing.GroupLayout authenticateLayout = new javax.swing.GroupLayout(authenticate);
-        authenticate.setLayout(authenticateLayout);
-        authenticateLayout.setHorizontalGroup(
-            authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, authenticateLayout.createSequentialGroup()
-                .addContainerGap(467, Short.MAX_VALUE)
-                .addGroup(authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(authenticateLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel20))
-                    .addComponent(authpass2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(authenticateLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(authpassbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(458, 458, 458))
-        );
-        authenticateLayout.setVerticalGroup(
-            authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(authenticateLayout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(authpass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(authpassbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
-        );
-
-        tabcontent.add(authenticate, "card9");
 
         getContentPane().add(tabcontent, java.awt.BorderLayout.CENTER);
 
@@ -1444,6 +1470,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1462,7 +1489,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable pendingtransactbl;
     private javax.swing.JTable pendingtransactbl1;
     private javax.swing.JTable pendingtransactbl2;
-    private javax.swing.JPopupMenu popupmenu1;
     private javax.swing.JLabel productdesc;
     private javax.swing.JLabel productimg;
     private javax.swing.JLabel productimg1;
