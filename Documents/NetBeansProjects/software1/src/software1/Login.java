@@ -4,22 +4,26 @@
  */
 package software1;
 import javax.swing.ImageIcon;
+import glasspanepopup.GlassPanePopup;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author 97433
  */
 public class Login extends javax.swing.JFrame {
     
-    ImageIcon loginwv = new ImageIcon("try1.png");
+    //ImageIcon loginwv = new ImageIcon("try1.png");
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        GlassPanePopup.install(this);
         this.setLocationRelativeTo(null);
         jLabel1.setText("");
-        jLabel1.setIcon(loginwv);
-        jLabel8.setIcon(loginwv);
+        //jLabel1.setIcon(loginwv);
+        //jLabel8.setIcon(loginwv);
     }
 
     /**
@@ -57,17 +61,20 @@ public class Login extends javax.swing.JFrame {
         userfield1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        passfield1 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
+        passfield3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         registerbtn = new javax.swing.JButton();
         loginbtn2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        passfield1 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QNB System");
         setBackground(new java.awt.Color(229, 229, 229));
+        setForeground(null);
         setResizable(false);
         getContentPane().setLayout(new java.awt.FlowLayout());
 
@@ -283,10 +290,6 @@ public class Login extends javax.swing.JFrame {
         jPanel5.setPreferredSize(new java.awt.Dimension(400, 45));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
-        passfield1.setForeground(new java.awt.Color(10, 64, 83));
-        passfield1.setText("Password");
-        jPanel5.add(passfield1, java.awt.BorderLayout.PAGE_START);
-
         jPasswordField2.setBackground(new java.awt.Color(23, 90, 115));
         jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
@@ -297,6 +300,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel5.add(jPasswordField2, java.awt.BorderLayout.CENTER);
+
+        passfield3.setForeground(new java.awt.Color(10, 64, 83));
+        passfield3.setText("Password");
+        jPanel5.add(passfield3, java.awt.BorderLayout.PAGE_START);
 
         jPanel13.add(jPanel5);
 
@@ -326,27 +333,48 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setBackground(new java.awt.Color(23, 90, 115));
+        jComboBox1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Delivery" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        passfield1.setForeground(new java.awt.Color(10, 64, 83));
+        passfield1.setText("Role:");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(registerbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addComponent(passfield1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 137, Short.MAX_VALUE)
+                .addComponent(loginbtn2)
+                .addContainerGap(128, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(loginbtn2)
-                .addGap(131, 131, 131))
+                .addComponent(registerbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passfield1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
                 .addComponent(registerbtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
                 .addComponent(loginbtn2)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel13.add(jPanel6);
@@ -356,7 +384,7 @@ public class Login extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(229, 229, 229));
         jPanel14.setPreferredSize(new java.awt.Dimension(784, 125));
 
-        jLabel8.setPreferredSize(new java.awt.Dimension(775, 160));
+        jLabel8.setPreferredSize(new java.awt.Dimension(775, 145));
         jPanel14.add(jLabel8);
 
         signup.add(jPanel14);
@@ -366,6 +394,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(mainlogin);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userfield1ActionPerformed
@@ -377,12 +406,20 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
-        // TODO add your handling code here:
+        RegisterAuth obj = new RegisterAuth();
+        obj.register(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                GlassPanePopup.closePopupLast();
+                signup.setVisible(false);
+                login.setVisible(true);
+            }
+        });
+        GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_registerbtnActionPerformed
 
     private void loginbtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtn2MouseClicked
-        login.setVisible(true);
-        signup.setVisible(false);
+        
     }//GEN-LAST:event_loginbtn2MouseClicked
 
     private void userfield2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userfield2ActionPerformed
@@ -438,6 +475,10 @@ public class Login extends javax.swing.JFrame {
         signup.setVisible(false);
     }//GEN-LAST:event_registerbtnMouseClicked
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -474,6 +515,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -502,6 +544,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel mainlogin;
     private javax.swing.JLabel passfield1;
     private javax.swing.JLabel passfield2;
+    private javax.swing.JLabel passfield3;
     private javax.swing.JButton registerbtn;
     private javax.swing.JPanel signup;
     private javax.swing.JLabel signupbtn;
