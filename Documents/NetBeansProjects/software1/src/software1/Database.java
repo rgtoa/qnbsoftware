@@ -3,6 +3,7 @@ package software1;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,5 +82,56 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return output;
+    }
+    public ArrayList<Object[]> getPendingTransactions() {
+        ArrayList<Object[]> list = new ArrayList<Object[]>();
+        try {
+            s = con.createStatement();
+            rs = s.executeQuery("SELECT * FROM orders WHERE FullyPaid=0");
+            while(rs.next()) {
+                //format the product & quantity into a string
+                String products = "";
+                String[] names = rs.getString("ProductNames").split(",");
+                String[] qty = rs.getString("ProductQuantities").split(",");
+                for (int i = 0; i < names.length; i++) {
+                    products = names[i] + " - " + qty[i] + "\n";
+                }
+                //get the name from customers table
+                ps = con.prepareStatement(
+                        "SELECT concat(FirstName, ' ', LastName) AS Name, concat(Street,' ',Barangay,' ',City) AS Address FROM customers WHERE CustomerID=?");
+                ps.setString(1, rs.getString("CustomerID"));
+                ResultSet rs2 = ps.executeQuery();
+                rs2.next();
+                list.add(new Object[] { // OrderID-Item/QTY-CustomerID-Name-Address-Price
+                    rs.getLong("OrderID"),
+                    products,
+                    rs.getString("CustomerID"),
+                    rs2.getString("Name"),
+                    rs2.getString("Address"),
+                    rs.getFloat("TotalPrice"),
+                });
+                rs2.close();
+                ps.close();
+            }
+            rs.close();
+            s.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    public static void main(String[] args) {
+        Database db;
+        db = new Database(
+                "com.mysql.cj.jdbc.Driver",
+                "root",
+                "root",
+                "jdbc:mysql://localhost:3306/db_qnb"
+        );
+        ArrayList<Object[]> list = db.getPendingTransactions();
+        for (Object[] n : list) {
+            System.out.println(Arrays.toString(n));
+        }
     }
 }

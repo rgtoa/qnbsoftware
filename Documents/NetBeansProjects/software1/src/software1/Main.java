@@ -3,6 +3,8 @@ package software1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
     
@@ -13,6 +15,7 @@ public class Main extends javax.swing.JFrame {
         this.role = role;
         this.username = username;
         initComponents();
+        refreshTables();
         GlassPanePopup.install(this);
     }
 
@@ -1260,7 +1263,24 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void refreshTables() {
+        Database db;
+        db = new Database(
+                "com.mysql.cj.jdbc.Driver",
+                "root",
+                "root",
+                "jdbc:mysql://localhost:3306/db_qnb"
+        );
+        // Pending Transaction Table
+        DefaultTableModel model = (DefaultTableModel) pendingtransactbl.getModel();
+        model.setRowCount(0); // reset the table
+        ArrayList<Object[]> list = db.getPendingTransactions();
+        for (Object[] n : list) {
+            model.addRow(n);
+        }
+    }
+    
     private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
         invoices.setVisible(true);
         form.setVisible(false);
