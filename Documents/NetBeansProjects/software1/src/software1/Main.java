@@ -17,7 +17,7 @@ public class Main extends javax.swing.JFrame {
         this.role = role;
         this.username = username;
         initComponents();
-        refreshTables();
+        initTableData();
         GlassPanePopup.install(this);
         this.setLocationRelativeTo(null);
         //jLabel10.setIcon(invoicewv);
@@ -1271,18 +1271,15 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
-    private void refreshTables() {
-        Database db;
-        db = new Database(
-                "com.mysql.cj.jdbc.Driver",
-                "root",
-                "root",
-                "jdbc:mysql://localhost:3306/db_qnb"
-        );
-        // Pending Transaction Table
-        DefaultTableModel model = (DefaultTableModel) pendingtransactbl.getModel();
+    private void initTableData() {
+        Database db = new Database();
+        populateTable(pendingtransactbl, db.getTransactions(0));
+        populateTable(pendingtransactbl1, db.getTransactions(1));
+        db.closeConnection();
+    }
+    private void populateTable(javax.swing.JTable table, ArrayList<Object[]> list) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // reset the table
-        ArrayList<Object[]> list = db.getPendingTransactions();
         for (Object[] n : list) {
             model.addRow(n);
         }
@@ -1415,12 +1412,7 @@ public class Main extends javax.swing.JFrame {
         System.out.println("authenticate button pressed");
         String pass = authpass2.getText();
         Database db;
-        db = new Database(
-                "com.mysql.cj.jdbc.Driver",
-                "root",
-                "root",
-                "jdbc:mysql://localhost:3306/db_qnb"
-        );
+        db = new Database();
         if (db.authenticate(pass)) {
             System.out.println("Authenticate Success");
             Main main = new Main("owner", "ownenr");
@@ -1431,6 +1423,7 @@ public class Main extends javax.swing.JFrame {
             editmodule3.setVisible(role.equals("owner"));
             editmodule4.setVisible(role.equals("owner"));
         }
+        db.closeConnection();
     }//GEN-LAST:event_authpassbtn2ActionPerformed
 
     /**

@@ -439,21 +439,9 @@ public class Login extends javax.swing.JFrame {
         System.out.println("name: " + name);
         System.out.println("pass: " + pass);
         // Database details
-        Database db;
-        db = new Database(
-                "com.mysql.cj.jdbc.Driver",
-                "root",
-                "root",
-                "jdbc:mysql://localhost:3306/db_qnb"
-        );
+        Database db = new Database();
         if (db.verifyUser(name, pass)) {
             System.out.println("VERIFY SUCCESS");
-            db = new Database(
-                "com.mysql.cj.jdbc.Driver",
-                "root",
-                "root",
-                "jdbc:mysql://localhost:3306/db_qnb"
-            );
             Main main = new Main(db.getRole(name), name);
             main.setVisible(true);
             this.dispose();
@@ -461,7 +449,7 @@ public class Login extends javax.swing.JFrame {
         else {
             System.out.println("WRONG USERNAME OR PASSWORD");
         }
-        db = null;
+        db.closeConnection();
         System.out.println("login end");
     }//GEN-LAST:event_loginbtnActionPerformed
 
