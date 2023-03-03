@@ -177,7 +177,32 @@ public class Database {
         }
         return list;
     }
-    
+    public boolean checkUser(String username) { 
+        boolean output = true;
+        try { 
+            PreparedStatement ps = con.prepareStatement("SELECT username FROM users WHERE username=?");
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            output = rs.next(); // returns true if user exists
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
+    public boolean addUser(String username, String password, String role) {
+        boolean output = true;
+        try {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users VALUES(?,?,?)");
+            ps.setString(1, username);
+            ps.setString(2, Crypto.encrypt(password));
+            ps.setString(3, role);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            output = false;
+        }
+        return output;
+    }
     public static void main(String[] args) {
         Database db = new Database();
         db.getTransactions(0, 0);

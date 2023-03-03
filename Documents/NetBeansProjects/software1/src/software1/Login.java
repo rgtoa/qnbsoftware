@@ -406,13 +406,21 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
-        RegisterAuth obj = new RegisterAuth();
+        RegisterAuth obj = new RegisterAuth(
+                userfield1.getText(),
+                jPasswordField2.getPassword(),
+                jComboBox1.getItemAt(jComboBox1.getSelectedIndex()).toLowerCase()
+        );
+        userfield1.setText("");
+        jPasswordField2.setText("");
+        jComboBox1.setSelectedIndex(0);
         obj.register(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 GlassPanePopup.closePopupLast();
                 signup.setVisible(false);
                 login.setVisible(true);
+                System.out.println("asdsadadsdas");
             }
         });
         GlassPanePopup.showPopup(obj);

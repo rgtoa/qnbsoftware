@@ -6,18 +6,27 @@ package software1;
 
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 /**
  *
  * @author 97433
  */
 public class RegisterAuth extends javax.swing.JPanel {
-
+    private final char[] password;
+    private final String username;
+    private final String role;
     /**
      * Creates new form RegisterAuth
+     * @param username
+     * @param password
      */
-    public RegisterAuth() {
+    public RegisterAuth(String username, char[] password, String role) {
         initComponents();
+        this.password = password;
+        password = null;
+        this.username = username;
+        this.role = role;
     }
 
     /**
@@ -83,6 +92,26 @@ public class RegisterAuth extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Database db = new Database();
+        try {
+            if (!db.authenticate(String.valueOf(password))) {
+                // CODE FOR WRONG AUTHENTICATION PASS
+                System.out.println("wrong auth");
+            }
+            else if (db.checkUser(username)) {
+                // CODE FOR USER ALREADY EXISTING
+                System.out.println("existing user");
+            }
+            else if (!db.addUser(username, String.valueOf(password), role)){ //TRY TO REGISTER USER
+                // CODE FOR REGISTRATION ERROR IN SQL
+                System.out.println("sql error");
+            }
+            else {
+                // REGISTER THE NEW USER SUCCESS CODE
+            }
+        } finally {
+            db.closeConnection();
+        }
         GlassPanePopup.closePopupLast();    
     }//GEN-LAST:event_jButton1ActionPerformed
     public void register(ActionListener event) {
