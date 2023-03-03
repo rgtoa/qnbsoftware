@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Main extends javax.swing.JFrame {
     
     private final String role;
-    private final String  username;
+    private final String username;
     //ImageIcon invoicewv = new ImageIcon("try222.png");
     
     public Main(String role, String username) {
@@ -18,6 +18,11 @@ public class Main extends javax.swing.JFrame {
         this.username = username;
         initComponents();
         initTableData();
+        System.out.println("owner?"+role.equals("owner"));
+        editmodule1.setVisible(role.equals("owner"));
+        editmodule2.setVisible(role.equals("owner"));
+        editmodule3.setVisible(role.equals("owner"));
+        editmodule4.setVisible(role.equals("owner"));
         GlassPanePopup.install(this);
         this.setLocationRelativeTo(null);
         //jLabel10.setIcon(invoicewv);
@@ -693,6 +698,11 @@ public class Main extends javax.swing.JFrame {
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setMaximumRowCount(3);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -959,9 +969,9 @@ public class Main extends javax.swing.JFrame {
         jComboBox5.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox5.setMaximumRowCount(3);
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "On-going" }));
-        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox5ActionPerformed(evt);
+        jComboBox5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox5ItemStateChanged(evt);
             }
         });
 
@@ -1185,16 +1195,16 @@ public class Main extends javax.swing.JFrame {
         authenticateLayout.setHorizontalGroup(
             authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authenticateLayout.createSequentialGroup()
-                .addContainerGap(470, Short.MAX_VALUE)
+                .addContainerGap(444, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addContainerGap(444, Short.MAX_VALUE))
         );
         authenticateLayout.setVerticalGroup(
             authenticateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authenticateLayout.createSequentialGroup()
                 .addGap(180, 180, 180)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(314, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
 
         tabcontent.add(authenticate, "card9");
@@ -1273,15 +1283,18 @@ public class Main extends javax.swing.JFrame {
     
     private void initTableData() {
         Database db = new Database();
-        populateTable(pendingtransactbl, db.getTransactions(0));
-        populateTable(pendingtransactbl1, db.getTransactions(1));
+        populateTable(pendingtransactbl, db.getTransactions(0, 0));
+        populateTable(pendingtransactbl1, db.getTransactions(1, 0));
+        populateTable(pendingtransactbl2, db.getDeliveries(0));
+        populateTable(pendingdelivertbl1, db.getDeliveries(2));
         db.closeConnection();
     }
-    private void populateTable(javax.swing.JTable table, ArrayList<Object[]> list) {
+    private void populateTable(javax.swing.JTable table, ArrayList<ArrayList<Object>> list) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // reset the table
-        for (Object[] n : list) {
-            model.addRow(n);
+        for (ArrayList<Object> n : list) {
+            System.out.println("row " + java.util.Arrays.toString(n.toArray()));
+            model.addRow(n.toArray());
         }
     }
     
@@ -1314,7 +1327,6 @@ public class Main extends javax.swing.JFrame {
         form.setVisible(false);
         pendingtransac.setVisible(true);
         completetransac.setVisible(false);
-        editmodule1.setVisible(false);
         pendingdeliver.setVisible(false);
         completedeliver.setVisible(false);
         authenticate.setVisible(false);
@@ -1327,7 +1339,6 @@ public class Main extends javax.swing.JFrame {
         completetransac.setVisible(false);
         pendingdeliver.setVisible(true);
         completedeliver.setVisible(false);
-        editmodule3.setVisible(false);
         authenticate.setVisible(false);
     }//GEN-LAST:event_deliverbtnMouseClicked
 
@@ -1365,10 +1376,6 @@ public class Main extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox5ActionPerformed
 
     private void completebtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completebtn1MouseClicked
         pendingtransac.setVisible(false);
@@ -1418,13 +1425,23 @@ public class Main extends javax.swing.JFrame {
             Main main = new Main("owner", "ownenr");
             this.dispose();
             main.setVisible(true);
-            editmodule1.setVisible(role.equals("owner"));
-            editmodule2.setVisible(role.equals("owner"));
-            editmodule3.setVisible(role.equals("owner"));
-            editmodule4.setVisible(role.equals("owner"));
         }
         db.closeConnection();
     }//GEN-LAST:event_authpassbtn2ActionPerformed
+
+    private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
+        // TODO add your handling code here:
+        Database db = new Database();
+        populateTable(pendingtransactbl2, db.getDeliveries(jComboBox5.getSelectedIndex()));
+        db.closeConnection();
+    }//GEN-LAST:event_jComboBox5ItemStateChanged
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        Database db = new Database();
+        populateTable(pendingtransactbl, db.getTransactions(0, jComboBox1.getSelectedIndex()));
+        db.closeConnection();
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     /**
      * @param args the command line arguments

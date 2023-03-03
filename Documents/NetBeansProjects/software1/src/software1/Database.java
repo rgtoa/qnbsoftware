@@ -87,10 +87,19 @@ public class Database {
         }
         return output;
     }
-    public ArrayList<Object[]> getTransactions(int status) { // 0 = pending; 1 = completed
-        ArrayList<Object[]> list = new ArrayList<Object[]>();
+    public ArrayList<ArrayList<Object>> getTransactions(int status, int orderType) { // [0=pending;1=completed][0=all;1=walkin;2=delivery]
+        ArrayList<ArrayList<Object>> list = new ArrayList<>();
         try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM orders WHERE FullyPaid=?");
+            PreparedStatement ps = con.prepareStatement(
+                "SELECT orders.*, " +
+                "concat(customers.FirstName,' ',customers.LastName) AS Name, " +
+                "concat(customers.Street,' ',customers.Barangay,' ',customers.City) AS Address " +
+                "FROM orders " +
+                "INNER JOIN customers ON orders.CustomerID = customers.CustomerID " +
+                "WHERE FullyPaid=? " +
+                (orderType == 1 ? "AND orders.OrderID NOT IN (SELECT deliveries.OrderID FROM deliveries)" :
+                 orderType == 2 ? "AND orders.OrderID IN (SELECT deliveries.OrderID FROM deliveries)" : "")
+            );
             ps.setInt(1, status);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
@@ -101,34 +110,19 @@ public class Database {
                 for (int i = 0; i < names.length; i++) {
                     products += names[i] + " - " + qty[i] + "\n";
                 }
-                //get the name from customers table
-                PreparedStatement ps2 = con.prepareStatement(
-                        "SELECT concat(FirstName, ' ', LastName) AS Name, concat(Street,' ',Barangay,' ',City) AS Address FROM customers WHERE CustomerID=?");
-                ps2.setString(1, rs.getString("CustomerID"));
-                ResultSet rs2 = ps2.executeQuery();
-                rs2.next();
-                if (status == 0) {
-                    list.add(new Object[] { // OrderID-Item/QTY-CustomerID-Name-Address-Price
-                        rs.getLong("OrderID"),
-                        products,
-                        rs.getString("CustomerID"),
-                        rs2.getString("Name"),
-                        rs2.getString("Address"),
-                        rs.getFloat("TotalPrice"),
-                    });
-                } else {
-                    list.add(new Object[] { // OrderID-Item/QTY-CustomerID-Name-Address-AmountPaid-Time/Date
-                        rs.getLong("OrderID"),
-                        products,
-                        rs.getString("CustomerID"),
-                        rs2.getString("Name"),
-                        rs2.getString("Address"),
-                        rs.getFloat("AmountPaid"),
-                        rs.getDate("DatePaid")
-                    });
+                ArrayList<Object> row = new ArrayList<>();
+                row.add(rs.getLong("OrderID"));
+                row.add(products);
+                row.add(rs.getString("CustomerID"));
+                row.add(rs.getString("Name"));
+                row.add(rs.getString("Address"));
+                if (status == 0) { // OrderID-Item/QTY-CustomerID-Name-Address-Price
+                    row.add(rs.getFloat("TotalPrice"));
+                } else { // OrderID-Item/QTY-CustomerID-Name-Address-AmountPaid-Time/Date
+                    row.add(rs.getFloat("AmountPaid"));
+                    row.add(rs.getDate("DatePaid"));
                 }
-                rs2.close();
-                ps2.close();
+                list.add(row);
             }
             rs.close();
             ps.close();
@@ -137,51 +131,55 @@ public class Database {
         }
         return list;
     }
-    public ArrayList<Object[]> getDeliveries(int status) {
-        ArrayList<Object[]> list = new ArrayList<>();
+    public ArrayList<ArrayList<Object>> getDeliveries(int status) { // 0 = pending; 1 = ongoing; 2 = completed
+        ArrayList<ArrayList<Object>> list = new ArrayList<>();
         try {
-            Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM orders WHERE FullyPaid=1");
+            PreparedStatement ps = con.prepareStatement(
+                "SELECT " +
+                "deliveries.DeliveryStatus, deliveries.DeliveryMan, deliveries.DeliveryDate, " +
+                "orders.*, " +
+                "concat(customers.FirstName,' ',customers.LastName) AS Name, " +
+                "concat(customers.Street,' ',customers.Barangay,' ',customers.City) AS Address " +
+                "FROM deliveries " +
+                "INNER JOIN orders ON deliveries.OrderID = orders.OrderID " +
+                "INNER JOIN customers ON orders.CustomerID = customers.CustomerID " +
+                "WHERE DeliveryStatus=?"
+            );
+            ps.setInt(1, status);
+            ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 //format the product & quantity into a string
                 String products = "";
                 String[] names = rs.getString("ProductNames").split(",");
                 String[] qty = rs.getString("ProductQuantities").split(",");
                 for (int i = 0; i < names.length; i++) {
-                    products = names[i] + " - " + qty[i] + "\n";
+                    products += names[i] + " - " + qty[i] + "\n";
                 }
-                //get the name from customers table
-                PreparedStatement ps = con.prepareStatement(
-                        "SELECT concat(FirstName, ' ', LastName) AS Name, concat(Street,' ',Barangay,' ',City) AS Address FROM customers WHERE CustomerID=?");
-                ps.setString(1, rs.getString("CustomerID"));
-                ResultSet rs2 = ps.executeQuery();
-                rs2.next();
-                list.add(new Object[] { // OrderID-Item/QTY-CustomerID-Name-Address-Price-Status
-                    rs.getLong("OrderID"),
-                    products,
-                    rs.getString("CustomerID"),
-                    rs2.getString("Name"),
-                    rs2.getString("Address"),
-                    rs.getFloat("AmountPaid"),
-                    rs.getDate("DatePaid")
-                });
-                rs2.close();
-                ps.close();
+                ArrayList<Object> row = new ArrayList<>();
+                row.add(rs.getLong("OrderID"));
+                row.add(products);
+                row.add(rs.getString("CustomerID"));
+                row.add(rs.getString("Name"));
+                row.add(rs.getString("Address"));
+                row.add(rs.getFloat("TotalPrice"));
+                if (status == 2) { // OrderID-Item/QTY-CustomerID-Name-Address-Price-Time/Date
+                    row.add(rs.getDate("DeliveryDate"));
+                } else { // OrderID-Item/QTY-CustomerID-Name-Address-Price-Status
+                    row.add(rs.getDate("DatePaid"));
+                    row.add(status == 0 ? "Pending" : "Ongoing");
+                }
+                list.add(row);
             }
             rs.close();
-            s.close();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
+    
     public static void main(String[] args) {
-        Database db;
-        db = new Database();
-        ArrayList<Object[]> list = db.getTransactions(1);
-        for (Object[] n : list) {
-            System.out.println(Arrays.toString(n));
-        }
-        db.closeConnection();
+        Database db = new Database();
+        db.getTransactions(0, 0);
     }
 }
