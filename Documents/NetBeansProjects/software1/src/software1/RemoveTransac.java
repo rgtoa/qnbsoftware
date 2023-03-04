@@ -6,7 +6,6 @@ public class RemoveTransac extends javax.swing.JPanel {
 
     public RemoveTransac() {
         initComponents();
-        //GlassPanePopup.install(this);
         //setOpaque(false);
     }
 

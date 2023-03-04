@@ -6,7 +6,6 @@ public class ConfirmTransac extends javax.swing.JPanel {
 
     public ConfirmTransac() {
         initComponents();
-        //GlassPanePopup.install(this);
         //setOpaque(false);
     }
 
@@ -71,7 +70,6 @@ public class ConfirmTransac extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void back1btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back1btnActionPerformed
-        //ConfirmTransac obj = new ConfirmTransac();
         GlassPanePopup.closePopupLast();
     }//GEN-LAST:event_back1btnActionPerformed
     public void back1(ActionListener event) {

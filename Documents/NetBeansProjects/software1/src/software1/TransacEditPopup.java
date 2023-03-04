@@ -12,7 +12,6 @@ public class TransacEditPopup extends javax.swing.JPanel {
         PopName.setEditable(false);
         PopAddress.setEditable(false);
         PopPrice.setEditable(false);
-        //GlassPanePopup.install(this);
         //setOpaque(false);
     }
     
@@ -29,8 +28,8 @@ public class TransacEditPopup extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PopPaid = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        removetrans = new javax.swing.JButton();
+        confirmtrans = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         PopName = new javax.swing.JTextField();
@@ -55,21 +54,21 @@ public class TransacEditPopup extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(34, 73, 87));
         jLabel1.setText("Enter Amount Paid:");
 
-        jButton2.setBackground(new java.awt.Color(235, 89, 89));
-        jButton2.setForeground(new java.awt.Color(34, 73, 87));
-        jButton2.setText("Remove");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        removetrans.setBackground(new java.awt.Color(235, 89, 89));
+        removetrans.setForeground(new java.awt.Color(34, 73, 87));
+        removetrans.setText("Remove");
+        removetrans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                removetransActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(140, 208, 218));
-        jButton3.setForeground(new java.awt.Color(34, 73, 87));
-        jButton3.setText("Confirm");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        confirmtrans.setBackground(new java.awt.Color(140, 208, 218));
+        confirmtrans.setForeground(new java.awt.Color(34, 73, 87));
+        confirmtrans.setText("Confirm");
+        confirmtrans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                confirmtransActionPerformed(evt);
             }
         });
 
@@ -94,9 +93,9 @@ public class TransacEditPopup extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(confirmtrans, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(removetrans, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
         );
         jPanel2Layout.setVerticalGroup(
@@ -104,8 +103,8 @@ public class TransacEditPopup extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmtrans, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removetrans, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PopPaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -259,15 +258,15 @@ public class TransacEditPopup extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void confirmtransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmtransActionPerformed
         ConfirmTransac obj = new ConfirmTransac();
         GlassPanePopup.showPopup(obj);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_confirmtransActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void removetransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removetransActionPerformed
         RemoveTransac obj = new RemoveTransac();
         GlassPanePopup.showPopup(obj);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_removetransActionPerformed
 
     private void PopOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PopOrderIDActionPerformed
         // TODO add your handling code here:
@@ -311,8 +310,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
     private javax.swing.JTextField PopOrderID;
     private javax.swing.JTextField PopPaid;
     private javax.swing.JTextField PopPrice;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton confirmtrans;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -323,5 +321,6 @@ public class TransacEditPopup extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton removetrans;
     // End of variables declaration//GEN-END:variables
 }
