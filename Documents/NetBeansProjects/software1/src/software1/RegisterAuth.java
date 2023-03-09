@@ -94,9 +94,11 @@ public class RegisterAuth extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Database db = new Database();
         try {
-            if (!db.authenticate(String.valueOf(password))) {
+            if (!db.authenticate(String.valueOf(authpass2.getPassword()))) {
                 // CODE FOR WRONG AUTHENTICATION PASS
                 System.out.println("wrong auth");
+                
+                GlassPanePopup.showPopup(new Message("Wrong Authentication"));
             }
             else if (db.checkUser(username)) {
                 // CODE FOR USER ALREADY EXISTING
@@ -111,8 +113,7 @@ public class RegisterAuth extends javax.swing.JPanel {
             }
         } finally {
             db.closeConnection();
-        }
-        GlassPanePopup.closePopupLast();    
+        }   
     }//GEN-LAST:event_jButton1ActionPerformed
     public void register(ActionListener event) {
         jButton1.addActionListener(event);
