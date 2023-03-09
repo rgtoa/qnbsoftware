@@ -480,20 +480,12 @@ public class Login extends javax.swing.JFrame {
         RegisterAuth obj = new RegisterAuth(
                 userfield.getText(),
                 passfield.getPassword(),
+                confirmpassfield.getPassword(),
                 jComboBox1.getItemAt(jComboBox1.getSelectedIndex()).toLowerCase()
         );
         userfield.setText("");
         passfield.setText("");
         jComboBox1.setSelectedIndex(0);
-//        obj.register(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                GlassPanePopup.closePopupLast();
-//                signup.setVisible(false);
-//                login.setVisible(true);
-//                System.out.println("asdsadadsdas");
-//            }
-//        });
         GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_registerbtnActionPerformed
 
@@ -514,13 +506,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("login button clicked");
         String name = userfield1.getText();
-        String pass = passfield1.getText(); // set each char to 0 after for security
+        char[] pass = passfield1.getPassword();
         
-        System.out.println("name: " + name);
-        System.out.println("pass: " + pass);
-        // Database details
         Database db = new Database();
-        if (db.verifyUser(name, pass)) {
+        if (db.verifyUser(name, String.valueOf(pass))) {
             System.out.println("VERIFY SUCCESS");
             Main main = new Main(db.getRole(name), name);
             main.setVisible(true);
@@ -528,7 +517,7 @@ public class Login extends javax.swing.JFrame {
         }
         else {
             System.out.println("WRONG USERNAME OR PASSWORD");
-            GlassPanePopup.showPopup(new Message("Wrong Password"));
+            GlassPanePopup.showPopup(new Message("INVALID USERNAME/PASSWORD"));
         }
         db.closeConnection();
         System.out.println("login end");
