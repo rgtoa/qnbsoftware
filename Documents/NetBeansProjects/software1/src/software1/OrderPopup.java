@@ -2,11 +2,22 @@
 package software1;
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.table.DefaultTableModel;
 
 public class OrderPopup extends javax.swing.JPanel {
-
-    public OrderPopup() {
+    
+    public OrderPopup(ArrayList<Object[]> list, float totalPrice) {
         initComponents();
+        // PLACE INTO TABLE AND CALCULATE PRICE
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0); // reset the table
+        for (Object[] n : list) {
+            model.addRow(n);
+        }
+        popuptotalprice.setText(""+totalPrice);
+        
         //GlassPanePopup.install(this);
         //setOpaque(false);
     }
@@ -211,9 +222,6 @@ public class OrderPopup extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_RemoveOrderActionPerformed
     
-    public void confirm(ActionListener event) {
-        ConfirmOrder.addActionListener(event);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConfirmOrder;

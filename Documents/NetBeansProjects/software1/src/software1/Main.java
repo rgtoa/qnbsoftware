@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ImageIcon;
 
@@ -12,6 +13,9 @@ public class Main extends javax.swing.JFrame {
     
     private final String role;
     private final String username;
+    private int productNum = 0;
+    private ArrayList<Object[]> cart = new ArrayList<>();
+    private float totalPrice = 0;
     //ImageIcon invoicewv = new ImageIcon("try222.png");
     
     public Main(String role, String username) {
@@ -29,7 +33,7 @@ public class Main extends javax.swing.JFrame {
         editmodule4.setVisible(role.equals("owner"));
         //jLabel10.setIcon(invoicewv);
         scaleIcons();
-        scaleProduct1();
+        scaleProducts();
     }
     
     private void scaleIcons(){
@@ -74,24 +78,21 @@ public class Main extends javax.swing.JFrame {
         rightarrow.setIcon(scaledIcon8);
     }
     
-    private void scaleProduct1() {
-        ImageIcon icon5 = new ImageIcon("product1.png");
-        Image prod1 = icon5.getImage();
-        Image imageScale5 = prod1.getScaledInstance(productimg.getWidth(), productimg.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon5 = new ImageIcon(imageScale5);
-        productimg.setIcon(scaledIcon5);
-        productname1.setText("Round Gallon");
-        //productdesc1.setText("");
-        productprice1.setText("Php 35.00");
-    }
-    
-    private void scaleProduct2() {
-        ImageIcon icon6 = new ImageIcon("product2.png");
-        Image prod2 = icon6.getImage();
-        Image imageScale6 = prod2.getScaledInstance(productimg.getWidth(), productimg.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon6 = new ImageIcon(imageScale6);
-        productimg.setIcon(scaledIcon6);
-        productname1.setText("Slim Gallon");
+    private void scaleProducts() {
+        ImageIcon icon;
+        String text;
+        if (Math.abs(this.productNum) == 0) {
+            icon = new ImageIcon("product1.png");
+            text = "Round Gallon";
+        } else {
+            icon = new ImageIcon("product2.png");
+            text = "Slim Gallon";
+        }
+        Image prod = icon.getImage();
+        Image imageScale = prod.getScaledInstance(productimg.getWidth(), productimg.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imageScale);
+        productimg.setIcon(scaledIcon);
+        productname1.setText(text);
         //productdesc1.setText("");
         productprice1.setText("Php 35.00");
     }
@@ -511,6 +512,11 @@ public class Main extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
 
         jButton1.setText("Select");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1436,15 +1442,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_invoicebtnMouseClicked
 
     private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
-        OrderPopup obj = new OrderPopup();
-        obj.confirm(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                GlassPanePopup.closePopupLast();
-                invoices.setVisible(false);
-                form.setVisible(true);
-            }
-        });
+        OrderPopup obj = new OrderPopup(cart, totalPrice);
         GlassPanePopup.showPopup(obj);
         
     }//GEN-LAST:event_orderbtnActionPerformed
@@ -1571,12 +1569,35 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void rightarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightarrowMouseClicked
-        scaleProduct2();
+        productNum = ++productNum % 2;
+        scaleProducts();
     }//GEN-LAST:event_rightarrowMouseClicked
 
     private void leftarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftarrowMouseClicked
-        scaleProduct1();
+        productNum = --productNum % 2;
+        scaleProducts();
     }//GEN-LAST:event_leftarrowMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Database db = new Database();
+        int qty = (int) productqty.getValue();
+        try {
+            if (Math.abs(this.productNum) == 0) { // 1 = round id
+                cart.add(new Object[] {1, db.getProductName(1),qty});
+                totalPrice += qty * db.getProductPrice(1);
+            } else { // 2 = slim id
+                cart.add(new Object[] {2, db.getProductName(2),qty});
+                totalPrice += qty * db.getProductPrice(2);
+            }
+        } finally {
+            System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
+            System.out.println("Total Price: " + totalPrice);
+            productqty.setValue(1); // reset value to 1
+            db.closeConnection();
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
