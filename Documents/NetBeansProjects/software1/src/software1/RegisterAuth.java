@@ -14,7 +14,6 @@ import java.util.Arrays;
  */
 public class RegisterAuth extends javax.swing.JPanel {
     private char[] password;
-    private char[] confpass;
     private final String username;
     private final String role;
     /**
@@ -22,12 +21,9 @@ public class RegisterAuth extends javax.swing.JPanel {
      * @param username
      * @param password
      */
-    public RegisterAuth(String username, char[] password, char[] confpass, String role) {
+    public RegisterAuth(String username, char[] password, String role) {
         initComponents();
         this.password = password;
-        password = null;
-        this.confpass = confpass;
-        confpass = null;
         this.username = username;
         this.role = role;
     }
@@ -101,16 +97,6 @@ public class RegisterAuth extends javax.swing.JPanel {
                 // CODE FOR WRONG AUTHENTICATION PASS
                 System.out.println("wrong auth");
                 popupMsg("Wrong Authentication");
-            }
-            else if (db.checkUser(username)) {
-                // CODE FOR USER ALREADY EXISTING
-                System.out.println("existing user");
-                popupMsg("Username Taken");
-            }
-            else if (!String.valueOf(password).equals(String.valueOf(confpass))) {
-                // CODE FOR PASSWORDS DO NOT MATCH
-                System.out.println("PASSWORDS DO NOT MATCH");
-                popupMsg("PASSWORDS DO NOT MATCH");
             }
             else if (!db.addUser(username, String.valueOf(password), role)){ //TRY TO REGISTER USER
                 // CODE FOR REGISTRATION ERROR IN SQL

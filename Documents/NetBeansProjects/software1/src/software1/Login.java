@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class Login extends javax.swing.JFrame {
     
@@ -123,7 +124,7 @@ public class Login extends javax.swing.JFrame {
         userfield1.setCaretColor(new java.awt.Color(23, 90, 115));
         userfield1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userfield1ActionPerformed(evt);
+                loginbtnActionPerformed(evt);
             }
         });
         jPanel18.add(userfield1, java.awt.BorderLayout.CENTER);
@@ -148,7 +149,7 @@ public class Login extends javax.swing.JFrame {
         passfield1.setCaretColor(new java.awt.Color(23, 90, 115));
         passfield1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passfield1ActionPerformed(evt);
+                loginbtnActionPerformed(evt);
             }
         });
         jPanel19.add(passfield1, java.awt.BorderLayout.CENTER);
@@ -259,7 +260,7 @@ public class Login extends javax.swing.JFrame {
         passfield.setPreferredSize(new java.awt.Dimension(30, 24));
         passfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passfieldActionPerformed(evt);
+                registerbtnActionPerformed(evt);
             }
         });
 
@@ -318,11 +319,6 @@ public class Login extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Delivery" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jLabelRole.setForeground(new java.awt.Color(10, 64, 83));
         jLabelRole.setText("Role:");
@@ -364,7 +360,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(registerbtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginbtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(loginbtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -375,7 +371,7 @@ public class Login extends javax.swing.JFrame {
         userfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         userfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userfieldActionPerformed(evt);
+                registerbtnActionPerformed(evt);
             }
         });
 
@@ -392,7 +388,7 @@ public class Login extends javax.swing.JFrame {
         confirmpassfield.setPreferredSize(new java.awt.Dimension(30, 24));
         confirmpassfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmpassfieldActionPerformed(evt);
+                registerbtnActionPerformed(evt);
             }
         });
 
@@ -467,40 +463,46 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userfieldActionPerformed
-
-    private void passfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passfieldActionPerformed
-
+    private void popupMsg(String msg) {
+        GlassPanePopup.closePopupLast();
+        GlassPanePopup.showPopup(new Message(msg));
+    }
     private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
-        RegisterAuth obj = new RegisterAuth(
-                userfield.getText(),
-                passfield.getPassword(),
-                confirmpassfield.getPassword(),
-                jComboBox1.getItemAt(jComboBox1.getSelectedIndex()).toLowerCase()
-        );
-        userfield.setText("");
-        passfield.setText("");
-        jComboBox1.setSelectedIndex(0);
-        GlassPanePopup.showPopup(obj);
+        Database db = new Database();
+        String uname = userfield.getText();
+        char[] pass = passfield.getPassword();
+        char[] cpass = confirmpassfield.getPassword();
+        try {
+            // CHECK FIRST FOR USERNAME AND PASSWORD MATCH BEFORE AUTHENTICATING
+            if (!Arrays.equals(pass, cpass)) {
+                popupMsg("passwords do not match");
+            }
+            else if (db.checkUser(uname)) {
+                popupMsg("existing user");
+            }
+            else {
+                RegisterAuth obj = new RegisterAuth(
+                        userfield.getText(),
+                        passfield.getPassword(),
+                        jComboBox1.getItemAt(jComboBox1.getSelectedIndex()).toLowerCase()
+                );
+                userfield.setText("");
+                passfield.setText("");
+                confirmpassfield.setText("");
+                jComboBox1.setSelectedIndex(0);
+                GlassPanePopup.showPopup(obj);
+            }
+        } finally {
+            db.closeConnection();
+            pass = null;
+            cpass = null;
+        }
     }//GEN-LAST:event_registerbtnActionPerformed
 
     private void loginbtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtn2MouseClicked
         signup.setVisible(false);
         login.setVisible(true);
     }//GEN-LAST:event_loginbtn2MouseClicked
-
-    private void userfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userfield1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userfield1ActionPerformed
-
-    private void passfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passfield1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passfield1ActionPerformed
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         // TODO add your handling code here:
@@ -517,7 +519,7 @@ public class Login extends javax.swing.JFrame {
         }
         else {
             System.out.println("WRONG USERNAME OR PASSWORD");
-            GlassPanePopup.showPopup(new Message("INVALID USERNAME/PASSWORD"));
+            popupMsg("invalid username/password");
         }
         db.closeConnection();
         System.out.println("login end");
@@ -532,14 +534,6 @@ public class Login extends javax.swing.JFrame {
         login.setVisible(true);
         signup.setVisible(false);
     }//GEN-LAST:event_registerbtnMouseClicked
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void confirmpassfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmpassfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_confirmpassfieldActionPerformed
 
     /**
      * @param args the command line arguments
