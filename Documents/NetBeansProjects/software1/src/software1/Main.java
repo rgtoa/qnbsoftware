@@ -804,12 +804,7 @@ public class Main extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                TransactComboBoxItemStateChanged(evt);
             }
         });
 
@@ -963,6 +958,11 @@ public class Main extends javax.swing.JFrame {
         jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox3.setMaximumRowCount(3);
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        jComboBox3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TransactComboBoxItemStateChanged(evt);
+            }
+        });
 
         generatebtn1.setBackground(new java.awt.Color(140, 208, 218));
         generatebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -1430,51 +1430,31 @@ public class Main extends javax.swing.JFrame {
             model.addRow(n.toArray());
         }
     }
-    
-    private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
-        invoices.setVisible(true);
+    private void showCard(java.awt.Component card) {
+        invoices.setVisible(false);
         form.setVisible(false);
         pendingtransac.setVisible(false);
         completetransac.setVisible(false);
         pendingdeliver.setVisible(false);
         completedeliver.setVisible(false);
         authenticate.setVisible(false);
-    }//GEN-LAST:event_invoicebtnMouseClicked
-
+        card.setVisible(true);
+    }
     private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
         OrderPopup obj = new OrderPopup(cart, totalPrice);
         GlassPanePopup.showPopup(obj);
-        
     }//GEN-LAST:event_orderbtnActionPerformed
 
     private void transacbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transacbtnMouseClicked
-        invoices.setVisible(false);
-        form.setVisible(false);
-        pendingtransac.setVisible(true);
-        completetransac.setVisible(false);
-        pendingdeliver.setVisible(false);
-        completedeliver.setVisible(false);
-        authenticate.setVisible(false);
+        showCard(pendingtransac);
     }//GEN-LAST:event_transacbtnMouseClicked
 
     private void deliverbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliverbtnMouseClicked
-        invoices.setVisible(false);
-        form.setVisible(false);
-        pendingtransac.setVisible(false);
-        completetransac.setVisible(false);
-        pendingdeliver.setVisible(true);
-        completedeliver.setVisible(false);
-        authenticate.setVisible(false);
+        showCard(pendingdeliver);
     }//GEN-LAST:event_deliverbtnMouseClicked
 
     private void authenticbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authenticbtnMouseClicked
-        invoices.setVisible(false);
-        form.setVisible(false);
-        pendingtransac.setVisible(false);
-        completetransac.setVisible(false);
-        pendingdeliver.setVisible(false);
-        completedeliver.setVisible(false);
-        authenticate.setVisible(true);
+        showCard(authenticate);
     }//GEN-LAST:event_authenticbtnMouseClicked
 
     private void genreport5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreport5ActionPerformed
@@ -1497,10 +1477,6 @@ public class Main extends javax.swing.JFrame {
         this.dispose();
         login.setVisible(true);
     }//GEN-LAST:event_signoutbtnMouseClicked
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void completebtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completebtn1MouseClicked
         pendingtransac.setVisible(false);
@@ -1561,12 +1537,14 @@ public class Main extends javax.swing.JFrame {
         db.closeConnection();
     }//GEN-LAST:event_jComboBox5ItemStateChanged
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    private void TransactComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TransactComboBoxItemStateChanged
         // TODO add your handling code here:
+        if (evt.getStateChange() == 2) return;
         Database db = new Database();
-        populateTable(pendingtransactbl, db.getTransactions(0, jComboBox1.getSelectedIndex()));
+        int status = evt.getSource() == jComboBox1 ? 0 : 1;
+        populateTable(pendingtransactbl, db.getTransactions(status, jComboBox1.getSelectedIndex()));
         db.closeConnection();
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_TransactComboBoxItemStateChanged
 
     private void rightarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightarrowMouseClicked
         productNum = ++productNum % 2;
@@ -1598,6 +1576,10 @@ public class Main extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
+        showCard(invoices);
+    }//GEN-LAST:event_invoicebtnMouseClicked
 
     /**
      * @param args the command line arguments
