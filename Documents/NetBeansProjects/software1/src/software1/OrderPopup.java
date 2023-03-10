@@ -7,20 +7,23 @@ import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 
 public class OrderPopup extends javax.swing.JPanel {
-    
-    public OrderPopup(ArrayList<Object[]> list, float totalPrice) {
+    private final ArrayList<Object[]> list;
+    public OrderPopup(ArrayList<Object[]> list) {
         initComponents();
         // PLACE INTO TABLE AND CALCULATE PRICE
+        this.list=list;
+        int total = 0;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0); // reset the table
         for (Object[] n : list) {
             model.addRow(n);
+            total += (Float) n[3];
         }
-        popuptotalprice.setText(""+totalPrice);
-        
+        popuptotalprice.setText(""+total);
         //GlassPanePopup.install(this);
         //setOpaque(false);
     }
+    
     
     /**@Override
     protected void paintComponent(Graphics grphcs) {
@@ -75,7 +78,7 @@ public class OrderPopup extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -87,14 +90,14 @@ public class OrderPopup extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Item", "QTY"
+                "ID", "Item", "QTY", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -105,7 +108,6 @@ public class OrderPopup extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -115,6 +117,7 @@ public class OrderPopup extends javax.swing.JPanel {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(10);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -131,7 +134,7 @@ public class OrderPopup extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(229, 229, 229));
@@ -220,6 +223,8 @@ public class OrderPopup extends javax.swing.JPanel {
 
     private void RemoveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveOrderActionPerformed
         // TODO add your handling code here:
+        this.list.remove(jTable1.getSelectedRow());
+        ((DefaultTableModel)jTable1.getModel()).removeRow(jTable1.getSelectedRow());
     }//GEN-LAST:event_RemoveOrderActionPerformed
     
 

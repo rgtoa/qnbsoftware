@@ -15,7 +15,6 @@ public class Main extends javax.swing.JFrame {
     private final String username;
     private int productNum = 0;
     private ArrayList<Object[]> cart = new ArrayList<>();
-    private float totalPrice = 0;
     //ImageIcon invoicewv = new ImageIcon("try222.png");
     
     public Main(String role, String username) {
@@ -1442,9 +1441,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_invoicebtnMouseClicked
 
     private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
-        OrderPopup obj = new OrderPopup(cart, totalPrice);
+        OrderPopup obj = new OrderPopup(cart);
         GlassPanePopup.showPopup(obj);
-        
     }//GEN-LAST:event_orderbtnActionPerformed
 
     private void transacbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transacbtnMouseClicked
@@ -1581,18 +1579,19 @@ public class Main extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Database db = new Database();
-        int qty = (int) productqty.getValue();
         try {
-            if (Math.abs(this.productNum) == 0) { // 1 = round id
-                cart.add(new Object[] {1, db.getProductName(1),qty});
-                totalPrice += qty * db.getProductPrice(1);
-            } else { // 2 = slim id
-                cart.add(new Object[] {2, db.getProductName(2),qty});
-                totalPrice += qty * db.getProductPrice(2);
-            }
+            int prodID = this.productNum + 1;
+            int qty = (int) productqty.getValue();
+            cart.add(new Object[] {
+                prodID,
+                db.getProductName(prodID),
+                qty,
+                qty * db.getProductPrice(prodID)
+            });
+            Message msg = new Message("Successfully Added Product");
+            GlassPanePopup.showPopup(msg);
         } finally {
             System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
-            System.out.println("Total Price: " + totalPrice);
             productqty.setValue(1); // reset value to 1
             db.closeConnection();
         }
