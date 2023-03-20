@@ -8,11 +8,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class OrderPopup extends javax.swing.JPanel {
     private final ArrayList<Object[]> list;
+    private float total;
     public OrderPopup(ArrayList<Object[]> list) {
         initComponents();
         // PLACE INTO TABLE AND CALCULATE PRICE
         this.list=list;
-        int total = 0;
+        this.total = 0;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0); // reset the table
         for (Object[] n : list) {
@@ -23,7 +24,9 @@ public class OrderPopup extends javax.swing.JPanel {
         //GlassPanePopup.install(this);
         //setOpaque(false);
     }
-    
+    private void update() {
+        
+    }
     
     /**@Override
     protected void paintComponent(Graphics grphcs) {
@@ -108,6 +111,7 @@ public class OrderPopup extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -218,13 +222,18 @@ public class OrderPopup extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConfirmOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmOrderActionPerformed
-        GlassPanePopup.closePopupLast();
+        
     }//GEN-LAST:event_ConfirmOrderActionPerformed
-
+    public void confirm(ActionListener event) {
+        ConfirmOrder.addActionListener(event);
+    }
     private void RemoveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveOrderActionPerformed
         // TODO add your handling code here:
-        this.list.remove(jTable1.getSelectedRow());
-        ((DefaultTableModel)jTable1.getModel()).removeRow(jTable1.getSelectedRow());
+        int row = jTable1.getSelectedRow(); // GET ROW
+        this.total -= (float) this.list.get(row)[3]; // UPDATE TOTAL
+        popuptotalprice.setText(""+total); // SHOW NEW TOTAL
+        this.list.remove(jTable1.getSelectedRow()); // REMOVE FROM LIST
+        ((DefaultTableModel)jTable1.getModel()).removeRow(jTable1.getSelectedRow()); // UPDATE TABLE
     }//GEN-LAST:event_RemoveOrderActionPerformed
     
 

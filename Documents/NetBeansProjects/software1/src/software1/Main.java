@@ -1441,6 +1441,13 @@ public class Main extends javax.swing.JFrame {
     }
     private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
         OrderPopup obj = new OrderPopup(cart);
+        obj.confirm(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                GlassPanePopup.closePopupLast();
+                showCard(form);
+            }
+        });
         GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_orderbtnActionPerformed
 
