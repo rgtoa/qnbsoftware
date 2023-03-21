@@ -530,6 +530,7 @@ public class Login extends javax.swing.JFrame {
         }
         else {
             System.out.println("WRONG USERNAME OR PASSWORD");
+            GlassPanePopup.showPopup(new Message("Wrong Password"));
         }
         db.closeConnection();
         System.out.println("login end");
