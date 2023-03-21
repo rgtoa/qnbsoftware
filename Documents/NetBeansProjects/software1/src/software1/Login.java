@@ -487,15 +487,15 @@ public class Login extends javax.swing.JFrame {
         userfield.setText("");
         passfield.setText("");
         jComboBox1.setSelectedIndex(0);
-        obj.register(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                GlassPanePopup.closePopupLast();
-                signup.setVisible(false);
-                login.setVisible(true);
-                System.out.println("asdsadadsdas");
-            }
-        });
+//        obj.register(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//                GlassPanePopup.closePopupLast();
+//                signup.setVisible(false);
+//                login.setVisible(true);
+//                System.out.println("asdsadadsdas");
+//            }
+//        });
         GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_registerbtnActionPerformed
 
