@@ -215,6 +215,7 @@ public class Login extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Source Sans Pro Light", 1, 48)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(10, 64, 83));
         jLabel11.setText("QNB");
+        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel12.setForeground(new java.awt.Color(10, 64, 83));
         jLabel12.setText("Log in to start your water transactions!");
@@ -303,6 +304,7 @@ public class Login extends javax.swing.JFrame {
         registerbtn.setBackground(new java.awt.Color(66, 155, 186));
         registerbtn.setForeground(new java.awt.Color(255, 255, 255));
         registerbtn.setText("Register");
+        registerbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registerbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerbtnMouseClicked(evt);

@@ -405,6 +405,7 @@
                       <Color blue="53" green="40" red="a" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="QNB"/>
+                    <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
@@ -635,6 +636,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Register"/>
+                        <Property name="horizontalTextPosition" type="int" value="0"/>
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="registerbtnMouseClicked"/>
