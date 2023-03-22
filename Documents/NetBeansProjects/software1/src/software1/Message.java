@@ -8,7 +8,6 @@ public class Message extends javax.swing.JPanel {
     public Message(String msg) {
         initComponents();
         message.setText(msg);
-        System.out.println("aa");
     }
 
     /**

@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @author 97433
  */
 public class RegisterAuth extends javax.swing.JPanel {
-    private final char[] password;
+    private char[] password;
     private final String username;
     private final String role;
     /**
@@ -24,7 +24,6 @@ public class RegisterAuth extends javax.swing.JPanel {
     public RegisterAuth(String username, char[] password, String role) {
         initComponents();
         this.password = password;
-        password = null;
         this.username = username;
         this.role = role;
     }
@@ -95,26 +94,24 @@ public class RegisterAuth extends javax.swing.JPanel {
             if (!db.authenticate(String.valueOf(authpass2.getPassword()))) {
                 // CODE FOR WRONG AUTHENTICATION PASS
                 System.out.println("wrong auth");
-                
-                GlassPanePopup.showPopup(new Message("Wrong Authentication"));
-            }
-            else if (db.checkUser(username)) {
-                // CODE FOR USER ALREADY EXISTING
-                System.out.println("existing user");
+                popupMsg("Wrong Authentication");
             }
             else if (!db.addUser(username, String.valueOf(password), role)){ //TRY TO REGISTER USER
                 // CODE FOR REGISTRATION ERROR IN SQL
                 System.out.println("sql error");
+                popupMsg("SQL error");
             }
             else {
                 // REGISTER THE NEW USER SUCCESS CODE
+                popupMsg("Register User Success");
             }
         } finally {
             db.closeConnection();
         }   
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void register(ActionListener event) {
-        jButton1.addActionListener(event);
+    private void popupMsg(String msg) {
+        GlassPanePopup.closePopupLast();
+        GlassPanePopup.showPopup(new Message(msg));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

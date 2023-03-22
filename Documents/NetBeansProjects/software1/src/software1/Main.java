@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ImageIcon;
 import java.awt.Graphics;
@@ -20,6 +21,8 @@ public class Main extends javax.swing.JFrame {
     
     private final String role;
     private final String username;
+    private int productNum = 0;
+    private ArrayList<Object[]> cart = new ArrayList<>();
     //ImageIcon invoicewv = new ImageIcon("try222.png");
     
     public Main(String role, String username) {
@@ -37,8 +40,7 @@ public class Main extends javax.swing.JFrame {
         editmodule4.setVisible(role.equals("owner"));
         //jLabel10.setIcon(invoicewv);
         scaleIcons();
-        scaleProduct1();
-        scaleReports();
+        scaleProducts();
     }
 //    public void paint(Graphics grphcs) {
 //        Graphics2D g2 = (Graphics2D) grphcs;
@@ -116,24 +118,21 @@ public class Main extends javax.swing.JFrame {
         ImageIcon scaledIcon8 = new ImageIcon(imgScale8);
         rightarrow.setIcon(scaledIcon8);
     }
-    
-    private void scaleProduct1() {
-        ImageIcon icon5 = new ImageIcon("product1.png");
-        Image prod1 = icon5.getImage();
-        Image imageScale5 = prod1.getScaledInstance(productimg.getWidth(), productimg.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon5 = new ImageIcon(imageScale5);
-        productimg.setIcon(scaledIcon5);
-        productname1.setText("Round Gallon");
-        //productdesc1.setText("");
-    }
-    
-    private void scaleProduct2() {
-        ImageIcon icon6 = new ImageIcon("product2.png");
-        Image prod2 = icon6.getImage();
-        Image imageScale6 = prod2.getScaledInstance(productimg.getWidth(), productimg.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon6 = new ImageIcon(imageScale6);
-        productimg.setIcon(scaledIcon6);
-        productname1.setText("Slim Gallon");
+    private void scaleProducts() {
+        ImageIcon icon;
+        String text;
+        if (Math.abs(this.productNum) == 0) {
+            icon = new ImageIcon("product1.png");
+            text = "Round Gallon";
+        } else {
+            icon = new ImageIcon("product2.png");
+            text = "Slim Gallon";
+        }
+        Image prod = icon.getImage();
+        Image imageScale = prod.getScaledInstance(productimg.getWidth(), productimg.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imageScale);
+        productimg.setIcon(scaledIcon);
+        productname1.setText(text);
         //productdesc1.setText("");
     }
     
@@ -588,6 +587,11 @@ public class Main extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
 
         jButton1.setText("Select");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         stockLabel.setFont(new java.awt.Font("Source Sans Pro Light", 2, 12)); // NOI18N
         stockLabel.setForeground(new java.awt.Color(10, 64, 83));
@@ -916,12 +920,7 @@ public class Main extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                TransactComboBoxItemStateChanged(evt);
             }
         });
 
@@ -1075,6 +1074,11 @@ public class Main extends javax.swing.JFrame {
         jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox3.setMaximumRowCount(3);
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        jComboBox3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TransactComboBoxItemStateChanged(evt);
+            }
+        });
 
         generatebtn1.setBackground(new java.awt.Color(140, 208, 218));
         generatebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -1478,68 +1482,45 @@ public class Main extends javax.swing.JFrame {
             model.addRow(n.toArray());
         }
     }
-    
-    private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
+    private void showCard(java.awt.Component card) {
         transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
         invoicebtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
         deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
         authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoices.setVisible(true);
+        
+        invoices.setVisible(false);
         form.setVisible(false);
         pendingtransac.setVisible(false);
         completetransac.setVisible(false);
         pendingdeliver.setVisible(false);
         completedeliver.setVisible(false);
+        authenticate.setVisible(false);
         authreports.setVisible(false);
-    }//GEN-LAST:event_invoicebtnMouseClicked
-
+        card.setVisible(true);
+    }  
     private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
-        OrderPopup obj = new OrderPopup();
+        OrderPopup obj = new OrderPopup(cart);
         obj.confirm(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 GlassPanePopup.closePopupLast();
-                invoices.setVisible(false);
-                form.setVisible(true);
+                showCard(form);
             }
         });
         GlassPanePopup.showPopup(obj);
-        
     }//GEN-LAST:event_orderbtnActionPerformed
 
     private void transacbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transacbtnMouseClicked
-        transacbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoices.setVisible(false);
-        form.setVisible(false);
-        pendingtransac.setVisible(true);
-        completetransac.setVisible(false);
-        pendingdeliver.setVisible(false);
-        completedeliver.setVisible(false);
-        authreports.setVisible(false);
+
+        showCard(pendingtransac);
     }//GEN-LAST:event_transacbtnMouseClicked
 
     private void deliverbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliverbtnMouseClicked
-        transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoices.setVisible(false);
-        form.setVisible(false);
-        pendingtransac.setVisible(false);
-        completetransac.setVisible(false);
-        pendingdeliver.setVisible(true);
-        completedeliver.setVisible(false);
-        authreports.setVisible(false);
+        showCard(pendingdeliver);
     }//GEN-LAST:event_deliverbtnMouseClicked
 
     private void authenticbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authenticbtnMouseClicked
-        transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
+        showCard(authenticate);
         AuthPopup obj = new AuthPopup();
         obj.authenticate(new ActionListener() {
             @Override
@@ -1576,10 +1557,6 @@ public class Main extends javax.swing.JFrame {
         this.dispose();
         login.setVisible(true);
     }//GEN-LAST:event_signoutbtnMouseClicked
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void completebtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completebtn1MouseClicked
         pendingtransac.setVisible(false);
@@ -1625,29 +1602,50 @@ public class Main extends javax.swing.JFrame {
         db.closeConnection();
     }//GEN-LAST:event_jComboBox5ItemStateChanged
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    private void TransactComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TransactComboBoxItemStateChanged
         // TODO add your handling code here:
+        if (evt.getStateChange() == 2) return;
         Database db = new Database();
-        populateTable(pendingtransactbl, db.getTransactions(0, jComboBox1.getSelectedIndex()));
+        int status = evt.getSource() == jComboBox1 ? 0 : 1;
+        populateTable(pendingtransactbl, db.getTransactions(status, jComboBox1.getSelectedIndex()));
         db.closeConnection();
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_TransactComboBoxItemStateChanged
 
     private void rightarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightarrowMouseClicked
-        scaleProduct2();
+        productNum = ++productNum % 2;
+        scaleProducts();
     }//GEN-LAST:event_rightarrowMouseClicked
 
     private void leftarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftarrowMouseClicked
-        scaleProduct1();
+        productNum = --productNum % 2;
+        scaleProducts();
     }//GEN-LAST:event_leftarrowMouseClicked
 
-    private void productqtyStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_productqtyStateChanged
-        
-    }//GEN-LAST:event_productqtyStateChanged
-
-    private void jPanel14ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel14ComponentAdded
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel14ComponentAdded
+        Database db = new Database();
+        try {
+            int prodID = this.productNum + 1;
+            int qty = (int) productqty.getValue();
+            cart.add(new Object[] {
+                prodID,
+                db.getProductName(prodID),
+                qty,
+                qty * db.getProductPrice(prodID)
+            });
+            Message msg = new Message("Successfully Added Product");
+            GlassPanePopup.showPopup(msg);
+        } finally {
+            System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
+            productqty.setValue(1); // reset value to 1
+            db.closeConnection();
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
+        showCard(invoices);
+    }//GEN-LAST:event_invoicebtnMouseClicked
     private void cancelorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelorderbtnActionPerformed
         form.setVisible(false);
         invoices.setVisible(true);

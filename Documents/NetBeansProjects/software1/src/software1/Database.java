@@ -72,6 +72,38 @@ public class Database {
         }
         return output;
     }
+    public String getProductName(int id) {
+        String output = "";
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT ProductName FROM products WHERE ProductID=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                output = rs.getString("ProductName");
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
+    public float getProductPrice(int id) {
+        float output = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT Price FROM products WHERE ProductID=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                output = rs.getFloat("Price");
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
     public boolean authenticate(String pass) {
         boolean output = false;
         try {
