@@ -48,9 +48,7 @@ public class RegisterAuth extends javax.swing.JPanel {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Owner Authenticate");
 
-        authpass2.setBackground(new java.awt.Color(255, 255, 255));
         authpass2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 24)); // NOI18N
-        authpass2.setForeground(new java.awt.Color(0, 0, 0));
         authpass2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         authpass2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
