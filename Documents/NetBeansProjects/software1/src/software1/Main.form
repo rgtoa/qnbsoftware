@@ -303,6 +303,9 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="authenticbtnMouseClicked"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="authenticbtn.setVisible(role.equals(&quot;owner&quot;));&#xd;&#xa;"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
             </Component>
@@ -2165,9 +2168,8 @@
                           <Component id="delivericon" min="-2" pref="115" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="genreport6" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="genreport4" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                                   <Component id="genreport5" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
@@ -2175,6 +2177,7 @@
                               <EmptySpace pref="138" max="32767" attributes="0"/>
                               <Component id="background7" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="genreport6" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

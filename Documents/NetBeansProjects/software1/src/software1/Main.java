@@ -23,6 +23,7 @@ public class Main extends javax.swing.JFrame {
     
     private final String role;
     private final String username;
+    private boolean isAuth = false;
     private int productNum = 0;
     private ArrayList<Object[]> cart = new ArrayList<>();
     
@@ -35,10 +36,10 @@ public class Main extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         initTableData();
         System.out.println("owner?"+role.equals("owner"));
-        editmodule1.setVisible(role.equals("owner"));
-        editmodule2.setVisible(role.equals("owner"));
-        editmodule3.setVisible(role.equals("owner"));
-        editmodule4.setVisible(role.equals("owner"));
+        editmodule1.setVisible(isAuth);
+        editmodule2.setVisible(isAuth);
+        editmodule3.setVisible(isAuth);
+        editmodule4.setVisible(isAuth);
         //jLabel10.setIcon(invoicewv);
         scaleIcons();
         scaleProducts();
@@ -132,6 +133,7 @@ public class Main extends javax.swing.JFrame {
         deliverbtn = new javax.swing.JLabel();
         authentictab = new javax.swing.JPanel();
         authenticbtn = new javax.swing.JLabel();
+        authenticbtn.setVisible(role.equals("owner"));
         jLabel8 = new javax.swing.JLabel();
         signout = new javax.swing.JPanel();
         signoutbtn = new javax.swing.JLabel();
@@ -1506,14 +1508,14 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(transacicon, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(delivericon, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genreport6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(authreportsLayout.createSequentialGroup()
                         .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(genreport4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(genreport5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                        .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(genreport6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         tabcontent.add(authreports, "card6");
@@ -1551,6 +1553,16 @@ public class Main extends javax.swing.JFrame {
         authreports.setVisible(false);
         card.setVisible(true);
     }  
+    private void boldCard(java.awt.Component btn) {
+        transacbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        btn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
+    }
+    private void showMsg(String msg) {
+        GlassPanePopup.showPopup(new Message(msg));
+    }
     private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
         OrderPopup obj = new OrderPopup(cart);
         obj.confirm(new ActionListener() {
@@ -1565,38 +1577,40 @@ public class Main extends javax.swing.JFrame {
 
     private void transacbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transacbtnMouseClicked
         showCard(pendingtransac);
-        transacbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
+        boldCard(transacbtn);
     }//GEN-LAST:event_transacbtnMouseClicked
-
     private void deliverbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliverbtnMouseClicked
         showCard(pendingdeliver);
-        transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
+        boldCard(deliverbtn);
     }//GEN-LAST:event_deliverbtnMouseClicked
 
     private void authenticbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authenticbtnMouseClicked
-        //showCard(authenticate);
-        transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
+        if(isAuth) {
+            showCard(authreports);
+            boldCard(authenticbtn);
+            return;
+        }
         AuthPopup obj = new AuthPopup();
         obj.authenticate(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                Database db = new Database();
+                boolean auth = false;
+                try {
+                    char[] pass = obj.getPass();
+                    auth = db.authenticate(String.valueOf(pass));
+                } finally {
+                    db.closeConnection();
+                }
+                if (!auth) {
+                    GlassPanePopup.closePopupLast();
+                    showMsg("Wrong Password");
+                    return;
+                }
+                isAuth = true;
+                showCard(authreports);
+                boldCard(authenticbtn);
                 GlassPanePopup.closePopupLast();
-                invoices.setVisible(false);
-                form.setVisible(false);
-                pendingtransac.setVisible(false);
-                completetransac.setVisible(false);
-                pendingdeliver.setVisible(false);
-                completedeliver.setVisible(false);
-                authreports.setVisible(true);
             }
         });
         GlassPanePopup.showPopup(obj);     
@@ -1705,8 +1719,7 @@ public class Main extends javax.swing.JFrame {
                 qty,
                 qty * db.getProductPrice(prodID)
             });
-            Message msg = new Message("Successfully Added Product");
-            GlassPanePopup.showPopup(msg);
+            showMsg("Successfully Added Product");
         } finally {
             System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
             productqty.setValue(1); // reset value to 1
@@ -1716,10 +1729,7 @@ public class Main extends javax.swing.JFrame {
 
     private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
         showCard(invoices);
-        transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
+        boldCard(invoicebtn);
     }//GEN-LAST:event_invoicebtnMouseClicked
     private void cancelorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelorderbtnActionPerformed
         form.setVisible(false);
