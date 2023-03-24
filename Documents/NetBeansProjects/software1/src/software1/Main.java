@@ -23,6 +23,7 @@ public class Main extends javax.swing.JFrame {
     
     private final String role;
     private final String username;
+    private boolean isAuth = false;
     private int productNum = 0;
     private ArrayList<Object[]> cart = new ArrayList<>();
     
@@ -35,10 +36,10 @@ public class Main extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         initTableData();
         System.out.println("owner?"+role.equals("owner"));
-        editmodule1.setVisible(role.equals("owner"));
-        editmodule2.setVisible(role.equals("owner"));
-        editmodule3.setVisible(role.equals("owner"));
-        editmodule4.setVisible(role.equals("owner"));
+        editmodule1.setVisible(isAuth);
+        editmodule2.setVisible(isAuth);
+        editmodule3.setVisible(isAuth);
+        editmodule4.setVisible(isAuth);
         //jLabel10.setIcon(invoicewv);
         scaleIcons();
         scaleProducts();
@@ -132,6 +133,7 @@ public class Main extends javax.swing.JFrame {
         deliverbtn = new javax.swing.JLabel();
         authentictab = new javax.swing.JPanel();
         authenticbtn = new javax.swing.JLabel();
+        authenticbtn.setVisible(role.equals("owner"));
         jLabel8 = new javax.swing.JLabel();
         signout = new javax.swing.JPanel();
         signoutbtn = new javax.swing.JLabel();
@@ -173,9 +175,11 @@ public class Main extends javax.swing.JFrame {
         customerdetails = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         cancelorderbtn = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
         jLabel17 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        amount1field = new javax.swing.JTextField();
+        paymentcheckbox = new javax.swing.JCheckBox();
+        amount2field = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         formsimg1 = new javax.swing.JLabel();
         background2 = new software1.Background();
@@ -266,7 +270,7 @@ public class Main extends javax.swing.JFrame {
 
         invoicetab.setBackground(new java.awt.Color(255, 255, 255));
 
-        invoicebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 18)); // NOI18N
+        invoicebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 20)); // NOI18N
         invoicebtn.setForeground(new java.awt.Color(10, 64, 83));
         invoicebtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         invoicebtn.setText("Invoices");
@@ -286,7 +290,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(invoicetabLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(invoicebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         invoicetabLayout.setVerticalGroup(
             invoicetabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +304,7 @@ public class Main extends javax.swing.JFrame {
 
         transactab.setBackground(new java.awt.Color(255, 255, 255));
 
-        transacbtn.setFont(new java.awt.Font("Source Sans Pro Light", 1, 18)); // NOI18N
+        transacbtn.setFont(new java.awt.Font("Source Sans Pro Light", 0, 18)); // NOI18N
         transacbtn.setForeground(new java.awt.Color(10, 64, 83));
         transacbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         transacbtn.setText("Transactions");
@@ -318,8 +322,8 @@ public class Main extends javax.swing.JFrame {
         transactabLayout.setHorizontalGroup(
             transactabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transactabLayout.createSequentialGroup()
-                .addComponent(transacbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addComponent(transacbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         transactabLayout.setVerticalGroup(
             transactabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +337,7 @@ public class Main extends javax.swing.JFrame {
 
         delivertab.setBackground(new java.awt.Color(255, 255, 255));
 
-        deliverbtn.setFont(new java.awt.Font("Source Sans Pro Light", 1, 18)); // NOI18N
+        deliverbtn.setFont(new java.awt.Font("Source Sans Pro Light", 0, 18)); // NOI18N
         deliverbtn.setForeground(new java.awt.Color(10, 64, 83));
         deliverbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         deliverbtn.setText("Deliveries");
@@ -367,7 +371,7 @@ public class Main extends javax.swing.JFrame {
 
         authentictab.setBackground(new java.awt.Color(255, 255, 255));
 
-        authenticbtn.setFont(new java.awt.Font("Source Sans Pro Light", 1, 18)); // NOI18N
+        authenticbtn.setFont(new java.awt.Font("Source Sans Pro Light", 0, 18)); // NOI18N
         authenticbtn.setForeground(new java.awt.Color(10, 64, 83));
         authenticbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         authenticbtn.setText("Authenticate");
@@ -532,11 +536,6 @@ public class Main extends javax.swing.JFrame {
         productqty.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         productqty.setMinimumSize(new java.awt.Dimension(50, 22));
         productqty.setPreferredSize(new java.awt.Dimension(50, 22));
-        productqty.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                productqtyStateChanged(evt);
-            }
-        });
 
         productprice1.setBackground(new java.awt.Color(255, 255, 255));
         productprice1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
@@ -568,7 +567,7 @@ public class Main extends javax.swing.JFrame {
 
         stockLabel.setFont(new java.awt.Font("Source Sans Pro Light", 2, 14)); // NOI18N
         stockLabel.setForeground(new java.awt.Color(10, 64, 83));
-        stockLabel.setText("In stock: 4");
+        stockLabel.setText("In stock");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -582,7 +581,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(stockLabel))
                     .addComponent(productname1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(productdesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -613,7 +612,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
         );
 
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
@@ -658,6 +657,11 @@ public class Main extends javax.swing.JFrame {
         radiowalkin.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         radiowalkin.setForeground(new java.awt.Color(34, 73, 87));
         radiowalkin.setText("for Walk-in");
+        radiowalkin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radiowalkinActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(radiodeliver);
         radiodeliver.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
@@ -686,13 +690,17 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(34, 73, 87));
-        jRadioButton1.setText("Full payment");
-
         jLabel17.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(34, 73, 87));
         jLabel17.setText("Amount Paid");
+
+        paymentcheckbox.setFont(new java.awt.Font("Source Sans Pro Semibold", 2, 12)); // NOI18N
+        paymentcheckbox.setForeground(new java.awt.Color(34, 73, 87));
+        paymentcheckbox.setText("Full Payment");
+
+        jLabel18.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(34, 73, 87));
+        jLabel18.setText("Amount Paid");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -701,78 +709,85 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap(108, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(housefield)
-                        .addComponent(jLabel14)
-                        .addGroup(jPanel16Layout.createSequentialGroup()
-                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13))
-                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel16Layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(jLabel16))
-                                .addGroup(jPanel16Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(lnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel16Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(customerdetails, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel16Layout.createSequentialGroup()
-                            .addComponent(jLabel12)
-                            .addGap(115, 115, 115)
-                            .addComponent(jLabel11))
-                        .addGroup(jPanel16Layout.createSequentialGroup()
-                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(radiowalkin, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(radiodeliver, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(amount1field, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paymentcheckbox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(housefield, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13))
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jLabel16))
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(115, 115, 115)
+                                .addComponent(jLabel11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
                                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(mobilefield, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(brgyfield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
-                                .addComponent(jLabel15))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(brgyfield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cityfield)
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(amount2field, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel18))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGroup(jPanel16Layout.createSequentialGroup()
                             .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cityfield)
-                                .addComponent(jTextField1)
+                                .addComponent(jLabel2)
+                                .addComponent(cancelorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(customerdetails, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel16Layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jLabel17)
-                                    .addGap(0, 0, Short.MAX_VALUE)))))
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radiowalkin, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radiodeliver, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cancelorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                                    .addGap(0, 160, Short.MAX_VALUE)
+                                    .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
+                .addComponent(paymentcheckbox)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(amount1field, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radiowalkin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radiodeliver)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(customerdetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cancelorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(customerdetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel11))
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(housefield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -783,18 +798,18 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(brgyfield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cityfield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel17))
+                        .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(mobilefield, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                        .addComponent(mobilefield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radiowalkin)
-                        .addGap(4, 4, 4)
-                        .addComponent(radiodeliver)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                        .addComponent(amount2field, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         form.add(jPanel16);
@@ -1498,7 +1513,7 @@ public class Main extends javax.swing.JFrame {
         authreportsLayout.setVerticalGroup(
             authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authreportsLayout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1511,9 +1526,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(genreport4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreport5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(genreport6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(genreport6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         tabcontent.add(authreports, "card6");
@@ -1551,6 +1566,16 @@ public class Main extends javax.swing.JFrame {
         authreports.setVisible(false);
         card.setVisible(true);
     }  
+    private void boldCard(java.awt.Component btn) {
+        transacbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        btn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 20));
+    }
+    private void showMsg(String msg) {
+        GlassPanePopup.showPopup(new Message(msg));
+    }
     private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
         OrderPopup obj = new OrderPopup(cart);
         obj.confirm(new ActionListener() {
@@ -1565,39 +1590,38 @@ public class Main extends javax.swing.JFrame {
 
     private void transacbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transacbtnMouseClicked
         showCard(pendingtransac);
-        transacbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
+        boldCard(transacbtn);
     }//GEN-LAST:event_transacbtnMouseClicked
-
     private void deliverbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliverbtnMouseClicked
         showCard(pendingdeliver);
-        transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
+        boldCard(deliverbtn);
     }//GEN-LAST:event_deliverbtnMouseClicked
 
     private void authenticbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authenticbtnMouseClicked
-        //showCard(authenticate);
-        transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
+        if(isAuth) {
+            showCard(authreports);
+            boldCard(authenticbtn);
+            return;
+        }
         AuthPopup obj = new AuthPopup();
-        obj.authenticate(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                GlassPanePopup.closePopupLast();
-                invoices.setVisible(false);
-                form.setVisible(false);
-                pendingtransac.setVisible(false);
-                completetransac.setVisible(false);
-                pendingdeliver.setVisible(false);
-                completedeliver.setVisible(false);
-                authreports.setVisible(true);
+        obj.authenticate((ActionEvent ae) -> {
+            Database db = new Database();
+            boolean auth = false;
+            try {
+                char[] pass = obj.getPass();
+                auth = db.authenticate(String.valueOf(pass));
+            } finally {
+                db.closeConnection();
             }
+            if (!auth) {
+                GlassPanePopup.closePopupLast();
+                showMsg("Wrong Password");
+                return;
+            }
+            isAuth = true;
+            showCard(authreports);
+            boldCard(authenticbtn);
+            GlassPanePopup.closePopupLast();
         });
         GlassPanePopup.showPopup(obj);     
     }//GEN-LAST:event_authenticbtnMouseClicked
@@ -1612,13 +1636,10 @@ public class Main extends javax.swing.JFrame {
 
     private void submitformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitformActionPerformed
         ConfirmOrder obj = new ConfirmOrder();
-        obj.confirmOrder(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                GlassPanePopup.closePopupLast();
-                form.setVisible(false);
-                pendingtransac.setVisible(true);
-            }
+        obj.confirmOrder((ActionEvent ae) -> {
+            GlassPanePopup.closePopupLast();
+            form.setVisible(false);
+            pendingtransac.setVisible(true);
         });
         GlassPanePopup.showPopup(obj); 
     }//GEN-LAST:event_submitformActionPerformed
@@ -1705,8 +1726,7 @@ public class Main extends javax.swing.JFrame {
                 qty,
                 qty * db.getProductPrice(prodID)
             });
-            Message msg = new Message("Successfully Added Product");
-            GlassPanePopup.showPopup(msg);
+            showMsg("Successfully Added Product");
         } finally {
             System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
             productqty.setValue(1); // reset value to 1
@@ -1716,25 +1736,25 @@ public class Main extends javax.swing.JFrame {
 
     private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
         showCard(invoices);
-        transacbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        invoicebtn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-        deliverbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
-        authenticbtn.setFont(new Font("Source Sans Pro Light", Font.BOLD, 18));
+        boldCard(invoicebtn);
     }//GEN-LAST:event_invoicebtnMouseClicked
     private void cancelorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelorderbtnActionPerformed
-        form.setVisible(false);
-        invoices.setVisible(true);
+        CancelOrder obj = new CancelOrder();
+        obj.cancelOrder((ActionEvent ae) -> {
+            GlassPanePopup.closePopupLast();
+            form.setVisible(false);
+            invoices.setVisible(true);
+        });
+        GlassPanePopup.showPopup(obj);  
     }//GEN-LAST:event_cancelorderbtnActionPerformed
 
     private void jPanel14ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel14ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel14ComponentAdded
-    private void jPanel14ComponentAdded(java.awt.event.ComponentEvent evt) {
-        
-    }
-    private void productqtyStateChanged(javax.swing.event.ChangeEvent evt) {
-        
-    }
+
+    private void radiowalkinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radiowalkinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radiowalkinActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1772,6 +1792,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField amount1field;
+    private javax.swing.JTextField amount2field;
     private javax.swing.JLabel authenticbtn;
     private javax.swing.JPanel authentictab;
     private javax.swing.JPanel authreports;
@@ -1827,6 +1849,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -1841,17 +1864,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel leftarrow;
     private javax.swing.JTextField lnamefield;
     private javax.swing.JPanel maintabs;
     private javax.swing.JTextField mobilefield;
     private javax.swing.JButton orderbtn;
+    private javax.swing.JCheckBox paymentcheckbox;
     private javax.swing.JLabel pendingbtn1;
     private javax.swing.JLabel pendingbtn2;
     private javax.swing.JLabel pendingbtn3;

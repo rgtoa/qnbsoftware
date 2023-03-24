@@ -79,9 +79,11 @@ public class AuthPopup extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPassActionPerformed
-        GlassPanePopup.closePopupLast();
-    }//GEN-LAST:event_confirmPassActionPerformed
 
+    }//GEN-LAST:event_confirmPassActionPerformed
+    protected char[] getPass() {
+        return authenticpass.getPassword();
+    }
     public void authenticate (ActionListener event){
         confirmPass.addActionListener(event);
     }
