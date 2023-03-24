@@ -108,7 +108,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="invoicebtn" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -126,7 +126,7 @@
             <Component class="javax.swing.JLabel" name="invoicebtn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Source Sans Pro Semibold" size="18" style="1"/>
+                  <Font name="Source Sans Pro Semibold" size="20" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="53" green="40" red="a" type="rgb"/>
@@ -158,8 +158,8 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="transacbtn" min="-2" pref="122" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                      <Component id="transacbtn" min="-2" pref="132" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -177,7 +177,7 @@
             <Component class="javax.swing.JLabel" name="transacbtn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Source Sans Pro Light" size="18" style="1"/>
+                  <Font name="Source Sans Pro Light" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="53" green="40" red="a" type="rgb"/>
@@ -229,7 +229,7 @@
             <Component class="javax.swing.JLabel" name="deliverbtn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Source Sans Pro Light" size="18" style="1"/>
+                  <Font name="Source Sans Pro Light" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="53" green="40" red="a" type="rgb"/>
@@ -285,7 +285,7 @@
             <Component class="javax.swing.JLabel" name="authenticbtn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Source Sans Pro Light" size="18" style="1"/>
+                  <Font name="Source Sans Pro Light" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="53" green="40" red="a" type="rgb"/>
@@ -518,7 +518,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="productqty" min="-2" pref="50" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="stockLabel" min="-2" pref="55" max="-2" attributes="0"/>
+                                  <Component id="stockLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="productname1" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                               <Component id="productdesc1" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
@@ -557,7 +557,7 @@
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="orderbtn" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jPanel1" pref="94" max="32767" attributes="0"/>
+                          <Component id="jPanel1" pref="143" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -599,9 +599,6 @@
                       <Dimension value="[50, 22]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="productqtyStateChanged"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="productprice1">
                   <Properties>
@@ -671,7 +668,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="53" green="40" red="a" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="In stock: 4"/>
+                    <Property name="text" type="java.lang.String" value="In stock"/>
                   </Properties>
                 </Component>
               </SubComponents>

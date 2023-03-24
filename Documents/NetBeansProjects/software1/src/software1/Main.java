@@ -268,7 +268,7 @@ public class Main extends javax.swing.JFrame {
 
         invoicetab.setBackground(new java.awt.Color(255, 255, 255));
 
-        invoicebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 18)); // NOI18N
+        invoicebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 20)); // NOI18N
         invoicebtn.setForeground(new java.awt.Color(10, 64, 83));
         invoicebtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         invoicebtn.setText("Invoices");
@@ -288,7 +288,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(invoicetabLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(invoicebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         invoicetabLayout.setVerticalGroup(
             invoicetabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +302,7 @@ public class Main extends javax.swing.JFrame {
 
         transactab.setBackground(new java.awt.Color(255, 255, 255));
 
-        transacbtn.setFont(new java.awt.Font("Source Sans Pro Light", 1, 18)); // NOI18N
+        transacbtn.setFont(new java.awt.Font("Source Sans Pro Light", 0, 18)); // NOI18N
         transacbtn.setForeground(new java.awt.Color(10, 64, 83));
         transacbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         transacbtn.setText("Transactions");
@@ -320,8 +320,8 @@ public class Main extends javax.swing.JFrame {
         transactabLayout.setHorizontalGroup(
             transactabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transactabLayout.createSequentialGroup()
-                .addComponent(transacbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addComponent(transacbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         transactabLayout.setVerticalGroup(
             transactabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,7 +335,7 @@ public class Main extends javax.swing.JFrame {
 
         delivertab.setBackground(new java.awt.Color(255, 255, 255));
 
-        deliverbtn.setFont(new java.awt.Font("Source Sans Pro Light", 1, 18)); // NOI18N
+        deliverbtn.setFont(new java.awt.Font("Source Sans Pro Light", 0, 18)); // NOI18N
         deliverbtn.setForeground(new java.awt.Color(10, 64, 83));
         deliverbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         deliverbtn.setText("Deliveries");
@@ -369,7 +369,7 @@ public class Main extends javax.swing.JFrame {
 
         authentictab.setBackground(new java.awt.Color(255, 255, 255));
 
-        authenticbtn.setFont(new java.awt.Font("Source Sans Pro Light", 1, 18)); // NOI18N
+        authenticbtn.setFont(new java.awt.Font("Source Sans Pro Light", 0, 18)); // NOI18N
         authenticbtn.setForeground(new java.awt.Color(10, 64, 83));
         authenticbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         authenticbtn.setText("Authenticate");
@@ -532,11 +532,6 @@ public class Main extends javax.swing.JFrame {
         productqty.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         productqty.setMinimumSize(new java.awt.Dimension(50, 22));
         productqty.setPreferredSize(new java.awt.Dimension(50, 22));
-        productqty.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                productqtyStateChanged(evt);
-            }
-        });
 
         productprice1.setBackground(new java.awt.Color(255, 255, 255));
         productprice1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
@@ -568,7 +563,7 @@ public class Main extends javax.swing.JFrame {
 
         stockLabel.setFont(new java.awt.Font("Source Sans Pro Light", 2, 14)); // NOI18N
         stockLabel.setForeground(new java.awt.Color(10, 64, 83));
-        stockLabel.setText("In stock: 4");
+        stockLabel.setText("In stock");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -582,7 +577,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(stockLabel))
                     .addComponent(productname1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(productdesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -613,7 +608,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
         );
 
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
@@ -1558,7 +1553,7 @@ public class Main extends javax.swing.JFrame {
         invoicebtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
         deliverbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
         authenticbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
-        btn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
+        btn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 20));
     }
     private void showMsg(String msg) {
         GlassPanePopup.showPopup(new Message(msg));
@@ -1591,27 +1586,24 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         AuthPopup obj = new AuthPopup();
-        obj.authenticate(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                Database db = new Database();
-                boolean auth = false;
-                try {
-                    char[] pass = obj.getPass();
-                    auth = db.authenticate(String.valueOf(pass));
-                } finally {
-                    db.closeConnection();
-                }
-                if (!auth) {
-                    GlassPanePopup.closePopupLast();
-                    showMsg("Wrong Password");
-                    return;
-                }
-                isAuth = true;
-                showCard(authreports);
-                boldCard(authenticbtn);
-                GlassPanePopup.closePopupLast();
+        obj.authenticate((ActionEvent ae) -> {
+            Database db = new Database();
+            boolean auth = false;
+            try {
+                char[] pass = obj.getPass();
+                auth = db.authenticate(String.valueOf(pass));
+            } finally {
+                db.closeConnection();
             }
+            if (!auth) {
+                GlassPanePopup.closePopupLast();
+                showMsg("Wrong Password");
+                return;
+            }
+            isAuth = true;
+            showCard(authreports);
+            boldCard(authenticbtn);
+            GlassPanePopup.closePopupLast();
         });
         GlassPanePopup.showPopup(obj);     
     }//GEN-LAST:event_authenticbtnMouseClicked
@@ -1626,13 +1618,10 @@ public class Main extends javax.swing.JFrame {
 
     private void submitformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitformActionPerformed
         ConfirmOrder obj = new ConfirmOrder();
-        obj.confirmOrder(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                GlassPanePopup.closePopupLast();
-                form.setVisible(false);
-                pendingtransac.setVisible(true);
-            }
+        obj.confirmOrder((ActionEvent ae) -> {
+            GlassPanePopup.closePopupLast();
+            form.setVisible(false);
+            pendingtransac.setVisible(true);
         });
         GlassPanePopup.showPopup(obj); 
     }//GEN-LAST:event_submitformActionPerformed
@@ -1739,12 +1728,6 @@ public class Main extends javax.swing.JFrame {
     private void jPanel14ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel14ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel14ComponentAdded
-    private void jPanel14ComponentAdded(java.awt.event.ComponentEvent evt) {
-        
-    }
-    private void productqtyStateChanged(javax.swing.event.ChangeEvent evt) {
-        
-    }
     /**
      * @param args the command line arguments
      */
