@@ -18,6 +18,12 @@ import java.awt.geom.CubicCurve2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.border.Border;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.DocumentFilter.FilterBypass;
+import javax.swing.text.PlainDocument;
 
 public class Main extends javax.swing.JFrame {
     
@@ -25,7 +31,8 @@ public class Main extends javax.swing.JFrame {
     private final String username;
     private boolean isAuth = false;
     private int productNum = 0;
-    private ArrayList<Object[]> cart = new ArrayList<>();
+    private ArrayList<Object[]> cart = new ArrayList<>(); //ID-name-qty-price
+    private ArrayList<Object[]> customers;
     
     public Main(String role, String username) {
         
@@ -36,16 +43,144 @@ public class Main extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         initTableData();
         System.out.println("owner?"+role.equals("owner"));
+        
         editmodule1.setVisible(isAuth);
         editmodule2.setVisible(isAuth);
         editmodule3.setVisible(isAuth);
         editmodule4.setVisible(isAuth);
+        populateCustomersBox();
+        refreshFormVisibility();
+        
+        // make form textfield to only accept integers
+        PlainDocument doc1 = (PlainDocument) amount1field.getDocument();
+        doc1.setDocumentFilter(new MyFloatFilter());
+        PlainDocument doc2 = (PlainDocument) amount2field.getDocument();
+        doc2.setDocumentFilter(new MyFloatFilter());
+        
         //jLabel10.setIcon(invoicewv);
         scaleIcons();
         scaleProducts();
         scaleReports();
     }
-    
+    private void populateCustomersBox() {
+        customerdetails.addItem("- New Customer -");
+        
+        Database db = new Database();
+        customers = db.getCustomers();
+        db.closeConnection();
+        
+        for (Object[] row : customers) {//ID-LN-FN-St-Brgy-City
+            customerdetails.addItem(row[2] + " " + row[1] + " - " + row[3]);
+        }
+    }
+    private void refreshFormVisibility() {
+        boolean x = !paymentcheckbox.isSelected() || radiodeliver.isSelected();
+        
+        jLabel17.setVisible(!x);
+        amount1field.setVisible(!x);
+        
+        jLabel2.setVisible(x);
+        customerdetails.setVisible(x);
+        jLabel11.setVisible(x);
+        jLabel12.setVisible(x);
+        jLabel13.setVisible(x);
+        jLabel14.setVisible(x);
+        jLabel15.setVisible(x);
+        jLabel16.setVisible(x);
+        fnamefield.setVisible(x);
+        lnamefield.setVisible(x);
+        housefield.setVisible(x);
+        brgyfield.setVisible(x);
+        cityfield.setVisible(x);
+        mobilefield.setVisible(x);
+        jLabel18.setVisible(x);
+        amount2field.setVisible(x);
+        
+        if (x) amount2field.setText(amount1field.getText());
+        else amount1field.setText(amount2field.getText());
+    }
+    private void resetForm() {
+        paymentcheckbox.setSelected(true);
+        radiowalkin.setSelected(true);
+        refreshFormVisibility();
+        emptyForm();
+    }
+    private void emptyForm() {
+        amount1field.setText("");
+        fnamefield.setText("");
+        lnamefield.setText("");
+        housefield.setText("");
+        brgyfield.setText("");
+        cityfield.setText("");
+        mobilefield.setText("");
+        amount2field.setText("");
+    }
+    // DocumentFilter Taken From StackOverflow
+    class MyFloatFilter extends DocumentFilter {
+   @Override
+   public void insertString(FilterBypass fb, int offset, String string,
+         AttributeSet attr) throws BadLocationException {
+
+      Document doc = fb.getDocument();
+      StringBuilder sb = new StringBuilder();
+      sb.append(doc.getText(0, doc.getLength()));
+      sb.insert(offset, string);
+
+      if (test(sb.toString())) {
+         super.insertString(fb, offset, string, attr);
+      } else {
+         // warn the user and don't allow the insert
+      }
+   }
+
+   private boolean test(String text) {
+      try {
+         Float.parseFloat(text);
+         return true;
+      } catch (NumberFormatException e) {
+         return false;
+      }
+   }
+
+   @Override
+   public void replace(FilterBypass fb, int offset, int length, String text,
+         AttributeSet attrs) throws BadLocationException {
+      
+      Document doc = fb.getDocument();
+      StringBuilder sb = new StringBuilder();
+      sb.append(doc.getText(0, doc.getLength()));
+      sb.replace(offset, offset + length, text);
+      if (sb.toString().length() == 0) {
+          super.replace(fb, offset, length, "", null);
+      }
+      else if (test(sb.toString()) && !(sb.toString().endsWith("f") ||
+                                       sb.toString().endsWith("d"))) {
+         super.replace(fb, offset, length, text, attrs);
+      } else {
+         // warn the user and don't allow the insert
+      }
+
+   }
+
+   @Override
+   public void remove(FilterBypass fb, int offset, int length)
+         throws BadLocationException {
+      Document doc = fb.getDocument();
+      StringBuilder sb = new StringBuilder();
+      sb.append(doc.getText(0, doc.getLength()));
+      sb.delete(offset, offset + length);
+      
+      if (sb.toString().length() == 0) {
+          super.replace(fb, offset, length, "", null);
+      }
+      else if (test(sb.toString())) {
+         super.remove(fb, offset, length);
+      } else {
+         // warn the user and don't allow the insert
+      }
+      
+   }
+}
     private void scaleIcons(){     
         ImageIcon icon3 = new ImageIcon("arrow.png");
         Image arrow = icon3.getImage();
@@ -548,7 +683,7 @@ public class Main extends javax.swing.JFrame {
 
         orderbtn.setBackground(new java.awt.Color(10, 64, 83));
         orderbtn.setForeground(new java.awt.Color(255, 255, 255));
-        orderbtn.setText("Order");
+        orderbtn.setText("View Order");
         orderbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderbtnActionPerformed(evt);
@@ -656,7 +791,13 @@ public class Main extends javax.swing.JFrame {
         buttonGroup1.add(radiowalkin);
         radiowalkin.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         radiowalkin.setForeground(new java.awt.Color(34, 73, 87));
+        radiowalkin.setSelected(true);
         radiowalkin.setText("for Walk-in");
+        radiowalkin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                orderFormRadioChange(evt);
+            }
+        });
         radiowalkin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radiowalkinActionPerformed(evt);
@@ -667,6 +808,11 @@ public class Main extends javax.swing.JFrame {
         radiodeliver.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         radiodeliver.setForeground(new java.awt.Color(34, 73, 87));
         radiodeliver.setText("for Delivery");
+        radiodeliver.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                orderFormRadioChange(evt);
+            }
+        });
 
         submitform.setBackground(new java.awt.Color(140, 208, 218));
         submitform.setForeground(new java.awt.Color(34, 73, 87));
@@ -678,6 +824,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         customerdetails.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        customerdetails.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                customerdetailsItemStateChanged(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 73, 87));
@@ -694,9 +845,15 @@ public class Main extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(34, 73, 87));
         jLabel17.setText("Amount Paid");
 
-        paymentcheckbox.setFont(new java.awt.Font("Source Sans Pro Semibold", 2, 12)); // NOI18N
+        paymentcheckbox.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         paymentcheckbox.setForeground(new java.awt.Color(34, 73, 87));
+        paymentcheckbox.setSelected(true);
         paymentcheckbox.setText("Full Payment");
+        paymentcheckbox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                paymentcheckboxItemStateChanged(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(34, 73, 87));
@@ -711,8 +868,6 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(radiowalkin, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(radiodeliver, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(amount1field, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(paymentcheckbox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -755,15 +910,18 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(customerdetails, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel16Layout.createSequentialGroup()
                                     .addGap(0, 160, Short.MAX_VALUE)
-                                    .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(paymentcheckbox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(amount1field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
                 .addContainerGap(108, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addComponent(paymentcheckbox)
-                .addGap(1, 1, 1)
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addComponent(paymentcheckbox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(amount1field, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -809,7 +967,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(submitform, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         form.add(jPanel16);
@@ -1577,11 +1735,19 @@ public class Main extends javax.swing.JFrame {
         GlassPanePopup.showPopup(new Message(msg));
     }
     private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
+        if (cart.isEmpty()) {
+            showMsg("No Products Added");
+            return;
+        }
         OrderPopup obj = new OrderPopup(cart);
         obj.confirm(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 GlassPanePopup.closePopupLast();
+                if (cart.isEmpty()) {
+                    showMsg("No Products Added");
+                    return;
+                }
                 showCard(form);
             }
         });
@@ -1635,13 +1801,80 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_genreport6ActionPerformed
 
     private void submitformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitformActionPerformed
+        // get products and price
+        String productNames = "";
+        String productQTY = "";
+        float price = 0;
+        for (Object[] row : cart) {//ID-name-qty-price
+            productNames += row[1] + ",";
+            productQTY += row[2] + ",";
+            price += (float) row[3];
+        }
+        // get amount paid
+        float amountPaid;
+        if (!paymentcheckbox.isSelected() || radiodeliver.isSelected()) {
+            if (amount2field.getText().equals("")) amount2field.setText("0");
+            amountPaid = Float.parseFloat(amount2field.getText());
+        } else {
+            if (amount1field.getText().equals("")) amount1field.setText("0");
+            amountPaid = Float.parseFloat(amount1field.getText());
+        }
+        //check if fully paid matches amount given if full payment is selected
+        if (paymentcheckbox.isSelected() && amountPaid < price) {
+            showMsg("Not Enough Amount Paid");
+            return;
+        }
+        // prepare now the final strings
+        final String prodNames = productNames.substring(0, productNames.length()-1);
+        final String prodQTY = productQTY.substring(0, productQTY.length()-1);
+        final float totPrice = price;
         ConfirmOrder obj = new ConfirmOrder();
-        obj.confirmOrder((ActionEvent ae) -> {
-            GlassPanePopup.closePopupLast();
-            form.setVisible(false);
-            pendingtransac.setVisible(true);
+        obj.confirmOrder(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                boolean isWalkIn = paymentcheckbox.isSelected() && radiowalkin.isSelected();
+                String cID = null;
+                Database db = new Database();
+                //check if new customer && not a fully paid walk in; insert into customer table if new
+                if (customerdetails.getSelectedIndex() == 0 && !isWalkIn) {
+                    //check details
+                    if (fnamefield.getText().trim().equals("") ||
+                            lnamefield.getText().trim().equals("") ||
+                            housefield.getText().trim().equals("") ||
+                            brgyfield.getText().trim().equals("") ||
+                            cityfield.getText().trim().equals("")) {
+                        showMsg("Incomplete Details");
+                        return;
+                    }
+                    //add new customer
+                    Integer mobileNumber = mobilefield.getText().equals("") ? null : Integer.valueOf(mobilefield.getText());
+                    cID = db.addCustomer(lnamefield.getText().trim(),
+                            fnamefield.getText().trim(),
+                            housefield.getText().trim(),
+                            brgyfield.getText().trim(),
+                            cityfield.getText().trim(),
+                            mobileNumber);
+                    if (cID == null) {// AN ERR OCCURRED
+                        showMsg("error while adding customer");
+                        return;
+                    }
+                } else if (!isWalkIn) { //existing customer
+                    for (Object[] x : customers) System.out.println(Arrays.toString(x));
+                    System.out.println(customerdetails.getSelectedIndex());
+                    System.out.println(Arrays.toString(customers.get(customerdetails.getSelectedIndex()-1)));
+                    cID = (String) customers.get(customerdetails.getSelectedIndex()-1)[0];
+                }
+                //place now the order
+                db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amountPaid);
+                db.closeConnection();
+                GlassPanePopup.closePopupLast();
+//                resetForm();
+//            form.setVisible(false);
+//            pendingtransac.setVisible(true);
+            }
         });
         GlassPanePopup.showPopup(obj); 
+        
     }//GEN-LAST:event_submitformActionPerformed
 
     private void signoutbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signoutbtnMouseClicked
@@ -1724,7 +1957,7 @@ public class Main extends javax.swing.JFrame {
                 prodID,
                 db.getProductName(prodID),
                 qty,
-                qty * db.getProductPrice(prodID)
+                db.getProductPrice(prodID) * qty
             });
             showMsg("Successfully Added Product");
         } finally {
@@ -1742,6 +1975,8 @@ public class Main extends javax.swing.JFrame {
         CancelOrder obj = new CancelOrder();
         obj.cancelOrder((ActionEvent ae) -> {
             GlassPanePopup.closePopupLast();
+            cart.clear();
+            resetForm();
             form.setVisible(false);
             invoices.setVisible(true);
         });
@@ -1755,6 +1990,30 @@ public class Main extends javax.swing.JFrame {
     private void radiowalkinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radiowalkinActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radiowalkinActionPerformed
+
+    private void paymentcheckboxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_paymentcheckboxItemStateChanged
+        refreshFormVisibility();
+    }//GEN-LAST:event_paymentcheckboxItemStateChanged
+
+    private void orderFormRadioChange(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_orderFormRadioChange
+        if(evt.getStateChange() == 1) {
+            refreshFormVisibility();
+        }
+    }//GEN-LAST:event_orderFormRadioChange
+
+    private void customerdetailsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_customerdetailsItemStateChanged
+        if (evt.getStateChange() == 1) {
+            emptyForm();
+            int row = customerdetails.getSelectedIndex();
+            if (row == -1 || row == 0) return;
+            Object[] customer = customers.get(row-1);
+            lnamefield.setText((String) customer[1]);
+            fnamefield.setText((String) customer[2]);
+            housefield.setText((String) customer[3]);
+            brgyfield.setText((String) customer[4]);
+            cityfield.setText((String) customer[5]);
+        }
+    }//GEN-LAST:event_customerdetailsItemStateChanged
     /**
      * @param args the command line arguments
      */

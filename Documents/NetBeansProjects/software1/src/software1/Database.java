@@ -2,6 +2,8 @@
 package software1;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -216,6 +218,8 @@ public class Database {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             output = rs.next(); // returns true if user exists
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -229,14 +233,138 @@ public class Database {
             ps.setString(2, Crypto.encrypt(password));
             ps.setString(3, role);
             ps.executeUpdate();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             output = false;
         }
         return output;
     }
+    public ArrayList<Object[]> getCustomers() {
+        ArrayList<Object[]> customers = new ArrayList<>();
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM customers");
+            while (rs.next()) {
+                customers.add(new Object[] {
+                rs.getString("CustomerID"),
+                rs.getString("LastName"),
+                rs.getString("FirstName"),
+                rs.getString("Street"),
+                rs.getString("Barangay"),
+                rs.getString("City")
+                });
+            }
+            rs.close();
+            s.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return customers;
+    }
+    public boolean checkCustomer(String customerID) {
+        boolean output = true;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT CustomerID FROM customers WHERE CustomerID=?");
+            ps.setString(1, customerID);
+            ResultSet rs = ps.executeQuery();
+            output = rs.next();
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
+    public String addCustomer(String lastName, String firstName, String street, String brgy, String city, Integer mobileNumber) {
+        String cID = null;
+        try {
+            cID = (lastName+firstName).replaceAll(" ", "").toLowerCase();
+            int n = 0;
+            while (checkCustomer(cID+(n==0?"":n))) n++;
+            if (n!=0) cID = cID + n;
+            
+            PreparedStatement ps = con.prepareStatement("INSERT INTO customers VALUES(?,?,?,?,?,?,?)");
+            ps.setString(1, cID);
+            ps.setString(2, lastName);
+            ps.setString(3, firstName);
+            ps.setString(4, street);
+            ps.setString(5, brgy);
+            ps.setString(6, city);
+            if (mobileNumber == null) ps.setNull(7, java.sql.Types.INTEGER);
+            else ps.setInt(7, mobileNumber);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cID;
+    }
+    public void placeOrder(boolean isWalkIn, String customerID, String productNames, String productQTY, float price, float amountPaid) {
+        try {
+            Long orderID = Long.valueOf(LocalDateTime.now().toString().replaceAll("[^\\d]", "").substring(2,14));
+            System.out.println("orderID: " + orderID);
+            Date date = Date.valueOf(LocalDate.now());
+            System.out.println("date: " + date.toString());
+            System.out.println("Product Names: " + productNames);
+            System.out.println("Product QTY: " + productQTY);
+            System.out.println("Price: " + price);
+            System.out.println("customerID: " + customerID);
+            
+            PreparedStatement ps = con.prepareStatement("INSERT INTO orders VALUES(?,?,?,?,?,?,?,?,?)");
+            ps.setLong(1, orderID);
+            ps.setString(2, customerID);
+            ps.setString(3, productNames);
+            ps.setString(4, productQTY);
+            ps.setFloat(5, price);
+            ps.setFloat(6, amountPaid);
+            ps.setBoolean(7, price == amountPaid);
+            ps.setDate(8, date);
+            ps.setDate(9, price == amountPaid ? date : null);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public float getTotalPrice(Long orderID) {
+        float totalPrice = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT TotalPrice FROM orders WHERE orderID = ?");
+            ps.setLong(1, orderID);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                totalPrice = rs.getFloat("TotalPrice");
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return totalPrice;
+    }
+    public void updateOrderToFullyPaid(Long orderID, Float amountPaid) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET AmountPaid=?,FullyPaid=?,DatePaid=? WHERE OrderID=?");
+            ps.setFloat(1, amountPaid);
+            ps.setBoolean(2, true);
+            ps.setDate(3, Date.valueOf(LocalDate.now()));
+            ps.setLong(4, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public static void main(String[] args) {
         Database db = new Database();
-        db.getTransactions(0, 0);
+        
+        db.addCustomer("rib", "rob", "aa", "aa", "aa", null);
+        db.addCustomer("rib", "rob", "bb", "bb", "bb", null);
+        db.addCustomer("rib", "rob", "cc", "cc", "cc", null);
+        db.addCustomer("rib", "rob", "dd", "dd", "dd", null);
+        
+        
+        db.closeConnection();
     }
 }

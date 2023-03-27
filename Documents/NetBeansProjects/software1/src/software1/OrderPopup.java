@@ -230,6 +230,7 @@ public class OrderPopup extends javax.swing.JPanel {
     private void RemoveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveOrderActionPerformed
         // TODO add your handling code here:
         int row = jTable1.getSelectedRow(); // GET ROW
+        if (row == -1) return; // EXIT IF NOTHING IS SELECTED
         this.total -= (float) this.list.get(row)[3]; // UPDATE TOTAL
         popuptotalprice.setText(""+total); // SHOW NEW TOTAL
         this.list.remove(jTable1.getSelectedRow()); // REMOVE FROM LIST
