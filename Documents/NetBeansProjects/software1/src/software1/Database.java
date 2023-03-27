@@ -125,12 +125,7 @@ public class Database {
         ArrayList<ArrayList<Object>> list = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(
-                "SELECT orders.*, " +
-                "concat(customers.FirstName,' ',customers.LastName) AS Name, " +
-                "concat(customers.Street,' ',customers.Barangay,' ',customers.City) AS Address " +
-                "FROM orders " +
-                "INNER JOIN customers ON orders.CustomerID = customers.CustomerID " +
-                "WHERE FullyPaid=? " +
+                "SELECT * FROM orders WHERE FullyPaid=? " +
                 (orderType == 1 ? "AND orders.OrderID NOT IN (SELECT deliveries.OrderID FROM deliveries)" :
                  orderType == 2 ? "AND orders.OrderID IN (SELECT deliveries.OrderID FROM deliveries)" : "")
             );
@@ -144,12 +139,21 @@ public class Database {
                 for (int i = 0; i < names.length; i++) {
                     products += names[i] + " - " + qty[i] + "\n";
                 }
+                String cID = "N/A";
+                String name = "N/A";
+                String addr = "N/A";
+                if (rs.getString("CustomerID") != null) {
+                    Object[] customer = getCustomer(rs.getString("CustomerID"));
+                    cID = (String) customer[0];
+                    name = (String) customer[2] + " " + customer[1];
+                    addr = (String) customer[3] + " " + customer[4] + " " + customer[5];
+                }
                 ArrayList<Object> row = new ArrayList<>();
                 row.add(rs.getLong("OrderID"));
                 row.add(products);
-                row.add(rs.getString("CustomerID"));
-                row.add(rs.getString("Name"));
-                row.add(rs.getString("Address"));
+                row.add(cID);
+                row.add(name);
+                row.add(addr);
                 if (status == 0) { // OrderID-Item/QTY-CustomerID-Name-Address-Price
                     row.add(rs.getFloat("TotalPrice"));
                 } else { // OrderID-Item/QTY-CustomerID-Name-Address-AmountPaid-Time/Date
@@ -158,6 +162,7 @@ public class Database {
                 }
                 list.add(row);
             }
+            
             rs.close();
             ps.close();
         } catch (SQLException ex) {
@@ -262,6 +267,30 @@ public class Database {
         }
         return customers;
     }
+    public Object[] getCustomer(String customerID) {
+        Object[] customer = null;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM customers WHERE CustomerID=?");
+            ps.setString(1, customerID);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                customer = new Object[]{
+                    rs.getString("CustomerID"),
+                    rs.getString("LastName"),
+                    rs.getString("FirstName"),
+                    rs.getString("Street"),
+                    rs.getString("Barangay"),
+                    rs.getString("City"),
+                    rs.getInt("MobileNumber"),
+                };
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return customer;
+    }
     public boolean checkCustomer(String customerID) {
         boolean output = true;
         try {
@@ -300,9 +329,10 @@ public class Database {
         }
         return cID;
     }
-    public void placeOrder(boolean isWalkIn, String customerID, String productNames, String productQTY, float price, float amountPaid) {
+    public long placeOrder(boolean isWalkIn, String customerID, String productNames, String productQTY, float price, float amountPaid) {
+        Long orderID = null;
         try {
-            Long orderID = Long.valueOf(LocalDateTime.now().toString().replaceAll("[^\\d]", "").substring(2,14));
+            orderID = Long.valueOf(LocalDateTime.now().toString().replaceAll("[^\\d]", "").substring(2,14));
             System.out.println("orderID: " + orderID);
             Date date = Date.valueOf(LocalDate.now());
             System.out.println("date: " + date.toString());
@@ -323,6 +353,14 @@ public class Database {
             ps.setDate(9, price == amountPaid ? date : null);
             ps.executeUpdate();
             ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orderID;
+    }
+    public void placeForDelivery(Long orderID) {
+        try {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO deliveries VALUES(?,?,?,?)");
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JComboBox;
 import javax.swing.border.Border;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -41,8 +42,12 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         GlassPanePopup.install(this);
         this.setLocationRelativeTo(null);
-        initTableData();
         System.out.println("owner?"+role.equals("owner"));
+        
+        refreshPendingTransact();
+        refreshCompleteTransact();
+        refreshPendingDelivery();
+        refreshCompleteDelivery();
         
         editmodule1.setVisible(isAuth);
         editmodule2.setVisible(isAuth);
@@ -63,12 +68,12 @@ public class Main extends javax.swing.JFrame {
         scaleReports();
     }
     private void populateCustomersBox() {
+        customerdetails.removeAllItems();
         customerdetails.addItem("- New Customer -");
         
         Database db = new Database();
         customers = db.getCustomers();
         db.closeConnection();
-        
         for (Object[] row : customers) {//ID-LN-FN-St-Brgy-City
             customerdetails.addItem(row[2] + " " + row[1] + " - " + row[3]);
         }
@@ -104,6 +109,7 @@ public class Main extends javax.swing.JFrame {
         radiowalkin.setSelected(true);
         refreshFormVisibility();
         emptyForm();
+        populateCustomersBox();
     }
     private void emptyForm() {
         amount1field.setText("");
@@ -227,7 +233,6 @@ public class Main extends javax.swing.JFrame {
         productname1.setText(text);
         //productdesc1.setText("");
     }
-    
     private void scaleReports() {
         ImageIcon icon7 = new ImageIcon("transacicon.png");
         Image prod3 = icon7.getImage();
@@ -1251,6 +1256,11 @@ public class Main extends javax.swing.JFrame {
                 TransactComboBoxItemStateChanged(evt);
             }
         });
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         generatebtn1.setBackground(new java.awt.Color(140, 208, 218));
         generatebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -1696,12 +1706,23 @@ public class Main extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void initTableData() {
+    private void refreshPendingTransact() {
         Database db = new Database();
         populateTable(pendingtransactbl, db.getTransactions(0, 0));
+        db.closeConnection();
+    }
+    private void refreshCompleteTransact() {
+        Database db = new Database();
         populateTable(pendingtransactbl1, db.getTransactions(1, 0));
+        db.closeConnection();
+    }
+    private void refreshPendingDelivery() {
+        Database db = new Database();
         populateTable(pendingtransactbl2, db.getDeliveries(0));
+        db.closeConnection();
+    }
+    private void refreshCompleteDelivery() {
+        Database db = new Database();
         populateTable(pendingdelivertbl1, db.getDeliveries(2));
         db.closeConnection();
     }
@@ -1740,16 +1761,13 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         OrderPopup obj = new OrderPopup(cart);
-        obj.confirm(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                GlassPanePopup.closePopupLast();
-                if (cart.isEmpty()) {
-                    showMsg("No Products Added");
-                    return;
-                }
-                showCard(form);
+        obj.confirm((ActionEvent ae) -> {
+            GlassPanePopup.closePopupLast();
+            if (cart.isEmpty()) {
+                showMsg("No Products Added");
+                return;
             }
+            showCard(form);
         });
         GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_orderbtnActionPerformed
@@ -1829,49 +1847,55 @@ public class Main extends javax.swing.JFrame {
         final String prodQTY = productQTY.substring(0, productQTY.length()-1);
         final float totPrice = price;
         ConfirmOrder obj = new ConfirmOrder();
-        obj.confirmOrder(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                boolean isWalkIn = paymentcheckbox.isSelected() && radiowalkin.isSelected();
-                String cID = null;
-                Database db = new Database();
-                //check if new customer && not a fully paid walk in; insert into customer table if new
-                if (customerdetails.getSelectedIndex() == 0 && !isWalkIn) {
-                    //check details
-                    if (fnamefield.getText().trim().equals("") ||
-                            lnamefield.getText().trim().equals("") ||
-                            housefield.getText().trim().equals("") ||
-                            brgyfield.getText().trim().equals("") ||
-                            cityfield.getText().trim().equals("")) {
-                        showMsg("Incomplete Details");
-                        return;
-                    }
-                    //add new customer
-                    Integer mobileNumber = mobilefield.getText().equals("") ? null : Integer.valueOf(mobilefield.getText());
-                    cID = db.addCustomer(lnamefield.getText().trim(),
-                            fnamefield.getText().trim(),
-                            housefield.getText().trim(),
-                            brgyfield.getText().trim(),
-                            cityfield.getText().trim(),
-                            mobileNumber);
-                    if (cID == null) {// AN ERR OCCURRED
-                        showMsg("error while adding customer");
-                        return;
-                    }
-                } else if (!isWalkIn) { //existing customer
-                    for (Object[] x : customers) System.out.println(Arrays.toString(x));
-                    System.out.println(customerdetails.getSelectedIndex());
-                    System.out.println(Arrays.toString(customers.get(customerdetails.getSelectedIndex()-1)));
-                    cID = (String) customers.get(customerdetails.getSelectedIndex()-1)[0];
+        obj.confirmOrder((ActionEvent ae) -> {
+            boolean isWalkIn = paymentcheckbox.isSelected() && radiowalkin.isSelected();
+            String cID = null;
+            Database db = new Database();
+            //check if new customer && not a fully paid walk in; insert into customer table if new
+            if (customerdetails.getSelectedIndex() == 0 && !isWalkIn) {
+                //check details
+                if (fnamefield.getText().trim().equals("") ||
+                        lnamefield.getText().trim().equals("") ||
+                        housefield.getText().trim().equals("") ||
+                        brgyfield.getText().trim().equals("") ||
+                        cityfield.getText().trim().equals("")) {
+                    showMsg("Incomplete Details");
+                    return;
                 }
-                //place now the order
-                db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amountPaid);
-                db.closeConnection();
-                GlassPanePopup.closePopupLast();
-//                resetForm();
-//            form.setVisible(false);
-//            pendingtransac.setVisible(true);
+                //add new customer
+                Integer mobileNumber = mobilefield.getText().equals("") ? null : Integer.valueOf(mobilefield.getText());
+                cID = db.addCustomer(lnamefield.getText().trim(),
+                        fnamefield.getText().trim(),
+                        housefield.getText().trim(),
+                        brgyfield.getText().trim(),
+                        cityfield.getText().trim(),
+                        mobileNumber);
+                if (cID == null) {// AN ERR OCCURRED
+                    showMsg("error while adding customer");
+                    return;
+                }
+            } else if (!isWalkIn) {
+                //existing customer
+                for (Object[] x1 : customers) {
+                    System.out.println(Arrays.toString(x1));
+                }
+                System.out.println(customerdetails.getSelectedIndex());
+                System.out.println(Arrays.toString(customers.get(customerdetails.getSelectedIndex()-1)));
+                cID = (String) customers.get(customerdetails.getSelectedIndex()-1)[0];
             }
+            //place now the order also check if for delivery
+            if (radiodeliver.isSelected()) {
+                // code for delivery
+            } else {
+                db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amountPaid);
+            }
+            db.closeConnection();
+            GlassPanePopup.closePopupLast();
+            resetForm();
+            cart.clear();
+            form.setVisible(false);
+            refreshPendingTransact();
+            pendingtransac.setVisible(true);
         });
         GlassPanePopup.showPopup(obj); 
         
@@ -1888,24 +1912,28 @@ public class Main extends javax.swing.JFrame {
         pendingtransac.setVisible(false);
         //this.authpassbtn2ActionPerformed(evt);
         completetransac.setVisible(true);
+        refreshCompleteTransact();
     }//GEN-LAST:event_completebtn1MouseClicked
 
     private void pendingbtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingbtn2MouseClicked
         completetransac.setVisible(false);
         //authpassbtn2ActionPerformed(evt);
         pendingtransac.setVisible(true);
+        refreshPendingTransact();
     }//GEN-LAST:event_pendingbtn2MouseClicked
 
     private void pendingbtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingbtn4MouseClicked
         completedeliver.setVisible(false);
         //this.authpassbtn2ActionPerformed(evt);
         pendingdeliver.setVisible(true);
+        refreshPendingDelivery();
     }//GEN-LAST:event_pendingbtn4MouseClicked
 
     private void completebtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completebtn3MouseClicked
         pendingdeliver.setVisible(false);
         //this.authpassbtn2ActionPerformed(evt);
         completedeliver.setVisible(true);
+        refreshCompleteDelivery();
     }//GEN-LAST:event_completebtn3MouseClicked
 
     private void updatebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtn1ActionPerformed
@@ -1933,7 +1961,9 @@ public class Main extends javax.swing.JFrame {
         if (evt.getStateChange() == 2) return;
         Database db = new Database();
         int status = evt.getSource() == jComboBox1 ? 0 : 1;
-        populateTable(pendingtransactbl, db.getTransactions(status, jComboBox1.getSelectedIndex()));
+        System.out.println("status: " + status);
+        System.out.println("ordertype: " + ((JComboBox) evt.getSource()).getSelectedIndex());
+        populateTable(status == 0 ? pendingtransactbl : pendingtransactbl1, db.getTransactions(status, ((JComboBox) evt.getSource()).getSelectedIndex()));
         db.closeConnection();
     }//GEN-LAST:event_TransactComboBoxItemStateChanged
 
@@ -2014,6 +2044,10 @@ public class Main extends javax.swing.JFrame {
             cityfield.setText((String) customer[5]);
         }
     }//GEN-LAST:event_customerdetailsItemStateChanged
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
     /**
      * @param args the command line arguments
      */
