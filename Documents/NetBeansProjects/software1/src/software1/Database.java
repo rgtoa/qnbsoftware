@@ -425,6 +425,21 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void updateDelivery(Long orderID, int status, String names) {
+        try {
+            boolean hasName = names != null;
+            PreparedStatement ps = con.prepareStatement(
+            "UPDATE deliveries SET DeliveryStatus=?" + (hasName ? ",DeliveryMan=?": "") + " WHERE OrderID=?"
+            );
+            ps.setInt(1, status);
+            if (hasName) ps.setString(2, names);
+            ps.setLong(3, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public static void main(String[] args) {
         Database db = new Database();
         

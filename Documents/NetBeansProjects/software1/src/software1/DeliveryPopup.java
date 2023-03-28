@@ -12,12 +12,13 @@ import java.awt.event.ActionListener;
  * @author 97433
  */
 public class DeliveryPopup extends javax.swing.JPanel {
-
+    private final Long orderID;
     /**
      * Creates new form DeliveryPopup
      */
-    public DeliveryPopup() {
+    public DeliveryPopup(Long orderID) {
         initComponents();
+        this.orderID = orderID;
     }
 
     /**
@@ -46,7 +47,7 @@ public class DeliveryPopup extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 73, 87));
-        jLabel2.setText("Enter Delivery Names:");
+        jLabel2.setText("Enter Delivery Men Names:");
 
         backbtn2.setBackground(new java.awt.Color(140, 208, 218));
         backbtn2.setForeground(new java.awt.Color(34, 73, 87));
@@ -70,18 +71,20 @@ public class DeliveryPopup extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(backbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(setOngoingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(deliverynamefield, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(deliverynamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deliverynamefield2)))
+                        .addComponent(deliverynamefield2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(backbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(setOngoingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,8 +109,28 @@ public class DeliveryPopup extends javax.swing.JPanel {
     private void backbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtn2ActionPerformed
         GlassPanePopup.closePopupLast();
     }//GEN-LAST:event_backbtn2ActionPerformed
-    public void setOngoing(ActionListener event) {
-        setOngoingbtn.addActionListener(event);
+    
+    public void addConfirmAction(ActionListener evt) {
+        setOngoingbtn.addActionListener(evt);
+        setOngoingbtn.addActionListener(event -> {
+            System.out.println("updating order");
+            //GET NAMES
+            String names = deliverynamefield.getText().trim();
+            String n = deliverynamefield2.getText().trim();
+            if (!n.equals("")) names += "," + n;
+            //CHECK FOR NAMES
+            if (names.equals("")) {
+                GlassPanePopup.showPopup(new Message("Please fill in required field"));
+                return;
+            }
+            // CHECK DONE PROCEED TO UPDATE
+            Database db = new Database();
+            db.updateDelivery(orderID, 1, names);
+            db.closeConnection();
+            GlassPanePopup.closePopupLast();
+            GlassPanePopup.showPopup(new Message("Update Success"));
+            System.out.println("update complete");
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

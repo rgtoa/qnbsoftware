@@ -19,6 +19,7 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JComboBox;
 import javax.swing.border.Border;
+import javax.swing.table.TableModel;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -1353,7 +1354,7 @@ public class Main extends javax.swing.JFrame {
         pendingdeliver.setBackground(new java.awt.Color(255, 255, 255));
         pendingdeliver.setPreferredSize(new java.awt.Dimension(1250, 625));
 
-        pendingbtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        pendingbtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
         pendingbtn3.setForeground(new java.awt.Color(10, 64, 83));
         pendingbtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendingbtn3.setText("Pending");
@@ -1462,7 +1463,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
-                        .addComponent(pendingbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pendingbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
@@ -1500,7 +1501,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updatebtn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1562,7 +1563,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        completebtn4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        completebtn4.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
         completebtn4.setForeground(new java.awt.Color(10, 64, 83));
         completebtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         completebtn4.setText("Completed");
@@ -1597,7 +1598,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(completedeliverLayout.createSequentialGroup()
-                        .addComponent(pendingbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pendingbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
@@ -1617,7 +1618,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(completedeliverLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(7, 7, 7)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(completebtn4)
@@ -2078,10 +2079,20 @@ public class Main extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
-
+    
     private void updatebtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtn2ActionPerformed
-//        DeliveryPopup obj = new DeliveryPopup();
-//        GlassPanePopup.showPopup(obj);
+        if (jComboBox5.getSelectedIndex() == 0) {
+            int row = pendingdelivertbl.getSelectedRow();
+            if (row == -1) return;
+            TableModel model = pendingdelivertbl.getModel();
+            Long orderID = (Long) model.getValueAt(row, 0);
+            System.out.println("currently updating " + orderID);
+            DeliveryPopup obj = new DeliveryPopup(orderID);
+            obj.addConfirmAction(event -> refreshPendingDelivery()); // REFRESH TABLE AFTER UPDATE
+            GlassPanePopup.showPopup(obj);
+        } else {
+            
+        }
     }//GEN-LAST:event_updatebtn2ActionPerformed
     /**
      * @param args the command line arguments
