@@ -200,11 +200,11 @@ public class Database {
                 row.add(rs.getString("CustomerID"));
                 row.add(rs.getString("Name"));
                 row.add(rs.getString("Address"));
+                row.add(status == 0 ? "Awaiting.." : rs.getString("DeliveryMan"));
                 row.add(rs.getFloat("TotalPrice"));
                 if (status == 2) { // OrderID-Item/QTY-CustomerID-Name-Address-Price-Time/Date
                     row.add(rs.getDate("DeliveryDate"));
                 } else { // OrderID-Item/QTY-CustomerID-Name-Address-Price-Status
-                    row.add(rs.getDate("DatePaid"));
                     row.add(status == 0 ? "Pending" : "Ongoing");
                 }
                 list.add(row);

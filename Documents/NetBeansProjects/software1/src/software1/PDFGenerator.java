@@ -10,6 +10,7 @@ package software1;
  */
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,26 +19,24 @@ public class PDFGenerator {
     private final Font FONT_NORMAL = FontFactory.getFont(FontFactory.TIMES, 10);
     private final Font FONT_BOLD = FontFactory.getFont(FontFactory.TIMES_BOLD, 10);
     private final Font FONT_BOLD_UNDERLINE = FontFactory.getFont(FontFactory.TIMES_BOLD, 10, Font.UNDERLINE);
-    private final Font FONT_TITLE = FontFactory.getFont(FontFactory.TIMES_BOLD, 12);
+    private final Font FONT_SUBTITLE = FontFactory.getFont(FontFactory.TIMES_BOLDITALIC, 12);
+    private final Font FONT_TITLE = FontFactory.getFont(FontFactory.TIMES_BOLD, 20);
     
-    public void TransactionsReport() throws Exception{
+    public void pendingWalkIn() {
+        
+    }
+    public void pendingDeliver() {
+        
+    }
+    public void completeWalkIn() {
+        
+    }
+    public void completeDeliver() {
+        
+    }
+    public void allTransactionsReport() throws Exception{
         Database db = new Database();
-        Document document = new Document(PageSize.LEGAL);
-
-        // Create a PDF file with the current date and time as part of the filename
-        String filename = "example_" + LocalDate.now() + ".pdf";
-        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filename));
-
-        // Add header and footer
-        document.open();
-        writer.setPageEvent(new HeaderFooter());
-        
-        // Main Header
-        Paragraph p = new Paragraph("QNB WATER", FONT_TITLE);
-        p.setAlignment(Element.ALIGN_CENTER);
-        document.add(p);
-        
-        document.add(newLine());
+        Document document = createDocument("Transactions Report");
         
         //PENDING WALK-IN TABLE
         createTableBlock(document, "Unpaid Walk-Ins",
@@ -64,9 +63,30 @@ public class PDFGenerator {
         
         // Close the document
         document.close();
-
-        System.out.println("PDF file created: " + filename);
+        
         db.closeConnection();
+    }
+    private Document createDocument(String title) throws DocumentException, FileNotFoundException {
+        Document document = new Document(PageSize.LETTER);
+
+        // Create a PDF file with the current date and time as part of the filename
+        String filename = title.replaceAll(" ", "") + LocalDate.now() + ".pdf";
+        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filename));
+
+        // Add header and footer
+        document.open();
+        writer.setPageEvent(new HeaderFooter());
+        
+        // Main Header
+        Paragraph p = new Paragraph("QNB WATER", FONT_SUBTITLE);
+        p.setAlignment(Element.ALIGN_CENTER);
+        document.add(p);
+        Paragraph p2 = new Paragraph(title, FONT_TITLE);
+        p2.setAlignment(Element.ALIGN_CENTER);
+        document.add(p2);
+        document.add(newLine());
+        
+        return document;
     }
     private void createTableBlock(Document document, String title, String[] header, ArrayList<ArrayList<Object>> content) throws DocumentException {
         Paragraph p = new Paragraph(title, FONT_BOLD_UNDERLINE);
@@ -119,7 +139,7 @@ class HeaderFooter extends PdfPageEventHelper {
     
     public static void main(String[] args) throws Exception {
         PDFGenerator pdf = new PDFGenerator();
-        pdf.TransactionsReport();
+        pdf.allTransactionsReport();
     }
 }
 

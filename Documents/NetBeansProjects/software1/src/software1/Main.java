@@ -44,6 +44,11 @@ public class Main extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         System.out.println("owner?"+role.equals("owner"));
         
+        if (this.role.equals("delivery")) {
+            showCard(pendingdeliver);
+            boldCard(deliverbtn);
+            return;
+        }
         refreshPendingTransact();
         refreshCompleteTransact();
         refreshPendingDelivery();
@@ -53,6 +58,7 @@ public class Main extends javax.swing.JFrame {
         editmodule2.setVisible(isAuth);
         editmodule3.setVisible(isAuth);
         editmodule4.setVisible(isAuth);
+        
         populateCustomersBox();
         refreshFormVisibility();
         
@@ -275,8 +281,10 @@ public class Main extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         invoicetab = new javax.swing.JPanel();
         invoicebtn = new javax.swing.JLabel();
+        invoicebtn.setVisible(!this.role.equals("delivery"));
         transactab = new javax.swing.JPanel();
         transacbtn = new javax.swing.JLabel();
+        transacbtn.setVisible(!this.role.equals("delivery"));
         delivertab = new javax.swing.JPanel();
         deliverbtn = new javax.swing.JLabel();
         authentictab = new javax.swing.JPanel();
@@ -395,7 +403,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel1.setText("QNB " + this.role);
+        jLabel1.setText(this.username + " [" + this.role.toUpperCase() + "]");
         jLabel1.setPreferredSize(new java.awt.Dimension(175, 70));
 
         javax.swing.GroupLayout qnbLayout = new javax.swing.GroupLayout(qnb);
@@ -404,8 +412,8 @@ public class Main extends javax.swing.JFrame {
             qnbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(qnbLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addContainerGap())
         );
         qnbLayout.setVerticalGroup(
             qnbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,7 +776,7 @@ public class Main extends javax.swing.JFrame {
 
         invoices.add(jPanel12);
 
-        tabcontent.add(invoices, "card3");
+        tabcontent.add(invoices, "card1");
         invoices.getAccessibleContext().setAccessibleName("Transactions");
 
         form.setBackground(new java.awt.Color(255, 255, 255));
@@ -1022,7 +1030,7 @@ public class Main extends javax.swing.JFrame {
 
         form.add(jPanel15);
 
-        tabcontent.add(form, "card4");
+        tabcontent.add(form, "card2");
         form.getAccessibleContext().setAccessibleName("Deliveries");
 
         pendingtransac.setBackground(new java.awt.Color(255, 255, 255));
@@ -1080,7 +1088,7 @@ public class Main extends javax.swing.JFrame {
             pendingtransactbl.getColumnModel().getColumn(5).setPreferredWidth(5);
         }
 
-        pendingbtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        pendingbtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
         pendingbtn1.setForeground(new java.awt.Color(10, 64, 83));
         pendingbtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendingbtn1.setText("Pending");
@@ -1136,10 +1144,10 @@ public class Main extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pendingtransacLayout.createSequentialGroup()
-                        .addComponent(pendingbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
+                        .addComponent(pendingbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(completebtn1))
                     .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
@@ -1173,18 +1181,18 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(editmodule1)
                     .addComponent(updatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        tabcontent.add(pendingtransac, "card5");
+        tabcontent.add(pendingtransac, "card3");
         pendingtransac.getAccessibleContext().setAccessibleName("Authenticate");
 
         completetransac.setBackground(new java.awt.Color(255, 255, 255));
         completetransac.setPreferredSize(new java.awt.Dimension(1250, 625));
 
-        completebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        completebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
         completebtn2.setForeground(new java.awt.Color(10, 64, 83));
         completebtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         completebtn2.setText("Completed");
@@ -1300,8 +1308,8 @@ public class Main extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(completetransacLayout.createSequentialGroup()
-                        .addComponent(pendingbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addComponent(pendingbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(completebtn2))
@@ -1334,12 +1342,12 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(generatebtn1)
                     .addComponent(editmodule2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        tabcontent.add(completetransac, "card5");
+        tabcontent.add(completetransac, "card4");
 
         pendingdeliver.setBackground(new java.awt.Color(255, 255, 255));
         pendingdeliver.setPreferredSize(new java.awt.Dimension(1250, 625));
@@ -1361,7 +1369,7 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
@@ -1496,7 +1504,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(background5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        tabcontent.add(pendingdeliver, "card2");
+        tabcontent.add(pendingdeliver, "card5");
         pendingdeliver.getAccessibleContext().setAccessibleName("Invoices");
 
         completedeliver.setBackground(new java.awt.Color(255, 255, 255));
@@ -1623,7 +1631,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(background6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        tabcontent.add(completedeliver, "card2");
+        tabcontent.add(completedeliver, "card6");
 
         authreports.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1722,7 +1730,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        tabcontent.add(authreports, "card6");
+        tabcontent.add(authreports, "card7");
 
         getContentPane().add(tabcontent, java.awt.BorderLayout.CENTER);
 
@@ -2071,8 +2079,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void updatebtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtn2ActionPerformed
-        DeliveryPopup obj = new DeliveryPopup();
-        GlassPanePopup.showPopup(obj);
+//        DeliveryPopup obj = new DeliveryPopup();
+//        GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_updatebtn2ActionPerformed
     /**
      * @param args the command line arguments
