@@ -121,6 +121,14 @@ public class Main extends javax.swing.JFrame {
         mobilefield.setText("");
         amount2field.setText("");
     }
+    private void setFormEnabled(boolean b) {
+        fnamefield.setEnabled(b);
+        lnamefield.setEnabled(b);
+        housefield.setEnabled(b);
+        brgyfield.setEnabled(b);
+        cityfield.setEnabled(b);
+        mobilefield.setEnabled(b);
+    }
     // DocumentFilter Taken From StackOverflow
     class MyFloatFilter extends DocumentFilter {
    @Override
@@ -1730,7 +1738,6 @@ public class Main extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // reset the table
         for (ArrayList<Object> n : list) {
-            System.out.println("row " + java.util.Arrays.toString(n.toArray()));
             model.addRow(n.toArray());
         }
     }
@@ -1775,10 +1782,14 @@ public class Main extends javax.swing.JFrame {
     private void transacbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transacbtnMouseClicked
         showCard(pendingtransac);
         boldCard(transacbtn);
+        refreshPendingTransact();
+        refreshCompleteTransact();
     }//GEN-LAST:event_transacbtnMouseClicked
     private void deliverbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliverbtnMouseClicked
         showCard(pendingdeliver);
         boldCard(deliverbtn);
+        refreshPendingDelivery();
+        refreshCompleteDelivery();
     }//GEN-LAST:event_deliverbtnMouseClicked
 
     private void authenticbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authenticbtnMouseClicked
@@ -1876,16 +1887,11 @@ public class Main extends javax.swing.JFrame {
                 }
             } else if (!isWalkIn) {
                 //existing customer
-                for (Object[] x1 : customers) {
-                    System.out.println(Arrays.toString(x1));
-                }
-                System.out.println(customerdetails.getSelectedIndex());
-                System.out.println(Arrays.toString(customers.get(customerdetails.getSelectedIndex()-1)));
                 cID = (String) customers.get(customerdetails.getSelectedIndex()-1)[0];
             }
             //place now the order also check if for delivery
             if (radiodeliver.isSelected()) {
-                // code for delivery
+                db.placeForDelivery(db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amountPaid));
             } else {
                 db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amountPaid);
             }
@@ -1893,9 +1899,9 @@ public class Main extends javax.swing.JFrame {
             GlassPanePopup.closePopupLast();
             resetForm();
             cart.clear();
-            form.setVisible(false);
             refreshPendingTransact();
-            pendingtransac.setVisible(true);
+            showCard(pendingtransac);
+            boldCard(transacbtn);
         });
         GlassPanePopup.showPopup(obj); 
         
@@ -1961,8 +1967,6 @@ public class Main extends javax.swing.JFrame {
         if (evt.getStateChange() == 2) return;
         Database db = new Database();
         int status = evt.getSource() == jComboBox1 ? 0 : 1;
-        System.out.println("status: " + status);
-        System.out.println("ordertype: " + ((JComboBox) evt.getSource()).getSelectedIndex());
         populateTable(status == 0 ? pendingtransactbl : pendingtransactbl1, db.getTransactions(status, ((JComboBox) evt.getSource()).getSelectedIndex()));
         db.closeConnection();
     }//GEN-LAST:event_TransactComboBoxItemStateChanged
@@ -2035,6 +2039,7 @@ public class Main extends javax.swing.JFrame {
         if (evt.getStateChange() == 1) {
             emptyForm();
             int row = customerdetails.getSelectedIndex();
+            setFormEnabled(row == 0);
             if (row == -1 || row == 0) return;
             Object[] customer = customers.get(row-1);
             lnamefield.setText((String) customer[1]);
@@ -2042,6 +2047,7 @@ public class Main extends javax.swing.JFrame {
             housefield.setText((String) customer[3]);
             brgyfield.setText((String) customer[4]);
             cityfield.setText((String) customer[5]);
+            
         }
     }//GEN-LAST:event_customerdetailsItemStateChanged
 

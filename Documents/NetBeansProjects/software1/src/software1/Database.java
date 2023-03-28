@@ -358,9 +358,40 @@ public class Database {
         }
         return orderID;
     }
-    public void placeForDelivery(Long orderID) {
+    public Object[] getOrder(Long orderID) {
+        Object[] order = null;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM orders WHERE orderID=?");
+            ps.setLong(1, orderID);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                order = new Object[] {
+                    rs.getLong("OrderID"),
+                    rs.getString("CustomerID"),
+                    rs.getString("ProductNames"),
+                    rs.getString("ProductQuantities"),
+                    rs.getFloat("TotalPrice"),
+                    rs.getFloat("AmountPaid"),
+                    rs.getBoolean("FullyPaid"),
+                    rs.getDate("DateOrdered"),
+                    rs.getDate("DatePaid"),
+                };
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return order;
+    }
+    public void placeForDelivery(Long orderID) { //initially pending
         try {
             PreparedStatement ps = con.prepareStatement("INSERT INTO deliveries VALUES(?,?,?,?)");
+            ps.setLong(1, orderID);
+            ps.setInt(2, 0);
+            ps.setString(3, null); // waiting for delivery man
+            ps.setDate(4, null);
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
