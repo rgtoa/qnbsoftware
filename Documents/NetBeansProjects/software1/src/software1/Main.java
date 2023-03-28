@@ -1431,6 +1431,11 @@ public class Main extends javax.swing.JFrame {
         updatebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         updatebtn2.setForeground(new java.awt.Color(255, 255, 255));
         updatebtn2.setText("Update");
+        updatebtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatebtn2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pendingdeliverLayout = new javax.swing.GroupLayout(pendingdeliver);
         pendingdeliver.setLayout(pendingdeliverLayout);
@@ -2058,6 +2063,11 @@ public class Main extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void updatebtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtn2ActionPerformed
+        DeliveryPopup obj = new DeliveryPopup();
+        GlassPanePopup.showPopup(obj);
+    }//GEN-LAST:event_updatebtn2ActionPerformed
     /**
      * @param args the command line arguments
      */
