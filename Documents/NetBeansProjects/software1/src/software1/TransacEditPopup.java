@@ -1,6 +1,7 @@
 package software1;
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
+import java.awt.event.ActionEvent;
 
 public class TransacEditPopup extends javax.swing.JPanel {
 
@@ -12,6 +13,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
         PopName.setEditable(false);
         PopAddress.setEditable(false);
         PopPrice.setEditable(false);
+        savebtn.setVisible(false);
         //setOpaque(false);
     }
     
@@ -25,12 +27,14 @@ public class TransacEditPopup extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPasswordField1 = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PopPaid = new javax.swing.JTextField();
         removetrans = new javax.swing.JButton();
         confirmtrans = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        editbtn = new javax.swing.JButton();
+        savebtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         PopName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -44,6 +48,8 @@ public class TransacEditPopup extends javax.swing.JPanel {
         PopOrderID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         PopCustID = new javax.swing.JTextField();
+
+        jPasswordField1.setText("jPasswordField1");
 
         setBackground(new java.awt.Color(229, 229, 229));
 
@@ -72,12 +78,21 @@ public class TransacEditPopup extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(34, 73, 87));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Edit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        editbtn.setBackground(new java.awt.Color(34, 73, 87));
+        editbtn.setForeground(new java.awt.Color(255, 255, 255));
+        editbtn.setText("Edit");
+        editbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                editbtnActionPerformed(evt);
+            }
+        });
+
+        savebtn.setBackground(new java.awt.Color(34, 73, 87));
+        savebtn.setForeground(new java.awt.Color(255, 255, 255));
+        savebtn.setText("Save");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnActionPerformed(evt);
             }
         });
 
@@ -91,7 +106,9 @@ public class TransacEditPopup extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PopPaid, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(confirmtrans, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -105,9 +122,10 @@ public class TransacEditPopup extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmtrans, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removetrans, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PopPaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -196,24 +214,24 @@ public class TransacEditPopup extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(PopCustID, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PopName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PopAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PopPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(16, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel4)
                         .addGap(72, 72, 72)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7)
-                        .addGap(69, 69, 69)
+                        .addGap(89, 89, 89)
                         .addComponent(jLabel6)
-                        .addGap(36, 36, 36))))
+                        .addGap(8, 8, 8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(PopCustID, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(PopName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(PopAddress)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(PopPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +259,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -292,14 +310,24 @@ public class TransacEditPopup extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_PopPriceActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
         PopOrderID.setEditable(true);
         PopItemQTY.setEditable(true);
         PopCustID.setEditable(true);
         PopName.setEditable(true);
         PopAddress.setEditable(true);
         PopPrice.setEditable(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        editbtn.setVisible(false);
+        savebtn.setVisible(true);
+    }//GEN-LAST:event_editbtnActionPerformed
+
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
+        SavePopup obj = new SavePopup();
+        obj.save((ActionEvent ae) -> {
+            GlassPanePopup.closePopupAll();
+        });
+        GlassPanePopup.showPopup(obj);
+    }//GEN-LAST:event_savebtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -311,7 +339,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
     private javax.swing.JTextField PopPaid;
     private javax.swing.JTextField PopPrice;
     private javax.swing.JButton confirmtrans;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton editbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -321,6 +349,8 @@ public class TransacEditPopup extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JButton removetrans;
+    private javax.swing.JButton savebtn;
     // End of variables declaration//GEN-END:variables
 }
