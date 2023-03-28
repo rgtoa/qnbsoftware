@@ -354,6 +354,7 @@ public class Main extends javax.swing.JFrame {
         editmodule3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         background5 = new software1.Background();
+        updatebtn2 = new javax.swing.JButton();
         completedeliver = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         pendingdelivertbl1 = new javax.swing.JTable();
@@ -752,7 +753,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
         );
 
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
@@ -1164,7 +1165,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(editmodule1)
                     .addComponent(updatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1348,14 +1349,14 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Status"
+                "Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Delivery", "Price", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1377,9 +1378,10 @@ public class Main extends javax.swing.JFrame {
             pendingtransactbl2.getColumnModel().getColumn(3).setResizable(false);
             pendingtransactbl2.getColumnModel().getColumn(4).setResizable(false);
             pendingtransactbl2.getColumnModel().getColumn(5).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(5).setPreferredWidth(5);
             pendingtransactbl2.getColumnModel().getColumn(6).setResizable(false);
             pendingtransactbl2.getColumnModel().getColumn(6).setPreferredWidth(5);
+            pendingtransactbl2.getColumnModel().getColumn(7).setResizable(false);
+            pendingtransactbl2.getColumnModel().getColumn(7).setPreferredWidth(5);
         }
 
         completebtn3.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
@@ -1425,6 +1427,11 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        updatebtn2.setBackground(new java.awt.Color(34, 73, 87));
+        updatebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        updatebtn2.setForeground(new java.awt.Color(255, 255, 255));
+        updatebtn2.setText("Update");
+
         javax.swing.GroupLayout pendingdeliverLayout = new javax.swing.GroupLayout(pendingdeliver);
         pendingdeliver.setLayout(pendingdeliverLayout);
         pendingdeliverLayout.setHorizontalGroup(
@@ -1439,12 +1446,14 @@ public class Main extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(completebtn3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(generatebtn2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 793, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updatebtn2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editmodule3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(85, 85, 85))
             .addComponent(background5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1466,7 +1475,8 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generatebtn2)
                     .addComponent(editmodule3)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatebtn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
@@ -1694,9 +1704,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(genreport4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreport5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(genreport6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(184, Short.MAX_VALUE))
+                    .addComponent(genreport6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tabcontent.add(authreports, "card6");
@@ -2196,5 +2206,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel transacicon;
     private javax.swing.JPanel transactab;
     private javax.swing.JButton updatebtn1;
+    private javax.swing.JButton updatebtn2;
     // End of variables declaration//GEN-END:variables
 }
