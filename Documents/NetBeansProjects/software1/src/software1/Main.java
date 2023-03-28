@@ -345,7 +345,7 @@ public class Main extends javax.swing.JFrame {
         completetransac = new javax.swing.JPanel();
         completebtn2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        pendingtransactbl1 = new javax.swing.JTable();
+        completetransactbl = new javax.swing.JTable();
         pendingbtn2 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         generatebtn1 = new javax.swing.JButton();
@@ -355,7 +355,7 @@ public class Main extends javax.swing.JFrame {
         pendingdeliver = new javax.swing.JPanel();
         pendingbtn3 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        pendingtransactbl2 = new javax.swing.JTable();
+        pendingdelivertbl = new javax.swing.JTable();
         completebtn3 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
         generatebtn2 = new javax.swing.JButton();
@@ -365,7 +365,7 @@ public class Main extends javax.swing.JFrame {
         updatebtn2 = new javax.swing.JButton();
         completedeliver = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        pendingdelivertbl1 = new javax.swing.JTable();
+        completedelivertbl = new javax.swing.JTable();
         pendingbtn4 = new javax.swing.JLabel();
         completebtn4 = new javax.swing.JLabel();
         generatebtn3 = new javax.swing.JButton();
@@ -1065,6 +1065,7 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        pendingtransactbl.setColumnSelectionAllowed(true);
         pendingtransactbl.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(pendingtransactbl);
         pendingtransactbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -1190,10 +1191,10 @@ public class Main extends javax.swing.JFrame {
         completebtn2.setText("Completed");
         completebtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        pendingtransactbl1.setBackground(new java.awt.Color(229, 229, 229));
-        pendingtransactbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
-        pendingtransactbl1.setForeground(new java.awt.Color(10, 64, 83));
-        pendingtransactbl1.setModel(new javax.swing.table.DefaultTableModel(
+        completetransactbl.setBackground(new java.awt.Color(229, 229, 229));
+        completetransactbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        completetransactbl.setForeground(new java.awt.Color(10, 64, 83));
+        completetransactbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1216,32 +1217,32 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        pendingtransactbl1.setColumnSelectionAllowed(true);
-        pendingtransactbl1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pendingtransactbl1.setEnabled(false);
-        pendingtransactbl1.setFocusable(false);
-        pendingtransactbl1.setGridColor(new java.awt.Color(0, 0, 0));
-        pendingtransactbl1.setRequestFocusEnabled(false);
-        pendingtransactbl1.setRowSelectionAllowed(false);
-        pendingtransactbl1.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        pendingtransactbl1.setShowGrid(false);
-        pendingtransactbl1.getTableHeader().setReorderingAllowed(false);
-        pendingtransactbl1.setUpdateSelectionOnSort(false);
-        pendingtransactbl1.setVerifyInputWhenFocusTarget(false);
-        jScrollPane3.setViewportView(pendingtransactbl1);
-        pendingtransactbl1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (pendingtransactbl1.getColumnModel().getColumnCount() > 0) {
-            pendingtransactbl1.getColumnModel().getColumn(0).setResizable(false);
-            pendingtransactbl1.getColumnModel().getColumn(0).setPreferredWidth(5);
-            pendingtransactbl1.getColumnModel().getColumn(1).setResizable(false);
-            pendingtransactbl1.getColumnModel().getColumn(2).setResizable(false);
-            pendingtransactbl1.getColumnModel().getColumn(2).setPreferredWidth(5);
-            pendingtransactbl1.getColumnModel().getColumn(3).setResizable(false);
-            pendingtransactbl1.getColumnModel().getColumn(4).setResizable(false);
-            pendingtransactbl1.getColumnModel().getColumn(5).setResizable(false);
-            pendingtransactbl1.getColumnModel().getColumn(5).setPreferredWidth(5);
-            pendingtransactbl1.getColumnModel().getColumn(6).setResizable(false);
-            pendingtransactbl1.getColumnModel().getColumn(6).setPreferredWidth(5);
+        completetransactbl.setColumnSelectionAllowed(true);
+        completetransactbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        completetransactbl.setEnabled(false);
+        completetransactbl.setFocusable(false);
+        completetransactbl.setGridColor(new java.awt.Color(0, 0, 0));
+        completetransactbl.setRequestFocusEnabled(false);
+        completetransactbl.setRowSelectionAllowed(false);
+        completetransactbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        completetransactbl.setShowGrid(false);
+        completetransactbl.getTableHeader().setReorderingAllowed(false);
+        completetransactbl.setUpdateSelectionOnSort(false);
+        completetransactbl.setVerifyInputWhenFocusTarget(false);
+        jScrollPane3.setViewportView(completetransactbl);
+        completetransactbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (completetransactbl.getColumnModel().getColumnCount() > 0) {
+            completetransactbl.getColumnModel().getColumn(0).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            completetransactbl.getColumnModel().getColumn(1).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(2).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(2).setPreferredWidth(5);
+            completetransactbl.getColumnModel().getColumn(3).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(4).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(5).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(5).setPreferredWidth(5);
+            completetransactbl.getColumnModel().getColumn(6).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(6).setPreferredWidth(5);
         }
 
         pendingbtn2.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
@@ -1349,10 +1350,10 @@ public class Main extends javax.swing.JFrame {
         pendingbtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendingbtn3.setText("Pending");
 
-        pendingtransactbl2.setBackground(new java.awt.Color(229, 229, 229));
-        pendingtransactbl2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
-        pendingtransactbl2.setForeground(new java.awt.Color(10, 64, 83));
-        pendingtransactbl2.setModel(new javax.swing.table.DefaultTableModel(
+        pendingdelivertbl.setBackground(new java.awt.Color(229, 229, 229));
+        pendingdelivertbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        pendingdelivertbl.setForeground(new java.awt.Color(10, 64, 83));
+        pendingdelivertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1375,21 +1376,21 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        pendingtransactbl2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane5.setViewportView(pendingtransactbl2);
-        if (pendingtransactbl2.getColumnModel().getColumnCount() > 0) {
-            pendingtransactbl2.getColumnModel().getColumn(0).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(0).setPreferredWidth(5);
-            pendingtransactbl2.getColumnModel().getColumn(1).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(2).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(2).setPreferredWidth(5);
-            pendingtransactbl2.getColumnModel().getColumn(3).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(4).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(5).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(6).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(6).setPreferredWidth(5);
-            pendingtransactbl2.getColumnModel().getColumn(7).setResizable(false);
-            pendingtransactbl2.getColumnModel().getColumn(7).setPreferredWidth(5);
+        pendingdelivertbl.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(pendingdelivertbl);
+        if (pendingdelivertbl.getColumnModel().getColumnCount() > 0) {
+            pendingdelivertbl.getColumnModel().getColumn(0).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            pendingdelivertbl.getColumnModel().getColumn(1).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(2).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(2).setPreferredWidth(5);
+            pendingdelivertbl.getColumnModel().getColumn(3).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(4).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(5).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(6).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(6).setPreferredWidth(5);
+            pendingdelivertbl.getColumnModel().getColumn(7).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(7).setPreferredWidth(5);
         }
 
         completebtn3.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
@@ -1501,9 +1502,9 @@ public class Main extends javax.swing.JFrame {
 
         completedeliver.setBackground(new java.awt.Color(255, 255, 255));
 
-        pendingdelivertbl1.setBackground(new java.awt.Color(229, 229, 229));
-        pendingdelivertbl1.setForeground(new java.awt.Color(10, 64, 83));
-        pendingdelivertbl1.setModel(new javax.swing.table.DefaultTableModel(
+        completedelivertbl.setBackground(new java.awt.Color(229, 229, 229));
+        completedelivertbl.setForeground(new java.awt.Color(10, 64, 83));
+        completedelivertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1526,20 +1527,20 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        pendingdelivertbl1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(pendingdelivertbl1);
-        if (pendingdelivertbl1.getColumnModel().getColumnCount() > 0) {
-            pendingdelivertbl1.getColumnModel().getColumn(0).setResizable(false);
-            pendingdelivertbl1.getColumnModel().getColumn(0).setPreferredWidth(5);
-            pendingdelivertbl1.getColumnModel().getColumn(1).setResizable(false);
-            pendingdelivertbl1.getColumnModel().getColumn(2).setResizable(false);
-            pendingdelivertbl1.getColumnModel().getColumn(2).setPreferredWidth(5);
-            pendingdelivertbl1.getColumnModel().getColumn(3).setResizable(false);
-            pendingdelivertbl1.getColumnModel().getColumn(4).setResizable(false);
-            pendingdelivertbl1.getColumnModel().getColumn(5).setResizable(false);
-            pendingdelivertbl1.getColumnModel().getColumn(5).setPreferredWidth(5);
-            pendingdelivertbl1.getColumnModel().getColumn(6).setResizable(false);
-            pendingdelivertbl1.getColumnModel().getColumn(6).setPreferredWidth(5);
+        completedelivertbl.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(completedelivertbl);
+        if (completedelivertbl.getColumnModel().getColumnCount() > 0) {
+            completedelivertbl.getColumnModel().getColumn(0).setResizable(false);
+            completedelivertbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            completedelivertbl.getColumnModel().getColumn(1).setResizable(false);
+            completedelivertbl.getColumnModel().getColumn(2).setResizable(false);
+            completedelivertbl.getColumnModel().getColumn(2).setPreferredWidth(5);
+            completedelivertbl.getColumnModel().getColumn(3).setResizable(false);
+            completedelivertbl.getColumnModel().getColumn(4).setResizable(false);
+            completedelivertbl.getColumnModel().getColumn(5).setResizable(false);
+            completedelivertbl.getColumnModel().getColumn(5).setPreferredWidth(5);
+            completedelivertbl.getColumnModel().getColumn(6).setResizable(false);
+            completedelivertbl.getColumnModel().getColumn(6).setPreferredWidth(5);
         }
 
         pendingbtn4.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
@@ -1736,17 +1737,17 @@ public class Main extends javax.swing.JFrame {
     }
     private void refreshCompleteTransact() {
         Database db = new Database();
-        populateTable(pendingtransactbl1, db.getTransactions(1, 0));
+        populateTable(completetransactbl, db.getTransactions(1, 0));
         db.closeConnection();
     }
     private void refreshPendingDelivery() {
         Database db = new Database();
-        populateTable(pendingtransactbl2, db.getDeliveries(0));
+        populateTable(pendingdelivertbl, db.getDeliveries(0));
         db.closeConnection();
     }
     private void refreshCompleteDelivery() {
         Database db = new Database();
-        populateTable(pendingdelivertbl1, db.getDeliveries(2));
+        populateTable(completedelivertbl, db.getDeliveries(2));
         db.closeConnection();
     }
     private void populateTable(javax.swing.JTable table, ArrayList<ArrayList<Object>> list) {
@@ -1973,7 +1974,7 @@ public class Main extends javax.swing.JFrame {
     private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
         // TODO add your handling code here:
         Database db = new Database();
-        populateTable(pendingtransactbl2, db.getDeliveries(jComboBox5.getSelectedIndex()));
+        populateTable(pendingdelivertbl, db.getDeliveries(jComboBox5.getSelectedIndex()));
         db.closeConnection();
     }//GEN-LAST:event_jComboBox5ItemStateChanged
 
@@ -1982,7 +1983,7 @@ public class Main extends javax.swing.JFrame {
         if (evt.getStateChange() == 2) return;
         Database db = new Database();
         int status = evt.getSource() == jComboBox1 ? 0 : 1;
-        populateTable(status == 0 ? pendingtransactbl : pendingtransactbl1, db.getTransactions(status, ((JComboBox) evt.getSource()).getSelectedIndex()));
+        populateTable(status == 0 ? pendingtransactbl : completetransactbl, db.getTransactions(status, ((JComboBox) evt.getSource()).getSelectedIndex()));
         db.closeConnection();
     }//GEN-LAST:event_TransactComboBoxItemStateChanged
 
@@ -2132,7 +2133,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel completebtn3;
     private javax.swing.JLabel completebtn4;
     private javax.swing.JPanel completedeliver;
+    private javax.swing.JTable completedelivertbl;
     private javax.swing.JPanel completetransac;
+    private javax.swing.JTable completetransactbl;
     private javax.swing.JComboBox<String> customerdetails;
     private javax.swing.JLabel deliverbtn;
     private javax.swing.JLabel delivericon;
@@ -2198,11 +2201,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel pendingbtn3;
     private javax.swing.JLabel pendingbtn4;
     private javax.swing.JPanel pendingdeliver;
-    private javax.swing.JTable pendingdelivertbl1;
+    private javax.swing.JTable pendingdelivertbl;
     private javax.swing.JPanel pendingtransac;
     private javax.swing.JTable pendingtransactbl;
-    private javax.swing.JTable pendingtransactbl1;
-    private javax.swing.JTable pendingtransactbl2;
     private javax.swing.JLabel productdesc1;
     private javax.swing.JLabel productimg;
     private javax.swing.JLabel productname1;
