@@ -31,6 +31,41 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public ArrayList<ArrayList<Object>> getTableList(String table) {
+        ArrayList<ArrayList<Object>> output = new ArrayList<>();
+        if (table.equals("users")) return output;
+        try {
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM " + table);
+            while (rs.next()) {
+                ArrayList<Object> row = new ArrayList<>();
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                    row.add(rs.getObject(i));
+                }
+                output.add(row);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
+    public ArrayList<ArrayList<Object>> getUserList() {
+        ArrayList<ArrayList<Object>> output = new ArrayList<>();
+        try {
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM users");
+            while (rs.next()) {
+                ArrayList<Object> row = new ArrayList<>();
+                row.add(rs.getString("username"));
+                row.add(Crypto.decrypt(rs.getString("password")));
+                row.add(rs.getString("role"));
+                output.add(row);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
     public String[] getUsernames() throws SQLException {
         Statement s = con.createStatement();
         ResultSet rs = s.executeQuery("SELECT username FROM users");
@@ -487,10 +522,10 @@ public class Database {
     public static void main(String[] args) {
         Database db = new Database();
         
-        db.addCustomer("rib", "rob", "aa", "aa", "aa", null);
-        db.addCustomer("rib", "rob", "bb", "bb", "bb", null);
-        db.addCustomer("rib", "rob", "cc", "cc", "cc", null);
-        db.addCustomer("rib", "rob", "dd", "dd", "dd", null);
+        ArrayList<ArrayList<Object>> list = db.getTableList("orders");
+        for(ArrayList<Object> row : list) {
+            System.out.println(Arrays.toString(row.toArray()));
+        }
         
         
         db.closeConnection();
