@@ -78,6 +78,8 @@ public class Main extends javax.swing.JFrame {
         scaleIcons();
         scaleProducts();
         scaleReports();
+        
+        databasebtn.setVisible(false);
     }
     private void populateCustomersBox() {
         customerdetails.removeAllItems();
@@ -3221,6 +3223,7 @@ public class Main extends javax.swing.JFrame {
             editmodule2.setVisible(true);
             editmodule3.setVisible(true);
             editmodule4.setVisible(true);
+            databasebtn.setVisible(true);
             
             showCard(authreports);
             boldCard(authenticbtn);
@@ -3640,7 +3643,7 @@ public class Main extends javax.swing.JFrame {
 
     private void databasebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_databasebtnMouseClicked
         showCard(dborders);
-        boldCard(dborders);
+        boldCard(databasebtn);
     }//GEN-LAST:event_databasebtnMouseClicked
 
     private void deliveriesbtndbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliveriesbtndbMouseClicked
@@ -3825,7 +3828,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main("","").setVisible(true);
+                new Main("owner","dev").setVisible(true);
             }
         });
     }
