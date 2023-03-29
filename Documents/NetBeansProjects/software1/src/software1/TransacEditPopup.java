@@ -189,6 +189,9 @@ public class TransacEditPopup extends javax.swing.JPanel {
         PopItemQTY.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PopFieldMouseClicked(evt);
+        PopItemQTY.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PopItemQTYFocusGained(evt);
             }
         });
         PopItemQTY.addActionListener(new java.awt.event.ActionListener() {
@@ -335,10 +338,6 @@ public class TransacEditPopup extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_PopOrderIDActionPerformed
 
-    private void PopItemQTYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PopItemQTYActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PopItemQTYActionPerformed
-
     private void PopCustIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PopCustIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PopCustIDActionPerformed
@@ -389,6 +388,15 @@ public class TransacEditPopup extends javax.swing.JPanel {
             GlassPanePopup.showPopup(obj);
         });
     }
+    private void PopItemQTYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PopItemQTYActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PopItemQTYActionPerformed
+
+    private void PopItemQTYFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PopItemQTYFocusGained
+        OrderItemQtyPopup obj = new OrderItemQtyPopup();
+        GlassPanePopup.showPopup(obj);
+    }//GEN-LAST:event_PopItemQTYFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField PopAddress;
