@@ -61,6 +61,11 @@ public class Main extends javax.swing.JFrame {
         refreshPendingDelivery();
         refreshCompleteDelivery();
         
+        editmodule1.setVisible(false);
+        editmodule2.setVisible(false);
+        editmodule3.setVisible(false);
+        editmodule4.setVisible(false);
+        
         populateCustomersBox();
         refreshFormVisibility();
         
@@ -1716,17 +1721,17 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void refreshPendingTransact() {
         Database db = new Database();
-        populateTable(pendingtransactbl, db.getTransactions(0, 0));
+        populateTable(pendingtransactbl, db.getTransactions(0, jComboBox1.getSelectedIndex()));
         db.closeConnection();
     }
     private void refreshCompleteTransact() {
         Database db = new Database();
-        populateTable(completetransactbl, db.getTransactions(1, 0));
+        populateTable(completetransactbl, db.getTransactions(1, jComboBox3.getSelectedIndex()));
         db.closeConnection();
     }
     private void refreshPendingDelivery() {
         Database db = new Database();
-        populateTable(pendingdelivertbl, db.getDeliveries(0));
+        populateTable(pendingdelivertbl, db.getDeliveries(jComboBox5.getSelectedIndex()));
         db.closeConnection();
     }
     private void refreshCompleteDelivery() {
@@ -1813,6 +1818,7 @@ public class Main extends javax.swing.JFrame {
                 showMsg("Wrong Password");
                 return;
             }
+            isAuth = true;
             editmodule1.setVisible(true);
             editmodule2.setVisible(true);
             editmodule3.setVisible(true);
@@ -1969,10 +1975,17 @@ public class Main extends javax.swing.JFrame {
             ""+model.getValueAt(row, 3),
             ""+model.getValueAt(row, 4),
             ""+model.getValueAt(row, 5)
-        });
+        }, isAuth );
         obj.editSave(event -> {
             GlassPanePopup.closePopupAll();
             refreshPendingTransact();
+        });
+        obj.confirm(event -> {
+            pendingtransac.setVisible(false);
+            completetransac.setVisible(true);
+            GlassPanePopup.closePopupAll();
+            showMsg("Transaction Completed");
+            refreshCompleteTransact();
         });
         GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_updatebtn1ActionPerformed
@@ -2086,17 +2099,34 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
     
     private void updatebtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtn2ActionPerformed
+        int row = pendingdelivertbl.getSelectedRow();
+        if (row == -1) return;
+        TableModel model = pendingdelivertbl.getModel();
+        Long orderID = (Long) model.getValueAt(row, 0);
         if (jComboBox5.getSelectedIndex() == 0) {
-            int row = pendingdelivertbl.getSelectedRow();
-            if (row == -1) return;
-            TableModel model = pendingdelivertbl.getModel();
-            Long orderID = (Long) model.getValueAt(row, 0);
             System.out.println("currently updating " + orderID);
             DeliveryPopup obj = new DeliveryPopup(orderID);
             obj.addConfirmAction(event -> refreshPendingDelivery()); // REFRESH TABLE AFTER UPDATE
             GlassPanePopup.showPopup(obj);
         } else {
+            
             DeliveryUpdatePopup obj = new DeliveryUpdatePopup();
+            obj.fail((ActionListener) -> {
+                Database db = new Database();
+                db.updateDelivery(orderID, 0, "Awaiting..");
+                GlassPanePopup.closePopupAll();
+                refreshPendingDelivery();
+                db.closeConnection();
+            });
+            obj.complete((ActionListener) -> {
+                Database db = new Database();
+                db.updateDelivery(orderID, 2, null);
+                GlassPanePopup.closePopupAll();
+                refreshCompleteDelivery();
+                pendingdeliver.setVisible(false);
+                completedeliver.setVisible(true);
+                db.closeConnection();
+            });
             GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_updatebtn2ActionPerformed

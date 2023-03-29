@@ -72,9 +72,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Failed"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="faildeliverybtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="completedeliverybtn">
       <Properties>
@@ -86,9 +83,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Complete"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="completedeliverybtnActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
