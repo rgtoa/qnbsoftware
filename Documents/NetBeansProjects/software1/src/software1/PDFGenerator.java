@@ -16,57 +16,66 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PDFGenerator {
-    private final Font FONT_NORMAL = FontFactory.getFont(FontFactory.TIMES, 10);
-    private final Font FONT_BOLD = FontFactory.getFont(FontFactory.TIMES_BOLD, 10);
-    private final Font FONT_BOLD_UNDERLINE = FontFactory.getFont(FontFactory.TIMES_BOLD, 10, Font.UNDERLINE);
-    private final Font FONT_SUBTITLE = FontFactory.getFont(FontFactory.TIMES_BOLDITALIC, 12);
-    private final Font FONT_TITLE = FontFactory.getFont(FontFactory.TIMES_BOLD, 20);
-    
-    public void pendingWalkIn() {
-        
-    }
-    public void pendingDeliver() {
-        
-    }
-    public void completeWalkIn() {
-        
-    }
-    public void completeDeliver() {
-        
-    }
-    public void allTransactionsReport() throws Exception{
+    private static final Font FONT_NORMAL = FontFactory.getFont(FontFactory.TIMES, 10);
+    private static final Font FONT_BOLD = FontFactory.getFont(FontFactory.TIMES_BOLD, 10);
+    private static final Font FONT_BOLD_UNDERLINE = FontFactory.getFont(FontFactory.TIMES_BOLD, 10, Font.UNDERLINE);
+    private static final Font FONT_SUBTITLE = FontFactory.getFont(FontFactory.TIMES_BOLDITALIC, 12);
+    private static final Font FONT_TITLE = FontFactory.getFont(FontFactory.TIMES_BOLD, 20);
+    /**
+     * @param title The title of the document
+     * @param range "Daily", "Weekly", "Monthly", "Yearly"
+     * @param tables "pendingwalkin-order", "pendingdelivery-order", "completewalkin-order", "completedelivery-order", "pending-delivery", "ongoing-delivery", "complete-delivery"
+     * @throws DocumentException
+     * @throws FileNotFoundException 
+     */
+    public static void createReport(String title, String range, String... tables) throws DocumentException, FileNotFoundException {
         Database db = new Database();
-        Document document = createDocument("Transactions Report");
-        
-        //PENDING WALK-IN TABLE
-        createTableBlock(document, "Unpaid Walk-Ins",
-                new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price"},
-                db.getTransactions(0, 1)
-                );
-        
-        //PENDING DELIVERIES TABLE
-        createTableBlock(document, "Unpaid Deliveries",
-                new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price"},
-                db.getTransactions(0, 2)
-                );
-        //COMPLETE WALK-IN TABLE
-        createTableBlock(document, "Complete Walk-Ins",
-                new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Amount Paid", "Date"},
-                db.getTransactions(1, 1)
-                );
-        
-        //COMPLETE DELIVERIES TABLE
-        createTableBlock(document, "Complete Deliveries",
-                new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Amount Paid", "Date"},
-                db.getTransactions(1, 2)
-                );
-        
-        // Close the document
+        Document document = createDocument(range + " " + title);
+        // GENERATE RESPECTIVE TABLES
+        for (String s : tables) switch (s) {
+            case ("pendingall-order") -> createTableBlock(document, range + " Unpaid Walk-Ins",
+                    new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price"},
+                    db.getTransactions(0, 0, range.toLowerCase())
+                    );
+            case ("pendingwalkin-order") -> createTableBlock(document, range + " Unpaid Walk-Ins",
+                    new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price"},
+                    db.getTransactions(0, 1, range.toLowerCase())
+                    );
+            case ("pendingdelivery-order") -> createTableBlock(document, range + " Unpaid Deliveries",
+                        new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price"},
+                    db.getTransactions(0, 2, range.toLowerCase())
+                    );
+            case ("completeall-order") -> createTableBlock(document, range + " Unpaid Walk-Ins",
+                    new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price"},
+                    db.getTransactions(1, 0, range.toLowerCase())
+                    );
+            case ("completewalkin-order") -> createTableBlock(document, range + " Paid Walk-Ins",
+                    new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Amount Paid", "Date"},
+                    db.getTransactions(1, 1, range.toLowerCase())
+                    );
+            case ("completedelivery-order") -> createTableBlock(document, range + " Paid Deliveries",
+                    new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Amount Paid", "Date"},
+                    db.getTransactions(1, 2, range.toLowerCase())
+                    );
+            case ("pending-delivery") -> createTableBlock(document, range + " Pending Deliveries",
+                    new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Delivery", "Price", "Status"},
+                    db.getDeliveries(0)
+                    );
+            case ("ongoing-delivery") -> createTableBlock(document, range + " Ongoing Deliveries",
+                    new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Delivery", "Price", "Status"},
+                    db.getDeliveries(1)
+                    );
+            case ("complete-delivery") -> createTableBlock(document, range + " Complete Deliveries",
+                    new String[] {"Order ID", "Item/QTY", "Customer ID", "Name", "Address", "Price", "Status"},
+                    db.getDeliveries(2)
+                    );
+            default -> System.out.println("Invalid Table Name: " + s);
+        }
+        // Close
         document.close();
-        
         db.closeConnection();
     }
-    private Document createDocument(String title) throws DocumentException, FileNotFoundException {
+    private static Document createDocument(String title) throws DocumentException, FileNotFoundException {
         Document document = new Document(PageSize.LETTER);
 
         // Create a PDF file with the current date and time as part of the filename
@@ -88,21 +97,18 @@ public class PDFGenerator {
         
         return document;
     }
-    private void createTableBlock(Document document, String title, String[] header, ArrayList<ArrayList<Object>> content) throws DocumentException {
+    private static void createTableBlock(Document document, String title, String[] header, ArrayList<ArrayList<Object>> content) throws DocumentException {
         Paragraph p = new Paragraph(title, FONT_BOLD_UNDERLINE);
         p.setAlignment(Element.ALIGN_CENTER);
         document.add(p);
         document.add(newLine());
-        document.add(createTable(
-                header,
-                content
-        ));
+        document.add(createTable(header, content));
         document.add(newLine());
     }
-    private Paragraph newLine() {
+    private static Paragraph newLine() {
         return new Paragraph("\n", FONT_NORMAL);
     }
-    private PdfPTable createTable(String[] headers, ArrayList<ArrayList<Object>> content) {
+    private static PdfPTable createTable(String[] headers, ArrayList<ArrayList<Object>> content) {
         PdfPTable table = new PdfPTable(headers.length);
         table.setWidthPercentage(100);
         // Add column headers
@@ -118,7 +124,7 @@ public class PDFGenerator {
         return table;
     }
     // Helper method to create a cell with specified alignment and content
-    private PdfPCell createCell(String content, int alignment, Font font) {
+    private static PdfPCell createCell(String content, int alignment, Font font) {
         PdfPCell cell = new PdfPCell(new Paragraph(content, font));
         cell.setHorizontalAlignment(alignment);
         return cell;
@@ -138,8 +144,17 @@ class HeaderFooter extends PdfPageEventHelper {
     }
     
     public static void main(String[] args) throws Exception {
-        PDFGenerator pdf = new PDFGenerator();
-        pdf.allTransactionsReport();
+        PDFGenerator.createReport("Deliveries Report", "Yearly",
+                "pending-delivery",
+                "ongoing-delivery",
+                "complete-delivery"
+        );
+        PDFGenerator.createReport("Transactions Report", "Yearly",
+                "pendingwalkin-order", 
+                "pendingdelivery-order", 
+                "completewalkin-order", 
+                "completedelivery-order"
+        );
     }
 }
 

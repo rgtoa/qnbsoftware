@@ -1346,6 +1346,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Generate"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generatebtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="editmodule1">
               <Properties>
@@ -1642,6 +1645,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Generate"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generatebtn1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="editmodule2">
               <Properties>
@@ -1911,6 +1917,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Generate"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generatebtn2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="editmodule3">
               <Properties>
@@ -2147,6 +2156,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Generate"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generatebtn3ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="editmodule4">
               <Properties>
@@ -2230,7 +2242,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="152" max="32767" attributes="0"/>
+                      <EmptySpace pref="172" max="32767" attributes="0"/>
                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
@@ -2246,7 +2258,7 @@
                           <Component id="genreport5" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="genreport6" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="148" max="32767" attributes="0"/>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
                       <Component id="background7" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2286,6 +2298,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="genreport4ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="genreport5">
               <Properties>

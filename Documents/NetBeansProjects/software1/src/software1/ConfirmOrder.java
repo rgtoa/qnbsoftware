@@ -19,6 +19,9 @@ public class ConfirmOrder extends javax.swing.JPanel {
     public ConfirmOrder() {
         initComponents();
     }
+    public ConfirmOrder(String title) {
+        confirmOrderLabel.setText(title);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

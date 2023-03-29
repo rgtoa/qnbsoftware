@@ -121,13 +121,29 @@ public class Database {
         }
         return output;
     }
-    public ArrayList<ArrayList<Object>> getTransactions(int status, int orderType) { // [0=pending;1=completed][0=all;1=walkin;2=delivery]
+    /**
+     * @param status
+     * @param orderType
+     * @param range only accepts one string "daily", "weekly", "monthly", "yearly"
+     * @return 
+     */
+    public ArrayList<ArrayList<Object>> getTransactions(int status, int orderType, String... range) { // [0=pending;1=completed][0=all;1=walkin;2=delivery]
         ArrayList<ArrayList<Object>> list = new ArrayList<>();
         try {
+            String r = "";
+            if (range.length != 0 && !range[0].equals("")) {
+                String thisYear = " AND YEAR(DateOrdered) = YEAR(CURDATE())";
+                switch (range[0]) {
+                    case "daily" -> r += " AND DATE(DateOrdered) = CURDATE()";
+                    case "weekly" -> r += " AND WEEK(DateOrdered) = WEEK(CURDATE())" + thisYear;
+                    case "monthly" -> r += " AND MONTH(DateOrdered) = MONTH(CURDATE())" + thisYear;
+                    case "yearly" -> r += thisYear;
+                }
+            }
             PreparedStatement ps = con.prepareStatement(
                 "SELECT * FROM orders WHERE FullyPaid=? " +
                 (orderType == 1 ? "AND orders.OrderID NOT IN (SELECT deliveries.OrderID FROM deliveries)" :
-                 orderType == 2 ? "AND orders.OrderID IN (SELECT deliveries.OrderID FROM deliveries)" : "")
+                 orderType == 2 ? "AND orders.OrderID IN (SELECT deliveries.OrderID FROM deliveries)" : "") + r
             );
             ps.setInt(1, status);
             ResultSet rs = ps.executeQuery();
@@ -170,9 +186,20 @@ public class Database {
         }
         return list;
     }
-    public ArrayList<ArrayList<Object>> getDeliveries(int status) { // 0 = pending; 1 = ongoing; 2 = completed
+    public ArrayList<ArrayList<Object>> getDeliveries(int status, String... range) { // 0 = pending; 1 = ongoing; 2 = completed
         ArrayList<ArrayList<Object>> list = new ArrayList<>();
         try {
+            String r = "";
+            if (range.length != 0 && !range[0].equals("")) {
+                String col = status == 2 ? "DeliveryDate" : "DateOrdered";
+                String thisYear = " AND YEAR(" + col + ") = YEAR(CURDATE())";
+                switch (range[0]) {
+                    case "daily" -> r += " AND DATE(" + col + ") = CURDATE()";
+                    case "weekly" -> r += " AND WEEK(" + col + ") = WEEK(CURDATE())" + thisYear;
+                    case "monthly" -> r += " AND MONTH(" + col + ") = MONTH(CURDATE())" + thisYear;
+                    case "yearly" -> r += thisYear;
+                }
+            }
             PreparedStatement ps = con.prepareStatement(
                 "SELECT " +
                 "deliveries.DeliveryStatus, deliveries.DeliveryMan, deliveries.DeliveryDate, " +
@@ -182,7 +209,7 @@ public class Database {
                 "FROM deliveries " +
                 "INNER JOIN orders ON deliveries.OrderID = orders.OrderID " +
                 "INNER JOIN customers ON orders.CustomerID = customers.CustomerID " +
-                "WHERE DeliveryStatus=?"
+                "WHERE DeliveryStatus=?" + r
             );
             ps.setInt(1, status);
             ResultSet rs = ps.executeQuery();
@@ -200,11 +227,11 @@ public class Database {
                 row.add(rs.getString("CustomerID"));
                 row.add(rs.getString("Name"));
                 row.add(rs.getString("Address"));
-                row.add(status == 0 ? "Awaiting.." : rs.getString("DeliveryMan"));
+                if (status != 2) row.add(status == 0 ? "Awaiting.." : rs.getString("DeliveryMan"));
                 row.add(rs.getFloat("TotalPrice"));
                 if (status == 2) { // OrderID-Item/QTY-CustomerID-Name-Address-Price-Time/Date
                     row.add(rs.getDate("DeliveryDate"));
-                } else { // OrderID-Item/QTY-CustomerID-Name-Address-Price-Status
+                } else { // OrderID-Item/QTY-CustomerID-Name-Address-Delivery-Price-Status
                     row.add(status == 0 ? "Pending" : "Ongoing");
                 }
                 list.add(row);

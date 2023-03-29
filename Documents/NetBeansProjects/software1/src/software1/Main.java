@@ -1,5 +1,6 @@
 
 package software1;
+import com.itextpdf.text.DocumentException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
@@ -17,6 +18,9 @@ import java.awt.Font;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.RoundRectangle2D;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.border.Border;
 import javax.swing.table.TableModel;
@@ -1111,6 +1115,11 @@ public class Main extends javax.swing.JFrame {
         generatebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         generatebtn.setForeground(new java.awt.Color(34, 73, 87));
         generatebtn.setText("Generate");
+        generatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generatebtnActionPerformed(evt);
+            }
+        });
 
         editmodule1.setBackground(new java.awt.Color(140, 208, 218));
         editmodule1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -1285,6 +1294,11 @@ public class Main extends javax.swing.JFrame {
         generatebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         generatebtn1.setForeground(new java.awt.Color(34, 73, 87));
         generatebtn1.setText("Generate");
+        generatebtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generatebtn1ActionPerformed(evt);
+            }
+        });
 
         editmodule2.setBackground(new java.awt.Color(140, 208, 218));
         editmodule2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -1428,6 +1442,11 @@ public class Main extends javax.swing.JFrame {
         generatebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         generatebtn2.setForeground(new java.awt.Color(10, 64, 83));
         generatebtn2.setText("Generate");
+        generatebtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generatebtn2ActionPerformed(evt);
+            }
+        });
 
         editmodule3.setBackground(new java.awt.Color(140, 208, 218));
         editmodule3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -1573,6 +1592,11 @@ public class Main extends javax.swing.JFrame {
         generatebtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         generatebtn3.setForeground(new java.awt.Color(10, 64, 83));
         generatebtn3.setText("Generate");
+        generatebtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generatebtn3ActionPerformed(evt);
+            }
+        });
 
         editmodule4.setBackground(new java.awt.Color(140, 208, 218));
         editmodule4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
@@ -1648,6 +1672,11 @@ public class Main extends javax.swing.JFrame {
         genreport4.setForeground(new java.awt.Color(34, 73, 87));
         genreport4.setText("Deliveries");
         genreport4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 208, 218), 1, true));
+        genreport4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genreport4ActionPerformed(evt);
+            }
+        });
 
         genreport5.setBackground(new java.awt.Color(140, 208, 218));
         genreport5.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 14)); // NOI18N
@@ -1714,7 +1743,7 @@ public class Main extends javax.swing.JFrame {
         authreportsLayout.setVerticalGroup(
             authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authreportsLayout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
+                .addContainerGap(172, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1728,7 +1757,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(genreport4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreport5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreport6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1848,6 +1877,18 @@ public class Main extends javax.swing.JFrame {
 
     private void genreport5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreport5ActionPerformed
         // TODO add your handling code here:
+        String range = (String) jComboBox2.getSelectedItem();
+        try {
+            PDFGenerator.createReport("Transactions Report", range,
+                    "pendingwalkin-order",
+                    "pendingdelivery-order",
+                    "completewalkin-order",
+                    "completedelivery-order"
+            );
+            showMsg("Generated " + range + " Transactions Report");
+        } catch (DocumentException | FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_genreport5ActionPerformed
 
     private void genreport6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreport6ActionPerformed
@@ -2094,6 +2135,100 @@ public class Main extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_updatebtn2ActionPerformed
+
+    private void genreport4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreport4ActionPerformed
+        String range = (String) jComboBox2.getSelectedItem();
+        try {
+            PDFGenerator.createReport("Deliveries Report", range,
+                "pending-delivery",
+                "ongoing-delivery",
+                "complete-delivery"
+            );
+            showMsg("Generated " + range + " Deliveries Report");
+        } catch (DocumentException | FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_genreport4ActionPerformed
+
+    private void generatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatebtnActionPerformed
+        try {
+            String title = null;
+            String table = null;
+            switch (jComboBox1.getSelectedIndex()) {
+                case (0) -> {
+                    title = "Unpaid Transactions";
+                    table = "pendingall-order";
+                }
+                case (1) -> {
+                    title = "Unpaid Walk-Ins";
+                    table = "pendingwalkin-order";
+                }
+                case (2) -> {
+                    title = "Unpaid Deliveries";
+                    table = "pendingdelivery-order";
+                }
+            }
+            if (title != null) PDFGenerator.createReport(title, "", table);
+            showMsg("Generated " + title);
+        } catch (DocumentException | FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generatebtnActionPerformed
+
+    private void generatebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatebtn1ActionPerformed
+        try {
+            String title = null;
+            String table = null;
+            switch (jComboBox1.getSelectedIndex()) {
+                case (0) -> {
+                    title = "Paid Transactions";
+                    table = "completegall-order";
+                }
+                case (1) -> {
+                    title = "Paid Walk-Ins";
+                    table = "completewalkin-order";
+                }
+                case (2) -> {
+                    title = "Paid Deliveries";
+                    table = "completedelivery-order";
+                }
+            }
+            if (title != null) PDFGenerator.createReport(title, "", table);
+            showMsg("Generated " + title);
+        } catch (DocumentException | FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generatebtn1ActionPerformed
+
+    private void generatebtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatebtn2ActionPerformed
+        try {
+            String title = null;
+            String table = null;
+            switch (jComboBox5.getSelectedIndex()) {
+                case (0) -> {
+                    title = "Pending Deliveries";
+                    table = "completegall-order";
+                }
+                case (1) -> {
+                    title = "Ongoing Deliveries";
+                    table = "completewalkin-order";
+                }
+            }
+            if (title != null) PDFGenerator.createReport(title, "", table);
+            showMsg("Generated " + title);
+        } catch (DocumentException | FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generatebtn2ActionPerformed
+
+    private void generatebtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatebtn3ActionPerformed
+        try {
+            PDFGenerator.createReport("Complete Deliveries", "", "complete-delivery");
+            showMsg("Generated " + "Complete Deliveries");
+        } catch (DocumentException | FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generatebtn3ActionPerformed
     /**
      * @param args the command line arguments
      */
