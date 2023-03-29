@@ -456,10 +456,27 @@ public class Database {
         try {
             boolean hasName = names != null;
             PreparedStatement ps = con.prepareStatement(
-            "UPDATE deliveries SET DeliveryStatus=?" + (hasName ? ",DeliveryMan=?": "") + " WHERE OrderID=?"
+            "UPDATE deliveries SET DeliveryStatus=?" + 
+                    (hasName ? ",DeliveryMan=?": "") + 
+                    (status == 2 ? "" : ",DeliveryDate=CURDATE()") +
+                    " WHERE OrderID=?"
             );
             ps.setInt(1, status);
             if (hasName) ps.setString(2, names);
+            ps.setLong(hasName ? 3 : 2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void completeOrder(Long orderID, Float amount) {
+        try {
+            PreparedStatement ps = con.prepareStatement(
+            "UPDATE orders SET AmountPaid=?, FullyPaid=?, DatePaid=CURDATE() WHERE orderID=?"
+            );
+            ps.setFloat(1, amount);
+            ps.setBoolean(2, true);
             ps.setLong(3, orderID);
             ps.executeUpdate();
             ps.close();

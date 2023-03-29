@@ -1,13 +1,13 @@
 package software1;
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.text.PlainDocument;
 
 public class TransacEditPopup extends javax.swing.JPanel {
     private final String[] details;
-    public TransacEditPopup(String[] details) {
+    boolean editMode = false;
+    public TransacEditPopup(String[] details, boolean isAuth) {
         this.details = details;
         initComponents();
         PopOrderID.setEditable(false);
@@ -17,8 +17,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
         PopAddress.setEditable(false);
         PopPrice.setEditable(false);
         savebtn.setVisible(false);
-        editbtn.setVisible(false);
-        
+        editbtn.setVisible(isAuth);
         ((PlainDocument)PopPaid.getDocument()).setDocumentFilter(new MyFloatFilter());
         placeDetails();
         
@@ -95,7 +94,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
 
         editbtn.setBackground(new java.awt.Color(34, 73, 87));
         editbtn.setForeground(new java.awt.Color(255, 255, 255));
-        editbtn.setText("Cancel");
+        editbtn.setText("Edit");
         editbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editbtnActionPerformed(evt);
@@ -189,6 +188,8 @@ public class TransacEditPopup extends javax.swing.JPanel {
         PopItemQTY.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PopFieldMouseClicked(evt);
+            }
+        });
         PopItemQTY.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 PopItemQTYFocusGained(evt);
@@ -325,8 +326,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmtransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmtransActionPerformed
-        ConfirmTransac obj = new ConfirmTransac();
-        GlassPanePopup.showPopup(obj);
+        
     }//GEN-LAST:event_confirmtransActionPerformed
 
     private void removetransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removetransActionPerformed
@@ -355,7 +355,33 @@ public class TransacEditPopup extends javax.swing.JPanel {
     }//GEN-LAST:event_PopPriceActionPerformed
 
     private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
-        
+        if (editMode) {
+            PopOrderID.setEditable(false);
+            PopItemQTY.setEditable(false);
+            PopCustID.setEditable(false);
+            PopName.setEditable(false);
+            PopAddress.setEditable(false);
+            PopPrice.setEditable(false);
+            savebtn.setVisible(false);
+            editbtn.setText("Edit");
+            jLabel1.setVisible(true);
+            PopPaid.setVisible(true);
+            confirmtrans.setVisible(true);
+            removetrans.setVisible(true);
+            placeDetails();
+            editMode = false;
+        } else {
+            PopName.setEditable(true);
+            PopAddress.setEditable(true);
+            editbtn.setVisible(true);
+            savebtn.setVisible(true);
+            jLabel1.setVisible(false);
+            PopPaid.setVisible(false);
+            confirmtrans.setVisible(false);
+            removetrans.setVisible(false);
+            editbtn.setText("Cancel");
+            editMode = true;
+        }
     }//GEN-LAST:event_editbtnActionPerformed
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
@@ -363,15 +389,17 @@ public class TransacEditPopup extends javax.swing.JPanel {
     }//GEN-LAST:event_savebtnActionPerformed
 
     private void PopFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PopFieldMouseClicked
+        if (!editMode) return;
         JTextField field = (JTextField) evt.getComponent();
         System.out.println(field.getText());
         if (field == PopOrderID) GlassPanePopup.showPopup(new Message("Order ID is not editable"));
         else if (field == PopCustID) GlassPanePopup.showPopup(new Message("Customer ID is not editable"));
         else if (field == PopPrice) GlassPanePopup.showPopup(new Message("Price is automatically calculated"));
-        else if (field == PopItemQTY) {
-            
-        }
         else {
+            if (field == PopItemQTY) {
+            OrderItemQtyPopup obj = new OrderItemQtyPopup();
+            GlassPanePopup.showPopup(obj);
+            }
             field.setEditable(true);
             editbtn.setVisible(true);
             savebtn.setVisible(true);
@@ -379,6 +407,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
             PopPaid.setVisible(false);
             confirmtrans.setVisible(false);
             removetrans.setVisible(false);
+            editMode = true;
         }
     }//GEN-LAST:event_PopFieldMouseClicked
     public void editSave (ActionListener evt) {
@@ -388,13 +417,28 @@ public class TransacEditPopup extends javax.swing.JPanel {
             GlassPanePopup.showPopup(obj);
         });
     }
+    public void confirm (ActionListener evt) {
+        confirmtrans.addActionListener(event -> {
+            if (Float.parseFloat(PopPrice.getText()) != Float.parseFloat(PopPaid.getText())) {
+                GlassPanePopup.showPopup(new Message("Invalid Amount Paid"));
+                return;
+            }
+            ConfirmTransac obj = new ConfirmTransac();
+            obj.confirm(evt);
+            obj.confirm((ActionListener) e -> {
+                Database db = new Database();
+                db.completeOrder(Long.parseLong(details[0]), Float.parseFloat(PopPaid.getText()));
+                db.closeConnection();
+            });
+            GlassPanePopup.showPopup(obj);
+        });
+    }
     private void PopItemQTYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PopItemQTYActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PopItemQTYActionPerformed
 
     private void PopItemQTYFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PopItemQTYFocusGained
-        OrderItemQtyPopup obj = new OrderItemQtyPopup();
-        GlassPanePopup.showPopup(obj);
+        
     }//GEN-LAST:event_PopItemQTYFocusGained
 
 

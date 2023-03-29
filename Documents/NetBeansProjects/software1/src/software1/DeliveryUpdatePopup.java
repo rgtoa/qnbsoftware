@@ -4,6 +4,7 @@
  */
 package software1;
 import glasspanepopup.GlassPanePopup;
+import java.awt.event.ActionListener;
 /**
  *
  * @author 97433
@@ -16,7 +17,14 @@ public class DeliveryUpdatePopup extends javax.swing.JPanel {
     public DeliveryUpdatePopup() {
         initComponents();
     }
-
+    
+    public void fail (ActionListener evt) {
+        faildeliverybtn.addActionListener(evt);
+    }
+    public void complete (ActionListener evt) {
+        completedeliverybtn.addActionListener(evt);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,20 +47,10 @@ public class DeliveryUpdatePopup extends javax.swing.JPanel {
         faildeliverybtn.setBackground(new java.awt.Color(235, 89, 89));
         faildeliverybtn.setForeground(new java.awt.Color(34, 73, 87));
         faildeliverybtn.setText("Failed");
-        faildeliverybtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                faildeliverybtnActionPerformed(evt);
-            }
-        });
 
         completedeliverybtn.setBackground(new java.awt.Color(140, 208, 218));
         completedeliverybtn.setForeground(new java.awt.Color(34, 73, 87));
         completedeliverybtn.setText("Complete");
-        completedeliverybtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                completedeliverybtnActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,14 +78,6 @@ public class DeliveryUpdatePopup extends javax.swing.JPanel {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void completedeliverybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completedeliverybtnActionPerformed
-        GlassPanePopup.closePopupLast();
-    }//GEN-LAST:event_completedeliverybtnActionPerformed
-
-    private void faildeliverybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faildeliverybtnActionPerformed
-        GlassPanePopup.closePopupLast();
-    }//GEN-LAST:event_faildeliverybtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

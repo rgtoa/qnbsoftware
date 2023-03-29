@@ -31,6 +31,11 @@ public class ConfirmTransac extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(35, 86, 108));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Confirm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         back1btn.setBackground(new java.awt.Color(140, 208, 218));
         back1btn.setForeground(new java.awt.Color(34, 73, 87));
@@ -72,8 +77,15 @@ public class ConfirmTransac extends javax.swing.JPanel {
     private void back1btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back1btnActionPerformed
         GlassPanePopup.closePopupLast();
     }//GEN-LAST:event_back1btnActionPerformed
-    public void back1(ActionListener event) {
-        back1btn.addActionListener(event);
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+    public void back1(ActionListener e) {
+        back1btn.addActionListener(event -> GlassPanePopup.closePopupLast());
+    }
+    public void confirm (ActionListener event) {
+        jButton1.addActionListener(event);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
