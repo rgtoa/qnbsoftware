@@ -2,10 +2,13 @@ package software1;
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.text.PlainDocument;
 
 public class TransacEditPopup extends javax.swing.JPanel {
-
-    public TransacEditPopup() {
+    private final String[] details;
+    public TransacEditPopup(String[] details) {
+        this.details = details;
         initComponents();
         PopOrderID.setEditable(false);
         PopItemQTY.setEditable(false);
@@ -14,9 +17,21 @@ public class TransacEditPopup extends javax.swing.JPanel {
         PopAddress.setEditable(false);
         PopPrice.setEditable(false);
         savebtn.setVisible(false);
+        editbtn.setVisible(false);
+        
+        ((PlainDocument)PopPaid.getDocument()).setDocumentFilter(new MyFloatFilter());
+        placeDetails();
+        
         //setOpaque(false);
     }
-    
+    private void placeDetails() {
+        PopOrderID.setText(this.details[0]);
+        PopItemQTY.setText(this.details[1]);
+        PopCustID.setText(this.details[2]);
+        PopName.setText(this.details[3]);
+        PopAddress.setText(this.details[4]);
+        PopPrice.setText(this.details[5]);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +95,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
 
         editbtn.setBackground(new java.awt.Color(34, 73, 87));
         editbtn.setForeground(new java.awt.Color(255, 255, 255));
-        editbtn.setText("Edit");
+        editbtn.setText("Cancel");
         editbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editbtnActionPerformed(evt);
@@ -131,6 +146,11 @@ public class TransacEditPopup extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(229, 229, 229));
 
+        PopName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PopFieldMouseClicked(evt);
+            }
+        });
         PopName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PopNameActionPerformed(evt);
@@ -147,6 +167,11 @@ public class TransacEditPopup extends javax.swing.JPanel {
 
         PopPrice.setMinimumSize(new java.awt.Dimension(70, 25));
         PopPrice.setPreferredSize(new java.awt.Dimension(70, 28));
+        PopPrice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PopFieldMouseClicked(evt);
+            }
+        });
         PopPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PopPriceActionPerformed(evt);
@@ -161,6 +186,11 @@ public class TransacEditPopup extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(34, 73, 87));
         jLabel4.setText("Cust ID");
 
+        PopItemQTY.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PopFieldMouseClicked(evt);
+            }
+        });
         PopItemQTY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PopItemQTYActionPerformed(evt);
@@ -171,6 +201,11 @@ public class TransacEditPopup extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(34, 73, 87));
         jLabel7.setText("Address");
 
+        PopAddress.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PopFieldMouseClicked(evt);
+            }
+        });
         PopAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PopAddressActionPerformed(evt);
@@ -179,6 +214,11 @@ public class TransacEditPopup extends javax.swing.JPanel {
 
         PopOrderID.setMinimumSize(new java.awt.Dimension(70, 25));
         PopOrderID.setPreferredSize(new java.awt.Dimension(70, 28));
+        PopOrderID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PopFieldMouseClicked(evt);
+            }
+        });
         PopOrderID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PopOrderIDActionPerformed(evt);
@@ -189,6 +229,11 @@ public class TransacEditPopup extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(34, 73, 87));
         jLabel3.setText("Item/QTY");
 
+        PopCustID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PopFieldMouseClicked(evt);
+            }
+        });
         PopCustID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PopCustIDActionPerformed(evt);
@@ -259,7 +304,7 @@ public class TransacEditPopup extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 843, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -311,24 +356,39 @@ public class TransacEditPopup extends javax.swing.JPanel {
     }//GEN-LAST:event_PopPriceActionPerformed
 
     private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
-        PopOrderID.setEditable(true);
-        PopItemQTY.setEditable(true);
-        PopCustID.setEditable(true);
-        PopName.setEditable(true);
-        PopAddress.setEditable(true);
-        PopPrice.setEditable(true);
-        editbtn.setVisible(false);
-        savebtn.setVisible(true);
+        
     }//GEN-LAST:event_editbtnActionPerformed
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-        SavePopup obj = new SavePopup();
-        obj.save((ActionEvent ae) -> {
-            GlassPanePopup.closePopupAll();
-        });
-        GlassPanePopup.showPopup(obj);
+        
     }//GEN-LAST:event_savebtnActionPerformed
 
+    private void PopFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PopFieldMouseClicked
+        JTextField field = (JTextField) evt.getComponent();
+        System.out.println(field.getText());
+        if (field == PopOrderID) GlassPanePopup.showPopup(new Message("Order ID is not editable"));
+        else if (field == PopCustID) GlassPanePopup.showPopup(new Message("Customer ID is not editable"));
+        else if (field == PopPrice) GlassPanePopup.showPopup(new Message("Price is automatically calculated"));
+        else if (field == PopItemQTY) {
+            
+        }
+        else {
+            field.setEditable(true);
+            editbtn.setVisible(true);
+            savebtn.setVisible(true);
+            jLabel1.setVisible(false);
+            PopPaid.setVisible(false);
+            confirmtrans.setVisible(false);
+            removetrans.setVisible(false);
+        }
+    }//GEN-LAST:event_PopFieldMouseClicked
+    public void editSave (ActionListener evt) {
+        savebtn.addActionListener(event -> {
+            SavePopup obj = new SavePopup();
+            obj.save(evt);
+            GlassPanePopup.showPopup(obj);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField PopAddress;

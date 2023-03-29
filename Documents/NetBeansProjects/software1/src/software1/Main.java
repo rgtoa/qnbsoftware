@@ -22,6 +22,8 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.table.TableModel;
 import javax.swing.text.AttributeSet;
@@ -58,11 +60,6 @@ public class Main extends javax.swing.JFrame {
         refreshCompleteTransact();
         refreshPendingDelivery();
         refreshCompleteDelivery();
-        
-        editmodule1.setVisible(isAuth);
-        editmodule2.setVisible(isAuth);
-        editmodule3.setVisible(isAuth);
-        editmodule4.setVisible(isAuth);
         
         populateCustomersBox();
         refreshFormVisibility();
@@ -140,72 +137,7 @@ public class Main extends javax.swing.JFrame {
         cityfield.setEnabled(b);
         mobilefield.setEnabled(b);
     }
-    // DocumentFilter Taken From StackOverflow
-    class MyFloatFilter extends DocumentFilter {
-   @Override
-   public void insertString(FilterBypass fb, int offset, String string,
-         AttributeSet attr) throws BadLocationException {
-
-      Document doc = fb.getDocument();
-      StringBuilder sb = new StringBuilder();
-      sb.append(doc.getText(0, doc.getLength()));
-      sb.insert(offset, string);
-
-      if (test(sb.toString())) {
-         super.insertString(fb, offset, string, attr);
-      } else {
-         // warn the user and don't allow the insert
-      }
-   }
-
-   private boolean test(String text) {
-      try {
-         Float.parseFloat(text);
-         return true;
-      } catch (NumberFormatException e) {
-         return false;
-      }
-   }
-
-   @Override
-   public void replace(FilterBypass fb, int offset, int length, String text,
-         AttributeSet attrs) throws BadLocationException {
-      
-      Document doc = fb.getDocument();
-      StringBuilder sb = new StringBuilder();
-      sb.append(doc.getText(0, doc.getLength()));
-      sb.replace(offset, offset + length, text);
-      if (sb.toString().length() == 0) {
-          super.replace(fb, offset, length, "", null);
-      }
-      else if (test(sb.toString()) && !(sb.toString().endsWith("f") ||
-                                       sb.toString().endsWith("d"))) {
-         super.replace(fb, offset, length, text, attrs);
-      } else {
-         // warn the user and don't allow the insert
-      }
-
-   }
-
-   @Override
-   public void remove(FilterBypass fb, int offset, int length)
-         throws BadLocationException {
-      Document doc = fb.getDocument();
-      StringBuilder sb = new StringBuilder();
-      sb.append(doc.getText(0, doc.getLength()));
-      sb.delete(offset, offset + length);
-      
-      if (sb.toString().length() == 0) {
-          super.replace(fb, offset, length, "", null);
-      }
-      else if (test(sb.toString())) {
-         super.remove(fb, offset, length);
-      } else {
-         // warn the user and don't allow the insert
-      }
-      
-   }
-}
+    
     private void scaleIcons(){     
         ImageIcon icon3 = new ImageIcon("arrow.png");
         Image arrow = icon3.getImage();
@@ -1078,8 +1010,9 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        pendingtransactbl.setColumnSelectionAllowed(true);
         pendingtransactbl.getTableHeader().setReorderingAllowed(false);
+        pendingtransactbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        pendingtransactbl.setRowHeight(45);
         jScrollPane1.setViewportView(pendingtransactbl);
         pendingtransactbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (pendingtransactbl.getColumnModel().getColumnCount() > 0) {
@@ -1235,24 +1168,25 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        completetransactbl.setColumnSelectionAllowed(true);
+        completetransactbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         completetransactbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        completetransactbl.setEnabled(false);
         completetransactbl.setFocusable(false);
         completetransactbl.setGridColor(new java.awt.Color(0, 0, 0));
         completetransactbl.setRequestFocusEnabled(false);
-        completetransactbl.setRowSelectionAllowed(false);
         completetransactbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
         completetransactbl.setShowGrid(false);
         completetransactbl.getTableHeader().setReorderingAllowed(false);
         completetransactbl.setUpdateSelectionOnSort(false);
         completetransactbl.setVerifyInputWhenFocusTarget(false);
+        completetransactbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        completetransactbl.setRowHeight(45);
         jScrollPane3.setViewportView(completetransactbl);
         completetransactbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (completetransactbl.getColumnModel().getColumnCount() > 0) {
             completetransactbl.getColumnModel().getColumn(0).setResizable(false);
             completetransactbl.getColumnModel().getColumn(0).setPreferredWidth(5);
             completetransactbl.getColumnModel().getColumn(1).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(1).setPreferredWidth(100);
             completetransactbl.getColumnModel().getColumn(2).setResizable(false);
             completetransactbl.getColumnModel().getColumn(2).setPreferredWidth(5);
             completetransactbl.getColumnModel().getColumn(3).setResizable(false);
@@ -1372,6 +1306,11 @@ public class Main extends javax.swing.JFrame {
         pendingbtn3.setForeground(new java.awt.Color(10, 64, 83));
         pendingbtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendingbtn3.setText("Pending");
+        pendingbtn3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendingbtn3MouseClicked(evt);
+            }
+        });
 
         pendingdelivertbl.setBackground(new java.awt.Color(229, 229, 229));
         pendingdelivertbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
@@ -1399,21 +1338,26 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        pendingdelivertbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         pendingdelivertbl.getTableHeader().setReorderingAllowed(false);
+        pendingdelivertbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        pendingdelivertbl.getColumnModel().getColumn(4).setCellRenderer(new MultiLineCellRenderer());
+        pendingdelivertbl.setRowHeight(45);
         jScrollPane5.setViewportView(pendingdelivertbl);
         if (pendingdelivertbl.getColumnModel().getColumnCount() > 0) {
             pendingdelivertbl.getColumnModel().getColumn(0).setResizable(false);
-            pendingdelivertbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            pendingdelivertbl.getColumnModel().getColumn(0).setPreferredWidth(75);
             pendingdelivertbl.getColumnModel().getColumn(1).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(1).setPreferredWidth(200);
             pendingdelivertbl.getColumnModel().getColumn(2).setResizable(false);
-            pendingdelivertbl.getColumnModel().getColumn(2).setPreferredWidth(5);
             pendingdelivertbl.getColumnModel().getColumn(3).setResizable(false);
             pendingdelivertbl.getColumnModel().getColumn(4).setResizable(false);
+            pendingdelivertbl.getColumnModel().getColumn(4).setPreferredWidth(200);
             pendingdelivertbl.getColumnModel().getColumn(5).setResizable(false);
             pendingdelivertbl.getColumnModel().getColumn(6).setResizable(false);
-            pendingdelivertbl.getColumnModel().getColumn(6).setPreferredWidth(5);
+            pendingdelivertbl.getColumnModel().getColumn(6).setPreferredWidth(40);
             pendingdelivertbl.getColumnModel().getColumn(7).setResizable(false);
-            pendingdelivertbl.getColumnModel().getColumn(7).setPreferredWidth(5);
+            pendingdelivertbl.getColumnModel().getColumn(7).setPreferredWidth(40);
         }
 
         completebtn3.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
@@ -1556,6 +1500,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
         completedelivertbl.getTableHeader().setReorderingAllowed(false);
+        completedelivertbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        completedelivertbl.setRowHeight(45);
         jScrollPane4.setViewportView(completedelivertbl);
         if (completedelivertbl.getColumnModel().getColumnCount() > 0) {
             completedelivertbl.getColumnModel().getColumn(0).setResizable(false);
@@ -1867,7 +1813,11 @@ public class Main extends javax.swing.JFrame {
                 showMsg("Wrong Password");
                 return;
             }
-            isAuth = true;
+            editmodule1.setVisible(true);
+            editmodule2.setVisible(true);
+            editmodule3.setVisible(true);
+            editmodule4.setVisible(true);
+            
             showCard(authreports);
             boldCard(authenticbtn);
             GlassPanePopup.closePopupLast();
@@ -2009,15 +1959,21 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_completebtn3MouseClicked
 
     private void updatebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtn1ActionPerformed
-        TransacEditPopup obj = new TransacEditPopup();
-        /*obj.transacedit(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                GlassPanePopup.closePopupLast();
-                invoices.setVisible(false);
-                form.setVisible(true);
-            }
-        });*/
+        int row = pendingtransactbl.getSelectedRow();
+        if (row == -1) return;
+        TableModel model = pendingtransactbl.getModel();
+        TransacEditPopup obj = new TransacEditPopup( new String[] {
+            ""+model.getValueAt(row, 0),
+            ""+model.getValueAt(row, 1),
+            ""+model.getValueAt(row, 2),
+            ""+model.getValueAt(row, 3),
+            ""+model.getValueAt(row, 4),
+            ""+model.getValueAt(row, 5)
+        });
+        obj.editSave(event -> {
+            GlassPanePopup.closePopupAll();
+            refreshPendingTransact();
+        });
         GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_updatebtn1ActionPerformed
 
@@ -2049,24 +2005,32 @@ public class Main extends javax.swing.JFrame {
 
     private void selectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectOrderActionPerformed
         // TODO add your handling code here:
-        Database db = new Database();
-        try {
-            int prodID = this.productNum + 1;
-            int qty = (int) productqty.getValue();
-            cart.add(new Object[] {
-                prodID,
-                db.getProductName(prodID),
-                qty,
-                db.getProductPrice(prodID) * qty
-            });
-            showMsg("Successfully Added Product");
-        } finally {
-            System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
-            productqty.setValue(1); // reset value to 1
-            db.closeConnection();
-        }
+        int prodID = this.productNum + 1;
+        int qty = (int) productqty.getValue();
+        addToCart(prodID, qty);
+        showMsg("Successfully Added Product");
+        System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
+        productqty.setValue(1); // reset value to 1
     }//GEN-LAST:event_selectOrderActionPerformed
-
+    private void addToCart(int prodID, int qty) {
+        Database db = new Database();
+        for (Object[] o : cart) {
+            if(o[0].equals(prodID)) {
+                Float price = (Float) o[3] / (int) o[2];
+                o[2] = qty + (int) o[2];
+                o[3] = price * (int) o[2];
+                return;
+            }
+        }
+        
+        cart.add(new Object[] {
+            prodID,
+            db.getProductName(prodID),
+            qty,
+            db.getProductPrice(prodID) * qty
+        });
+        
+    }
     private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
         showCard(invoices);
         boldCard(invoicebtn);
@@ -2229,6 +2193,14 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_generatebtn3ActionPerformed
+
+    private void pendingbtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingbtn3MouseClicked
+        javax.swing.table.TableColumnModel cm = pendingdelivertbl.getColumnModel();
+        for (int i = 0; i < 8; i++) {
+            javax.swing.table.TableColumn c = cm.getColumn(0);
+            System.out.println(c.getWidth());
+        }
+    }//GEN-LAST:event_pendingbtn3MouseClicked
     /**
      * @param args the command line arguments
      */
