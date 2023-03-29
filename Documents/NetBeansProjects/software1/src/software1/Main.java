@@ -2132,7 +2132,8 @@ public class Main extends javax.swing.JFrame {
             obj.addConfirmAction(event -> refreshPendingDelivery()); // REFRESH TABLE AFTER UPDATE
             GlassPanePopup.showPopup(obj);
         } else {
-            
+            DeliveryUpdatePopup obj = new DeliveryUpdatePopup();
+            GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_updatebtn2ActionPerformed
 
