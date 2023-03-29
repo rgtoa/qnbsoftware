@@ -1,14 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package software1;
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
-/**
- *
- * @author 97433
- */
+
 public class SavePopup extends javax.swing.JPanel {
 
     /**

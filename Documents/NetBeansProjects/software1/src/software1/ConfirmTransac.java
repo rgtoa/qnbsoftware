@@ -1,4 +1,6 @@
+
 package software1;
+
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
 
@@ -6,7 +8,6 @@ public class ConfirmTransac extends javax.swing.JPanel {
 
     public ConfirmTransac() {
         initComponents();
-        //setOpaque(false);
     }
 
     /**

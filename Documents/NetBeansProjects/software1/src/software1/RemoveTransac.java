@@ -1,4 +1,6 @@
+
 package software1;
+
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
 
@@ -6,7 +8,6 @@ public class RemoveTransac extends javax.swing.JPanel {
 
     public RemoveTransac() {
         initComponents();
-        //setOpaque(false);
     }
 
     /**

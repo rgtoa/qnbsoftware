@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package software1;
 
 import glasspanepopup.GlassPanePopup;
 
-/**
- *
- * @author 97433
- */
 public class OrderItemQtyPopup extends javax.swing.JPanel {
 
     /**

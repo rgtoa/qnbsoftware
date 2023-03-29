@@ -1,4 +1,6 @@
+
 package software1;
+
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
 import javax.swing.JTextField;
@@ -20,8 +22,6 @@ public class TransacEditPopup extends javax.swing.JPanel {
         editbtn.setVisible(isAuth);
         ((PlainDocument)PopPaid.getDocument()).setDocumentFilter(new MyFloatFilter());
         placeDetails();
-        
-        //setOpaque(false);
     }
     private void placeDetails() {
         PopOrderID.setText(this.details[0]);
