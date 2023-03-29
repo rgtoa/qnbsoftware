@@ -74,8 +74,7 @@ public class Main extends javax.swing.JFrame {
         doc1.setDocumentFilter(new MyFloatFilter());
         PlainDocument doc2 = (PlainDocument) amount2field.getDocument();
         doc2.setDocumentFilter(new MyFloatFilter());
-        
-        //jLabel10.setIcon(invoicewv);
+
         scaleIcons();
         scaleProducts();
         scaleReports();
@@ -152,7 +151,26 @@ public class Main extends javax.swing.JFrame {
         jLabel5.setIcon(scaledIcon3);
         jLabel6.setIcon(scaledIcon3);
         jLabel7.setIcon(scaledIcon3);
-        //jLabel17.setIcon(scaledIcon3);
+        jLabel23.setIcon(scaledIcon3);
+        jLabel20.setIcon(scaledIcon3);
+        jLabel21.setIcon(scaledIcon3);
+        jLabel22.setIcon(scaledIcon3);
+        jLabel24.setIcon(scaledIcon3);
+        jLabel25.setIcon(scaledIcon3);
+        jLabel26.setIcon(scaledIcon3);
+        jLabel27.setIcon(scaledIcon3);
+        jLabel28.setIcon(scaledIcon3);
+        jLabel29.setIcon(scaledIcon3);
+        jLabel30.setIcon(scaledIcon3);
+        jLabel31.setIcon(scaledIcon3);
+        jLabel32.setIcon(scaledIcon3);
+        jLabel33.setIcon(scaledIcon3);
+        jLabel34.setIcon(scaledIcon3);
+        jLabel35.setIcon(scaledIcon3);
+        jLabel36.setIcon(scaledIcon3);
+        jLabel37.setIcon(scaledIcon3);
+        jLabel38.setIcon(scaledIcon3);
+        jLabel39.setIcon(scaledIcon3);
         
         ImageIcon icon4 = new ImageIcon("acc1.png");
         Image acc = icon4.getImage();
@@ -187,7 +205,6 @@ public class Main extends javax.swing.JFrame {
         ImageIcon scaledIcon = new ImageIcon(imageScale);
         productimg.setIcon(scaledIcon);
         productname1.setText(text);
-        //productdesc1.setText("");
     }
     private void scaleReports() {
         ImageIcon icon7 = new ImageIcon("transacicon.png");
@@ -218,6 +235,8 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        dborderstbl = new javax.swing.JTable();
         maintabs = new javax.swing.JPanel();
         qnb = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -233,6 +252,8 @@ public class Main extends javax.swing.JFrame {
         authenticbtn = new javax.swing.JLabel();
         authenticbtn.setVisible(role.equals("owner"));
         jLabel8 = new javax.swing.JLabel();
+        databasebtn = new javax.swing.JLabel();
+        authenticbtn.setVisible(role.equals("owner"));
         signout = new javax.swing.JPanel();
         signoutbtn = new javax.swing.JLabel();
         tabcontent = new javax.swing.JPanel();
@@ -332,6 +353,163 @@ public class Main extends javax.swing.JFrame {
         financeicon = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         background7 = new software1.Background();
+        dborders = new javax.swing.JPanel();
+        deliveriesbtndb = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        dborderstbl = new javax.swing.JTable();
+        ordersbtndb = new javax.swing.JLabel();
+        dbjComboBox = new javax.swing.JComboBox<>();
+        dbgeneratebtn = new javax.swing.JButton();
+        editmodule5 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        background8 = new software1.Background();
+        customersbtndb = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        usersbtndb = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        productsbtndb = new javax.swing.JLabel();
+        dbdeliveries = new javax.swing.JPanel();
+        deliveriesbtndb1 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        dbdeliveriestbl = new javax.swing.JTable();
+        ordersbtndb1 = new javax.swing.JLabel();
+        dbjComboBox1 = new javax.swing.JComboBox<>();
+        dbgeneratebtn1 = new javax.swing.JButton();
+        editmodule6 = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        background9 = new software1.Background();
+        customersbtndb1 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        usersbtndb1 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        productsbtndb1 = new javax.swing.JLabel();
+        dbcustomers = new javax.swing.JPanel();
+        deliveriesbtndb2 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        dbcustomerstbl = new javax.swing.JTable();
+        ordersbtndb2 = new javax.swing.JLabel();
+        dbjComboBox2 = new javax.swing.JComboBox<>();
+        dbgeneratebtn2 = new javax.swing.JButton();
+        editmodule7 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        background10 = new software1.Background();
+        customersbtndb2 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        usersbtndb2 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        productsbtndb2 = new javax.swing.JLabel();
+        dbusers = new javax.swing.JPanel();
+        deliveriesbtndb3 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        dbuserstbl = new javax.swing.JTable();
+        ordersbtndb3 = new javax.swing.JLabel();
+        dbjComboBox3 = new javax.swing.JComboBox<>();
+        dbgeneratebtn3 = new javax.swing.JButton();
+        editmodule8 = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
+        background11 = new software1.Background();
+        customersbtndb3 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        usersbtndb3 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        productsbtndb3 = new javax.swing.JLabel();
+        dbproducts = new javax.swing.JPanel();
+        deliveriesbtndb4 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        dbproductstbl = new javax.swing.JTable();
+        ordersbtndb4 = new javax.swing.JLabel();
+        dbjComboBox4 = new javax.swing.JComboBox<>();
+        dbgeneratebtn4 = new javax.swing.JButton();
+        editmodule9 = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        background12 = new software1.Background();
+        customersbtndb4 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        usersbtndb4 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        productsbtndb4 = new javax.swing.JLabel();
+
+        dborderstbl.setBackground(new java.awt.Color(229, 229, 229));
+        dborderstbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        dborderstbl.setForeground(new java.awt.Color(10, 64, 83));
+        dborderstbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Order ID", "Customer ID", "ProductNames", "ProductQTY", "TotalPrice", "AmountPaid", "FullyPaid", "DateOrdered", "DatePaid", "LastName", "FirstName"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        dborderstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dborderstbl.setColumnSelectionAllowed(true);
+        dborderstbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dborderstbl.setFocusable(false);
+        dborderstbl.setGridColor(new java.awt.Color(0, 0, 0));
+        dborderstbl.setRequestFocusEnabled(false);
+        dborderstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        dborderstbl.setShowGrid(false);
+        dborderstbl.getTableHeader().setReorderingAllowed(false);
+        dborderstbl.setUpdateSelectionOnSort(false);
+        dborderstbl.setVerifyInputWhenFocusTarget(false);
+        dborderstbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        dborderstbl.setRowHeight(45);
+        jScrollPane6.setViewportView(dborderstbl);
+        dborderstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (dborderstbl.getColumnModel().getColumnCount() > 0) {
+            dborderstbl.getColumnModel().getColumn(0).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(0).setHeaderValue("Order ID");
+            dborderstbl.getColumnModel().getColumn(1).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(1).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(1).setHeaderValue("Customer ID");
+            dborderstbl.getColumnModel().getColumn(2).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(2).setPreferredWidth(50);
+            dborderstbl.getColumnModel().getColumn(2).setHeaderValue("ProductNames");
+            dborderstbl.getColumnModel().getColumn(3).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(3).setPreferredWidth(3);
+            dborderstbl.getColumnModel().getColumn(3).setHeaderValue("ProductQTY");
+            dborderstbl.getColumnModel().getColumn(4).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(4).setPreferredWidth(4);
+            dborderstbl.getColumnModel().getColumn(4).setHeaderValue("TotalPrice");
+            dborderstbl.getColumnModel().getColumn(5).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(5).setPreferredWidth(50);
+            dborderstbl.getColumnModel().getColumn(5).setHeaderValue("AmountPaid");
+            dborderstbl.getColumnModel().getColumn(6).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(6).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(6).setHeaderValue("FullyPaid");
+            dborderstbl.getColumnModel().getColumn(7).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(7).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(7).setHeaderValue("DateOrdered");
+            dborderstbl.getColumnModel().getColumn(8).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(8).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(8).setHeaderValue("DatePaid");
+            dborderstbl.getColumnModel().getColumn(9).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(9).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(9).setHeaderValue("LastName");
+            dborderstbl.getColumnModel().getColumn(10).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(10).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(10).setHeaderValue("FirstName");
+        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QNB System");
@@ -354,8 +532,8 @@ public class Main extends javax.swing.JFrame {
             qnbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(qnbLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         qnbLayout.setVerticalGroup(
             qnbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,9 +565,9 @@ public class Main extends javax.swing.JFrame {
         invoicetabLayout.setHorizontalGroup(
             invoicetabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(invoicetabLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(40, 40, 40)
                 .addComponent(invoicebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         invoicetabLayout.setVerticalGroup(
             invoicetabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -422,7 +600,7 @@ public class Main extends javax.swing.JFrame {
             transactabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transactabLayout.createSequentialGroup()
                 .addComponent(transacbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
         transactabLayout.setVerticalGroup(
             transactabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,9 +632,8 @@ public class Main extends javax.swing.JFrame {
         delivertabLayout.setHorizontalGroup(
             delivertabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(delivertabLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(deliverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         delivertabLayout.setVerticalGroup(
             delivertabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -483,14 +660,29 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        databasebtn.setFont(new java.awt.Font("Source Sans Pro Light", 0, 18)); // NOI18N
+        databasebtn.setForeground(new java.awt.Color(10, 64, 83));
+        databasebtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        databasebtn.setText("Database");
+        databasebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        databasebtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        databasebtn.setPreferredSize(new java.awt.Dimension(175, 70));
+        databasebtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                databasebtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout authentictabLayout = new javax.swing.GroupLayout(authentictab);
         authentictab.setLayout(authentictabLayout);
         authentictabLayout.setHorizontalGroup(
             authentictabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authentictabLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(2, 2, 2)
                 .addComponent(authenticbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(databasebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         authentictabLayout.setVerticalGroup(
@@ -498,7 +690,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(authentictabLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(authentictabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(authenticbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(authentictabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(authenticbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(databasebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -1190,16 +1384,25 @@ public class Main extends javax.swing.JFrame {
         if (completetransactbl.getColumnModel().getColumnCount() > 0) {
             completetransactbl.getColumnModel().getColumn(0).setResizable(false);
             completetransactbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            completetransactbl.getColumnModel().getColumn(0).setHeaderValue("Order ID");
             completetransactbl.getColumnModel().getColumn(1).setResizable(false);
-            completetransactbl.getColumnModel().getColumn(1).setPreferredWidth(100);
+            completetransactbl.getColumnModel().getColumn(1).setPreferredWidth(50);
+            completetransactbl.getColumnModel().getColumn(1).setHeaderValue("ProductNames");
             completetransactbl.getColumnModel().getColumn(2).setResizable(false);
             completetransactbl.getColumnModel().getColumn(2).setPreferredWidth(5);
+            completetransactbl.getColumnModel().getColumn(2).setHeaderValue("Customer ID");
             completetransactbl.getColumnModel().getColumn(3).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(3).setPreferredWidth(3);
+            completetransactbl.getColumnModel().getColumn(3).setHeaderValue("ProductQTY");
             completetransactbl.getColumnModel().getColumn(4).setResizable(false);
+            completetransactbl.getColumnModel().getColumn(4).setPreferredWidth(4);
+            completetransactbl.getColumnModel().getColumn(4).setHeaderValue("TotalPrice");
             completetransactbl.getColumnModel().getColumn(5).setResizable(false);
-            completetransactbl.getColumnModel().getColumn(5).setPreferredWidth(5);
+            completetransactbl.getColumnModel().getColumn(5).setPreferredWidth(50);
+            completetransactbl.getColumnModel().getColumn(5).setHeaderValue("AmountPaid");
             completetransactbl.getColumnModel().getColumn(6).setResizable(false);
             completetransactbl.getColumnModel().getColumn(6).setPreferredWidth(5);
+            completetransactbl.getColumnModel().getColumn(6).setHeaderValue("FullyPaid");
         }
 
         pendingbtn2.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
@@ -1714,6 +1917,1194 @@ public class Main extends javax.swing.JFrame {
 
         tabcontent.add(authreports, "card7");
 
+        dborders.setBackground(new java.awt.Color(255, 255, 255));
+        dborders.setPreferredSize(new java.awt.Dimension(1250, 625));
+
+        deliveriesbtndb.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        deliveriesbtndb.setForeground(new java.awt.Color(10, 64, 83));
+        deliveriesbtndb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deliveriesbtndb.setText("Deliveries");
+        deliveriesbtndb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deliveriesbtndb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deliveriesbtndbMouseClicked(evt);
+            }
+        });
+
+        dborderstbl.setBackground(new java.awt.Color(229, 229, 229));
+        dborderstbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        dborderstbl.setForeground(new java.awt.Color(10, 64, 83));
+        dborderstbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Order ID", "Customer ID", "ProductNames", "ProductQTY", "TotalPrice", "AmountPaid", "FullyPaid", "DateOrdered", "DatePaid", "LastName", "FirstName"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        dborderstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dborderstbl.setColumnSelectionAllowed(true);
+        dborderstbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dborderstbl.setFocusable(false);
+        dborderstbl.setGridColor(new java.awt.Color(0, 0, 0));
+        dborderstbl.setRequestFocusEnabled(false);
+        dborderstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        dborderstbl.setShowGrid(false);
+        dborderstbl.getTableHeader().setReorderingAllowed(false);
+        dborderstbl.setUpdateSelectionOnSort(false);
+        dborderstbl.setVerifyInputWhenFocusTarget(false);
+        dborderstbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        dborderstbl.setRowHeight(45);
+        jScrollPane6.setViewportView(dborderstbl);
+        dborderstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (dborderstbl.getColumnModel().getColumnCount() > 0) {
+            dborderstbl.getColumnModel().getColumn(0).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(0).setHeaderValue("Order ID");
+            dborderstbl.getColumnModel().getColumn(1).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(1).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(1).setHeaderValue("Customer ID");
+            dborderstbl.getColumnModel().getColumn(2).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(2).setPreferredWidth(50);
+            dborderstbl.getColumnModel().getColumn(2).setHeaderValue("ProductNames");
+            dborderstbl.getColumnModel().getColumn(3).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(3).setPreferredWidth(3);
+            dborderstbl.getColumnModel().getColumn(3).setHeaderValue("ProductQTY");
+            dborderstbl.getColumnModel().getColumn(4).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(4).setPreferredWidth(4);
+            dborderstbl.getColumnModel().getColumn(4).setHeaderValue("TotalPrice");
+            dborderstbl.getColumnModel().getColumn(5).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(5).setPreferredWidth(50);
+            dborderstbl.getColumnModel().getColumn(5).setHeaderValue("AmountPaid");
+            dborderstbl.getColumnModel().getColumn(6).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(6).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(6).setHeaderValue("FullyPaid");
+            dborderstbl.getColumnModel().getColumn(7).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(7).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(7).setHeaderValue("DateOrdered");
+            dborderstbl.getColumnModel().getColumn(8).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(8).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(8).setHeaderValue("DatePaid");
+            dborderstbl.getColumnModel().getColumn(9).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(9).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(9).setHeaderValue("LastName");
+            dborderstbl.getColumnModel().getColumn(10).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(10).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(10).setHeaderValue("FirstName");
+        }
+        dborderstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (dborderstbl.getColumnModel().getColumnCount() > 0) {
+            dborderstbl.getColumnModel().getColumn(0).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(0).setHeaderValue("Order ID");
+            dborderstbl.getColumnModel().getColumn(1).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(1).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(1).setHeaderValue("Customer ID");
+            dborderstbl.getColumnModel().getColumn(2).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(2).setPreferredWidth(50);
+            dborderstbl.getColumnModel().getColumn(2).setHeaderValue("ProductNames");
+            dborderstbl.getColumnModel().getColumn(3).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(3).setPreferredWidth(3);
+            dborderstbl.getColumnModel().getColumn(3).setHeaderValue("ProductQTY");
+            dborderstbl.getColumnModel().getColumn(4).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(4).setPreferredWidth(4);
+            dborderstbl.getColumnModel().getColumn(4).setHeaderValue("TotalPrice");
+            dborderstbl.getColumnModel().getColumn(5).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(5).setPreferredWidth(50);
+            dborderstbl.getColumnModel().getColumn(5).setHeaderValue("AmountPaid");
+            dborderstbl.getColumnModel().getColumn(6).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(6).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(6).setHeaderValue("FullyPaid");
+            dborderstbl.getColumnModel().getColumn(7).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(7).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(7).setHeaderValue("DateOrdered");
+            dborderstbl.getColumnModel().getColumn(8).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(8).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(8).setHeaderValue("DatePaid");
+            dborderstbl.getColumnModel().getColumn(9).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(9).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(9).setHeaderValue("LastName");
+            dborderstbl.getColumnModel().getColumn(10).setResizable(false);
+            dborderstbl.getColumnModel().getColumn(10).setPreferredWidth(5);
+            dborderstbl.getColumnModel().getColumn(10).setHeaderValue("FirstName");
+        }
+
+        ordersbtndb.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 36)); // NOI18N
+        ordersbtndb.setForeground(new java.awt.Color(10, 64, 83));
+        ordersbtndb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ordersbtndb.setText("Orders");
+        ordersbtndb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ordersbtndb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ordersbtndbMouseClicked(evt);
+            }
+        });
+
+        dbjComboBox.setBackground(new java.awt.Color(10, 64, 83));
+        dbjComboBox.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbjComboBox.setForeground(new java.awt.Color(255, 255, 255));
+        dbjComboBox.setMaximumRowCount(3);
+        dbjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        dbjComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                dbjComboBoxTransactComboBoxItemStateChanged(evt);
+            }
+        });
+        dbjComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbjComboBoxActionPerformed(evt);
+            }
+        });
+
+        dbgeneratebtn.setBackground(new java.awt.Color(140, 208, 218));
+        dbgeneratebtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbgeneratebtn.setForeground(new java.awt.Color(34, 73, 87));
+        dbgeneratebtn.setText("Generate");
+        dbgeneratebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbgeneratebtnActionPerformed(evt);
+            }
+        });
+
+        editmodule5.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule5.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule5.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule5.setText("Edit Module");
+
+        javax.swing.GroupLayout background8Layout = new javax.swing.GroupLayout(background8);
+        background8.setLayout(background8Layout);
+        background8Layout.setHorizontalGroup(
+            background8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        background8Layout.setVerticalGroup(
+            background8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        customersbtndb.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        customersbtndb.setForeground(new java.awt.Color(10, 64, 83));
+        customersbtndb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customersbtndb.setText("Customers");
+        customersbtndb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        customersbtndb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customersbtndbMouseClicked(evt);
+            }
+        });
+
+        usersbtndb.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        usersbtndb.setForeground(new java.awt.Color(10, 64, 83));
+        usersbtndb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usersbtndb.setText("Users");
+        usersbtndb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usersbtndb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersbtndbMouseClicked(evt);
+            }
+        });
+
+        productsbtndb.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        productsbtndb.setForeground(new java.awt.Color(10, 64, 83));
+        productsbtndb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productsbtndb.setText("Products");
+        productsbtndb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        productsbtndb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productsbtndbMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dbordersLayout = new javax.swing.GroupLayout(dborders);
+        dborders.setLayout(dbordersLayout);
+        dbordersLayout.setHorizontalGroup(
+            dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dbordersLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbordersLayout.createSequentialGroup()
+                        .addComponent(ordersbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(deliveriesbtndb)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(customersbtndb)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(usersbtndb)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(productsbtndb)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(dbordersLayout.createSequentialGroup()
+                        .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                            .addGroup(dbordersLayout.createSequentialGroup()
+                                .addComponent(dbjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dbgeneratebtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule5, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(85, 85, 85))))
+        );
+        dbordersLayout.setVerticalGroup(
+            dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dbordersLayout.createSequentialGroup()
+                .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbordersLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deliveriesbtndb)
+                            .addComponent(ordersbtndb)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbordersLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(customersbtndb)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usersbtndb)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(productsbtndb)
+                                        .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dbjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dbgeneratebtn)
+                    .addComponent(editmodule5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addComponent(background8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        tabcontent.add(dborders, "card4");
+
+        dbdeliveries.setBackground(new java.awt.Color(255, 255, 255));
+        dbdeliveries.setPreferredSize(new java.awt.Dimension(1250, 625));
+
+        deliveriesbtndb1.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
+        deliveriesbtndb1.setForeground(new java.awt.Color(10, 64, 83));
+        deliveriesbtndb1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deliveriesbtndb1.setText("Deliveries");
+        deliveriesbtndb1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deliveriesbtndb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deliveriesbtndb1MouseClicked(evt);
+            }
+        });
+
+        dbdeliveriestbl.setBackground(new java.awt.Color(229, 229, 229));
+        dbdeliveriestbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        dbdeliveriestbl.setForeground(new java.awt.Color(10, 64, 83));
+        dbdeliveriestbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Order ID", "DeliveryStatus", "DeliveryMan", "ProductNames", "TotalPrice", "LastName", "FirstName", "Street", "Barangay", "City"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        dbdeliveriestbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dbdeliveriestbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dbdeliveriestbl.setFocusable(false);
+        dbdeliveriestbl.setGridColor(new java.awt.Color(0, 0, 0));
+        dbdeliveriestbl.setRequestFocusEnabled(false);
+        dbdeliveriestbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        dbdeliveriestbl.setShowGrid(false);
+        dbdeliveriestbl.getTableHeader().setReorderingAllowed(false);
+        dbdeliveriestbl.setUpdateSelectionOnSort(false);
+        dbdeliveriestbl.setVerifyInputWhenFocusTarget(false);
+        dborderstbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        dborderstbl.setRowHeight(45);
+        jScrollPane7.setViewportView(dbdeliveriestbl);
+        dbdeliveriestbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (dbdeliveriestbl.getColumnModel().getColumnCount() > 0) {
+            dbdeliveriestbl.getColumnModel().getColumn(0).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            dbdeliveriestbl.getColumnModel().getColumn(0).setHeaderValue("Order ID");
+            dbdeliveriestbl.getColumnModel().getColumn(1).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(1).setPreferredWidth(5);
+            dbdeliveriestbl.getColumnModel().getColumn(1).setHeaderValue("Customer ID");
+            dbdeliveriestbl.getColumnModel().getColumn(2).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(2).setPreferredWidth(50);
+            dbdeliveriestbl.getColumnModel().getColumn(2).setHeaderValue("ProductNames");
+            dbdeliveriestbl.getColumnModel().getColumn(3).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(3).setPreferredWidth(3);
+            dbdeliveriestbl.getColumnModel().getColumn(3).setHeaderValue("ProductQTY");
+            dbdeliveriestbl.getColumnModel().getColumn(4).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(4).setPreferredWidth(4);
+            dbdeliveriestbl.getColumnModel().getColumn(4).setHeaderValue("TotalPrice");
+            dbdeliveriestbl.getColumnModel().getColumn(5).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(5).setPreferredWidth(5);
+            dbdeliveriestbl.getColumnModel().getColumn(5).setHeaderValue("LastName");
+            dbdeliveriestbl.getColumnModel().getColumn(6).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(6).setPreferredWidth(5);
+            dbdeliveriestbl.getColumnModel().getColumn(6).setHeaderValue("FirstName");
+            dbdeliveriestbl.getColumnModel().getColumn(7).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(7).setPreferredWidth(50);
+            dbdeliveriestbl.getColumnModel().getColumn(7).setHeaderValue("AmountPaid");
+            dbdeliveriestbl.getColumnModel().getColumn(8).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(8).setPreferredWidth(5);
+            dbdeliveriestbl.getColumnModel().getColumn(8).setHeaderValue("FullyPaid");
+            dbdeliveriestbl.getColumnModel().getColumn(9).setResizable(false);
+            dbdeliveriestbl.getColumnModel().getColumn(9).setPreferredWidth(5);
+            dbdeliveriestbl.getColumnModel().getColumn(9).setHeaderValue("DateOrdered");
+        }
+
+        ordersbtndb1.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
+        ordersbtndb1.setForeground(new java.awt.Color(10, 64, 83));
+        ordersbtndb1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ordersbtndb1.setText("Orders");
+        ordersbtndb1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ordersbtndb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ordersbtndb1MouseClicked(evt);
+            }
+        });
+
+        dbjComboBox1.setBackground(new java.awt.Color(10, 64, 83));
+        dbjComboBox1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbjComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        dbjComboBox1.setMaximumRowCount(3);
+        dbjComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        dbjComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                dbjComboBox1TransactComboBoxItemStateChanged(evt);
+            }
+        });
+        dbjComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbjComboBox1ActionPerformed(evt);
+            }
+        });
+
+        dbgeneratebtn1.setBackground(new java.awt.Color(140, 208, 218));
+        dbgeneratebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbgeneratebtn1.setForeground(new java.awt.Color(34, 73, 87));
+        dbgeneratebtn1.setText("Generate");
+        dbgeneratebtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbgeneratebtn1ActionPerformed(evt);
+            }
+        });
+
+        editmodule6.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule6.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule6.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule6.setText("Edit Module");
+
+        javax.swing.GroupLayout background9Layout = new javax.swing.GroupLayout(background9);
+        background9.setLayout(background9Layout);
+        background9Layout.setHorizontalGroup(
+            background9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        background9Layout.setVerticalGroup(
+            background9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        customersbtndb1.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        customersbtndb1.setForeground(new java.awt.Color(10, 64, 83));
+        customersbtndb1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customersbtndb1.setText("Customers");
+        customersbtndb1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        customersbtndb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customersbtndb1MouseClicked(evt);
+            }
+        });
+
+        usersbtndb1.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        usersbtndb1.setForeground(new java.awt.Color(10, 64, 83));
+        usersbtndb1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usersbtndb1.setText("Users");
+        usersbtndb1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usersbtndb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersbtndb1MouseClicked(evt);
+            }
+        });
+
+        productsbtndb1.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        productsbtndb1.setForeground(new java.awt.Color(10, 64, 83));
+        productsbtndb1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productsbtndb1.setText("Products");
+        productsbtndb1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        productsbtndb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productsbtndb1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dbdeliveriesLayout = new javax.swing.GroupLayout(dbdeliveries);
+        dbdeliveries.setLayout(dbdeliveriesLayout);
+        dbdeliveriesLayout.setHorizontalGroup(
+            dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dbdeliveriesLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbdeliveriesLayout.createSequentialGroup()
+                        .addComponent(ordersbtndb1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(deliveriesbtndb1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(customersbtndb1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(usersbtndb1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(productsbtndb1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(dbdeliveriesLayout.createSequentialGroup()
+                        .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                            .addGroup(dbdeliveriesLayout.createSequentialGroup()
+                                .addComponent(dbjComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dbgeneratebtn1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule6, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(85, 85, 85))))
+        );
+        dbdeliveriesLayout.setVerticalGroup(
+            dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dbdeliveriesLayout.createSequentialGroup()
+                .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbdeliveriesLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deliveriesbtndb1)
+                            .addComponent(ordersbtndb1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbdeliveriesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(customersbtndb1)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usersbtndb1)
+                                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(productsbtndb1)
+                                        .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dbjComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dbgeneratebtn1)
+                    .addComponent(editmodule6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addComponent(background9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        tabcontent.add(dbdeliveries, "card4");
+
+        dbcustomers.setBackground(new java.awt.Color(255, 255, 255));
+        dbcustomers.setPreferredSize(new java.awt.Dimension(1250, 625));
+
+        deliveriesbtndb2.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        deliveriesbtndb2.setForeground(new java.awt.Color(10, 64, 83));
+        deliveriesbtndb2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deliveriesbtndb2.setText("Deliveries");
+        deliveriesbtndb2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deliveriesbtndb2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deliveriesbtndb2MouseClicked(evt);
+            }
+        });
+
+        dbcustomerstbl.setBackground(new java.awt.Color(229, 229, 229));
+        dbcustomerstbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        dbcustomerstbl.setForeground(new java.awt.Color(10, 64, 83));
+        dbcustomerstbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Customer ID", "LastName", "FirstName", "Street", "Barangay", "City"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        dbcustomerstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dbcustomerstbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dbcustomerstbl.setFocusable(false);
+        dbcustomerstbl.setGridColor(new java.awt.Color(0, 0, 0));
+        dbcustomerstbl.setRequestFocusEnabled(false);
+        dbcustomerstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        dbcustomerstbl.setShowGrid(false);
+        dbcustomerstbl.getTableHeader().setReorderingAllowed(false);
+        dbcustomerstbl.setUpdateSelectionOnSort(false);
+        dbcustomerstbl.setVerifyInputWhenFocusTarget(false);
+        dborderstbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        dborderstbl.setRowHeight(45);
+        jScrollPane8.setViewportView(dbcustomerstbl);
+        dbcustomerstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (dbcustomerstbl.getColumnModel().getColumnCount() > 0) {
+            dbcustomerstbl.getColumnModel().getColumn(0).setResizable(false);
+            dbcustomerstbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            dbcustomerstbl.getColumnModel().getColumn(0).setHeaderValue("Customer ID");
+            dbcustomerstbl.getColumnModel().getColumn(1).setResizable(false);
+            dbcustomerstbl.getColumnModel().getColumn(1).setPreferredWidth(5);
+            dbcustomerstbl.getColumnModel().getColumn(1).setHeaderValue("LastName");
+            dbcustomerstbl.getColumnModel().getColumn(2).setResizable(false);
+            dbcustomerstbl.getColumnModel().getColumn(2).setPreferredWidth(5);
+            dbcustomerstbl.getColumnModel().getColumn(2).setHeaderValue("FirstName");
+            dbcustomerstbl.getColumnModel().getColumn(3).setResizable(false);
+            dbcustomerstbl.getColumnModel().getColumn(3).setPreferredWidth(5);
+            dbcustomerstbl.getColumnModel().getColumn(3).setHeaderValue("DateOrdered");
+            dbcustomerstbl.getColumnModel().getColumn(4).setResizable(false);
+            dbcustomerstbl.getColumnModel().getColumn(4).setPreferredWidth(5);
+            dbcustomerstbl.getColumnModel().getColumn(4).setHeaderValue("DatePaid");
+            dbcustomerstbl.getColumnModel().getColumn(5).setResizable(false);
+            dbcustomerstbl.getColumnModel().getColumn(5).setPreferredWidth(10);
+        }
+
+        ordersbtndb2.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
+        ordersbtndb2.setForeground(new java.awt.Color(10, 64, 83));
+        ordersbtndb2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ordersbtndb2.setText("Orders");
+        ordersbtndb2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ordersbtndb2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ordersbtndb2MouseClicked(evt);
+            }
+        });
+
+        dbjComboBox2.setBackground(new java.awt.Color(10, 64, 83));
+        dbjComboBox2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbjComboBox2.setForeground(new java.awt.Color(255, 255, 255));
+        dbjComboBox2.setMaximumRowCount(3);
+        dbjComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        dbjComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                dbjComboBox2TransactComboBoxItemStateChanged(evt);
+            }
+        });
+        dbjComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbjComboBox2ActionPerformed(evt);
+            }
+        });
+
+        dbgeneratebtn2.setBackground(new java.awt.Color(140, 208, 218));
+        dbgeneratebtn2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbgeneratebtn2.setForeground(new java.awt.Color(34, 73, 87));
+        dbgeneratebtn2.setText("Generate");
+        dbgeneratebtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbgeneratebtn2ActionPerformed(evt);
+            }
+        });
+
+        editmodule7.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule7.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule7.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule7.setText("Edit Module");
+
+        javax.swing.GroupLayout background10Layout = new javax.swing.GroupLayout(background10);
+        background10.setLayout(background10Layout);
+        background10Layout.setHorizontalGroup(
+            background10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        background10Layout.setVerticalGroup(
+            background10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        customersbtndb2.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
+        customersbtndb2.setForeground(new java.awt.Color(10, 64, 83));
+        customersbtndb2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customersbtndb2.setText("Customers");
+        customersbtndb2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        usersbtndb2.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        usersbtndb2.setForeground(new java.awt.Color(10, 64, 83));
+        usersbtndb2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usersbtndb2.setText("Users");
+        usersbtndb2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usersbtndb2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersbtndb2MouseClicked(evt);
+            }
+        });
+
+        productsbtndb2.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        productsbtndb2.setForeground(new java.awt.Color(10, 64, 83));
+        productsbtndb2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productsbtndb2.setText("Products");
+        productsbtndb2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        productsbtndb2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productsbtndb2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dbcustomersLayout = new javax.swing.GroupLayout(dbcustomers);
+        dbcustomers.setLayout(dbcustomersLayout);
+        dbcustomersLayout.setHorizontalGroup(
+            dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dbcustomersLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbcustomersLayout.createSequentialGroup()
+                        .addComponent(ordersbtndb2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(deliveriesbtndb2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(customersbtndb2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(usersbtndb2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(productsbtndb2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(dbcustomersLayout.createSequentialGroup()
+                        .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                            .addGroup(dbcustomersLayout.createSequentialGroup()
+                                .addComponent(dbjComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dbgeneratebtn2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule7, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(85, 85, 85))))
+        );
+        dbcustomersLayout.setVerticalGroup(
+            dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dbcustomersLayout.createSequentialGroup()
+                .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbcustomersLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deliveriesbtndb2)
+                            .addComponent(ordersbtndb2)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbcustomersLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(customersbtndb2)
+                                .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usersbtndb2)
+                                    .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(productsbtndb2)
+                                        .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dbjComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dbgeneratebtn2)
+                    .addComponent(editmodule7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addComponent(background10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        tabcontent.add(dbcustomers, "card4");
+
+        dbusers.setBackground(new java.awt.Color(255, 255, 255));
+        dbusers.setPreferredSize(new java.awt.Dimension(1250, 625));
+
+        deliveriesbtndb3.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        deliveriesbtndb3.setForeground(new java.awt.Color(10, 64, 83));
+        deliveriesbtndb3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deliveriesbtndb3.setText("Deliveries");
+        deliveriesbtndb3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deliveriesbtndb3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deliveriesbtndb3MouseClicked(evt);
+            }
+        });
+
+        dbuserstbl.setBackground(new java.awt.Color(229, 229, 229));
+        dbuserstbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        dbuserstbl.setForeground(new java.awt.Color(10, 64, 83));
+        dbuserstbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Username", "Password", "Role"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        dbuserstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dbuserstbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dbuserstbl.setFocusable(false);
+        dbuserstbl.setGridColor(new java.awt.Color(0, 0, 0));
+        dbuserstbl.setRequestFocusEnabled(false);
+        dbuserstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        dbuserstbl.setShowGrid(false);
+        dbuserstbl.getTableHeader().setReorderingAllowed(false);
+        dbuserstbl.setUpdateSelectionOnSort(false);
+        dbuserstbl.setVerifyInputWhenFocusTarget(false);
+        dborderstbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        dborderstbl.setRowHeight(45);
+        jScrollPane9.setViewportView(dbuserstbl);
+        dbuserstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (dbuserstbl.getColumnModel().getColumnCount() > 0) {
+            dbuserstbl.getColumnModel().getColumn(0).setResizable(false);
+            dbuserstbl.getColumnModel().getColumn(1).setResizable(false);
+            dbuserstbl.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        ordersbtndb3.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
+        ordersbtndb3.setForeground(new java.awt.Color(10, 64, 83));
+        ordersbtndb3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ordersbtndb3.setText("Orders");
+        ordersbtndb3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ordersbtndb3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ordersbtndb3MouseClicked(evt);
+            }
+        });
+
+        dbjComboBox3.setBackground(new java.awt.Color(10, 64, 83));
+        dbjComboBox3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbjComboBox3.setForeground(new java.awt.Color(255, 255, 255));
+        dbjComboBox3.setMaximumRowCount(3);
+        dbjComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        dbjComboBox3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                dbjComboBox3TransactComboBoxItemStateChanged(evt);
+            }
+        });
+        dbjComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbjComboBox3ActionPerformed(evt);
+            }
+        });
+
+        dbgeneratebtn3.setBackground(new java.awt.Color(140, 208, 218));
+        dbgeneratebtn3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbgeneratebtn3.setForeground(new java.awt.Color(34, 73, 87));
+        dbgeneratebtn3.setText("Generate");
+        dbgeneratebtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbgeneratebtn3ActionPerformed(evt);
+            }
+        });
+
+        editmodule8.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule8.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule8.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule8.setText("Edit Module");
+
+        javax.swing.GroupLayout background11Layout = new javax.swing.GroupLayout(background11);
+        background11.setLayout(background11Layout);
+        background11Layout.setHorizontalGroup(
+            background11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        background11Layout.setVerticalGroup(
+            background11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        customersbtndb3.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        customersbtndb3.setForeground(new java.awt.Color(10, 64, 83));
+        customersbtndb3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customersbtndb3.setText("Customers");
+        customersbtndb3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        customersbtndb3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customersbtndb3MouseClicked(evt);
+            }
+        });
+
+        usersbtndb3.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
+        usersbtndb3.setForeground(new java.awt.Color(10, 64, 83));
+        usersbtndb3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usersbtndb3.setText("Users");
+        usersbtndb3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        productsbtndb3.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        productsbtndb3.setForeground(new java.awt.Color(10, 64, 83));
+        productsbtndb3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productsbtndb3.setText("Products");
+        productsbtndb3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        productsbtndb3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productsbtndb3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dbusersLayout = new javax.swing.GroupLayout(dbusers);
+        dbusers.setLayout(dbusersLayout);
+        dbusersLayout.setHorizontalGroup(
+            dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dbusersLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbusersLayout.createSequentialGroup()
+                        .addComponent(ordersbtndb3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(deliveriesbtndb3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(customersbtndb3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(usersbtndb3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(productsbtndb3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(dbusersLayout.createSequentialGroup()
+                        .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                            .addGroup(dbusersLayout.createSequentialGroup()
+                                .addComponent(dbjComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dbgeneratebtn3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(85, 85, 85))))
+        );
+        dbusersLayout.setVerticalGroup(
+            dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dbusersLayout.createSequentialGroup()
+                .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbusersLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deliveriesbtndb3)
+                            .addComponent(ordersbtndb3)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbusersLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(customersbtndb3)
+                                .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usersbtndb3)
+                                    .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(productsbtndb3)
+                                        .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dbjComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dbgeneratebtn3)
+                    .addComponent(editmodule8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addComponent(background11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        tabcontent.add(dbusers, "card4");
+
+        dbproducts.setBackground(new java.awt.Color(255, 255, 255));
+        dbproducts.setPreferredSize(new java.awt.Dimension(1250, 625));
+
+        deliveriesbtndb4.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        deliveriesbtndb4.setForeground(new java.awt.Color(10, 64, 83));
+        deliveriesbtndb4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deliveriesbtndb4.setText("Deliveries");
+        deliveriesbtndb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deliveriesbtndb4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deliveriesbtndb4MouseClicked(evt);
+            }
+        });
+
+        dbproductstbl.setBackground(new java.awt.Color(229, 229, 229));
+        dbproductstbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
+        dbproductstbl.setForeground(new java.awt.Color(10, 64, 83));
+        dbproductstbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ProductID", "ProductName", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        dbproductstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dbproductstbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dbproductstbl.setFocusable(false);
+        dbproductstbl.setGridColor(new java.awt.Color(0, 0, 0));
+        dbproductstbl.setRequestFocusEnabled(false);
+        dbproductstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        dbproductstbl.setShowGrid(false);
+        dbproductstbl.getTableHeader().setReorderingAllowed(false);
+        dbproductstbl.setUpdateSelectionOnSort(false);
+        dbproductstbl.setVerifyInputWhenFocusTarget(false);
+        dborderstbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+        dborderstbl.setRowHeight(45);
+        jScrollPane10.setViewportView(dbproductstbl);
+        dbproductstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (dbproductstbl.getColumnModel().getColumnCount() > 0) {
+            dbproductstbl.getColumnModel().getColumn(0).setResizable(false);
+            dbproductstbl.getColumnModel().getColumn(1).setResizable(false);
+            dbproductstbl.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        ordersbtndb4.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
+        ordersbtndb4.setForeground(new java.awt.Color(10, 64, 83));
+        ordersbtndb4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ordersbtndb4.setText("Orders");
+        ordersbtndb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ordersbtndb4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ordersbtndb4MouseClicked(evt);
+            }
+        });
+
+        dbjComboBox4.setBackground(new java.awt.Color(10, 64, 83));
+        dbjComboBox4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbjComboBox4.setForeground(new java.awt.Color(255, 255, 255));
+        dbjComboBox4.setMaximumRowCount(3);
+        dbjComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Orders", "Walk-ins", "Deliveries" }));
+        dbjComboBox4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                dbjComboBox4TransactComboBoxItemStateChanged(evt);
+            }
+        });
+        dbjComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbjComboBox4ActionPerformed(evt);
+            }
+        });
+
+        dbgeneratebtn4.setBackground(new java.awt.Color(140, 208, 218));
+        dbgeneratebtn4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        dbgeneratebtn4.setForeground(new java.awt.Color(34, 73, 87));
+        dbgeneratebtn4.setText("Generate");
+        dbgeneratebtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbgeneratebtn4ActionPerformed(evt);
+            }
+        });
+
+        editmodule9.setBackground(new java.awt.Color(140, 208, 218));
+        editmodule9.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
+        editmodule9.setForeground(new java.awt.Color(34, 73, 87));
+        editmodule9.setText("Edit Module");
+
+        javax.swing.GroupLayout background12Layout = new javax.swing.GroupLayout(background12);
+        background12.setLayout(background12Layout);
+        background12Layout.setHorizontalGroup(
+            background12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        background12Layout.setVerticalGroup(
+            background12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        customersbtndb4.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        customersbtndb4.setForeground(new java.awt.Color(10, 64, 83));
+        customersbtndb4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customersbtndb4.setText("Customers");
+        customersbtndb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        customersbtndb4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customersbtndb4MouseClicked(evt);
+            }
+        });
+
+        usersbtndb4.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        usersbtndb4.setForeground(new java.awt.Color(10, 64, 83));
+        usersbtndb4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usersbtndb4.setText("Users");
+        usersbtndb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usersbtndb4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersbtndb4MouseClicked(evt);
+            }
+        });
+
+        productsbtndb4.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
+        productsbtndb4.setForeground(new java.awt.Color(10, 64, 83));
+        productsbtndb4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productsbtndb4.setText("Products");
+        productsbtndb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout dbproductsLayout = new javax.swing.GroupLayout(dbproducts);
+        dbproducts.setLayout(dbproductsLayout);
+        dbproductsLayout.setHorizontalGroup(
+            dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dbproductsLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbproductsLayout.createSequentialGroup()
+                        .addComponent(ordersbtndb4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(deliveriesbtndb4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(customersbtndb4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(usersbtndb4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(productsbtndb4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(dbproductsLayout.createSequentialGroup()
+                        .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                            .addGroup(dbproductsLayout.createSequentialGroup()
+                                .addComponent(dbjComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dbgeneratebtn4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editmodule9, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(85, 85, 85))))
+        );
+        dbproductsLayout.setVerticalGroup(
+            dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dbproductsLayout.createSequentialGroup()
+                .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbproductsLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deliveriesbtndb4)
+                            .addComponent(ordersbtndb4)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbproductsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(customersbtndb4)
+                                .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usersbtndb4)
+                                    .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(productsbtndb4)
+                                        .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dbjComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dbgeneratebtn4)
+                    .addComponent(editmodule9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addComponent(background12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        tabcontent.add(dbproducts, "card4");
+
         getContentPane().add(tabcontent, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -1753,8 +3144,13 @@ public class Main extends javax.swing.JFrame {
         completetransac.setVisible(false);
         pendingdeliver.setVisible(false);
         completedeliver.setVisible(false);
-        //authenticate.setVisible(false);
         authreports.setVisible(false);
+        dborders.setVisible(false);
+        dbdeliveries.setVisible(false);
+        dbcustomers.setVisible(false);
+        dborders.setVisible(false);
+        dbusers.setVisible(false);
+        dbproducts.setVisible(false);
         card.setVisible(true);
     }  
     private void boldCard(java.awt.Component btn) {
@@ -1762,6 +3158,8 @@ public class Main extends javax.swing.JFrame {
         invoicebtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
         deliverbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
         authenticbtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+        databasebtn.setFont(new Font("Source Sans Pro Light", Font.PLAIN, 18));
+
         btn.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 20));
     }
     private void showMsg(String msg) {
@@ -1832,7 +3230,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_authenticbtnMouseClicked
 
     private void genreport5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreport5ActionPerformed
-        // TODO add your handling code here:
         String range = (String) jComboBox2.getSelectedItem();
         try {
             PDFGenerator.createReport("Transactions Report", range,
@@ -1930,7 +3327,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_submitformActionPerformed
 
     private void signoutbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signoutbtnMouseClicked
-        // TODO add your handling code here:
         Login login = new Login();
         this.dispose();
         login.setVisible(true);
@@ -1938,28 +3334,24 @@ public class Main extends javax.swing.JFrame {
 
     private void completebtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completebtn1MouseClicked
         pendingtransac.setVisible(false);
-        //this.authpassbtn2ActionPerformed(evt);
         completetransac.setVisible(true);
         refreshCompleteTransact();
     }//GEN-LAST:event_completebtn1MouseClicked
 
     private void pendingbtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingbtn2MouseClicked
         completetransac.setVisible(false);
-        //authpassbtn2ActionPerformed(evt);
         pendingtransac.setVisible(true);
         refreshPendingTransact();
     }//GEN-LAST:event_pendingbtn2MouseClicked
 
     private void pendingbtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingbtn4MouseClicked
         completedeliver.setVisible(false);
-        //this.authpassbtn2ActionPerformed(evt);
         pendingdeliver.setVisible(true);
         refreshPendingDelivery();
     }//GEN-LAST:event_pendingbtn4MouseClicked
 
     private void completebtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completebtn3MouseClicked
         pendingdeliver.setVisible(false);
-        //this.authpassbtn2ActionPerformed(evt);
         completedeliver.setVisible(true);
         refreshCompleteDelivery();
     }//GEN-LAST:event_completebtn3MouseClicked
@@ -1991,14 +3383,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_updatebtn1ActionPerformed
 
     private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
-        // TODO add your handling code here:
         Database db = new Database();
         populateTable(pendingdelivertbl, db.getDeliveries(jComboBox5.getSelectedIndex()));
         db.closeConnection();
     }//GEN-LAST:event_jComboBox5ItemStateChanged
 
     private void TransactComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TransactComboBoxItemStateChanged
-        // TODO add your handling code here:
         if (evt.getStateChange() == 2) return;
         Database db = new Database();
         int status = evt.getSource() == jComboBox1 ? 0 : 1;
@@ -2017,7 +3407,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_leftarrowMouseClicked
 
     private void selectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectOrderActionPerformed
-        // TODO add your handling code here:
         int prodID = this.productNum + 1;
         int qty = (int) productqty.getValue();
         addToCart(prodID, qty);
@@ -2232,6 +3621,179 @@ public class Main extends javax.swing.JFrame {
             System.out.println(c.getWidth());
         }
     }//GEN-LAST:event_pendingbtn3MouseClicked
+
+    private void ordersbtndbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordersbtndbMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ordersbtndbMouseClicked
+
+    private void dbjComboBoxTransactComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dbjComboBoxTransactComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBoxTransactComboBoxItemStateChanged
+
+    private void dbjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbjComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBoxActionPerformed
+
+    private void dbgeneratebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbgeneratebtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbgeneratebtnActionPerformed
+
+    private void databasebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_databasebtnMouseClicked
+        showCard(dborders);
+        boldCard(dborders);
+    }//GEN-LAST:event_databasebtnMouseClicked
+
+    private void deliveriesbtndbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliveriesbtndbMouseClicked
+        dborders.setVisible(false);
+        dbdeliveries.setVisible(true);
+    }//GEN-LAST:event_deliveriesbtndbMouseClicked
+
+    private void deliveriesbtndb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliveriesbtndb1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deliveriesbtndb1MouseClicked
+
+    private void ordersbtndb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordersbtndb1MouseClicked
+        dbdeliveries.setVisible(false);
+        dborders.setVisible(true);
+    }//GEN-LAST:event_ordersbtndb1MouseClicked
+
+    private void dbjComboBox1TransactComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dbjComboBox1TransactComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBox1TransactComboBoxItemStateChanged
+
+    private void dbjComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbjComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBox1ActionPerformed
+
+    private void dbgeneratebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbgeneratebtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbgeneratebtn1ActionPerformed
+
+    private void deliveriesbtndb2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliveriesbtndb2MouseClicked
+        dbcustomers.setVisible(false);
+        dbdeliveries.setVisible(true);
+    }//GEN-LAST:event_deliveriesbtndb2MouseClicked
+
+    private void ordersbtndb2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordersbtndb2MouseClicked
+        dbcustomers.setVisible(false);
+        dborders.setVisible(true);
+    }//GEN-LAST:event_ordersbtndb2MouseClicked
+
+    private void dbjComboBox2TransactComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dbjComboBox2TransactComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBox2TransactComboBoxItemStateChanged
+
+    private void dbjComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbjComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBox2ActionPerformed
+
+    private void dbgeneratebtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbgeneratebtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbgeneratebtn2ActionPerformed
+
+    private void deliveriesbtndb3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliveriesbtndb3MouseClicked
+        dbusers.setVisible(false);
+        dbdeliveries.setVisible(true);
+    }//GEN-LAST:event_deliveriesbtndb3MouseClicked
+
+    private void ordersbtndb3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordersbtndb3MouseClicked
+        dbusers.setVisible(false);
+        dborders.setVisible(true);
+    }//GEN-LAST:event_ordersbtndb3MouseClicked
+
+    private void dbjComboBox3TransactComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dbjComboBox3TransactComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBox3TransactComboBoxItemStateChanged
+
+    private void dbjComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbjComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBox3ActionPerformed
+
+    private void dbgeneratebtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbgeneratebtn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbgeneratebtn3ActionPerformed
+
+    private void deliveriesbtndb4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deliveriesbtndb4MouseClicked
+        dbproducts.setVisible(false);
+        dbdeliveries.setVisible(true);
+    }//GEN-LAST:event_deliveriesbtndb4MouseClicked
+
+    private void ordersbtndb4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordersbtndb4MouseClicked
+        dbproducts.setVisible(false);
+        dborders.setVisible(true);
+    }//GEN-LAST:event_ordersbtndb4MouseClicked
+
+    private void dbjComboBox4TransactComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dbjComboBox4TransactComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBox4TransactComboBoxItemStateChanged
+
+    private void dbjComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbjComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbjComboBox4ActionPerformed
+
+    private void dbgeneratebtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbgeneratebtn4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dbgeneratebtn4ActionPerformed
+
+    private void customersbtndbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersbtndbMouseClicked
+        dborders.setVisible(false);
+        dbcustomers.setVisible(true);
+    }//GEN-LAST:event_customersbtndbMouseClicked
+
+    private void usersbtndbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersbtndbMouseClicked
+        dborders.setVisible(false);
+        dbusers.setVisible(true);
+    }//GEN-LAST:event_usersbtndbMouseClicked
+
+    private void productsbtndbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsbtndbMouseClicked
+        dborders.setVisible(false);
+        dbproducts.setVisible(true);
+    }//GEN-LAST:event_productsbtndbMouseClicked
+
+    private void customersbtndb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersbtndb1MouseClicked
+        dbdeliveries.setVisible(false);
+        dbcustomers.setVisible(true);
+    }//GEN-LAST:event_customersbtndb1MouseClicked
+
+    private void usersbtndb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersbtndb1MouseClicked
+        dbdeliveries.setVisible(false);
+        dbusers.setVisible(true);
+    }//GEN-LAST:event_usersbtndb1MouseClicked
+
+    private void productsbtndb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsbtndb1MouseClicked
+        dbdeliveries.setVisible(false);
+        dbproducts.setVisible(true);
+    }//GEN-LAST:event_productsbtndb1MouseClicked
+
+    private void usersbtndb2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersbtndb2MouseClicked
+        dbcustomers.setVisible(false);
+        dbusers.setVisible(true);
+    }//GEN-LAST:event_usersbtndb2MouseClicked
+
+    private void productsbtndb2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsbtndb2MouseClicked
+        dbcustomers.setVisible(false);
+        dbproducts.setVisible(true);
+    }//GEN-LAST:event_productsbtndb2MouseClicked
+
+    private void customersbtndb3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersbtndb3MouseClicked
+        dbusers.setVisible(false);
+        dbcustomers.setVisible(true);
+    }//GEN-LAST:event_customersbtndb3MouseClicked
+
+    private void productsbtndb3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsbtndb3MouseClicked
+        dbusers.setVisible(false);
+        dbproducts.setVisible(true);
+    }//GEN-LAST:event_productsbtndb3MouseClicked
+
+    private void customersbtndb4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersbtndb4MouseClicked
+        dbproducts.setVisible(false);
+        dbcustomers.setVisible(true);
+    }//GEN-LAST:event_customersbtndb4MouseClicked
+
+    private void usersbtndb4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersbtndb4MouseClicked
+        dbproducts.setVisible(false);
+        dbusers.setVisible(true);
+    }//GEN-LAST:event_usersbtndb4MouseClicked
     /**
      * @param args the command line arguments
      */
@@ -2275,12 +3837,17 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel authentictab;
     private javax.swing.JPanel authreports;
     private software1.Background background1;
+    private software1.Background background10;
+    private software1.Background background11;
+    private software1.Background background12;
     private software1.Background background2;
     private software1.Background background3;
     private software1.Background background4;
     private software1.Background background5;
     private software1.Background background6;
     private software1.Background background7;
+    private software1.Background background8;
+    private software1.Background background9;
     private javax.swing.JTextField brgyfield;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancelorderbtn;
@@ -2294,13 +3861,49 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel completetransac;
     private javax.swing.JTable completetransactbl;
     private javax.swing.JComboBox<String> customerdetails;
+    private javax.swing.JLabel customersbtndb;
+    private javax.swing.JLabel customersbtndb1;
+    private javax.swing.JLabel customersbtndb2;
+    private javax.swing.JLabel customersbtndb3;
+    private javax.swing.JLabel customersbtndb4;
+    private javax.swing.JLabel databasebtn;
+    private javax.swing.JPanel dbcustomers;
+    private javax.swing.JTable dbcustomerstbl;
+    private javax.swing.JPanel dbdeliveries;
+    private javax.swing.JTable dbdeliveriestbl;
+    private javax.swing.JButton dbgeneratebtn;
+    private javax.swing.JButton dbgeneratebtn1;
+    private javax.swing.JButton dbgeneratebtn2;
+    private javax.swing.JButton dbgeneratebtn3;
+    private javax.swing.JButton dbgeneratebtn4;
+    private javax.swing.JComboBox<String> dbjComboBox;
+    private javax.swing.JComboBox<String> dbjComboBox1;
+    private javax.swing.JComboBox<String> dbjComboBox2;
+    private javax.swing.JComboBox<String> dbjComboBox3;
+    private javax.swing.JComboBox<String> dbjComboBox4;
+    private javax.swing.JPanel dborders;
+    private javax.swing.JTable dborderstbl;
+    private javax.swing.JPanel dbproducts;
+    private javax.swing.JTable dbproductstbl;
+    private javax.swing.JPanel dbusers;
+    private javax.swing.JTable dbuserstbl;
     private javax.swing.JLabel deliverbtn;
     private javax.swing.JLabel delivericon;
+    private javax.swing.JLabel deliveriesbtndb;
+    private javax.swing.JLabel deliveriesbtndb1;
+    private javax.swing.JLabel deliveriesbtndb2;
+    private javax.swing.JLabel deliveriesbtndb3;
+    private javax.swing.JLabel deliveriesbtndb4;
     private javax.swing.JPanel delivertab;
     private javax.swing.JButton editmodule1;
     private javax.swing.JButton editmodule2;
     private javax.swing.JButton editmodule3;
     private javax.swing.JButton editmodule4;
+    private javax.swing.JButton editmodule5;
+    private javax.swing.JButton editmodule6;
+    private javax.swing.JButton editmodule7;
+    private javax.swing.JButton editmodule8;
+    private javax.swing.JButton editmodule9;
     private javax.swing.JLabel financeicon;
     private javax.swing.JTextField fnamefield;
     private javax.swing.JPanel form;
@@ -2331,6 +3934,26 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2344,14 +3967,24 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel leftarrow;
     private javax.swing.JTextField lnamefield;
     private javax.swing.JPanel maintabs;
     private javax.swing.JTextField mobilefield;
     private javax.swing.JButton orderbtn;
+    private javax.swing.JLabel ordersbtndb;
+    private javax.swing.JLabel ordersbtndb1;
+    private javax.swing.JLabel ordersbtndb2;
+    private javax.swing.JLabel ordersbtndb3;
+    private javax.swing.JLabel ordersbtndb4;
     private javax.swing.JCheckBox paymentcheckbox;
     private javax.swing.JLabel pendingbtn1;
     private javax.swing.JLabel pendingbtn2;
@@ -2366,6 +3999,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel productname1;
     private javax.swing.JLabel productprice1;
     private javax.swing.JSpinner productqty;
+    private javax.swing.JLabel productsbtndb;
+    private javax.swing.JLabel productsbtndb1;
+    private javax.swing.JLabel productsbtndb2;
+    private javax.swing.JLabel productsbtndb3;
+    private javax.swing.JLabel productsbtndb4;
     private javax.swing.JPanel qnb;
     private javax.swing.JRadioButton radiodeliver;
     private javax.swing.JRadioButton radiowalkin;
@@ -2381,5 +4019,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel transactab;
     private javax.swing.JButton updatebtn1;
     private javax.swing.JButton updatebtn2;
+    private javax.swing.JLabel usersbtndb;
+    private javax.swing.JLabel usersbtndb1;
+    private javax.swing.JLabel usersbtndb2;
+    private javax.swing.JLabel usersbtndb3;
+    private javax.swing.JLabel usersbtndb4;
     // End of variables declaration//GEN-END:variables
 }

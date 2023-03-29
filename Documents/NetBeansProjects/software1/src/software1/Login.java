@@ -8,15 +8,10 @@ import java.util.Arrays;
 
 public class Login extends javax.swing.JFrame {
     
-    //ImageIcon loginwv = new ImageIcon("try1.png");
-    
     public Login() {
         initComponents();
         GlassPanePopup.install(this);
         this.setLocationRelativeTo(null);
-        //jLabel1.setText("");
-        //jLabel1.setIcon(loginwv);
-        //jLabel8.setIcon(loginwv);
     }
 
     /**
@@ -507,7 +502,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginbtn2MouseClicked
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
-        // TODO add your handling code here:
         System.out.println("login button clicked");
         String name = userfield1.getText();
         char[] pass = passfield1.getPassword();
