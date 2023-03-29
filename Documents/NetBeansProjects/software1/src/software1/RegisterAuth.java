@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package software1;
 
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
-/**
- *
- * @author 97433
- */
 public class RegisterAuth extends javax.swing.JPanel {
     private char[] password;
     private final String username;

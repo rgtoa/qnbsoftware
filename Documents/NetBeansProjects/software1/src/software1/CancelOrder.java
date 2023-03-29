@@ -7,10 +7,6 @@ package software1;
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author 97433
- */
 public class CancelOrder extends javax.swing.JPanel {
 
     /**

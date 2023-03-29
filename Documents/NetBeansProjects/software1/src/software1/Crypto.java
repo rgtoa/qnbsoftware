@@ -4,7 +4,6 @@ package software1;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
-//import org.apache.commons.codec.binary.Base64;
 
 public class Crypto {
     static byte[] key = { 

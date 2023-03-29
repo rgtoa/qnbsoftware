@@ -1,5 +1,6 @@
 
 package software1;
+
 import java.awt.event.ActionListener;
 import glasspanepopup.GlassPanePopup;
 import java.util.ArrayList;
@@ -21,21 +22,7 @@ public class OrderPopup extends javax.swing.JPanel {
             total += (Float) n[3];
         }
         popuptotalprice.setText(""+total);
-        //GlassPanePopup.install(this);
-        //setOpaque(false);
     }
-    private void update() {
-        
-    }
-    
-    /**@Override
-    protected void paintComponent(Graphics grphcs) {
-        Graphics2d g = (Graphics2d)grphcs.create;
-        //g.setRenderingHint()
-        g.dispose();
-        super.paintComponents(grphcs);
-    }*/
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -228,7 +215,6 @@ public class OrderPopup extends javax.swing.JPanel {
         ConfirmOrder.addActionListener(event);
     }
     private void RemoveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveOrderActionPerformed
-        // TODO add your handling code here:
         int row = jTable1.getSelectedRow(); // GET ROW
         if (row == -1) return; // EXIT IF NOTHING IS SELECTED
         this.total -= (float) this.list.get(row)[3]; // UPDATE TOTAL
