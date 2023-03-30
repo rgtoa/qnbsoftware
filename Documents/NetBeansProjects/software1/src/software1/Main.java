@@ -145,7 +145,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     private void scaleIcons(){     
-        ImageIcon icon3 = new ImageIcon("arrow.png");
+        ImageIcon icon3 = new ImageIcon(getClass().getResource("arrow.png"));
         Image arrow = icon3.getImage();
         Image imgScale3 = arrow.getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon3 = new ImageIcon(imgScale3);
@@ -154,19 +154,19 @@ public class Main extends javax.swing.JFrame {
         jLabel6.setIcon(scaledIcon3);
         jLabel7.setIcon(scaledIcon3);
         
-        ImageIcon icon4 = new ImageIcon("acc1.png");
+        ImageIcon icon4 = new ImageIcon(getClass().getResource("acc1.png"));
         Image acc = icon4.getImage();
         Image imgScale4 = acc.getScaledInstance(jLabel8.getWidth(), jLabel8.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon4 = new ImageIcon(imgScale4);
         jLabel8.setIcon(scaledIcon4);
         
-        ImageIcon icon7 = new ImageIcon("leftarrow.png");
+        ImageIcon icon7 = new ImageIcon(getClass().getResource("leftarrow.png"));
         Image la = icon7.getImage();
         Image imgScale7 = la.getScaledInstance(leftarrow.getWidth(), leftarrow.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon7 = new ImageIcon(imgScale7);
         leftarrow.setIcon(scaledIcon7);
         
-        ImageIcon icon8 = new ImageIcon("rightarrow.png");
+        ImageIcon icon8 = new ImageIcon(getClass().getResource("rightarrow.png"));
         Image ra = icon8.getImage();
         Image imgScale8 = ra.getScaledInstance(rightarrow.getWidth(), rightarrow.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon8 = new ImageIcon(imgScale8);
@@ -176,11 +176,13 @@ public class Main extends javax.swing.JFrame {
         ImageIcon icon;
         String text;
         if (Math.abs(this.productNum) == 0) {
-            icon = new ImageIcon("product1.png");
+            icon = new ImageIcon(getClass().getResource("round.png"));
             text = "Round Gallon";
+            productdesc1.setText("<html>" + "Mineral water containers, round up to 5 gallons, order today and never get thirsty again!" + "</html>");
         } else {
-            icon = new ImageIcon("product2.png");
+            icon = new ImageIcon(getClass().getResource("slim.png"));
             text = "Slim Gallon";
+            productdesc1.setText("<html>" + "Mineral water containers, slim up to 5 gallons, order today and never get thirsty again!" + "</html>");
         }
         Image prod = icon.getImage();
         Image imageScale = prod.getScaledInstance(productimg.getWidth(), productimg.getHeight(), Image.SCALE_SMOOTH);
@@ -189,19 +191,19 @@ public class Main extends javax.swing.JFrame {
         productname1.setText(text);
     }
     private void scaleReports() {
-        ImageIcon icon7 = new ImageIcon("transacicon.png");
+        ImageIcon icon7 = new ImageIcon(getClass().getResource("transacicon.png"));
         Image prod3 = icon7.getImage();
         Image imageScale7 = prod3.getScaledInstance(transacicon.getWidth(), transacicon.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon7 = new ImageIcon(imageScale7);
         transacicon.setIcon(scaledIcon7);
         
-        ImageIcon icon8 = new ImageIcon("delivericon.png");
+        ImageIcon icon8 = new ImageIcon(getClass().getResource("delivericon.png"));
         Image prod4 = icon8.getImage();
         Image imageScale8 = prod4.getScaledInstance(delivericon.getWidth(), delivericon.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon8 = new ImageIcon(imageScale8);
         delivericon.setIcon(scaledIcon8);
         
-        ImageIcon icon9 = new ImageIcon("financeicon.png");
+        ImageIcon icon9 = new ImageIcon(getClass().getResource("financeicon.png"));
         Image prod5 = icon9.getImage();
         Image imageScale9 = prod5.getScaledInstance(financeicon.getWidth(), financeicon.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon9 = new ImageIcon(imageScale9);
@@ -742,9 +744,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(leftarrow, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(productimg, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(50, 50, 50)
+                .addComponent(productimg, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addComponent(rightarrow, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
             .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -754,18 +756,18 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(productimg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(117, 117, 117))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addContainerGap(211, Short.MAX_VALUE)
+                        .addContainerGap(261, Short.MAX_VALUE)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                                 .addComponent(rightarrow, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(272, 272, 272))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                                 .addComponent(leftarrow, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(274, 274, 274)))))
+                                .addGap(274, 274, 274))))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(productimg, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -2051,7 +2053,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(editcellorders)
                     .addComponent(deleteorderbtn))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2234,7 +2236,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(editdeliverybtn)
                     .addComponent(deletedeliverybtn))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2423,7 +2425,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(editcustomerbtn)
                     .addComponent(deletecustomerbtn))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2602,7 +2604,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(editcell4)
                     .addComponent(deleterow4))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
