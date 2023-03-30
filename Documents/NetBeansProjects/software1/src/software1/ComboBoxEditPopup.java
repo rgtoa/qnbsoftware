@@ -5,15 +5,41 @@ import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
-public class BooleanEditPopup extends javax.swing.JPanel {
-    private final Long orderID;
+public class ComboBoxEditPopup extends javax.swing.JPanel {
+    private final Object id;
+    private final String colname;
     
-    public BooleanEditPopup(String title, String subtitle, Long orderID, boolean s) {
+    public ComboBoxEditPopup(String title, String subtitle, Long orderID, boolean s) {
         initComponents();
-        this.orderID = orderID;
+        this.id = orderID;
+        this.colname = title;
         lbltitle.setText(title);
         lblsubtitle.setText(subtitle);
-        trueradio.setSelected(s);
+        box.addItem("Not Fully Paid");
+        box.addItem("Fully Paid");
+        if (s) box.setSelectedIndex(1); // index 1 is true
+    }
+    public ComboBoxEditPopup(String title, String subtitle, Long orderID, String s) { // For status
+        initComponents();
+        this.id = orderID;
+        this.colname = title;
+        lbltitle.setText(title);
+        lblsubtitle.setText(subtitle);
+        box.addItem("Pending");
+        box.addItem("Ongoing");
+        box.addItem("Complete");
+        box.setSelectedItem(s);
+    }
+
+    ComboBoxEditPopup(String title, String subtitle, String username, String s) {
+        initComponents();
+        this.id = username;
+        this.colname = title;
+        lbltitle.setText(title);
+        lblsubtitle.setText(subtitle);
+        box.addItem("staff");
+        box.addItem("delivery");
+        box.setSelectedItem(s);
     }
 
     /**
@@ -30,8 +56,7 @@ public class BooleanEditPopup extends javax.swing.JPanel {
         lblsubtitle = new javax.swing.JLabel();
         cancelbtn = new javax.swing.JButton();
         savebtn = new javax.swing.JButton();
-        falseradio = new javax.swing.JRadioButton();
-        trueradio = new javax.swing.JRadioButton();
+        box = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(229, 229, 229));
 
@@ -57,14 +82,7 @@ public class BooleanEditPopup extends javax.swing.JPanel {
         savebtn.setForeground(new java.awt.Color(255, 255, 255));
         savebtn.setText("Save");
 
-        buttonGroup1.add(falseradio);
-        falseradio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        falseradio.setSelected(true);
-        falseradio.setText("Not Fully Paid");
-
-        buttonGroup1.add(trueradio);
-        trueradio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        trueradio.setText("Fully Paid");
+        box.setLightWeightPopupEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,13 +98,10 @@ public class BooleanEditPopup extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lblsubtitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cancelbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(falseradio))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(trueradio)
-                                    .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cancelbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                                .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(box, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 45, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -98,9 +113,7 @@ public class BooleanEditPopup extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblsubtitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(falseradio)
-                    .addComponent(trueradio))
+                .addComponent(box, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -116,17 +129,23 @@ public class BooleanEditPopup extends javax.swing.JPanel {
     public void save(ActionListener al) {
         savebtn.addActionListener(al);
         savebtn.addActionListener((ActionListener) -> {
-            
+            Database db = new Database();
+            switch (colname) {
+                case "FullyPaid" -> db.updateFullyPaid((Long)id, box.getSelectedIndex()==1);
+                case "DeliveryStatus" -> db.updateDeliveryStatus((Long)id, box.getSelectedIndex());
+                case "Role" -> db.updateRole((String) id, (String) box.getSelectedItem());
+            }
+            GlassPanePopup.closePopupAll();
+            db.closeConnection();
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> box;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancelbtn;
-    private javax.swing.JRadioButton falseradio;
     private javax.swing.JLabel lblsubtitle;
     private javax.swing.JLabel lbltitle;
     private javax.swing.JButton savebtn;
-    private javax.swing.JRadioButton trueradio;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,6 +49,26 @@ public class Database {
         }
         return output;
     }
+    public ArrayList<ArrayList<Object>> getDeliveryList() {
+        ArrayList<ArrayList<Object>> output = new ArrayList<>();
+        try {
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM deliveries");
+            while (rs.next()) {
+                ArrayList<Object> row = new ArrayList<>();
+                row.add(rs.getLong("OrderID"));
+                int i = rs.getInt("DeliveryStatus");
+                row.add(i == 0 ? "Pending" : i == 1 ? "Ongoing" : "Complete");
+                String s = rs.getString("DeliveryMan");
+                row.add(s == null ? "Awaiting.." : s);
+                row.add(rs.getDate("DeliveryDate"));
+                output.add(row);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
     public ArrayList<ArrayList<Object>> getUserList() {
         ArrayList<ArrayList<Object>> output = new ArrayList<>();
         try {
@@ -343,7 +363,7 @@ public class Database {
                     rs.getString("Street"),
                     rs.getString("Barangay"),
                     rs.getString("City"),
-                    rs.getInt("MobileNumber"),
+                    rs.getString("MobileNumber"),
                 };
             }
             rs.close();
@@ -367,7 +387,7 @@ public class Database {
         }
         return output;
     }
-    public String addCustomer(String lastName, String firstName, String street, String brgy, String city, Integer mobileNumber) {
+    public String addCustomer(String lastName, String firstName, String street, String brgy, String city, String mobileNumber) {
         String cID = null;
         try {
             cID = (lastName+firstName).replaceAll(" ", "").toLowerCase();
@@ -382,8 +402,7 @@ public class Database {
             ps.setString(4, street);
             ps.setString(5, brgy);
             ps.setString(6, city);
-            if (mobileNumber == null) ps.setNull(7, java.sql.Types.INTEGER);
-            else ps.setInt(7, mobileNumber);
+            ps.setString(7, mobileNumber);
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -493,7 +512,7 @@ public class Database {
             PreparedStatement ps = con.prepareStatement(
             "UPDATE deliveries SET DeliveryStatus=?" + 
                     (hasName ? ",DeliveryMan=?": "") + 
-                    (status == 2 ? "" : ",DeliveryDate=CURDATE()") +
+                    (status == 2 ? ",DeliveryDate=CURDATE()" : "") +
                     " WHERE OrderID=?"
             );
             ps.setInt(1, status);
@@ -549,7 +568,7 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void updateAmountPaid(Long orderID, boolean fullyPaid) {
+    public void updateFullyPaid(Long orderID, boolean fullyPaid) {
         try {
             PreparedStatement ps = con.prepareStatement("UPDATE orders SET FullyPaid=? WHERE OrderID=?");
             ps.setBoolean(1, fullyPaid);
@@ -560,10 +579,10 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void updateDateOrdered(Long orderID, Date dateOrdered) {
+    public void updateDateOrdered(Long orderID, LocalDate dateOrdered) {
         try {
             PreparedStatement ps = con.prepareStatement("UPDATE orders SET DateOrdered=? WHERE OrderID=?");
-            ps.setDate(1, dateOrdered);
+            ps.setDate(1, Date.valueOf(dateOrdered));
             ps.setLong(2, orderID);
             ps.executeUpdate();
             ps.close();
@@ -571,11 +590,158 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void updateDatePaid(Long orderID, Date datePaid) {
+    public void updateDatePaid(Long orderID, LocalDate datePaid) {
         try {
             PreparedStatement ps = con.prepareStatement("UPDATE orders SET DatePaid=? WHERE OrderID=?");
-            ps.setDate(1, datePaid);
+            if (datePaid == null) ps.setNull(1, Types.DATE);
+            else ps.setDate(1, Date.valueOf(datePaid));
             ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateDeliveryStatus(Long orderID, int deliveryStatus) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE deliveries SET DeliveryStatus=? WHERE OrderID=?");
+            ps.setInt(1, deliveryStatus);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateDeliveryMan(Long orderID, String deliveryMan) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE deliveries SET DeliveryMan=? WHERE OrderID=?");
+            ps.setString(1, deliveryMan);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateDeliveryDate(Long orderID, LocalDate deliveryDate) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE deliveries SET DeliveryDate=? WHERE OrderID=?");
+            if (deliveryDate == null) ps.setNull(1, Types.DATE);
+            else ps.setDate(1, Date.valueOf(deliveryDate));
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateLastName(String customerID, String lastName) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE customers SET LastName=? WHERE CustomerID=?");
+            ps.setString(1, lastName);
+            ps.setString(2, customerID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateFirstName(String customerID, String firstName) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE customers SET FirstName=? WHERE CustomerID=?");
+            ps.setString(1, firstName);
+            ps.setString(2, customerID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateStreet(String customerID, String street) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE customers SET Street=? WHERE CustomerID=?");
+            ps.setString(1, street);
+            ps.setString(2, customerID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateBarangay(String customerID, String barangay) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE customers SET Barangay=? WHERE CustomerID=?");
+            ps.setString(1, barangay);
+            ps.setString(2, customerID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateCity(String customerID, String city) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE customers SET City=? WHERE CustomerID=?");
+            ps.setString(1, city);
+            ps.setString(2, customerID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateMobileNumber(String customerID, String mobileNumber) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE customers SET MobileNumber=? WHERE CustomerID=?");
+            ps.setString(1, mobileNumber.substring(0, 11));
+            ps.setString(2, customerID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updatePassword(String username, String password) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE users SET password=? WHERE username=?");
+            ps.setString(1, Crypto.encrypt(password));
+            ps.setString(2, username);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateRole(String username, String role) {
+        try {
+            if (!role.equals("staff") && !role.equals("delivery")) return;
+            PreparedStatement ps = con.prepareStatement("UPDATE users SET role=? WHERE username=?");
+            ps.setString(1, role);
+            ps.setString(2, username);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateProductName(Integer productID, String productName) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE products SET ProductName=? WHERE ProductID=?");
+            ps.setString(1, productName);
+            ps.setInt(2, productID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void updatePrice(Integer productID, Float price) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE products SET Price=? WHERE ProductID=?");
+            ps.setFloat(1, price);
+            ps.setInt(2, productID);
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {

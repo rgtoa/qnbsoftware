@@ -2825,7 +2825,7 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="0">
                         <Column editable="false" title="Order ID" type="java.lang.Long"/>
-                        <Column editable="false" title="DeliveryStatus" type="java.lang.Integer"/>
+                        <Column editable="false" title="DeliveryStatus" type="java.lang.String"/>
                         <Column editable="false" title="DeliveryMan" type="java.lang.String"/>
                         <Column editable="false" title="DeliveryDate" type="java.lang.Integer"/>
                       </Table>
@@ -2855,6 +2855,7 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
+                    <Property name="columnSelectionAllowed" type="boolean" value="true"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Default Cursor"/>
                     </Property>
@@ -2870,6 +2871,9 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dbdeliveriestblMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3085,6 +3089,7 @@
                       </Table>
                     </Property>
                     <Property name="autoResizeMode" type="int" value="4"/>
+                    <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="1">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="5" resizable="false">
@@ -3139,6 +3144,9 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dbcustomerstblMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3347,6 +3355,7 @@
                       </Table>
                     </Property>
                     <Property name="autoResizeMode" type="int" value="4"/>
+                    <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="1">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
@@ -3381,6 +3390,9 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dbuserstblMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3589,6 +3601,7 @@
                       </Table>
                     </Property>
                     <Property name="autoResizeMode" type="int" value="4"/>
+                    <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="1">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
@@ -3623,6 +3636,9 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dbproductstblMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -9,12 +9,12 @@ import java.util.Date;
 import javax.swing.text.PlainDocument;
 
 public class TextEditPopup extends javax.swing.JPanel {
-    private final Long orderID;
+    private final Object id;
     private final String colname;
     
     public TextEditPopup(String title, String subtitle, Long orderID, String s) {
         initComponents();
-        this.orderID = orderID;
+        this.id = orderID;
         this.colname = title;
         lbltitle.setText(title);
         lblsubtitle.setText(subtitle);
@@ -22,9 +22,47 @@ public class TextEditPopup extends javax.swing.JPanel {
     }
     public TextEditPopup(String title, String subtitle, Long orderID, Float f) {
         initComponents();
-        this.orderID = orderID;
+        this.id = orderID;
         this.colname = title;
         ((PlainDocument) editfield.getDocument()).setDocumentFilter(new MyFloatFilter());
+        lbltitle.setText(title);
+        lblsubtitle.setText(subtitle);
+        editfield.setText(""+f);
+    }
+    public TextEditPopup(String title, String subtitle, String customerID, Long l) {
+        initComponents();
+        this.id = customerID;
+        this.colname = title;
+        ((PlainDocument) editfield.getDocument()).setDocumentFilter(new MyMobileNumberFilter());
+        lbltitle.setText(title);
+        lblsubtitle.setText(subtitle);
+        if (l == null) editfield.setText("");
+        else editfield.setText(""+l);
+    }
+    public TextEditPopup(String title, String subtitle, String customerID, String s) {
+        initComponents();
+        this.id = customerID;
+        this.colname = title;
+        lbltitle.setText(title);
+        lblsubtitle.setText(subtitle);
+        editfield.setText(s);
+    }
+    public TextEditPopup(String title, String subtitle, Integer productID, Float f) {
+        initComponents();
+        this.id = productID;
+        this.colname = title;
+        ((PlainDocument) editfield.getDocument()).setDocumentFilter(new MyFloatFilter());
+        lbltitle.setText(title);
+        lblsubtitle.setText(subtitle);
+        editfield.setText(""+f);
+    }
+    public TextEditPopup(String title, String subtitle, Integer productID, String s) {
+        initComponents();
+        this.id = productID;
+        this.colname = title;
+        lbltitle.setText(title);
+        lblsubtitle.setText(subtitle);
+        editfield.setText(s);
     }
 
     /**
@@ -94,9 +132,9 @@ public class TextEditPopup extends javax.swing.JPanel {
                 .addComponent(lbltitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblsubtitle)
-                .addGap(8, 8, 8)
+                .addGap(14, 14, 14)
                 .addComponent(editfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -112,12 +150,25 @@ public class TextEditPopup extends javax.swing.JPanel {
         savebtn.addActionListener(al);
         savebtn.addActionListener((ActionListener) -> {
             Database db = new Database();
+            String value = editfield.getText();
             switch (colname) {
-                case "ProductNames" -> db.updateProductNames(orderID, editfield.getText());
-                case "ProductQTY" -> db.updateProductQTYs(orderID, editfield.getText());
-                case "TotalPrice" -> db.updateTotalPrice(orderID, Float.valueOf(editfield.getText()));
-                case "AmountPaid" -> db.updateAmountPaid(orderID, Float.valueOf(editfield.getText()));
+                case "ProductNames" -> db.updateProductNames((Long)id, value);
+                case "ProductQTY" -> db.updateProductQTYs((Long)id, value);
+                case "TotalPrice" -> db.updateTotalPrice((Long)id, Float.valueOf(value));
+                case "AmountPaid" -> db.updateAmountPaid((Long)id, Float.valueOf(value));
+                case "DeliveryMan" -> db.updateDeliveryMan((Long)id, value);
+                case "LastName" -> db.updateLastName((String)id, value);
+                case "FirstName" -> db.updateFirstName((String)id, value);
+                case "Street" -> db.updateStreet((String)id, value);
+                case "Barangay" -> db.updateBarangay((String)id, value);
+                case "City" -> db.updateCity((String)id, value);
+                case "MobileNumber" -> db.updateMobileNumber((String) id, value);
+                case "Password" -> db.updatePassword((String) id, value);
+                case "ProductName" -> db.updateProductName((Integer) id, value);
+                case "Price" -> db.updatePrice((Integer) id, Float.valueOf(value));
             }
+            GlassPanePopup.closePopupAll();
+            db.closeConnection();
         });
     }
 

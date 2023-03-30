@@ -10,7 +10,7 @@ import javax.swing.text.Document;
 import javax.swing.text.DocumentFilter;
 
 // DocumentFilter Taken From StackOverflow
-public class MyIntFilter extends DocumentFilter {
+public class MyMobileNumberFilter extends DocumentFilter {
    @Override
    public void insertString(DocumentFilter.FilterBypass fb, int offset, String string,
          AttributeSet attr) throws BadLocationException {
@@ -20,7 +20,7 @@ public class MyIntFilter extends DocumentFilter {
       sb.append(doc.getText(0, doc.getLength()));
       sb.insert(offset, string);
 
-      if (test(sb.toString())) {
+      if (sb.toString().length() <= 11 && test(sb.toString())) {
          super.insertString(fb, offset, string, attr);
       } else {
          // warn the user and don't allow the insert
@@ -29,7 +29,7 @@ public class MyIntFilter extends DocumentFilter {
 
    private boolean test(String text) {
       try {
-         Integer.parseInt(text);
+         Long.parseLong(text);
          return true;
       } catch (NumberFormatException e) {
          return false;
@@ -47,7 +47,7 @@ public class MyIntFilter extends DocumentFilter {
       if (sb.toString().length() == 0) {
           super.replace(fb, offset, length, "", null);
       }
-      else if (test(sb.toString())) {
+      else if (sb.toString().length() <= 11 && test(sb.toString())) {
          super.replace(fb, offset, length, text, attrs);
       } else {
          // warn the user and don't allow the insert
@@ -66,7 +66,7 @@ public class MyIntFilter extends DocumentFilter {
       if (sb.toString().length() == 0) {
           super.replace(fb, offset, length, "", null);
       }
-      else if (test(sb.toString())) {
+      else if (sb.toString().length() <= 11 && test(sb.toString())) {
          super.remove(fb, offset, length);
       } else {
          // warn the user and don't allow the insert
