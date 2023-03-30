@@ -68,6 +68,8 @@ public class Main extends javax.swing.JFrame {
         doc1.setDocumentFilter(new MyFloatFilter());
         PlainDocument doc2 = (PlainDocument) amount2field.getDocument();
         doc2.setDocumentFilter(new MyFloatFilter());
+        PlainDocument doc3 = (PlainDocument) mobilefield.getDocument();
+        doc2.setDocumentFilter(new MyMobileNumberFilter());
 
         scaleIcons();
         scaleProducts();
@@ -268,7 +270,7 @@ public class Main extends javax.swing.JFrame {
     }
     private void refreshDBDeliveries() {
         Database db = new Database();
-        populateTable(dbdeliveriestbl, db.getTableList("deliveries"));
+        populateTable(dbdeliveriestbl, db.getDeliveryList());
         db.closeConnection();
     }
     private void refreshDBCustomers() {
@@ -2048,7 +2050,7 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -2063,6 +2065,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         dbdeliveriestbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dbdeliveriestbl.setColumnSelectionAllowed(true);
         dbdeliveriestbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         dbdeliveriestbl.setFocusable(false);
         dbdeliveriestbl.setGridColor(new java.awt.Color(0, 0, 0));
@@ -2072,6 +2075,11 @@ public class Main extends javax.swing.JFrame {
         dbdeliveriestbl.getTableHeader().setReorderingAllowed(false);
         dbdeliveriestbl.setUpdateSelectionOnSort(false);
         dbdeliveriestbl.setVerifyInputWhenFocusTarget(false);
+        dbdeliveriestbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dbdeliveriestblMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(dbdeliveriestbl);
         dbdeliveriestbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dbdeliveriestbl.getColumnModel().getColumnCount() > 0) {
@@ -2226,6 +2234,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         dbcustomerstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dbcustomerstbl.setCellSelectionEnabled(true);
         dbcustomerstbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         dbcustomerstbl.setFocusable(false);
         dbcustomerstbl.setGridColor(new java.awt.Color(0, 0, 0));
@@ -2235,6 +2244,11 @@ public class Main extends javax.swing.JFrame {
         dbcustomerstbl.getTableHeader().setReorderingAllowed(false);
         dbcustomerstbl.setUpdateSelectionOnSort(false);
         dbcustomerstbl.setVerifyInputWhenFocusTarget(false);
+        dbcustomerstbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dbcustomerstblMouseClicked(evt);
+            }
+        });
         jScrollPane8.setViewportView(dbcustomerstbl);
         dbcustomerstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dbcustomerstbl.getColumnModel().getColumnCount() > 0) {
@@ -2390,6 +2404,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         dbuserstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dbuserstbl.setCellSelectionEnabled(true);
         dbuserstbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         dbuserstbl.setFocusable(false);
         dbuserstbl.setGridColor(new java.awt.Color(0, 0, 0));
@@ -2399,6 +2414,11 @@ public class Main extends javax.swing.JFrame {
         dbuserstbl.getTableHeader().setReorderingAllowed(false);
         dbuserstbl.setUpdateSelectionOnSort(false);
         dbuserstbl.setVerifyInputWhenFocusTarget(false);
+        dbuserstbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dbuserstblMouseClicked(evt);
+            }
+        });
         jScrollPane9.setViewportView(dbuserstbl);
         dbuserstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dbuserstbl.getColumnModel().getColumnCount() > 0) {
@@ -2544,6 +2564,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         dbproductstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        dbproductstbl.setCellSelectionEnabled(true);
         dbproductstbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         dbproductstbl.setFocusable(false);
         dbproductstbl.setGridColor(new java.awt.Color(0, 0, 0));
@@ -2553,6 +2574,11 @@ public class Main extends javax.swing.JFrame {
         dbproductstbl.getTableHeader().setReorderingAllowed(false);
         dbproductstbl.setUpdateSelectionOnSort(false);
         dbproductstbl.setVerifyInputWhenFocusTarget(false);
+        dbproductstbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dbproductstblMouseClicked(evt);
+            }
+        });
         jScrollPane10.setViewportView(dbproductstbl);
         dbproductstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dbproductstbl.getColumnModel().getColumnCount() > 0) {
@@ -2792,7 +2818,7 @@ public class Main extends javax.swing.JFrame {
                     return;
                 }
                 //add new customer
-                Integer mobileNumber = mobilefield.getText().equals("") ? null : Integer.valueOf(mobilefield.getText());
+                String mobileNumber = mobilefield.getText().equals("") ? null : mobilefield.getText();
                 cID = db.addCustomer(lnamefield.getText().trim(),
                         fnamefield.getText().trim(),
                         housefield.getText().trim(),
@@ -3153,17 +3179,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_productsdbmouseclicked
 
     private void dborderstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dborderstblMouseClicked
-        System.out.println("table clicked " + dborderstbl.getSelectedColumn());
-        int col = dborderstbl.getSelectedColumn();
-        int row = dborderstbl.getSelectedRow();
-        Long orderID = (Long) dborderstbl.getValueAt(row, 0);
-        String header = dborderstbl.getColumnModel().getColumn(col).getHeaderValue().toString();
+        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int col = table.getSelectedColumn();
+        int row = table.getSelectedRow();
+        Long orderID = (Long) table.getValueAt(row, 0);
+        String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
         switch(col) {
             case 2, 3 -> {
                 TextEditPopup obj = new TextEditPopup(header,
                         "Editing " + header + " of OrderID " + orderID,
                         orderID,
-                        (String) dborderstbl.getValueAt(row, col));
+                        (String) table.getValueAt(row, col));
                 obj.save(event -> refreshDBOrders());
                 GlassPanePopup.showPopup(obj);
             }
@@ -3171,15 +3198,15 @@ public class Main extends javax.swing.JFrame {
                 TextEditPopup obj = new TextEditPopup(header,
                         "Editing " + header + " of OrderID " + orderID,
                         orderID,
-                        (Float) dborderstbl.getValueAt(row, col));
+                        (Float) table.getValueAt(row, col));
                 obj.save(event -> refreshDBOrders());
                 GlassPanePopup.showPopup(obj);
             }
             case 6 -> {
-                BooleanEditPopup obj = new BooleanEditPopup(header,
+                ComboBoxEditPopup obj = new ComboBoxEditPopup(header,
                         "Editing " + header + " of OrderID " + orderID,
                         orderID,
-                        (Boolean) dborderstbl.getValueAt(row, col));
+                        (Boolean) table.getValueAt(row, col));
                 obj.save(event -> refreshDBOrders());
                 GlassPanePopup.showPopup(obj);
             }
@@ -3187,13 +3214,139 @@ public class Main extends javax.swing.JFrame {
                 DateEditPopup obj = new DateEditPopup(header,
                         "Editing " + header + " of OrderID " + orderID,
                         orderID,
-                        (Date) dborderstbl.getValueAt(row, col));
+                        (Date) table.getValueAt(row, col));
                 obj.save(event -> refreshDBOrders());
+                obj.remove(event -> refreshDBOrders());
                 GlassPanePopup.showPopup(obj);
             }
             default -> showMsg(header + " cannot be changed");
         }
     }//GEN-LAST:event_dborderstblMouseClicked
+
+    private void dbdeliveriestblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbdeliveriestblMouseClicked
+        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int col = table.getSelectedColumn();
+        int row = table.getSelectedRow();
+        Long orderID = (Long) table.getValueAt(row, 0);
+        String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
+        switch(col) {
+            case 1 -> { //status
+                ComboBoxEditPopup obj = new ComboBoxEditPopup(header,
+                        "Editing " + header + " of OrderID " + orderID,
+                        orderID,
+                        (String) table.getValueAt(row, col));
+                obj.save(event -> refreshDBDeliveries());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 2 -> { //man
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of OrderID " + orderID,
+                        orderID,
+                        (String) table.getValueAt(row, col));
+                obj.save(event -> refreshDBDeliveries());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 3 -> { //date
+                DateEditPopup obj = new DateEditPopup(header,
+                        "Editing " + header + " of OrderID " + orderID,
+                        orderID,
+                        (Date) table.getValueAt(row, col));
+                obj.save(event -> refreshDBDeliveries());
+                GlassPanePopup.showPopup(obj);
+            }
+            default -> showMsg(header + " cannot be changed");
+        }
+    }//GEN-LAST:event_dbdeliveriestblMouseClicked
+
+    private void dbcustomerstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbcustomerstblMouseClicked
+        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int col = table.getSelectedColumn();
+        int row = table.getSelectedRow();
+        String customerID = (String) table.getValueAt(row, 0);
+        String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
+        switch(col) {
+            case 1, 2, 3, 4, 5 -> {
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of CustomerID " + customerID,
+                        customerID,
+                        (String) table.getValueAt(row, col));
+                obj.save(event -> refreshDBCustomers());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 6 -> {
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of CustomerID " + customerID,
+                        customerID,
+                        (Long) table.getValueAt(row, col));
+                obj.save(event -> refreshDBCustomers());
+                GlassPanePopup.showPopup(obj);
+            }
+            default -> showMsg(header + " cannot be changed");
+        }
+    }//GEN-LAST:event_dbcustomerstblMouseClicked
+
+    private void dbuserstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbuserstblMouseClicked
+        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int col = table.getSelectedColumn();
+        int row = table.getSelectedRow();
+        String username = (String) table.getValueAt(row, 0);
+        String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
+        switch(col) {
+            case 1 -> { // pass
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of username " + username,
+                        username,
+                        (String) table.getValueAt(row, col));
+                obj.save(event -> refreshDBUsers());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 2 -> { // role
+                String s = (String) table.getValueAt(row, col);
+                if (s.equals("owner")) {
+                    showMsg("cannot change owner role");
+                    return;
+                }
+                ComboBoxEditPopup obj = new ComboBoxEditPopup(header,
+                        "Editing " + header + " of username " + username,
+                        username,
+                        (String) table.getValueAt(row, col));
+                obj.save(event -> refreshDBUsers());
+                GlassPanePopup.showPopup(obj);
+            }
+            default -> showMsg(header + " cannot be changed");
+        }
+    }//GEN-LAST:event_dbuserstblMouseClicked
+
+    private void dbproductstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbproductstblMouseClicked
+        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int col = table.getSelectedColumn();
+        int row = table.getSelectedRow();
+        Integer productID = (Integer) table.getValueAt(row, 0);
+        String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
+        switch(col) {
+            case 1 -> { // product name
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of Product ID " + productID,
+                        productID,
+                        (String) table.getValueAt(row, col));
+                obj.save(event -> refreshDBProducts());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 2 -> { // price
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of Product ID " + productID,
+                        productID,
+                        (Float) table.getValueAt(row, col));
+                obj.save(event -> refreshDBProducts());
+                GlassPanePopup.showPopup(obj);
+            }
+            default -> showMsg(header + " cannot be changed");
+        }
+    }//GEN-LAST:event_dbproductstblMouseClicked
     private void showDBTable(javax.swing.JPanel p) {
         dborders.setVisible(false);
         dbdeliveries.setVisible(false);
