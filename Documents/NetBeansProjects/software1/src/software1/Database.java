@@ -814,6 +814,51 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public ArrayList<ArrayList<Object>> getFinances(String range) {
+        ArrayList<ArrayList<Object>> list = new ArrayList<>();
+        try {
+            String r = "";
+            if (range != null) {
+                String thisYear = " AND YEAR(DatePaid) = YEAR(CURDATE())";
+                switch (range) {
+                    case "daily" -> r += " AND DATE(DatePaid) = CURDATE()";
+                    case "weekly" -> r += " AND WEEK(DatePaid) = WEEK(CURDATE())" + thisYear;
+                    case "monthly" -> r += " AND MONTH(DatePaid) = MONTH(CURDATE())" + thisYear;
+                    case "yearly" -> r += thisYear;
+                }
+            }
+            ResultSet rs = con.createStatement().executeQuery("SELECT AmountPaid, DatePaid FROM orders WHERE FullyPaid=1 " + r);
+            while(rs.next()) {
+                ArrayList<Object> row = new ArrayList<>();
+                row.add(rs.getDate("DatePaid"));
+                row.add(rs.getFloat("AmountPaid"));
+                list.add(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    public Float getGrossIncome(String range) {
+        Float income = 0f; //initially 0
+        try {
+            String r = "";
+            if (range != null) {
+                String thisYear = " AND YEAR(DatePaid) = YEAR(CURDATE())";
+                switch (range) {
+                    case "daily" -> r += " AND DATE(DatePaid) = CURDATE()";
+                    case "weekly" -> r += " AND WEEK(DatePaid) = WEEK(CURDATE())" + thisYear;
+                    case "monthly" -> r += " AND MONTH(DatePaid) = MONTH(CURDATE())" + thisYear;
+                    case "yearly" -> r += thisYear;
+                }
+            }
+            ResultSet rs = con.createStatement().executeQuery("SELECT AmountPaid FROM orders WHERE FullyPaid=1 " + r);
+            while (rs.next()) income += rs.getFloat("AmountPaid");
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return income;
+    }
     public static void main(String[] args) {
         Database db = new Database();
         

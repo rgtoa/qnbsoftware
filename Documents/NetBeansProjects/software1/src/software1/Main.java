@@ -2873,7 +2873,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_genreport5ActionPerformed
 
     private void genreport6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreport6ActionPerformed
-        // TODO add your handling code here:
+        try {
+            PDFGenerator.finances();
+            showMsg("Generated Finances");
+        } catch (DocumentException | FileNotFoundException ex) {
+            showMsg("Error Generating Report");
+        }
     }//GEN-LAST:event_genreport6ActionPerformed
 
     private void submitformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitformActionPerformed

@@ -6,6 +6,7 @@ import com.itextpdf.text.pdf.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class PDFGenerator {
@@ -72,7 +73,7 @@ public class PDFGenerator {
         Document document = new Document(PageSize.LETTER);
 
         // Create a PDF file with the current date and time as part of the filename
-        String filename = title.replaceAll(" ", "") + LocalDate.now() + ".pdf";
+        String filename = title.replaceAll(" ", "") + LocalDateTime.now().toString().substring(0,19).replaceAll(":", "_") + ".pdf";
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filename));
 
         // Add header and footer
@@ -96,7 +97,6 @@ public class PDFGenerator {
         document.add(p);
         document.add(newLine());
         document.add(createTable(header, content));
-        document.add(newLine());
     }
     private static Paragraph newLine() {
         return new Paragraph("\n", FONT_NORMAL);
@@ -122,32 +122,33 @@ public class PDFGenerator {
         cell.setHorizontalAlignment(alignment);
         return cell;
     }
+    public static void finances() throws DocumentException, FileNotFoundException{
+        Document document = createDocument("Finances");
+        Database db = new Database();
+        String[] ranges = new String[]{"Daily", "Weekly", "Monthly", "Yearly"};
+        //createTableBlock(Document document, String title, String[] header, ArrayList<ArrayList<Object>> content)
+        for (String range : ranges){
+            createTableBlock(document, range + " Finances",new String[]{"Date","Amount"},db.getFinances(range.toLowerCase()));
+            document.add(new Paragraph(range + " Total: Php. " + db.getGrossIncome(range.toLowerCase())));
+        }
+        db.closeConnection();
+        document.close();
+    }
+    public static void main(String[] args) throws Exception {
+        PDFGenerator.finances();
+    }
 }
 
 class HeaderFooter extends PdfPageEventHelper {
     @Override
     public void onEndPage(PdfWriter writer, Document document) {
         PdfPTable footerTable = new PdfPTable(1);
-        PdfPCell footerCell = new PdfPCell(new Paragraph("Page " + writer.getPageNumber(), FontFactory.getFont(FontFactory.TIMES, 8)));
+        PdfPCell footerCell = new PdfPCell(new Paragraph("Generated " + LocalDateTime.now().toString().substring(0,19) + " | Page " + writer.getPageNumber(), FontFactory.getFont(FontFactory.TIMES, 8)));
         footerCell.setBorderWidth(0);
         footerCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
         footerTable.addCell(footerCell);
         footerTable.setTotalWidth(document.right() - document.left());
         footerTable.writeSelectedRows(0, -1, document.leftMargin(), document.bottom() - 10, writer.getDirectContent());
-    }
-    
-    public static void main(String[] args) throws Exception {
-        PDFGenerator.createReport("Deliveries Report", "Yearly",
-                "pending-delivery",
-                "ongoing-delivery",
-                "complete-delivery"
-        );
-        PDFGenerator.createReport("Transactions Report", "Yearly",
-                "pendingwalkin-order", 
-                "pendingdelivery-order", 
-                "completewalkin-order", 
-                "completedelivery-order"
-        );
     }
 }
 
