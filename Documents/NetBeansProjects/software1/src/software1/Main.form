@@ -453,9 +453,9 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="leftarrow" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="productimg" pref="505" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="productimg" min="-2" pref="400" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="rightarrow" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
@@ -466,13 +466,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                                  <Component id="productimg" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="211" max="32767" attributes="0"/>
+                                  <EmptySpace pref="261" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="rightarrow" min="-2" pref="40" max="-2" attributes="0"/>
@@ -483,6 +478,11 @@
                                           <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="productimg" min="-2" pref="428" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="background1" min="-2" max="-2" attributes="0"/>
@@ -2509,7 +2509,7 @@
                           <Component id="deleteorderbtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jScrollPane6" pref="395" max="32767" attributes="0"/>
+                      <Component id="jScrollPane6" pref="445" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="background8" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -2821,7 +2821,7 @@
                           <Component id="deletedeliverybtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jScrollPane7" pref="396" max="32767" attributes="0"/>
+                      <Component id="jScrollPane7" pref="446" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="background9" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -3103,7 +3103,7 @@
                           <Component id="deletecustomerbtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jScrollPane8" pref="396" max="32767" attributes="0"/>
+                      <Component id="jScrollPane8" pref="446" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="background10" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -3403,7 +3403,7 @@
                           <Component id="deleterow4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jScrollPane9" pref="396" max="32767" attributes="0"/>
+                      <Component id="jScrollPane9" pref="446" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="background11" min="-2" max="-2" attributes="0"/>
                   </Group>
