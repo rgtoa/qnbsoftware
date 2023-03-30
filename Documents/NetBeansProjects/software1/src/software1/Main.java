@@ -418,6 +418,8 @@ public class Main extends javax.swing.JFrame {
         customersbtndb = new javax.swing.JLabel();
         usersbtndb = new javax.swing.JLabel();
         productsbtndb = new javax.swing.JLabel();
+        editcell1 = new javax.swing.JButton();
+        deleterow1 = new javax.swing.JButton();
         dbdeliveries = new javax.swing.JPanel();
         deliveriesbtndb1 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -427,6 +429,8 @@ public class Main extends javax.swing.JFrame {
         customersbtndb1 = new javax.swing.JLabel();
         usersbtndb1 = new javax.swing.JLabel();
         productsbtndb1 = new javax.swing.JLabel();
+        editcell2 = new javax.swing.JButton();
+        deleterow2 = new javax.swing.JButton();
         dbcustomers = new javax.swing.JPanel();
         deliveriesbtndb2 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
@@ -436,6 +440,8 @@ public class Main extends javax.swing.JFrame {
         customersbtndb2 = new javax.swing.JLabel();
         usersbtndb2 = new javax.swing.JLabel();
         productsbtndb2 = new javax.swing.JLabel();
+        editcell3 = new javax.swing.JButton();
+        deleterow3 = new javax.swing.JButton();
         dbusers = new javax.swing.JPanel();
         deliveriesbtndb3 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
@@ -445,6 +451,8 @@ public class Main extends javax.swing.JFrame {
         customersbtndb3 = new javax.swing.JLabel();
         usersbtndb3 = new javax.swing.JLabel();
         productsbtndb3 = new javax.swing.JLabel();
+        editcell4 = new javax.swing.JButton();
+        deleterow4 = new javax.swing.JButton();
         dbproducts = new javax.swing.JPanel();
         deliveriesbtndb4 = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
@@ -454,6 +462,8 @@ public class Main extends javax.swing.JFrame {
         customersbtndb4 = new javax.swing.JLabel();
         usersbtndb4 = new javax.swing.JLabel();
         productsbtndb4 = new javax.swing.JLabel();
+        editcell5 = new javax.swing.JButton();
+        deleterow5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QNB System");
@@ -1977,6 +1987,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        editcell1.setText("Edit Cell");
+
+        deleterow1.setBackground(new java.awt.Color(235, 89, 89));
+        deleterow1.setForeground(new java.awt.Color(34, 73, 87));
+        deleterow1.setText("Delete Row");
+
         javax.swing.GroupLayout dbordersLayout = new javax.swing.GroupLayout(dborders);
         dborders.setLayout(dbordersLayout);
         dbordersLayout.setHorizontalGroup(
@@ -1986,19 +2002,25 @@ public class Main extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dbordersLayout.createSequentialGroup()
-                        .addComponent(ordersbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(deliveriesbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(customersbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(usersbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(productsbtndb)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(dbordersLayout.createSequentialGroup()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
-                        .addGap(85, 85, 85))))
+                        .addGap(85, 85, 85))
+                    .addGroup(dbordersLayout.createSequentialGroup()
+                        .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dbordersLayout.createSequentialGroup()
+                                .addComponent(ordersbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(deliveriesbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(customersbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(usersbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(productsbtndb))
+                            .addGroup(dbordersLayout.createSequentialGroup()
+                                .addComponent(editcell1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deleterow1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         dbordersLayout.setVerticalGroup(
             dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2015,8 +2037,12 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(usersbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(productsbtndb, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(ordersbtndb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editcell1)
+                    .addComponent(deleterow1))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2140,6 +2166,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        editcell2.setText("Edit Cell");
+
+        deleterow2.setBackground(new java.awt.Color(235, 89, 89));
+        deleterow2.setForeground(new java.awt.Color(34, 73, 87));
+        deleterow2.setText("Delete Row");
+
         javax.swing.GroupLayout dbdeliveriesLayout = new javax.swing.GroupLayout(dbdeliveries);
         dbdeliveries.setLayout(dbdeliveriesLayout);
         dbdeliveriesLayout.setHorizontalGroup(
@@ -2148,6 +2180,11 @@ public class Main extends javax.swing.JFrame {
             .addGroup(dbdeliveriesLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbdeliveriesLayout.createSequentialGroup()
+                        .addComponent(editcell2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleterow2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(dbdeliveriesLayout.createSequentialGroup()
                         .addComponent(ordersbtndb1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
@@ -2178,8 +2215,12 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(customersbtndb1)
                             .addComponent(usersbtndb1)
                             .addComponent(productsbtndb1))))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editcell2)
+                    .addComponent(deleterow2))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2309,6 +2350,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        editcell3.setText("Edit Cell");
+
+        deleterow3.setBackground(new java.awt.Color(235, 89, 89));
+        deleterow3.setForeground(new java.awt.Color(34, 73, 87));
+        deleterow3.setText("Delete Row");
+
         javax.swing.GroupLayout dbcustomersLayout = new javax.swing.GroupLayout(dbcustomers);
         dbcustomers.setLayout(dbcustomersLayout);
         dbcustomersLayout.setHorizontalGroup(
@@ -2317,6 +2364,11 @@ public class Main extends javax.swing.JFrame {
             .addGroup(dbcustomersLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbcustomersLayout.createSequentialGroup()
+                        .addComponent(editcell3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleterow3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(dbcustomersLayout.createSequentialGroup()
                         .addComponent(ordersbtndb2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
@@ -2347,8 +2399,12 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(customersbtndb2)
                             .addComponent(usersbtndb2)
                             .addComponent(productsbtndb2))))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editcell3)
+                    .addComponent(deleterow3))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2468,6 +2524,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        editcell4.setText("Edit Cell");
+
+        deleterow4.setBackground(new java.awt.Color(235, 89, 89));
+        deleterow4.setForeground(new java.awt.Color(34, 73, 87));
+        deleterow4.setText("Delete Row");
+
         javax.swing.GroupLayout dbusersLayout = new javax.swing.GroupLayout(dbusers);
         dbusers.setLayout(dbusersLayout);
         dbusersLayout.setHorizontalGroup(
@@ -2476,6 +2538,11 @@ public class Main extends javax.swing.JFrame {
             .addGroup(dbusersLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbusersLayout.createSequentialGroup()
+                        .addComponent(editcell4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleterow4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(dbusersLayout.createSequentialGroup()
                         .addComponent(ordersbtndb3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
@@ -2506,8 +2573,12 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(customersbtndb3)
                             .addComponent(usersbtndb3)
                             .addComponent(productsbtndb3))))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addGroup(dbusersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editcell4)
+                    .addComponent(deleterow4))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2627,6 +2698,12 @@ public class Main extends javax.swing.JFrame {
         productsbtndb4.setText("Products");
         productsbtndb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        editcell5.setText("Edit Cell");
+
+        deleterow5.setBackground(new java.awt.Color(235, 89, 89));
+        deleterow5.setForeground(new java.awt.Color(34, 73, 87));
+        deleterow5.setText("Delete Row");
+
         javax.swing.GroupLayout dbproductsLayout = new javax.swing.GroupLayout(dbproducts);
         dbproducts.setLayout(dbproductsLayout);
         dbproductsLayout.setHorizontalGroup(
@@ -2635,6 +2712,11 @@ public class Main extends javax.swing.JFrame {
             .addGroup(dbproductsLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dbproductsLayout.createSequentialGroup()
+                        .addComponent(editcell5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleterow5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(dbproductsLayout.createSequentialGroup()
                         .addComponent(ordersbtndb4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
@@ -2665,8 +2747,12 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(customersbtndb4)
                             .addComponent(usersbtndb4)
                             .addComponent(productsbtndb4))))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addGroup(dbproductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editcell5)
+                    .addComponent(deleterow5))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -3428,6 +3514,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable dbproductstbl;
     private javax.swing.JPanel dbusers;
     private javax.swing.JTable dbuserstbl;
+    private javax.swing.JButton deleterow1;
+    private javax.swing.JButton deleterow2;
+    private javax.swing.JButton deleterow3;
+    private javax.swing.JButton deleterow4;
+    private javax.swing.JButton deleterow5;
     private javax.swing.JLabel deliverbtn;
     private javax.swing.JLabel delivericon;
     private javax.swing.JLabel deliveriesbtndb;
@@ -3436,6 +3527,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel deliveriesbtndb3;
     private javax.swing.JLabel deliveriesbtndb4;
     private javax.swing.JPanel delivertab;
+    private javax.swing.JButton editcell1;
+    private javax.swing.JButton editcell2;
+    private javax.swing.JButton editcell3;
+    private javax.swing.JButton editcell4;
+    private javax.swing.JButton editcell5;
     private javax.swing.JButton editmodule1;
     private javax.swing.JButton editmodule2;
     private javax.swing.JButton editmodule3;
