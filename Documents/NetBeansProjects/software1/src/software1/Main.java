@@ -475,7 +475,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(qnbLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         qnbLayout.setVerticalGroup(
             qnbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1137,7 +1137,7 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -1151,6 +1151,7 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        pendingtransactbl.setColumnSelectionAllowed(true);
         pendingtransactbl.getTableHeader().setReorderingAllowed(false);
         pendingtransactbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
         pendingtransactbl.setRowHeight(45);
@@ -1266,7 +1267,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(editmodule1)
                     .addComponent(updatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1295,7 +1296,7 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -1310,6 +1311,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         completetransactbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        completetransactbl.setColumnSelectionAllowed(true);
         completetransactbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         completetransactbl.setFocusable(false);
         completetransactbl.setGridColor(new java.awt.Color(0, 0, 0));
@@ -1435,7 +1437,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(generatebtn1)
                     .addComponent(editmodule2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1607,7 +1609,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updatebtn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1628,7 +1630,7 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -1880,16 +1882,9 @@ public class Main extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Boolean.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         dborderstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -1898,7 +1893,6 @@ public class Main extends javax.swing.JFrame {
         dborderstbl.setFocusable(false);
         dborderstbl.setGridColor(new java.awt.Color(0, 0, 0));
         dborderstbl.setRequestFocusEnabled(false);
-        dborderstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
         dborderstbl.setShowGrid(false);
         dborderstbl.getTableHeader().setReorderingAllowed(false);
         dborderstbl.setUpdateSelectionOnSort(false);
@@ -1931,7 +1925,7 @@ public class Main extends javax.swing.JFrame {
             dborderstbl.getColumnModel().getColumn(8).setPreferredWidth(5);
         }
 
-        ordersbtndb.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        ordersbtndb.setFont(new java.awt.Font("Source Sans Pro Semibold", 1, 36)); // NOI18N
         ordersbtndb.setForeground(new java.awt.Color(10, 64, 83));
         ordersbtndb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ordersbtndb.setText("Orders");
@@ -2067,7 +2061,6 @@ public class Main extends javax.swing.JFrame {
         dbdeliveriestbl.setFocusable(false);
         dbdeliveriestbl.setGridColor(new java.awt.Color(0, 0, 0));
         dbdeliveriestbl.setRequestFocusEnabled(false);
-        dbdeliveriestbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
         dbdeliveriestbl.setShowGrid(false);
         dbdeliveriestbl.getTableHeader().setReorderingAllowed(false);
         dbdeliveriestbl.setUpdateSelectionOnSort(false);
@@ -2178,7 +2171,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(usersbtndb1)
                             .addComponent(productsbtndb1))))
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2230,7 +2223,6 @@ public class Main extends javax.swing.JFrame {
         dbcustomerstbl.setFocusable(false);
         dbcustomerstbl.setGridColor(new java.awt.Color(0, 0, 0));
         dbcustomerstbl.setRequestFocusEnabled(false);
-        dbcustomerstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
         dbcustomerstbl.setShowGrid(false);
         dbcustomerstbl.getTableHeader().setReorderingAllowed(false);
         dbcustomerstbl.setUpdateSelectionOnSort(false);
@@ -2342,7 +2334,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(usersbtndb2)
                             .addComponent(productsbtndb2))))
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2394,7 +2386,6 @@ public class Main extends javax.swing.JFrame {
         dbuserstbl.setFocusable(false);
         dbuserstbl.setGridColor(new java.awt.Color(0, 0, 0));
         dbuserstbl.setRequestFocusEnabled(false);
-        dbuserstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
         dbuserstbl.setShowGrid(false);
         dbuserstbl.getTableHeader().setReorderingAllowed(false);
         dbuserstbl.setUpdateSelectionOnSort(false);
@@ -2496,7 +2487,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(usersbtndb3)
                             .addComponent(productsbtndb3))))
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2548,7 +2539,6 @@ public class Main extends javax.swing.JFrame {
         dbproductstbl.setFocusable(false);
         dbproductstbl.setGridColor(new java.awt.Color(0, 0, 0));
         dbproductstbl.setRequestFocusEnabled(false);
-        dbproductstbl.setSelectionBackground(new java.awt.Color(255, 255, 255));
         dbproductstbl.setShowGrid(false);
         dbproductstbl.getTableHeader().setReorderingAllowed(false);
         dbproductstbl.setUpdateSelectionOnSort(false);
@@ -2650,7 +2640,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(usersbtndb4)
                             .addComponent(productsbtndb4))))
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
