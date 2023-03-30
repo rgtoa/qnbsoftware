@@ -508,7 +508,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(invoicetabLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(invoicebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         invoicetabLayout.setVerticalGroup(
             invoicetabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -621,7 +621,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(authentictabLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addComponent(authenticbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(databasebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
