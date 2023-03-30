@@ -255,35 +255,41 @@ public class Database {
                     case "yearly" -> r += thisYear;
                 }
             }
-            PreparedStatement ps = con.prepareStatement(
-                "SELECT " +
-                "deliveries.DeliveryStatus, deliveries.DeliveryMan, deliveries.DeliveryDate, " +
-                "orders.*, " +
-                "concat(customers.FirstName,' ',customers.LastName) AS Name, " +
-                "concat(customers.Street,' ',customers.Barangay,' ',customers.City) AS Address " +
-                "FROM deliveries " +
-                "INNER JOIN orders ON deliveries.OrderID = orders.OrderID " +
-                "INNER JOIN customers ON orders.CustomerID = customers.CustomerID " +
-                "WHERE DeliveryStatus=?" + r
-            );
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM deliveries WHERE DeliveryStatus=?" + r);
             ps.setInt(1, status);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
+                // get products
+                PreparedStatement ps2 = con.prepareStatement("SELECT * FROM orders WHERE OrderID=?");
+                ps2.setLong(1, rs.getLong("OrderID"));
+                ResultSet rs2 = ps2.executeQuery();
                 //format the product & quantity into a string
+                rs2.next();
                 String products = "";
-                String[] names = rs.getString("ProductNames").split(",");
-                String[] qty = rs.getString("ProductQuantities").split(",");
+                String[] names = rs2.getString("ProductNames").split(",");
+                String[] qty = rs2.getString("ProductQuantities").split(",");
                 for (int i = 0; i < names.length; i++) {
                     products += names[i] + " - " + qty[i] + "\n";
                 }
+                // place into row
                 ArrayList<Object> row = new ArrayList<>();
                 row.add(rs.getLong("OrderID"));
                 row.add(products);
-                row.add(rs.getString("CustomerID"));
-                row.add(rs.getString("Name"));
-                row.add(rs.getString("Address"));
+                // Get Customer
+                PreparedStatement ps3 = con.prepareStatement("SELECT * FROM customers WHERE CustomerID=?");
+                ps3.setString(1, rs2.getString("CustomerID"));
+                ResultSet rs3 = ps3.executeQuery();
+                // place into row
+                if (rs3.next()) {
+                    row.add(rs3.getString("CustomerID"));
+                    row.add(rs3.getString("FirstName") + " " + rs3.getString("LastName"));
+                    row.add(rs3.getString("Street") + " " + rs3.getString("Barangay") + " " + rs3.getString("City"));
+                } else {
+                    row.add("N/A");row.add("N/A");row.add("N/A");// if missing
+                }
+                // check status
                 if (status != 2) row.add(status == 0 ? "Awaiting.." : rs.getString("DeliveryMan"));
-                row.add(rs.getFloat("TotalPrice"));
+                row.add(rs2.getFloat("TotalPrice"));
                 if (status == 2) { // OrderID-Item/QTY-CustomerID-Name-Address-Price-Time/Date
                     row.add(rs.getDate("DeliveryDate"));
                 } else { // OrderID-Item/QTY-CustomerID-Name-Address-Delivery-Price-Status
@@ -763,6 +769,7 @@ public class Database {
     }
     public void deleteOrder(Long orderID) {
         try {
+            deleteDelivery(orderID); // DELETE FROM DELIVERIES IF EXISTS SINCE FOREIGN KEY
             PreparedStatement ps = con.prepareStatement("DELETE FROM orders WHERE OrderID=?");
             ps.setLong(1, orderID);
             ps.executeUpdate();
@@ -783,7 +790,13 @@ public class Database {
     }
     public void deleteCustomer(String customerID) {
         try {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM customers WHERE CustomerID=?");
+            PreparedStatement ps;
+            ps = con.prepareStatement("UPDATE orders SET CustomerID=? WHERE CustomerID=?");
+            ps.setNull(1, Types.VARCHAR);
+            ps.setString(2, customerID);
+            ps.executeUpdate();
+            
+            ps = con.prepareStatement("DELETE FROM customers WHERE CustomerID=?");
             ps.setString(1, customerID);
             ps.executeUpdate();
             ps.close();

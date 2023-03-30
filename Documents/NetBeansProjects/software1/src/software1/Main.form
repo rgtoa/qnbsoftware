@@ -559,7 +559,6 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="stockLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="productname1" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                               <Component id="productdesc1" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                   <Component id="orderbtn" min="-2" pref="100" max="-2" attributes="0"/>
@@ -569,8 +568,9 @@
                                       <Component id="productprice1" min="-2" pref="206" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="productname1" min="-2" pref="470" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -596,7 +596,7 @@
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="orderbtn" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jPanel1" pref="144" max="32767" attributes="0"/>
+                          <Component id="jPanel1" pref="143" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2472,9 +2472,9 @@
                                       <Component id="productsbtndb" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="editcell1" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="editcellorders" min="-2" pref="100" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="deleterow1" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="deleteorderbtn" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -2505,8 +2505,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="editcell1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleterow1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editcellorders" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteorderbtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" pref="395" max="32767" attributes="0"/>
@@ -2636,9 +2636,6 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dborderstblMouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -2726,12 +2723,15 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="productsdbmouseclicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="editcell1">
+            <Component class="javax.swing.JButton" name="editcellorders">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit Cell"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editcellordersActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="deleterow1">
+            <Component class="javax.swing.JButton" name="deleteorderbtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="59" green="59" red="eb" type="rgb"/>
@@ -2741,6 +2741,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Row"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteorderbtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -2767,9 +2770,9 @@
                       <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="editcell2" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="editdeliverybtn" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="deleterow2" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="deletedeliverybtn" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -2814,8 +2817,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="editcell2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleterow2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editdeliverybtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deletedeliverybtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="jScrollPane7" pref="396" max="32767" attributes="0"/>
@@ -2912,9 +2915,6 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dbdeliveriestblMouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3005,12 +3005,15 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="productsdbmouseclicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="editcell2">
+            <Component class="javax.swing.JButton" name="editdeliverybtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit Cell"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editdeliverybtnActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="deleterow2">
+            <Component class="javax.swing.JButton" name="deletedeliverybtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="59" green="59" red="eb" type="rgb"/>
@@ -3020,6 +3023,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Row"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletedeliverybtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -3046,9 +3052,9 @@
                       <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="editcell3" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="editcustomerbtn" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="deleterow3" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="deletecustomerbtn" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -3093,8 +3099,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="editcell3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleterow3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editcustomerbtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deletecustomerbtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="jScrollPane8" pref="396" max="32767" attributes="0"/>
@@ -3212,9 +3218,6 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dbcustomerstblMouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3302,12 +3305,15 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="productsdbmouseclicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="editcell3">
+            <Component class="javax.swing.JButton" name="editcustomerbtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit Cell"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editcustomerbtnActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="deleterow3">
+            <Component class="javax.swing.JButton" name="deletecustomerbtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="59" green="59" red="eb" type="rgb"/>
@@ -3317,6 +3323,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Row"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletecustomerbtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -3485,9 +3494,6 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dbuserstblMouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3579,6 +3585,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit Cell"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editcell4ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="deleterow4">
               <Properties>
@@ -3590,6 +3599,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Row"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleterow4ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -3667,7 +3679,7 @@
                           <Component id="deleterow5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jScrollPane10" pref="396" max="32767" attributes="0"/>
+                      <Component id="jScrollPane10" pref="444" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="background12" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -3852,6 +3864,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit Cell"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="editcell5.setVisible(false);&#xd;&#xa;"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="deleterow5">
               <Properties>
@@ -3863,6 +3878,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Row"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="deleterow5.setVisible(false);&#xd;&#xa;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

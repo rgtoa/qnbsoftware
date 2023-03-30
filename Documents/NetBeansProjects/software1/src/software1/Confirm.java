@@ -4,16 +4,19 @@ package software1;
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
 
-public class ConfirmOrder extends javax.swing.JPanel {
+public class Confirm extends javax.swing.JPanel {
 
     /**
      * Creates new form ConfirmOrder
      */
-    public ConfirmOrder() {
+    public Confirm() {
         initComponents();
+        confirmsubtitle.setVisible(false);
     }
-    public ConfirmOrder(String title) {
+    public Confirm(String title, String subtitle) {
+        initComponents();
         confirmOrderLabel.setText(title);
+        confirmsubtitle.setText(subtitle);
     }
 
     /**
@@ -28,6 +31,7 @@ public class ConfirmOrder extends javax.swing.JPanel {
         confirmOrderBtn1 = new javax.swing.JButton();
         orderBackbtn1 = new javax.swing.JButton();
         confirmOrderLabel = new javax.swing.JLabel();
+        confirmsubtitle = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(229, 229, 229));
 
@@ -49,44 +53,55 @@ public class ConfirmOrder extends javax.swing.JPanel {
         confirmOrderLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         confirmOrderLabel.setText("Confirm Order?");
 
+        confirmsubtitle.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
+        confirmsubtitle.setForeground(new java.awt.Color(34, 73, 87));
+        confirmsubtitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        confirmsubtitle.setText("Confirm Order?");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(orderBackbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(confirmOrderBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(confirmOrderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(orderBackbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(confirmOrderBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(confirmsubtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmOrderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(confirmOrderLabel)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmsubtitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(orderBackbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmOrderBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void orderBackbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBackbtn1ActionPerformed
         GlassPanePopup.closePopupLast();
     }//GEN-LAST:event_orderBackbtn1ActionPerformed
-    public void confirmOrder(ActionListener event){
+    public void confirm(ActionListener event){
         confirmOrderBtn1.addActionListener(event);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton confirmOrderBtn1;
     private javax.swing.JLabel confirmOrderLabel;
+    private javax.swing.JLabel confirmsubtitle;
     private javax.swing.JButton orderBackbtn1;
     // End of variables declaration//GEN-END:variables
 }

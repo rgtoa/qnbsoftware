@@ -63,6 +63,10 @@ public class Main extends javax.swing.JFrame {
         populateCustomersBox();
         refreshFormVisibility();
         
+        Database db = new Database();
+        productprice1.setText("Php " + db.getProductPrice(1));
+        db.closeConnection();
+        
         // make form textfield to only accept integers
         PlainDocument doc1 = (PlainDocument) amount1field.getDocument();
         doc1.setDocumentFilter(new MyFloatFilter());
@@ -418,8 +422,8 @@ public class Main extends javax.swing.JFrame {
         customersbtndb = new javax.swing.JLabel();
         usersbtndb = new javax.swing.JLabel();
         productsbtndb = new javax.swing.JLabel();
-        editcell1 = new javax.swing.JButton();
-        deleterow1 = new javax.swing.JButton();
+        editcellorders = new javax.swing.JButton();
+        deleteorderbtn = new javax.swing.JButton();
         dbdeliveries = new javax.swing.JPanel();
         deliveriesbtndb1 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -429,8 +433,8 @@ public class Main extends javax.swing.JFrame {
         customersbtndb1 = new javax.swing.JLabel();
         usersbtndb1 = new javax.swing.JLabel();
         productsbtndb1 = new javax.swing.JLabel();
-        editcell2 = new javax.swing.JButton();
-        deleterow2 = new javax.swing.JButton();
+        editdeliverybtn = new javax.swing.JButton();
+        deletedeliverybtn = new javax.swing.JButton();
         dbcustomers = new javax.swing.JPanel();
         deliveriesbtndb2 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
@@ -440,8 +444,8 @@ public class Main extends javax.swing.JFrame {
         customersbtndb2 = new javax.swing.JLabel();
         usersbtndb2 = new javax.swing.JLabel();
         productsbtndb2 = new javax.swing.JLabel();
-        editcell3 = new javax.swing.JButton();
-        deleterow3 = new javax.swing.JButton();
+        editcustomerbtn = new javax.swing.JButton();
+        deletecustomerbtn = new javax.swing.JButton();
         dbusers = new javax.swing.JPanel();
         deliveriesbtndb3 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
@@ -829,15 +833,15 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(productqty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stockLabel))
-                    .addComponent(productname1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(productdesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel12Layout.createSequentialGroup()
                             .addComponent(jLabelPrice)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(productprice1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(165, 165, 165))
+                            .addComponent(productprice1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(productname1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -859,7 +863,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
         );
 
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
@@ -1909,11 +1913,6 @@ public class Main extends javax.swing.JFrame {
         dborderstbl.getTableHeader().setReorderingAllowed(false);
         dborderstbl.setUpdateSelectionOnSort(false);
         dborderstbl.setVerifyInputWhenFocusTarget(false);
-        dborderstbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dborderstblMouseClicked(evt);
-            }
-        });
         jScrollPane6.setViewportView(dborderstbl);
         dborderstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dborderstbl.getColumnModel().getColumnCount() > 0) {
@@ -1987,11 +1986,21 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        editcell1.setText("Edit Cell");
+        editcellorders.setText("Edit Cell");
+        editcellorders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editcellordersActionPerformed(evt);
+            }
+        });
 
-        deleterow1.setBackground(new java.awt.Color(235, 89, 89));
-        deleterow1.setForeground(new java.awt.Color(34, 73, 87));
-        deleterow1.setText("Delete Row");
+        deleteorderbtn.setBackground(new java.awt.Color(235, 89, 89));
+        deleteorderbtn.setForeground(new java.awt.Color(34, 73, 87));
+        deleteorderbtn.setText("Delete Row");
+        deleteorderbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteorderbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dbordersLayout = new javax.swing.GroupLayout(dborders);
         dborders.setLayout(dbordersLayout);
@@ -2017,9 +2026,9 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(63, 63, 63)
                                 .addComponent(productsbtndb))
                             .addGroup(dbordersLayout.createSequentialGroup()
-                                .addComponent(editcell1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(editcellorders, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deleterow1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(deleteorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         dbordersLayout.setVerticalGroup(
@@ -2039,8 +2048,8 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(ordersbtndb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10)
                 .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editcell1)
-                    .addComponent(deleterow1))
+                    .addComponent(editcellorders)
+                    .addComponent(deleteorderbtn))
                 .addGap(5, 5, 5)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
@@ -2094,11 +2103,6 @@ public class Main extends javax.swing.JFrame {
         dbdeliveriestbl.getTableHeader().setReorderingAllowed(false);
         dbdeliveriestbl.setUpdateSelectionOnSort(false);
         dbdeliveriestbl.setVerifyInputWhenFocusTarget(false);
-        dbdeliveriestbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dbdeliveriestblMouseClicked(evt);
-            }
-        });
         jScrollPane7.setViewportView(dbdeliveriestbl);
         dbdeliveriestbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dbdeliveriestbl.getColumnModel().getColumnCount() > 0) {
@@ -2166,11 +2170,21 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        editcell2.setText("Edit Cell");
+        editdeliverybtn.setText("Edit Cell");
+        editdeliverybtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editdeliverybtnActionPerformed(evt);
+            }
+        });
 
-        deleterow2.setBackground(new java.awt.Color(235, 89, 89));
-        deleterow2.setForeground(new java.awt.Color(34, 73, 87));
-        deleterow2.setText("Delete Row");
+        deletedeliverybtn.setBackground(new java.awt.Color(235, 89, 89));
+        deletedeliverybtn.setForeground(new java.awt.Color(34, 73, 87));
+        deletedeliverybtn.setText("Delete Row");
+        deletedeliverybtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletedeliverybtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dbdeliveriesLayout = new javax.swing.GroupLayout(dbdeliveries);
         dbdeliveries.setLayout(dbdeliveriesLayout);
@@ -2181,9 +2195,9 @@ public class Main extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dbdeliveriesLayout.createSequentialGroup()
-                        .addComponent(editcell2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editdeliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleterow2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deletedeliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(dbdeliveriesLayout.createSequentialGroup()
                         .addComponent(ordersbtndb1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2217,8 +2231,8 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(productsbtndb1))))
                 .addGap(10, 10, 10)
                 .addGroup(dbdeliveriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editcell2)
-                    .addComponent(deleterow2))
+                    .addComponent(editdeliverybtn)
+                    .addComponent(deletedeliverybtn))
                 .addGap(5, 5, 5)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
@@ -2277,11 +2291,6 @@ public class Main extends javax.swing.JFrame {
         dbcustomerstbl.getTableHeader().setReorderingAllowed(false);
         dbcustomerstbl.setUpdateSelectionOnSort(false);
         dbcustomerstbl.setVerifyInputWhenFocusTarget(false);
-        dbcustomerstbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dbcustomerstblMouseClicked(evt);
-            }
-        });
         jScrollPane8.setViewportView(dbcustomerstbl);
         dbcustomerstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dbcustomerstbl.getColumnModel().getColumnCount() > 0) {
@@ -2350,11 +2359,21 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        editcell3.setText("Edit Cell");
+        editcustomerbtn.setText("Edit Cell");
+        editcustomerbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editcustomerbtnActionPerformed(evt);
+            }
+        });
 
-        deleterow3.setBackground(new java.awt.Color(235, 89, 89));
-        deleterow3.setForeground(new java.awt.Color(34, 73, 87));
-        deleterow3.setText("Delete Row");
+        deletecustomerbtn.setBackground(new java.awt.Color(235, 89, 89));
+        deletecustomerbtn.setForeground(new java.awt.Color(34, 73, 87));
+        deletecustomerbtn.setText("Delete Row");
+        deletecustomerbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletecustomerbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dbcustomersLayout = new javax.swing.GroupLayout(dbcustomers);
         dbcustomers.setLayout(dbcustomersLayout);
@@ -2365,9 +2384,9 @@ public class Main extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dbcustomersLayout.createSequentialGroup()
-                        .addComponent(editcell3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editcustomerbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleterow3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deletecustomerbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(dbcustomersLayout.createSequentialGroup()
                         .addComponent(ordersbtndb2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2401,8 +2420,8 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(productsbtndb2))))
                 .addGap(10, 10, 10)
                 .addGroup(dbcustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editcell3)
-                    .addComponent(deleterow3))
+                    .addComponent(editcustomerbtn)
+                    .addComponent(deletecustomerbtn))
                 .addGap(5, 5, 5)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
@@ -2461,11 +2480,6 @@ public class Main extends javax.swing.JFrame {
         dbuserstbl.getTableHeader().setReorderingAllowed(false);
         dbuserstbl.setUpdateSelectionOnSort(false);
         dbuserstbl.setVerifyInputWhenFocusTarget(false);
-        dbuserstbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dbuserstblMouseClicked(evt);
-            }
-        });
         jScrollPane9.setViewportView(dbuserstbl);
         dbuserstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dbuserstbl.getColumnModel().getColumnCount() > 0) {
@@ -2525,10 +2539,20 @@ public class Main extends javax.swing.JFrame {
         });
 
         editcell4.setText("Edit Cell");
+        editcell4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editcell4ActionPerformed(evt);
+            }
+        });
 
         deleterow4.setBackground(new java.awt.Color(235, 89, 89));
         deleterow4.setForeground(new java.awt.Color(34, 73, 87));
         deleterow4.setText("Delete Row");
+        deleterow4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleterow4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dbusersLayout = new javax.swing.GroupLayout(dbusers);
         dbusers.setLayout(dbusersLayout);
@@ -2699,10 +2723,12 @@ public class Main extends javax.swing.JFrame {
         productsbtndb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         editcell5.setText("Edit Cell");
+        editcell5.setVisible(false);
 
         deleterow5.setBackground(new java.awt.Color(235, 89, 89));
         deleterow5.setForeground(new java.awt.Color(34, 73, 87));
         deleterow5.setText("Delete Row");
+        deleterow5.setVisible(false);
 
         javax.swing.GroupLayout dbproductsLayout = new javax.swing.GroupLayout(dbproducts);
         dbproducts.setLayout(dbproductsLayout);
@@ -2752,7 +2778,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(editcell5)
                     .addComponent(deleterow5))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2878,8 +2904,8 @@ public class Main extends javax.swing.JFrame {
         final String prodNames = productNames.substring(0, productNames.length()-1);
         final String prodQTY = productQTY.substring(0, productQTY.length()-1);
         final float totPrice = price;
-        ConfirmOrder obj = new ConfirmOrder();
-        obj.confirmOrder((ActionEvent ae) -> {
+        Confirm obj = new Confirm();
+        obj.confirm((ActionEvent ae) -> {
             boolean isWalkIn = paymentcheckbox.isSelected() && radiowalkin.isSelected();
             String cID = null;
             Database db = new Database();
@@ -3001,11 +3027,17 @@ public class Main extends javax.swing.JFrame {
     private void rightarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightarrowMouseClicked
         productNum = ++productNum % 2;
         scaleProducts();
+        Database db = new Database();
+        productprice1.setText("Php " + db.getProductPrice(productNum+1));
+        db.closeConnection();
     }//GEN-LAST:event_rightarrowMouseClicked
 
     private void leftarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftarrowMouseClicked
         productNum = --productNum % 2;
         scaleProducts();
+        Database db = new Database();
+        productprice1.setText("Php " + db.getProductPrice(productNum+1));
+        db.closeConnection();
     }//GEN-LAST:event_leftarrowMouseClicked
 
     private void selectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectOrderActionPerformed
@@ -3255,11 +3287,40 @@ public class Main extends javax.swing.JFrame {
         refreshDBProducts();
     }//GEN-LAST:event_productsdbmouseclicked
 
-    private void dborderstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dborderstblMouseClicked
+    private void dbproductstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbproductstblMouseClicked
         javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
         System.out.println("table clicked " + table.getSelectedColumn());
         int col = table.getSelectedColumn();
         int row = table.getSelectedRow();
+        Integer productID = (Integer) table.getValueAt(row, 0);
+        String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
+        switch(col) {
+            case 1 -> { // product name
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of Product ID " + productID,
+                        productID,
+                        (String) table.getValueAt(row, col));
+                obj.save(event -> refreshDBProducts());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 2 -> { // price
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of Product ID " + productID,
+                        productID,
+                        (Float) table.getValueAt(row, col));
+                obj.save(event -> refreshDBProducts());
+                GlassPanePopup.showPopup(obj);
+            }
+            default -> showMsg(header + " cannot be changed");
+        }
+    }//GEN-LAST:event_dbproductstblMouseClicked
+
+    private void editcellordersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editcellordersActionPerformed
+        javax.swing.JTable table = dborderstbl;
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int col = table.getSelectedColumn();
+        int row = table.getSelectedRow();
+        if (row == -1 || col == -1) return;
         Long orderID = (Long) table.getValueAt(row, 0);
         String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
         switch(col) {
@@ -3298,13 +3359,38 @@ public class Main extends javax.swing.JFrame {
             }
             default -> showMsg(header + " cannot be changed");
         }
-    }//GEN-LAST:event_dborderstblMouseClicked
+    }//GEN-LAST:event_editcellordersActionPerformed
 
-    private void dbdeliveriestblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbdeliveriestblMouseClicked
-        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+    private void deleteorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteorderbtnActionPerformed
+        javax.swing.JTable table = dborderstbl;
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int row = table.getSelectedRow();
+        if (row == -1) return;
+        final Long orderID = (Long) table.getValueAt(row, 0);
+        Confirm obj = new Confirm("Delete " + orderID + "?",
+                "Corresponding row in Deliveries Table will also be deleted");
+        obj.confirm(event -> {
+            ConfirmConfirm c = new ConfirmConfirm();
+            c.confirm((ActionListener) -> {
+                Database db = new Database();
+                db.deleteOrder(orderID);
+                db.closeConnection();
+                GlassPanePopup.closePopupAll();
+                showMsg("Deleted " + orderID);
+                refreshDBOrders();
+            });
+            GlassPanePopup.closePopupLast();
+            GlassPanePopup.showPopup(c);
+        });
+        GlassPanePopup.showPopup(obj);
+    }//GEN-LAST:event_deleteorderbtnActionPerformed
+
+    private void editdeliverybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editdeliverybtnActionPerformed
+        javax.swing.JTable table = dbdeliveriestbl;
         System.out.println("table clicked " + table.getSelectedColumn());
         int col = table.getSelectedColumn();
         int row = table.getSelectedRow();
+        if (row == -1 || col == -1) return;
         Long orderID = (Long) table.getValueAt(row, 0);
         String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
         switch(col) {
@@ -3334,10 +3420,34 @@ public class Main extends javax.swing.JFrame {
             }
             default -> showMsg(header + " cannot be changed");
         }
-    }//GEN-LAST:event_dbdeliveriestblMouseClicked
+    }//GEN-LAST:event_editdeliverybtnActionPerformed
 
-    private void dbcustomerstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbcustomerstblMouseClicked
-        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+    private void deletedeliverybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedeliverybtnActionPerformed
+        javax.swing.JTable table = dbdeliveriestbl;
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int row = table.getSelectedRow();
+        if (row == -1) return;
+        final Long orderID = (Long) table.getValueAt(row, 0);
+        Confirm obj = new Confirm("Delete " + orderID + "?",
+                "Orders table will not be affected");
+        obj.confirm(event -> {
+            ConfirmConfirm c = new ConfirmConfirm();
+            c.confirm((ActionListener) -> {
+                Database db = new Database();
+                db.deleteDelivery(orderID);
+                db.closeConnection();
+                GlassPanePopup.closePopupAll();
+                showMsg("Deleted " + orderID);
+                refreshDBOrders();
+            });
+            GlassPanePopup.closePopupLast();
+            GlassPanePopup.showPopup(c);
+        });
+        GlassPanePopup.showPopup(obj);
+    }//GEN-LAST:event_deletedeliverybtnActionPerformed
+
+    private void editcustomerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editcustomerbtnActionPerformed
+        javax.swing.JTable table = dbcustomerstbl;
         System.out.println("table clicked " + table.getSelectedColumn());
         int col = table.getSelectedColumn();
         int row = table.getSelectedRow();
@@ -3362,13 +3472,38 @@ public class Main extends javax.swing.JFrame {
             }
             default -> showMsg(header + " cannot be changed");
         }
-    }//GEN-LAST:event_dbcustomerstblMouseClicked
+    }//GEN-LAST:event_editcustomerbtnActionPerformed
 
-    private void dbuserstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbuserstblMouseClicked
-        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+    private void deletecustomerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletecustomerbtnActionPerformed
+        javax.swing.JTable table = dbcustomerstbl;
+        System.out.println("table clicked " + table.getSelectedColumn());
+        int row = table.getSelectedRow();
+        if (row == -1) return;
+        final String customerID = (String) table.getValueAt(row, 0);
+        Confirm obj = new Confirm("Delete " + customerID + "?",
+                "Data in other tables such as Address will be removed");
+        obj.confirm(event -> {
+            ConfirmConfirm c = new ConfirmConfirm();
+            c.confirm((ActionListener) -> {
+                Database db = new Database();
+                db.deleteCustomer(customerID);
+                db.closeConnection();
+                GlassPanePopup.closePopupAll();
+                showMsg("Deleted " + customerID);
+                refreshDBCustomers();
+            });
+            GlassPanePopup.closePopupLast();
+            GlassPanePopup.showPopup(c);
+        });
+        GlassPanePopup.showPopup(obj);
+    }//GEN-LAST:event_deletecustomerbtnActionPerformed
+
+    private void editcell4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editcell4ActionPerformed
+        javax.swing.JTable table = dbuserstbl;
         System.out.println("table clicked " + table.getSelectedColumn());
         int col = table.getSelectedColumn();
         int row = table.getSelectedRow();
+        if(col == -1 || row == -1) return;
         String username = (String) table.getValueAt(row, 0);
         String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
         switch(col) {
@@ -3395,35 +3530,31 @@ public class Main extends javax.swing.JFrame {
             }
             default -> showMsg(header + " cannot be changed");
         }
-    }//GEN-LAST:event_dbuserstblMouseClicked
+    }//GEN-LAST:event_editcell4ActionPerformed
 
-    private void dbproductstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbproductstblMouseClicked
-        javax.swing.JTable table = (javax.swing.JTable) evt.getSource();
+    private void deleterow4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleterow4ActionPerformed
+        javax.swing.JTable table = dbuserstbl;
         System.out.println("table clicked " + table.getSelectedColumn());
-        int col = table.getSelectedColumn();
         int row = table.getSelectedRow();
-        Integer productID = (Integer) table.getValueAt(row, 0);
-        String header = table.getColumnModel().getColumn(col).getHeaderValue().toString();
-        switch(col) {
-            case 1 -> { // product name
-                TextEditPopup obj = new TextEditPopup(header,
-                        "Editing " + header + " of Product ID " + productID,
-                        productID,
-                        (String) table.getValueAt(row, col));
-                obj.save(event -> refreshDBProducts());
-                GlassPanePopup.showPopup(obj);
-            }
-            case 2 -> { // price
-                TextEditPopup obj = new TextEditPopup(header,
-                        "Editing " + header + " of Product ID " + productID,
-                        productID,
-                        (Float) table.getValueAt(row, col));
-                obj.save(event -> refreshDBProducts());
-                GlassPanePopup.showPopup(obj);
-            }
-            default -> showMsg(header + " cannot be changed");
-        }
-    }//GEN-LAST:event_dbproductstblMouseClicked
+        if (row == -1) return;
+        final String username = (String) table.getValueAt(row, 0);
+        Confirm obj = new Confirm("Delete " + username + "?",
+                "User access will be removed");
+        obj.confirm(event -> {
+            ConfirmConfirm c = new ConfirmConfirm();
+            c.confirm((ActionListener) -> {
+                Database db = new Database();
+                db.deleteUser(username);
+                db.closeConnection();
+                GlassPanePopup.closePopupAll();
+                showMsg("Deleted " + username);
+                refreshDBUsers();
+            });
+            GlassPanePopup.closePopupLast();
+            GlassPanePopup.showPopup(c);
+        });
+        GlassPanePopup.showPopup(obj);
+    }//GEN-LAST:event_deleterow4ActionPerformed
     private void showDBTable(javax.swing.JPanel p) {
         dborders.setVisible(false);
         dbdeliveries.setVisible(false);
@@ -3515,9 +3646,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable dbproductstbl;
     private javax.swing.JPanel dbusers;
     private javax.swing.JTable dbuserstbl;
-    private javax.swing.JButton deleterow1;
-    private javax.swing.JButton deleterow2;
-    private javax.swing.JButton deleterow3;
+    private javax.swing.JButton deletecustomerbtn;
+    private javax.swing.JButton deletedeliverybtn;
+    private javax.swing.JButton deleteorderbtn;
     private javax.swing.JButton deleterow4;
     private javax.swing.JButton deleterow5;
     private javax.swing.JLabel deliverbtn;
@@ -3528,11 +3659,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel deliveriesbtndb3;
     private javax.swing.JLabel deliveriesbtndb4;
     private javax.swing.JPanel delivertab;
-    private javax.swing.JButton editcell1;
-    private javax.swing.JButton editcell2;
-    private javax.swing.JButton editcell3;
     private javax.swing.JButton editcell4;
     private javax.swing.JButton editcell5;
+    private javax.swing.JButton editcellorders;
+    private javax.swing.JButton editcustomerbtn;
+    private javax.swing.JButton editdeliverybtn;
     private javax.swing.JButton editmodule1;
     private javax.swing.JButton editmodule2;
     private javax.swing.JButton editmodule3;
