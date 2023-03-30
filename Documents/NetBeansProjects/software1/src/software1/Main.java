@@ -75,7 +75,7 @@ public class Main extends javax.swing.JFrame {
         scaleProducts();
         scaleReports();
         
-//        databasebtn.setVisible(false);
+        databasebtn.setVisible(false);
     }
     private void populateCustomersBox() {
         customerdetails.removeAllItems();
@@ -2746,6 +2746,7 @@ public class Main extends javax.swing.JFrame {
             editmodule3.setVisible(true);
             editmodule4.setVisible(true);
             databasebtn.setVisible(true);
+            authenticbtn.setText("Reports");
             
             showCard(authreports);
             boldCard(authenticbtn);
