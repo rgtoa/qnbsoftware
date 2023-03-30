@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.geom.RoundRectangle2D;
 import java.io.FileNotFoundException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -72,7 +73,7 @@ public class Main extends javax.swing.JFrame {
         scaleProducts();
         scaleReports();
         
-        databasebtn.setVisible(false);
+//        databasebtn.setVisible(false);
     }
     private void populateCustomersBox() {
         customerdetails.removeAllItems();
@@ -1902,6 +1903,11 @@ public class Main extends javax.swing.JFrame {
         dborderstbl.getTableHeader().setReorderingAllowed(false);
         dborderstbl.setUpdateSelectionOnSort(false);
         dborderstbl.setVerifyInputWhenFocusTarget(false);
+        dborderstbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dborderstblMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(dborderstbl);
         dborderstbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (dborderstbl.getColumnModel().getColumnCount() > 0) {
@@ -3145,6 +3151,49 @@ public class Main extends javax.swing.JFrame {
         showDBTable(dbproducts);
         refreshDBProducts();
     }//GEN-LAST:event_productsdbmouseclicked
+
+    private void dborderstblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dborderstblMouseClicked
+        System.out.println("table clicked " + dborderstbl.getSelectedColumn());
+        int col = dborderstbl.getSelectedColumn();
+        int row = dborderstbl.getSelectedRow();
+        Long orderID = (Long) dborderstbl.getValueAt(row, 0);
+        String header = dborderstbl.getColumnModel().getColumn(col).getHeaderValue().toString();
+        switch(col) {
+            case 2, 3 -> {
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of OrderID " + orderID,
+                        orderID,
+                        (String) dborderstbl.getValueAt(row, col));
+                obj.save(event -> refreshDBOrders());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 4, 5 -> {
+                TextEditPopup obj = new TextEditPopup(header,
+                        "Editing " + header + " of OrderID " + orderID,
+                        orderID,
+                        (Float) dborderstbl.getValueAt(row, col));
+                obj.save(event -> refreshDBOrders());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 6 -> {
+                BooleanEditPopup obj = new BooleanEditPopup(header,
+                        "Editing " + header + " of OrderID " + orderID,
+                        orderID,
+                        (Boolean) dborderstbl.getValueAt(row, col));
+                obj.save(event -> refreshDBOrders());
+                GlassPanePopup.showPopup(obj);
+            }
+            case 7, 8 -> {
+                DateEditPopup obj = new DateEditPopup(header,
+                        "Editing " + header + " of OrderID " + orderID,
+                        orderID,
+                        (Date) dborderstbl.getValueAt(row, col));
+                obj.save(event -> refreshDBOrders());
+                GlassPanePopup.showPopup(obj);
+            }
+            default -> showMsg(header + " cannot be changed");
+        }
+    }//GEN-LAST:event_dborderstblMouseClicked
     private void showDBTable(javax.swing.JPanel p) {
         dborders.setVisible(false);
         dbdeliveries.setVisible(false);

@@ -2623,6 +2623,9 @@
                     <Property name="updateSelectionOnSort" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dborderstblMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

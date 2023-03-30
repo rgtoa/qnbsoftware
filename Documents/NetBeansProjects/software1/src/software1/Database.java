@@ -505,6 +505,83 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void updateProductNames(Long orderID, String productNames) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET ProductNames=? WHERE OrderID=?");
+            ps.setString(1, productNames);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateProductQTYs(Long orderID, String productQTYs) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET ProductQuantities=? WHERE OrderID=?");
+            ps.setString(1, productQTYs);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateTotalPrice(Long orderID, Float totalPrice) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET TotalPrice=? WHERE OrderID=?");
+            ps.setFloat(1, totalPrice);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateAmountPaid(Long orderID, Float amountPaid) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET AmountPaid=? WHERE OrderID=?");
+            ps.setFloat(1, amountPaid);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateAmountPaid(Long orderID, boolean fullyPaid) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET FullyPaid=? WHERE OrderID=?");
+            ps.setBoolean(1, fullyPaid);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateDateOrdered(Long orderID, Date dateOrdered) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET DateOrdered=? WHERE OrderID=?");
+            ps.setDate(1, dateOrdered);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateDatePaid(Long orderID, Date datePaid) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE orders SET DatePaid=? WHERE OrderID=?");
+            ps.setDate(1, datePaid);
+            ps.setLong(2, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void completeOrder(Long orderID, Float amount) {
         try {
             PreparedStatement ps = con.prepareStatement(
