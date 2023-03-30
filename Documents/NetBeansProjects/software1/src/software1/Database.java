@@ -506,6 +506,20 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void completeOrder(Long orderID, Float amount) {
+        try {
+            PreparedStatement ps = con.prepareStatement(
+            "UPDATE orders SET AmountPaid=?, FullyPaid=?, DatePaid=CURDATE() WHERE orderID=?"
+            );
+            ps.setFloat(1, amount);
+            ps.setBoolean(2, true);
+            ps.setLong(3, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void updateDelivery(Long orderID, int status, String names) {
         try {
             boolean hasName = names != null;
@@ -736,7 +750,6 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
     public void updatePrice(Integer productID, Float price) {
         try {
             PreparedStatement ps = con.prepareStatement("UPDATE products SET Price=? WHERE ProductID=?");
@@ -748,14 +761,40 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void completeOrder(Long orderID, Float amount) {
+    public void deleteOrder(Long orderID) {
         try {
-            PreparedStatement ps = con.prepareStatement(
-            "UPDATE orders SET AmountPaid=?, FullyPaid=?, DatePaid=CURDATE() WHERE orderID=?"
-            );
-            ps.setFloat(1, amount);
-            ps.setBoolean(2, true);
-            ps.setLong(3, orderID);
+            PreparedStatement ps = con.prepareStatement("DELETE FROM orders WHERE OrderID=?");
+            ps.setLong(1, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void deleteDelivery(Long orderID) {
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM deliveries WHERE OrderID=?");
+            ps.setLong(1, orderID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void deleteCustomer(String customerID) {
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM customers WHERE CustomerID=?");
+            ps.setString(1, customerID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void deleteUser(String username) {
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM users WHERE username=?");
+            ps.setString(1, username);
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
