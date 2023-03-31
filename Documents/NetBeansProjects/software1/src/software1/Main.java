@@ -982,7 +982,7 @@ public class Main extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(radiowalkin, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(radiodeliver, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1032,7 +1032,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(paymentcheckbox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(amount1field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1112,7 +1112,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(formsimg1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
             .addComponent(background2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel15Layout.setVerticalGroup(
@@ -1254,7 +1254,7 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(completebtn1))
                     .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                         .addGroup(pendingtransacLayout.createSequentialGroup()
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1427,7 +1427,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(completebtn2))
                     .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                         .addGroup(completetransacLayout.createSequentialGroup()
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1595,7 +1595,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(completebtn3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1741,7 +1741,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(generatebtn3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(editmodule4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1846,7 +1846,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(authreportsLayout.createSequentialGroup()
                 .addGap(587, 587, 587)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(586, Short.MAX_VALUE))
+                .addContainerGap(591, Short.MAX_VALUE))
             .addComponent(background7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         authreportsLayout.setVerticalGroup(
@@ -1900,9 +1900,16 @@ public class Main extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Boolean.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         dborderstbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -2013,7 +2020,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dbordersLayout.createSequentialGroup()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                         .addGap(85, 85, 85))
                     .addGroup(dbordersLayout.createSequentialGroup()
                         .addGroup(dbordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2213,7 +2220,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(productsbtndb1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(dbdeliveriesLayout.createSequentialGroup()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                         .addGap(85, 85, 85))))
         );
         dbdeliveriesLayout.setVerticalGroup(
@@ -2402,7 +2409,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(productsbtndb2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(dbcustomersLayout.createSequentialGroup()
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                         .addGap(85, 85, 85))))
         );
         dbcustomersLayout.setVerticalGroup(
@@ -2581,7 +2588,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(productsbtndb3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(dbusersLayout.createSequentialGroup()
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                         .addGap(85, 85, 85))))
         );
         dbusersLayout.setVerticalGroup(
@@ -2757,7 +2764,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(productsbtndb4)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(dbproductsLayout.createSequentialGroup()
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                         .addGap(85, 85, 85))))
         );
         dbproductsLayout.setVerticalGroup(
@@ -3207,7 +3214,7 @@ public class Main extends javax.swing.JFrame {
             switch (jComboBox1.getSelectedIndex()) {
                 case (0) -> {
                     title = "Paid Transactions";
-                    table = "completegall-order";
+                    table = "completeall-order";
                 }
                 case (1) -> {
                     title = "Paid Walk-Ins";
@@ -3232,11 +3239,11 @@ public class Main extends javax.swing.JFrame {
             switch (jComboBox5.getSelectedIndex()) {
                 case (0) -> {
                     title = "Pending Deliveries";
-                    table = "completegall-order";
+                    table = "pending-delivery";
                 }
                 case (1) -> {
                     title = "Ongoing Deliveries";
-                    table = "completewalkin-order";
+                    table = "ongoing-delivery";
                 }
             }
             if (title != null) PDFGenerator.createReport(title, "", table);
