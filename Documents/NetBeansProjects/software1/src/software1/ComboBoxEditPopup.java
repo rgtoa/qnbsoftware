@@ -68,6 +68,7 @@ public class ComboBoxEditPopup extends javax.swing.JPanel {
 
         lblsubtitle.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         lblsubtitle.setForeground(new java.awt.Color(34, 73, 87));
+        lblsubtitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblsubtitle.setText("<subtitle>");
 
         cancelbtn.setBackground(new java.awt.Color(235, 89, 89));

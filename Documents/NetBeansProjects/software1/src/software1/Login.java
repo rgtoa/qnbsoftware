@@ -3,6 +3,7 @@ package software1;
 
 import javax.swing.ImageIcon;
 import glasspanepopup.GlassPanePopup;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -13,6 +14,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         GlassPanePopup.install(this);
         this.setLocationRelativeTo(null);
+        scaleLogo();
     }
 
     /**
@@ -27,8 +29,7 @@ public class Login extends javax.swing.JFrame {
         mainlogin = new javax.swing.JPanel();
         login = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        qnbposlogo2 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         userfield1 = new javax.swing.JTextField();
@@ -39,10 +40,10 @@ public class Login extends javax.swing.JFrame {
         jPanel20 = new javax.swing.JPanel();
         loginbtn = new javax.swing.JButton();
         signupbtn = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         signup = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        qnbposlogo = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         passLabel = new javax.swing.JLabel();
@@ -57,6 +58,7 @@ public class Login extends javax.swing.JFrame {
         userLabel = new javax.swing.JLabel();
         confirmpassLabel = new javax.swing.JLabel();
         confirmpassfield = new javax.swing.JPasswordField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QNB System");
@@ -75,40 +77,32 @@ public class Login extends javax.swing.JFrame {
         jPanel16.setBackground(new java.awt.Color(229, 229, 229));
         jPanel16.setPreferredSize(new java.awt.Dimension(775, 138));
 
-        jLabel9.setFont(new java.awt.Font("Source Sans Pro Light", 1, 48)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel9.setText("QNB");
-
-        jLabel10.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel10.setText("Log in to start your water transactions!");
+        qnbposlogo2.setFont(new java.awt.Font("Source Sans Pro Light", 1, 48)); // NOI18N
+        qnbposlogo2.setForeground(new java.awt.Color(10, 64, 83));
+        qnbposlogo2.setText(" ");
+        qnbposlogo2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap(298, Short.MAX_VALUE)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(275, 275, 275))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(344, 344, 344))))
+                .addGap(293, 293, 293)
+                .addComponent(qnbposlogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10))
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(qnbposlogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         login.add(jPanel16);
 
         jPanel17.setBackground(new java.awt.Color(229, 229, 229));
-        jPanel17.setPreferredSize(new java.awt.Dimension(775, 175));
+        jPanel17.setPreferredSize(new java.awt.Dimension(775, 250));
 
         jPanel18.setBackground(new java.awt.Color(229, 229, 229));
         jPanel18.setPreferredSize(new java.awt.Dimension(400, 45));
@@ -117,7 +111,7 @@ public class Login extends javax.swing.JFrame {
         userfield1.setBackground(new java.awt.Color(23, 90, 115));
         userfield1.setForeground(new java.awt.Color(255, 255, 255));
         userfield1.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
-        userfield1.setCaretColor(new java.awt.Color(23, 90, 115));
+        userfield1.setCaretColor(new java.awt.Color(229, 229, 229));
         userfield1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbtnActionPerformed(evt);
@@ -128,8 +122,6 @@ public class Login extends javax.swing.JFrame {
         jLabelUser.setForeground(new java.awt.Color(10, 64, 83));
         jLabelUser.setText("Username");
         jPanel18.add(jLabelUser, java.awt.BorderLayout.PAGE_START);
-
-        jPanel17.add(jPanel18);
 
         jPanel19.setBackground(new java.awt.Color(229, 229, 229));
         jPanel19.setPreferredSize(new java.awt.Dimension(400, 45));
@@ -142,15 +134,13 @@ public class Login extends javax.swing.JFrame {
         passfield1.setBackground(new java.awt.Color(23, 90, 115));
         passfield1.setForeground(new java.awt.Color(255, 255, 255));
         passfield1.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
-        passfield1.setCaretColor(new java.awt.Color(23, 90, 115));
+        passfield1.setCaretColor(new java.awt.Color(229, 229, 229));
         passfield1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbtnActionPerformed(evt);
             }
         });
         jPanel19.add(passfield1, java.awt.BorderLayout.CENTER);
-
-        jPanel17.add(jPanel19);
 
         jPanel20.setBackground(new java.awt.Color(229, 229, 229));
         jPanel20.setPreferredSize(new java.awt.Dimension(400, 75));
@@ -197,7 +187,38 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel17.add(jPanel20);
+        jLabel10.setForeground(new java.awt.Color(10, 64, 83));
+        jLabel10.setText("Log in to start your water transactions!");
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(jLabel10)))
+                .addGap(188, 188, 188))
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel10)
+                .addGap(23, 23, 23)
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         login.add(jPanel17);
 
@@ -209,35 +230,26 @@ public class Login extends javax.swing.JFrame {
         jPanel22.setBackground(new java.awt.Color(229, 229, 229));
         jPanel22.setPreferredSize(new java.awt.Dimension(775, 138));
 
-        jLabel11.setFont(new java.awt.Font("Source Sans Pro Light", 1, 48)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel11.setText("QNB");
-        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jLabel12.setForeground(new java.awt.Color(10, 64, 83));
-        jLabel12.setText("Log in to start your water transactions!");
+        qnbposlogo.setFont(new java.awt.Font("Source Sans Pro Light", 1, 48)); // NOI18N
+        qnbposlogo.setForeground(new java.awt.Color(10, 64, 83));
+        qnbposlogo.setText(" ");
+        qnbposlogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(jLabel12)
-                .addContainerGap(297, Short.MAX_VALUE))
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(336, 336, 336)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(295, 295, 295)
+                .addComponent(qnbposlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(301, Short.MAX_VALUE))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(qnbposlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel13.setBackground(new java.awt.Color(229, 229, 229));
@@ -252,7 +264,7 @@ public class Login extends javax.swing.JFrame {
         passfield.setBackground(new java.awt.Color(23, 90, 115));
         passfield.setForeground(new java.awt.Color(255, 255, 255));
         passfield.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
-        passfield.setCaretColor(new java.awt.Color(23, 90, 115));
+        passfield.setCaretColor(new java.awt.Color(229, 229, 229));
         passfield.setPreferredSize(new java.awt.Dimension(30, 24));
         passfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,7 +376,7 @@ public class Login extends javax.swing.JFrame {
         userfield.setBackground(new java.awt.Color(23, 90, 115));
         userfield.setForeground(new java.awt.Color(255, 255, 255));
         userfield.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
-        userfield.setCaretColor(new java.awt.Color(23, 90, 115));
+        userfield.setCaretColor(new java.awt.Color(229, 229, 229));
         userfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         userfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +393,7 @@ public class Login extends javax.swing.JFrame {
         confirmpassfield.setBackground(new java.awt.Color(23, 90, 115));
         confirmpassfield.setForeground(new java.awt.Color(255, 255, 255));
         confirmpassfield.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4));
-        confirmpassfield.setCaretColor(new java.awt.Color(23, 90, 115));
+        confirmpassfield.setCaretColor(new java.awt.Color(229, 229, 229));
         confirmpassfield.setPreferredSize(new java.awt.Dimension(30, 24));
         confirmpassfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -432,6 +444,9 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel12.setForeground(new java.awt.Color(10, 64, 83));
+        jLabel12.setText("Log in to start your water transactions!");
+
         javax.swing.GroupLayout signupLayout = new javax.swing.GroupLayout(signup);
         signup.setLayout(signupLayout);
         signupLayout.setHorizontalGroup(
@@ -440,15 +455,22 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(signupLayout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(signupLayout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(signupLayout.createSequentialGroup()
+                        .addGap(281, 281, 281)
+                        .addComponent(jLabel12)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         signupLayout.setVerticalGroup(
             signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signupLayout.createSequentialGroup()
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -463,6 +485,14 @@ public class Login extends javax.swing.JFrame {
     private void popupMsg(String msg) {
         GlassPanePopup.closePopupLast();
         GlassPanePopup.showPopup(new Message(msg));
+    }
+    private void scaleLogo() {
+        ImageIcon icon = new ImageIcon(getClass().getResource("login logo.png"));
+        Image prod = icon.getImage();
+        Image imageScale = prod.getScaledInstance(qnbposlogo.getWidth(), qnbposlogo.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imageScale);
+        qnbposlogo.setIcon(scaledIcon);
+        qnbposlogo2.setIcon(scaledIcon);
     }
     private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
         Database db = new Database();
@@ -571,9 +601,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirmpassfield;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelPass;
     private javax.swing.JLabel jLabelRole;
     private javax.swing.JLabel jLabelUser;
@@ -594,6 +622,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel passLabel;
     private javax.swing.JPasswordField passfield;
     private javax.swing.JPasswordField passfield1;
+    private javax.swing.JLabel qnbposlogo;
+    private javax.swing.JLabel qnbposlogo2;
     private javax.swing.JButton registerbtn;
     private javax.swing.JPanel signup;
     private javax.swing.JLabel signupbtn;
