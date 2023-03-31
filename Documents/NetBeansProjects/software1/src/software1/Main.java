@@ -71,8 +71,8 @@ public class Main extends javax.swing.JFrame {
     }
     private void refreshInvoices() {
         Database db = new Database();
-        productprice1.setText("Php " + db.getProductPrice(1));
-        stockLabel.setText(db.checkInStock(1) ? "In Stock(" + db.getStock(1) + ")" : "Out of Stock");
+        productprice1.setText("Php " + db.getProductPrice(productNum));
+        stockLabel.setText(db.checkInStock(productNum) ? "In Stock(" + db.getStock(productNum) + ")" : "Out of Stock");
         db.closeConnection();
     }
     private void populateCustomersBox() {
