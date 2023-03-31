@@ -1250,10 +1250,6 @@ is divided into following sections:
     </target>
     <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-do-jar-jar,-do-jar-delete-manifest" name="-do-jar-without-libraries"/>
     <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-do-jar-copylibs,-do-jar-delete-manifest" name="-do-jar-with-libraries"/>
-    <target name="-post-jar">
-        <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
-    </target>
     <target depends="init,compile,-pre-jar,-set-module-main-class,-do-jar-without-libraries,-do-jar-with-libraries,-post-jar" name="-do-jar"/>
     <target depends="init,compile,-pre-jar,-do-jar,-post-jar,deploy" description="Build JAR." name="jar"/>
     <!--
@@ -1767,5 +1763,17 @@ is divided into following sections:
                 <mapper from="transfer.*" to="*" type="glob"/>
             </propertyset>
         </ant>
+    </target>
+    <target name="-post-jar">
+        <jar destfile="${dist.jar}"
+             update="true">
+            <restrict> 
+                <archives>
+                   <zips>
+                       <fileset dir="${dist.dir}" includes="lib/*.jar"/>
+                   </zips>
+                </archives>
+            </restrict>
+        </jar>
     </target>
 </project>
