@@ -71,8 +71,8 @@ public class Main extends javax.swing.JFrame {
     }
     private void refreshInvoices() {
         Database db = new Database();
-        productprice1.setText("Php " + db.getProductPrice(productNum));
-        stockLabel.setText(db.checkInStock(productNum) ? "In Stock(" + db.getStock(productNum) + ")" : "Out of Stock");
+        productprice1.setText("Php " + db.getProductPrice(productNum+1));
+        stockLabel.setText(db.checkInStock(productNum+1) ? "In Stock(" + db.getStock(productNum+1) + ")" : "Out of Stock");
         db.closeConnection();
     }
     private void populateCustomersBox() {
@@ -3016,7 +3016,7 @@ public class Main extends javax.swing.JFrame {
             price += (float) row[3];
         }
         // get amount paid
-        float amountPaid;
+        final float amountPaid;
         if (!paymentcheckbox.isSelected() || radiodeliver.isSelected()) {
             if (amount2field.getText().equals("")) amount2field.setText("0");
             amountPaid = Float.parseFloat(amount2field.getText());
@@ -3038,6 +3038,7 @@ public class Main extends javax.swing.JFrame {
             boolean isWalkIn = paymentcheckbox.isSelected() && radiowalkin.isSelected();
             String cID = null;
             Database db = new Database();
+            float amount = amountPaid;
             //check if new customer && not a fully paid walk in; insert into customer table if new
             if (customerdetails.getSelectedIndex() == 0 && !isWalkIn) {
                 //check details
@@ -3074,13 +3075,22 @@ public class Main extends javax.swing.JFrame {
                 int productID = db.getProductID(names[i]);
                 db.updateStock(productID, db.getStock(productID) - Integer.parseInt(qtys[i]));
             }
+            // check for change
+            boolean hasChange = amount > totPrice;
+            float change = 0;
+            if (hasChange){
+                change = amountPaid - totPrice;
+                amount = totPrice;
+            }
             if (radiodeliver.isSelected()) {
-                db.placeForDelivery(db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amountPaid));
+                db.placeForDelivery(db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amount));
             } else {
-                db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amountPaid);
+                db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amount);
             }
             db.closeConnection();
             GlassPanePopup.closePopupLast();
+            // Show Change if hasChange
+            if (hasChange) showMsg("Change is Php. " + change);
             resetForm();
             cart.clear();
             refreshPendingTransact();
