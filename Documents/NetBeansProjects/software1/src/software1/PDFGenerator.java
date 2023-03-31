@@ -134,8 +134,16 @@ public class PDFGenerator {
         db.closeConnection();
         document.close();
     }
+    public static void stocks() throws DocumentException, FileNotFoundException{
+        Document document = createDocument("ProductStock");
+        Database db = new Database();
+        //createTableBlock(Document document, String title, String[] header, ArrayList<ArrayList<Object>> content)
+        createTableBlock(document, "ProductStock", new String[]{"Product Name", "Price", "Stock"}, db.getStocks());
+        db.closeConnection();
+        document.close();
+    }
     public static void main(String[] args) throws Exception {
-        PDFGenerator.finances();
+        PDFGenerator.stocks();
     }
 }
 

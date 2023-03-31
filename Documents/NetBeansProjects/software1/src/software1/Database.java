@@ -379,6 +379,20 @@ public class Database {
         }
         return customer;
     }
+    public boolean checkInStock(Integer productID) {
+        boolean output = true;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT Stock FROM products WHERE ProductID=?");
+            ps.setInt(1, productID);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) output = rs.getInt("Stock") > 0;
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
     public boolean checkCustomer(String customerID) {
         boolean output = true;
         try {
@@ -416,6 +430,20 @@ public class Database {
         }
         return cID;
     }
+    public int getProductID(String name) {
+        int id = -1;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT ProductID FROM products WHERE ProductName=?");
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) id = rs.getInt("ProductID");
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
     public long placeOrder(boolean isWalkIn, String customerID, String productNames, String productQTY, float price, float amountPaid) {
         Long orderID = null;
         try {
@@ -440,10 +468,42 @@ public class Database {
             ps.setDate(9, price == amountPaid ? date : null);
             ps.executeUpdate();
             ps.close();
+            if (isWalkIn) { //UPDATE IMMEDIATELY STOCK IF WALK IN
+                String[] names = productNames.split(",");
+                String[] qtys = productQTY.split(",");
+                for (int i = 0; i < names.length; i++) {
+                    updateStock(getProductID(names[i]), Integer.valueOf(qtys[i]));
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return orderID;
+    }
+    public int getStock(Integer productID) {
+        int output = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT Stock FROM products WHERE ProductID=?");
+            ps.setInt(1, productID);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) output = rs.getInt("Stock");
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
+    public void updateStock(Integer productID, Integer stock) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE products SET Stock=? WHERE ProductID=?");
+            ps.setInt(1, stock);
+            ps.setInt(2, productID);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public Object[] getOrder(Long orderID) {
         Object[] order = null;
@@ -832,6 +892,22 @@ public class Database {
                 ArrayList<Object> row = new ArrayList<>();
                 row.add(rs.getDate("DatePaid"));
                 row.add(rs.getFloat("AmountPaid"));
+                list.add(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    public ArrayList<ArrayList<Object>> getStocks() {
+        ArrayList<ArrayList<Object>> list = new ArrayList<>();
+        try {
+            ResultSet rs = con.createStatement().executeQuery("SELECT ProductName, Price, Stock FROM products");
+            while(rs.next()) {
+                ArrayList<Object> row = new ArrayList<>();
+                row.add(rs.getString("ProductName"));
+                row.add(rs.getFloat("Price"));
+                row.add(rs.getInt("Stock"));
                 list.add(row);
             }
         } catch (SQLException ex) {

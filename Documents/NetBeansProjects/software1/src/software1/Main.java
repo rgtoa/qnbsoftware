@@ -2603,14 +2603,14 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ProductID", "ProductName", "Price"
+                "ProductID", "ProductName", "Price", "Stock"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2642,6 +2642,7 @@ public class Main extends javax.swing.JFrame {
             dbproductstbl.getColumnModel().getColumn(0).setResizable(false);
             dbproductstbl.getColumnModel().getColumn(1).setResizable(false);
             dbproductstbl.getColumnModel().getColumn(2).setResizable(false);
+            dbproductstbl.getColumnModel().getColumn(3).setResizable(false);
         }
 
         ordersbtndb4.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 0, 36)); // NOI18N
@@ -2980,6 +2981,11 @@ public class Main extends javax.swing.JFrame {
             showMsg("Transaction Completed");
             refreshCompleteTransact();
         });
+        obj.remove((ActionListener) -> {
+            GlassPanePopup.closePopupAll();
+            showMsg("Transaction Removed");
+            refreshPendingTransact();
+        });
         GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_updatebtn1ActionPerformed
 
@@ -3002,6 +3008,7 @@ public class Main extends javax.swing.JFrame {
         scaleProducts();
         Database db = new Database();
         productprice1.setText("Php " + db.getProductPrice(productNum+1));
+        stockLabel.setText(db.checkInStock(productNum+1) ? "In Stock" : "Out of Stock");
         db.closeConnection();
     }//GEN-LAST:event_rightarrowMouseClicked
 
@@ -3015,7 +3022,19 @@ public class Main extends javax.swing.JFrame {
 
     private void selectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectOrderActionPerformed
         int prodID = this.productNum + 1;
+        Database db = new Database();
+        int stock = db.getStock(prodID);
+        db.closeConnection();
+        if (stock <= 0) { // para sure hehe
+            showMsg("Out of Stock");
+            return;
+        }
+        //CHECK STOCK >= QTY
         int qty = (int) productqty.getValue();
+        if (stock - qty < 0) {
+            showMsg("Not Enough Stock");
+            return;
+        }
         addToCart(prodID, qty);
         showMsg("Successfully Added Product");
         System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
@@ -3031,7 +3050,6 @@ public class Main extends javax.swing.JFrame {
                 return;
             }
         }
-        
         cart.add(new Object[] {
             prodID,
             db.getProductName(prodID),
@@ -3284,6 +3302,7 @@ public class Main extends javax.swing.JFrame {
                 obj.save(event -> refreshDBProducts());
                 GlassPanePopup.showPopup(obj);
             }
+            case 3 -> showMsg("Modify at Stocks Tab");
             default -> showMsg(header + " cannot be changed");
         }
     }//GEN-LAST:event_dbproductstblMouseClicked

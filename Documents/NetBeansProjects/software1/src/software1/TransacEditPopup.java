@@ -423,11 +423,23 @@ public class TransacEditPopup extends javax.swing.JPanel {
                 GlassPanePopup.showPopup(new Message("Invalid Amount Paid"));
                 return;
             }
-            ConfirmTransac obj = new ConfirmTransac();
+            Confirm obj = new Confirm("Complete Transaction","");
             obj.confirm(evt);
             obj.confirm((ActionListener) e -> {
                 Database db = new Database();
                 db.completeOrder(Long.parseLong(details[0]), Float.parseFloat(PopPaid.getText()));
+                db.closeConnection();
+            });
+            GlassPanePopup.showPopup(obj);
+        });
+    }
+    public void remove (ActionListener evt) {
+        removetrans.addActionListener(event -> {
+            Confirm obj = new Confirm("Remove Order?","This Cannot Be Undone");
+            obj.confirm(evt);
+            obj.confirm((ActionListener) e -> {
+                Database db = new Database();
+                db.deleteOrder(Long.parseLong(details[0]));
                 db.closeConnection();
             });
             GlassPanePopup.showPopup(obj);
