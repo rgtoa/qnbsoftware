@@ -1911,8 +1911,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
         stocktbl.getTableHeader().setReorderingAllowed(false);
-        completedelivertbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
-        completedelivertbl.setRowHeight(45);
         jScrollPane11.setViewportView(stocktbl);
         if (stocktbl.getColumnModel().getColumnCount() > 0) {
             stocktbl.getColumnModel().getColumn(0).setResizable(false);
@@ -1946,6 +1944,7 @@ public class Main extends javax.swing.JFrame {
         editstockbtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         editstockbtn.setForeground(new java.awt.Color(10, 64, 83));
         editstockbtn.setText("Edit Stock");
+        editstockbtn.setVisible(false);
         editstockbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editstockbtnActionPerformed(evt);
@@ -2977,6 +2976,7 @@ public class Main extends javax.swing.JFrame {
             isAuth = true;
             databasebtn.setVisible(true);
             authenticbtn.setText("Reports");
+            editstockbtn.setVisible(true);
             
             showCard(authreports);
             boldCard(authenticbtn);

@@ -2499,9 +2499,6 @@
                       <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="completedelivertbl.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());&#xa;completedelivertbl.setRowHeight(45);"/>
-                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -2553,6 +2550,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editstockbtnActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="editstockbtn.setVisible(false);&#xd;&#xa;"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="stocklbl">
               <Properties>
