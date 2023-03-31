@@ -64,6 +64,15 @@ public class TextEditPopup extends javax.swing.JPanel {
         lblsubtitle.setText(subtitle);
         editfield.setText(s);
     }
+    public TextEditPopup(String title, String subtitle, Integer productID, Integer i) {
+        initComponents();
+        this.id = productID;
+        this.colname = title;
+        ((PlainDocument) editfield.getDocument()).setDocumentFilter(new MyIntFilter());
+        lbltitle.setText(title);
+        lblsubtitle.setText(subtitle);
+        editfield.setText(""+i);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,6 +175,7 @@ public class TextEditPopup extends javax.swing.JPanel {
                 case "Password" -> db.updatePassword((String) id, value);
                 case "ProductName" -> db.updateProductName((Integer) id, value);
                 case "Price" -> db.updatePrice((Integer) id, Float.valueOf(value));
+                case "Stock" -> db.updateStock((Integer) id, Integer.valueOf(value));
             }
             GlassPanePopup.closePopupAll();
             db.closeConnection();

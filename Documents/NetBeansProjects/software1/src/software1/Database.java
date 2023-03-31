@@ -468,13 +468,6 @@ public class Database {
             ps.setDate(9, price == amountPaid ? date : null);
             ps.executeUpdate();
             ps.close();
-            if (isWalkIn) { //UPDATE IMMEDIATELY STOCK IF WALK IN
-                String[] names = productNames.split(",");
-                String[] qtys = productQTY.split(",");
-                for (int i = 0; i < names.length; i++) {
-                    updateStock(getProductID(names[i]), Integer.valueOf(qtys[i]));
-                }
-            }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -899,7 +892,7 @@ public class Database {
         }
         return list;
     }
-    public ArrayList<ArrayList<Object>> getStocks() {
+    public ArrayList<ArrayList<Object>> getProductStockList() {
         ArrayList<ArrayList<Object>> list = new ArrayList<>();
         try {
             ResultSet rs = con.createStatement().executeQuery("SELECT ProductName, Price, Stock FROM products");
@@ -907,6 +900,21 @@ public class Database {
                 ArrayList<Object> row = new ArrayList<>();
                 row.add(rs.getString("ProductName"));
                 row.add(rs.getFloat("Price"));
+                row.add(rs.getInt("Stock"));
+                list.add(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    public ArrayList<ArrayList<Object>> getStocks() {
+        ArrayList<ArrayList<Object>> list = new ArrayList<>();
+        try {
+            ResultSet rs = con.createStatement().executeQuery("SELECT ProductName, Stock FROM products");
+            while(rs.next()) {
+                ArrayList<Object> row = new ArrayList<>();
+                row.add(rs.getString("ProductName"));
                 row.add(rs.getInt("Stock"));
                 list.add(row);
             }
@@ -938,10 +946,7 @@ public class Database {
     public static void main(String[] args) {
         Database db = new Database();
         
-        ArrayList<ArrayList<Object>> list = db.getTableList("orders");
-        for(ArrayList<Object> row : list) {
-            System.out.println(Arrays.toString(row.toArray()));
-        }
+        System.out.println(db.getProductID("Round Gallon"));
         
         
         db.closeConnection();

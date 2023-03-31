@@ -54,13 +54,11 @@ public class Main extends javax.swing.JFrame {
         refreshCompleteTransact();
         refreshPendingDelivery();
         refreshCompleteDelivery();
+        refreshStocks();
+        refreshInvoices();
         
         populateCustomersBox();
         refreshFormVisibility();
-        
-        Database db = new Database();
-        productprice1.setText("Php " + db.getProductPrice(1));
-        db.closeConnection();
         
         // make form textfield to only accept integers
         PlainDocument doc1 = (PlainDocument) amount1field.getDocument();
@@ -75,6 +73,12 @@ public class Main extends javax.swing.JFrame {
         scaleReports();
         
         databasebtn.setVisible(false);
+    }
+    private void refreshInvoices() {
+        Database db = new Database();
+        productprice1.setText("Php " + db.getProductPrice(1));
+        stockLabel.setText(db.checkInStock(1) ? "In Stock(" + db.getStock(1) + ")" : "Out of Stock");
+        db.closeConnection();
     }
     private void populateCustomersBox() {
         customerdetails.removeAllItems();
@@ -224,6 +228,11 @@ public class Main extends javax.swing.JFrame {
         populateTable(completedelivertbl, db.getDeliveries(2));
         db.closeConnection();
     }
+    private void refreshStocks() {
+        Database db = new Database();
+        populateTable(stocktbl, db.getStocks());
+        db.closeConnection();
+    }
     private void populateTable(javax.swing.JTable table, ArrayList<ArrayList<Object>> list) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // reset the table
@@ -260,6 +269,9 @@ public class Main extends javax.swing.JFrame {
     }
     private void showMsg(String msg) {
         GlassPanePopup.showPopup(new Message(msg));
+    }
+    private void showMsg(String msg, String subt) {
+        GlassPanePopup.showPopup(new Message(msg, subt));
     }
     private void refreshDBOrders() {
         Database db = new Database();
@@ -415,6 +427,7 @@ public class Main extends javax.swing.JFrame {
         generatebtnstock = new javax.swing.JButton();
         background13 = new software1.Background();
         editstockbtn = new javax.swing.JButton();
+        stocklbl = new javax.swing.JLabel();
         dborders = new javax.swing.JPanel();
         deliveriesbtndb = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -1262,17 +1275,17 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(pendingtransacLayout.createSequentialGroup()
                         .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pendingtransacLayout.createSequentialGroup()
-                                .addComponent(pendingbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pendingtransacLayout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(generatebtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(updatebtn1)))
+                                .addComponent(updatebtn1))
+                            .addGroup(pendingtransacLayout.createSequentialGroup()
+                                .addComponent(pendingbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(completebtn1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1295,7 +1308,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(generatebtn)
                     .addComponent(updatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1428,15 +1441,15 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(completetransacLayout.createSequentialGroup()
                         .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(completetransacLayout.createSequentialGroup()
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(generatebtn1))
+                            .addGroup(completetransacLayout.createSequentialGroup()
                                 .addComponent(pendingbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completebtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(completetransacLayout.createSequentialGroup()
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(generatebtn1)))
+                                .addComponent(completebtn2)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1458,7 +1471,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1599,7 +1612,7 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completebtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(completebtn3)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1623,7 +1636,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updatebtn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1727,13 +1740,13 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                     .addGroup(completedeliverLayout.createSequentialGroup()
                         .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(generatebtn3)
                             .addGroup(completedeliverLayout.createSequentialGroup()
                                 .addComponent(pendingbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completebtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(generatebtn3))
+                                .addComponent(completebtn4)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1872,14 +1885,14 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ProductID", "ItemName", "Stock"
+                "ItemName", "Stock"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1896,10 +1909,9 @@ public class Main extends javax.swing.JFrame {
         jScrollPane11.setViewportView(stocktbl);
         if (stocktbl.getColumnModel().getColumnCount() > 0) {
             stocktbl.getColumnModel().getColumn(0).setResizable(false);
-            stocktbl.getColumnModel().getColumn(0).setPreferredWidth(5);
+            stocktbl.getColumnModel().getColumn(0).setPreferredWidth(700);
             stocktbl.getColumnModel().getColumn(1).setResizable(false);
-            stocktbl.getColumnModel().getColumn(2).setResizable(false);
-            stocktbl.getColumnModel().getColumn(2).setPreferredWidth(5);
+            stocktbl.getColumnModel().getColumn(1).setPreferredWidth(5);
         }
 
         generatebtnstock.setBackground(new java.awt.Color(140, 208, 218));
@@ -1933,36 +1945,48 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        stocklbl.setFont(new java.awt.Font("Source Sans Pro ExtraLight", 1, 36)); // NOI18N
+        stocklbl.setForeground(new java.awt.Color(10, 64, 83));
+        stocklbl.setText("Product Stocks");
+        stocklbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout stocksLayout = new javax.swing.GroupLayout(stocks);
         stocks.setLayout(stocksLayout);
         stocksLayout.setHorizontalGroup(
             stocksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(stocksLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(stocksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                     .addGroup(stocksLayout.createSequentialGroup()
-                        .addComponent(generatebtnstock)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editstockbtn)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(85, 85, 85))
-            .addComponent(background13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stocklbl)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(stocksLayout.createSequentialGroup()
+                        .addGroup(stocksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
+                            .addGroup(stocksLayout.createSequentialGroup()
+                                .addComponent(generatebtnstock)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(editstockbtn)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(85, 85, 85))))
         );
         stocksLayout.setVerticalGroup(
             stocksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(stocksLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(38, 38, 38)
+                .addComponent(stocklbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(stocksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generatebtnstock)
                     .addComponent(editstockbtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        tabcontent.add(stocks, "card6");
+        tabcontent.add(stocks, "card13");
 
         dborders.setBackground(new java.awt.Color(255, 255, 255));
         dborders.setPreferredSize(new java.awt.Dimension(1250, 625));
@@ -2999,7 +3023,7 @@ public class Main extends javax.swing.JFrame {
         }
         //check if fully paid matches amount given if full payment is selected
         if (paymentcheckbox.isSelected() && amountPaid < price) {
-            showMsg("Not Enough Amount Paid");
+            showMsg("Not Enough Amount Paid", "Required " + price);
             return;
         }
         // prepare now the final strings
@@ -3038,7 +3062,15 @@ public class Main extends javax.swing.JFrame {
                 //existing customer
                 cID = (String) customers.get(customerdetails.getSelectedIndex()-1)[0];
             }
-            //place now the order also check if for delivery
+            //place now the order also check if for delivery ALSO UPDATE STOCK
+            System.out.println("updating stock");
+            String[] names = prodNames.split(",");
+            String[] qtys = prodQTY.split(",");
+            for (int i = 0; i < names.length; i++) {
+                System.out.println(names[i]);
+                int productID = db.getProductID(names[i]);
+                db.updateStock(productID, db.getStock(productID) - Integer.parseInt(qtys[i]));
+            }
             if (radiodeliver.isSelected()) {
                 db.placeForDelivery(db.placeOrder(isWalkIn, cID, prodNames, prodQTY, totPrice, amountPaid));
             } else {
@@ -3128,18 +3160,13 @@ public class Main extends javax.swing.JFrame {
     private void rightarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightarrowMouseClicked
         productNum = ++productNum % 2;
         scaleProducts();
-        Database db = new Database();
-        productprice1.setText("Php " + db.getProductPrice(productNum+1));
-        stockLabel.setText(db.checkInStock(productNum+1) ? "In Stock" : "Out of Stock");
-        db.closeConnection();
+        refreshInvoices();
     }//GEN-LAST:event_rightarrowMouseClicked
 
     private void leftarrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftarrowMouseClicked
         productNum = --productNum % 2;
         scaleProducts();
-        Database db = new Database();
-        productprice1.setText("Php " + db.getProductPrice(productNum+1));
-        db.closeConnection();
+        refreshInvoices();
     }//GEN-LAST:event_leftarrowMouseClicked
 
     private void selectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectOrderActionPerformed
@@ -3153,21 +3180,22 @@ public class Main extends javax.swing.JFrame {
         }
         //CHECK STOCK >= QTY
         int qty = (int) productqty.getValue();
-        if (stock - qty < 0) {
-            showMsg("Not Enough Stock");
-            return;
-        }
         addToCart(prodID, qty);
-        showMsg("Successfully Added Product");
         System.out.println("Added Product:\n" + Arrays.toString(cart.get(cart.size()-1)));
         productqty.setValue(1); // reset value to 1
     }//GEN-LAST:event_selectOrderActionPerformed
     private void addToCart(int prodID, int qty) {
         Database db = new Database();
+        int stock = db.getStock(prodID);
         for (Object[] o : cart) {
             if(o[0].equals(prodID)) {
                 Float price = (Float) o[3] / (int) o[2];
-                o[2] = qty + (int) o[2];
+                int newqty = qty + (int) o[2];
+                if (stock - newqty < 0) {
+                    showMsg("Not Enough Stock");
+                    return;
+                }
+                o[2] = newqty;
                 o[3] = price * (int) o[2];
                 return;
             }
@@ -3178,11 +3206,12 @@ public class Main extends javax.swing.JFrame {
             qty,
             db.getProductPrice(prodID) * qty
         });
-        
+        showMsg("Successfully Added Product");
     }
     private void invoicebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoicebtnMouseClicked
         showCard(invoices);
         boldCard(invoicebtn);
+        refreshInvoices();
     }//GEN-LAST:event_invoicebtnMouseClicked
     private void cancelorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelorderbtnActionPerformed
         CancelOrder obj = new CancelOrder();
@@ -3671,7 +3700,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_deleterow4ActionPerformed
 
     private void generatebtnstockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatebtnstockActionPerformed
-        // TODO add your handling code here:
+        try {
+            PDFGenerator.stocks();
+            showMsg("Generated Stocks Report");
+        } catch (DocumentException | FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_generatebtnstockActionPerformed
 
     private void pendingbtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingbtn4MouseClicked
@@ -3681,12 +3715,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_pendingbtn4MouseClicked
 
     private void editstockbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editstockbtnActionPerformed
-        // TODO add your handling code here:
+        int row = stocktbl.getSelectedRow();
+        if (row == -1) return;
+        TextEditPopup obj = new TextEditPopup("Stock", "Editing Stock of " + stocktbl.getValueAt(row, 0), row+1,
+                (Integer)stocktbl.getValueAt(row, 1));
+        obj.save(event -> refreshStocks());
+        GlassPanePopup.showPopup(obj);
     }//GEN-LAST:event_editstockbtnActionPerformed
 
     private void stockbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockbtnMouseClicked
         showCard(stocks);
-        boldCard(stocks);
+        boldCard(stockbtn);
+        refreshStocks();
     }//GEN-LAST:event_stockbtnMouseClicked
     private void showDBTable(javax.swing.JPanel p) {
         dborders.setVisible(false);
@@ -3890,6 +3930,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel signoutbtn;
     private javax.swing.JLabel stockLabel;
     private javax.swing.JLabel stockbtn;
+    private javax.swing.JLabel stocklbl;
     private javax.swing.JPanel stocks;
     private javax.swing.JTable stocktbl;
     private javax.swing.JButton submitform;

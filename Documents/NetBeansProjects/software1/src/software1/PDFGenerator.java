@@ -138,7 +138,7 @@ public class PDFGenerator {
         Document document = createDocument("ProductStock");
         Database db = new Database();
         //createTableBlock(Document document, String title, String[] header, ArrayList<ArrayList<Object>> content)
-        createTableBlock(document, "ProductStock", new String[]{"Product Name", "Price", "Stock"}, db.getStocks());
+        createTableBlock(document, "ProductStock", new String[]{"Product Name", "Price", "Stock"}, db.getProductStockList());
         db.closeConnection();
         document.close();
     }
