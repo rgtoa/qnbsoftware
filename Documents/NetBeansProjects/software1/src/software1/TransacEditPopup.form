@@ -181,8 +181,8 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="PopOrderID" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="PopOrderID" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -235,12 +235,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="PopOrderID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="PopOrderID" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="PopItemQTY" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="PopCustID" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="PopName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="PopAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="PopPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="PopPrice" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
