@@ -637,6 +637,7 @@ public class Main extends javax.swing.JFrame {
         stockbtn.setForeground(new java.awt.Color(10, 64, 83));
         stockbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockbtn.setText("Stock");
+        stockbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         stockbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 stockbtnMouseClicked(evt);
