@@ -55,11 +55,6 @@ public class Main extends javax.swing.JFrame {
         refreshPendingDelivery();
         refreshCompleteDelivery();
         
-        editmodule1.setVisible(false);
-        editmodule2.setVisible(false);
-        editmodule3.setVisible(false);
-        editmodule4.setVisible(false);
-        
         populateCustomersBox();
         refreshFormVisibility();
         
@@ -73,7 +68,7 @@ public class Main extends javax.swing.JFrame {
         PlainDocument doc2 = (PlainDocument) amount2field.getDocument();
         doc2.setDocumentFilter(new MyFloatFilter());
         PlainDocument doc3 = (PlainDocument) mobilefield.getDocument();
-        doc2.setDocumentFilter(new MyMobileNumberFilter());
+        doc3.setDocumentFilter(new MyMobileNumberFilter());
 
         scaleIcons();
         scaleProducts();
@@ -371,7 +366,6 @@ public class Main extends javax.swing.JFrame {
         pendingbtn1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         generatebtn = new javax.swing.JButton();
-        editmodule1 = new javax.swing.JButton();
         updatebtn1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         background3 = new software1.Background();
@@ -382,7 +376,6 @@ public class Main extends javax.swing.JFrame {
         pendingbtn2 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         generatebtn1 = new javax.swing.JButton();
-        editmodule2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         background4 = new software1.Background();
         pendingdeliver = new javax.swing.JPanel();
@@ -392,7 +385,6 @@ public class Main extends javax.swing.JFrame {
         completebtn3 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
         generatebtn2 = new javax.swing.JButton();
-        editmodule3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         background5 = new software1.Background();
         updatebtn2 = new javax.swing.JButton();
@@ -402,7 +394,6 @@ public class Main extends javax.swing.JFrame {
         pendingbtn4 = new javax.swing.JLabel();
         completebtn4 = new javax.swing.JLabel();
         generatebtn3 = new javax.swing.JButton();
-        editmodule4 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         background6 = new software1.Background();
         authreports = new javax.swing.JPanel();
@@ -1214,11 +1205,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        editmodule1.setBackground(new java.awt.Color(140, 208, 218));
-        editmodule1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        editmodule1.setForeground(new java.awt.Color(34, 73, 87));
-        editmodule1.setText("Edit Module");
-
         updatebtn1.setBackground(new java.awt.Color(34, 73, 87));
         updatebtn1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         updatebtn1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1261,8 +1247,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(generatebtn)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(updatebtn1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editmodule1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addGap(85, 85, 85))
             .addComponent(background3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1282,10 +1267,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generatebtn)
-                    .addComponent(editmodule1)
                     .addComponent(updatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1397,11 +1381,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        editmodule2.setBackground(new java.awt.Color(140, 208, 218));
-        editmodule2.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        editmodule2.setForeground(new java.awt.Color(34, 73, 87));
-        editmodule2.setText("Edit Module");
-
         javax.swing.GroupLayout background4Layout = new javax.swing.GroupLayout(background4);
         background4.setLayout(background4Layout);
         background4Layout.setHorizontalGroup(
@@ -1432,8 +1411,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(generatebtn1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editmodule2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addGap(85, 85, 85))
             .addComponent(background4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1452,10 +1430,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(generatebtn1)
-                    .addComponent(editmodule2))
+                    .addComponent(generatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1555,11 +1532,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        editmodule3.setBackground(new java.awt.Color(140, 208, 218));
-        editmodule3.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        editmodule3.setForeground(new java.awt.Color(34, 73, 87));
-        editmodule3.setText("Edit Module");
-
         javax.swing.GroupLayout background5Layout = new javax.swing.GroupLayout(background5);
         background5.setLayout(background5Layout);
         background5Layout.setHorizontalGroup(
@@ -1588,22 +1560,22 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pendingdeliverLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
-                        .addComponent(pendingbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(completebtn3)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(generatebtn2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(updatebtn2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editmodule3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
+                                .addComponent(pendingbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(completebtn3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
+                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(generatebtn2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(updatebtn2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1623,11 +1595,10 @@ public class Main extends javax.swing.JFrame {
                         .addGap(6, 6, 6)))
                 .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generatebtn2)
-                    .addComponent(editmodule3)
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updatebtn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1707,11 +1678,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        editmodule4.setBackground(new java.awt.Color(140, 208, 218));
-        editmodule4.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        editmodule4.setForeground(new java.awt.Color(34, 73, 87));
-        editmodule4.setText("Edit Module");
-
         javax.swing.GroupLayout background6Layout = new javax.swing.GroupLayout(background6);
         background6.setLayout(background6Layout);
         background6Layout.setHorizontalGroup(
@@ -1739,8 +1705,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(completedeliverLayout.createSequentialGroup()
                             .addComponent(generatebtn3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editmodule4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(0, 0, Short.MAX_VALUE))
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1757,11 +1722,9 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(completebtn4)
                         .addComponent(pendingbtn4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(generatebtn3)
-                    .addComponent(editmodule4))
+                .addComponent(generatebtn3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2852,10 +2815,6 @@ public class Main extends javax.swing.JFrame {
                 return;
             }
             isAuth = true;
-            editmodule1.setVisible(true);
-            editmodule2.setVisible(true);
-            editmodule3.setVisible(true);
-            editmodule4.setVisible(true);
             databasebtn.setVisible(true);
             authenticbtn.setText("Reports");
             
@@ -3678,10 +3637,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton editcellorders;
     private javax.swing.JButton editcustomerbtn;
     private javax.swing.JButton editdeliverybtn;
-    private javax.swing.JButton editmodule1;
-    private javax.swing.JButton editmodule2;
-    private javax.swing.JButton editmodule3;
-    private javax.swing.JButton editmodule4;
     private javax.swing.JLabel financeicon;
     private javax.swing.JTextField fnamefield;
     private javax.swing.JPanel form;
