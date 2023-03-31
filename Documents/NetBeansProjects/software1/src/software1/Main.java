@@ -41,7 +41,6 @@ public class Main extends javax.swing.JFrame {
         if (this.role.equals("delivery")) {
             showCard(pendingdeliver);
             boldCard(deliverbtn);
-            return;
         }
         refreshPendingTransact();
         refreshCompleteTransact();
@@ -66,8 +65,6 @@ public class Main extends javax.swing.JFrame {
         scaleReports();
         
         tableAlignment();
-        
-        databasebtn.setVisible(false);
     }
     private void refreshInvoices() {
         Database db = new Database();
@@ -338,7 +335,6 @@ public class Main extends javax.swing.JFrame {
         authenticbtn.setVisible(role.equals("owner"));
         jLabel8 = new javax.swing.JLabel();
         databasebtn = new javax.swing.JLabel();
-        authenticbtn.setVisible(role.equals("owner"));
         stockbtn = new javax.swing.JLabel();
         signout = new javax.swing.JPanel();
         signoutbtn = new javax.swing.JLabel();
@@ -665,6 +661,7 @@ public class Main extends javax.swing.JFrame {
         stockbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockbtn.setText("Stock");
         stockbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        stockbtn.setVisible(!this.role.equals("delivery"));
         stockbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 stockbtnMouseClicked(evt);
@@ -3029,13 +3026,22 @@ public class Main extends javax.swing.JFrame {
             showMsg("Not Enough Amount Paid", "Required " + price);
             return;
         }
+        final boolean isWalkIn = paymentcheckbox.isSelected() && radiowalkin.isSelected();
+        //check details
+        if (customerdetails.getSelectedIndex() == 0 && !isWalkIn && fnamefield.getText().trim().equals("") ||
+                lnamefield.getText().trim().equals("") ||
+                housefield.getText().trim().equals("") ||
+                brgyfield.getText().trim().equals("") ||
+                cityfield.getText().trim().equals("")) {
+            showMsg("Incomplete Details");
+            return;
+        }
         // prepare now the final strings
         final String prodNames = productNames.substring(0, productNames.length()-1);
         final String prodQTY = productQTY.substring(0, productQTY.length()-1);
         final float totPrice = price;
         Confirm obj = new Confirm();
         obj.confirm((ActionEvent ae) -> {
-            boolean isWalkIn = paymentcheckbox.isSelected() && radiowalkin.isSelected();
             String cID = null;
             Database db = new Database();
             float amount = amountPaid;
@@ -3210,6 +3216,7 @@ public class Main extends javax.swing.JFrame {
                 }
                 o[2] = newqty;
                 o[3] = price * (int) o[2];
+                showMsg("QTY is now " + newqty);
                 return;
             }
         }

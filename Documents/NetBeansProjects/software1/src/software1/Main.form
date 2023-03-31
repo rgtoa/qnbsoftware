@@ -343,9 +343,6 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="databasebtnMouseClicked"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="authenticbtn.setVisible(role.equals(&quot;owner&quot;));&#xd;&#xa;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="stockbtn">
               <Properties>
@@ -364,6 +361,9 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stockbtnMouseClicked"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="stockbtn.setVisible(!this.role.equals(&quot;delivery&quot;));"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
