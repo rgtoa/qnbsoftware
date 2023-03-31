@@ -17,9 +17,11 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -71,6 +73,8 @@ public class Main extends javax.swing.JFrame {
         scaleIcons();
         scaleProducts();
         scaleReports();
+        
+        tableAlignment();
         
         databasebtn.setVisible(false);
     }
@@ -213,6 +217,19 @@ public class Main extends javax.swing.JFrame {
         Image imageScale9 = prod5.getScaledInstance(financeicon.getWidth(), financeicon.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon9 = new ImageIcon(imageScale9);
         financeicon.setIcon(scaledIcon9);
+    }
+    private void tableAlignment() {
+        DefaultTableCellRenderer rendererFromHeader = new DefaultTableCellRenderer();
+        rendererFromHeader.setHorizontalAlignment(JLabel.CENTER);
+        pendingtransactbl.setDefaultRenderer(String.class, rendererFromHeader);
+        completetransactbl.setDefaultRenderer(String.class, rendererFromHeader);
+        pendingdelivertbl.setDefaultRenderer(String.class, rendererFromHeader);
+        completedelivertbl.setDefaultRenderer(String.class, rendererFromHeader);
+        dborderstbl.setDefaultRenderer(String.class, rendererFromHeader);
+        dbdeliveriestbl.setDefaultRenderer(String.class, rendererFromHeader);
+        dbcustomerstbl.setDefaultRenderer(String.class, rendererFromHeader);
+        dbuserstbl.setDefaultRenderer(String.class, rendererFromHeader);
+        dbproductstbl.setDefaultRenderer(String.class, rendererFromHeader);
     }
     private void refreshPendingTransact() {
         Database db = new Database();
@@ -612,7 +629,7 @@ public class Main extends javax.swing.JFrame {
             delivertabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(delivertabLayout.createSequentialGroup()
                 .addComponent(deliverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
         delivertabLayout.setVerticalGroup(
             delivertabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -670,7 +687,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(authentictabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(stockbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                .addGap(20, 20, 20)
+                .addGap(17, 17, 17)
                 .addComponent(authenticbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(databasebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1278,7 +1295,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pendingtransacLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
                     .addGroup(pendingtransacLayout.createSequentialGroup()
                         .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pendingtransacLayout.createSequentialGroup()
@@ -1292,7 +1309,7 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completebtn1)))
+                                .addComponent(completebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1300,22 +1317,19 @@ public class Main extends javax.swing.JFrame {
         pendingtransacLayout.setVerticalGroup(
             pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pendingtransacLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pendingtransacLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(completebtn1)
-                            .addComponent(pendingbtn1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pendingtransacLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(completebtn1)
+                        .addComponent(pendingbtn1)))
+                .addGap(7, 7, 7)
                 .addGroup(pendingtransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generatebtn)
                     .addComponent(updatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1444,7 +1458,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, completetransacLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
                     .addGroup(completetransacLayout.createSequentialGroup()
                         .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(completetransacLayout.createSequentialGroup()
@@ -1456,7 +1470,7 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completebtn2)))
+                                .addComponent(completebtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1464,21 +1478,18 @@ public class Main extends javax.swing.JFrame {
         completetransacLayout.setVerticalGroup(
             completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(completetransacLayout.createSequentialGroup()
-                .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(completetransacLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(completebtn2)
-                            .addComponent(pendingbtn2)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, completetransacLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38)
+                .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(completebtn2)
+                        .addComponent(pendingbtn2))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(completetransacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generatebtn1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1605,7 +1616,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pendingdeliverLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
                         .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pendingdeliverLayout.createSequentialGroup()
@@ -1619,7 +1630,7 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completebtn3)))
+                                .addComponent(completebtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1627,23 +1638,19 @@ public class Main extends javax.swing.JFrame {
         pendingdeliverLayout.setVerticalGroup(
             pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pendingdeliverLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pendingdeliverLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(completebtn3)
-                            .addComponent(pendingbtn3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pendingdeliverLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)))
+                    .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(completebtn3)
+                        .addComponent(pendingbtn3))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pendingdeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generatebtn2)
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updatebtn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(background5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1753,7 +1760,7 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completebtn4)))
+                                .addComponent(completebtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(85, 85, 85))
             .addComponent(background6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1763,12 +1770,10 @@ public class Main extends javax.swing.JFrame {
             .addGroup(completedeliverLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(completedeliverLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(completedeliverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(completebtn4)
-                        .addComponent(pendingbtn4)))
+                        .addComponent(pendingbtn4))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(generatebtn3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
