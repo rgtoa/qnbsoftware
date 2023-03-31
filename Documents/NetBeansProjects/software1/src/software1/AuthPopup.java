@@ -2,7 +2,6 @@
 package software1;
 
 import java.awt.event.ActionListener;
-import glasspanepopup.GlassPanePopup;
 
 public class AuthPopup extends javax.swing.JPanel {
 

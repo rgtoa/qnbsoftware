@@ -578,7 +578,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="productqty" min="-2" pref="50" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="stockLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="stockLabel" min="-2" pref="102" max="-2" attributes="0"/>
                               </Group>
                               <Component id="productdesc1" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -1480,13 +1480,6 @@
                                       <Component id="jLabel5" min="-2" pref="40" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="completebtn2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="pendingbtn2" min="-2" pref="145" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="completebtn2" min="-2" pref="202" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>

@@ -2,8 +2,6 @@
 package software1;
 
 import glasspanepopup.GlassPanePopup;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class RegisterAuth extends javax.swing.JPanel {
     private char[] password;

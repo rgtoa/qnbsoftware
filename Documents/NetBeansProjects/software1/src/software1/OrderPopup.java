@@ -2,9 +2,7 @@
 package software1;
 
 import java.awt.event.ActionListener;
-import glasspanepopup.GlassPanePopup;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 
 public class OrderPopup extends javax.swing.JPanel {

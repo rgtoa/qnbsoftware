@@ -3,9 +3,6 @@ package software1;
 
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 import javax.swing.text.PlainDocument;
 
 public class TextEditPopup extends javax.swing.JPanel {

@@ -3,11 +3,9 @@ package software1;
 
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Date;
-import javax.swing.text.PlainDocument;
 
 public class DateEditPopup extends javax.swing.JPanel {
     private final Long orderID;

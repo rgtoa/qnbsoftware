@@ -1,7 +1,6 @@
 
 package software1;
 
-import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
 
 public class DeliveryUpdatePopup extends javax.swing.JPanel {

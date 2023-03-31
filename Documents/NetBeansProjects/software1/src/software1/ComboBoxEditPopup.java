@@ -3,7 +3,6 @@ package software1;
 
 import glasspanepopup.GlassPanePopup;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 public class ComboBoxEditPopup extends javax.swing.JPanel {
     private final Object id;
