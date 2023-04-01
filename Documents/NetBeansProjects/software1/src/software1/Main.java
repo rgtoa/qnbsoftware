@@ -650,6 +650,7 @@ public class Main extends javax.swing.JFrame {
         databasebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         databasebtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         databasebtn.setPreferredSize(new java.awt.Dimension(175, 70));
+        databasebtn.setVisible(false);
         databasebtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 databasebtnMouseClicked(evt);
