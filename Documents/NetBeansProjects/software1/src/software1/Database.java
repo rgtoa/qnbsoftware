@@ -1,6 +1,4 @@
-
 package software1;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,10 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class Database {
-    
-    private static Connection con;
-    
+public class Database {    
+    private static Connection con;    
     public Database() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,6 +22,27 @@ public class Database {
     public void closeConnection() {
         try {
             con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void backup() {
+        try {
+            ResultSet users = con.createStatement().executeQuery("SELECT * FROM users"); //username-password-role
+            ResultSet customers = con.createStatement().executeQuery("SELECT * FROM customers");
+            ResultSet products = con.createStatement().executeQuery("SELECT * FROM products");
+            ResultSet orders = con.createStatement().executeQuery("SELECT * FROM orders");
+            ResultSet deliveries = con.createStatement().executeQuery("SELECT * FROM deliveries");
+            
+            String content = "QNB Backup " + LocalDate.now()+"\n";
+            
+            // backup users
+            content += "users\n";
+            while (users.next()) {
+                content += users.getString("username") + ",";
+            }
+            content += "end";
+            
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -317,13 +334,13 @@ public class Database {
         }
         return output;
     }
-    public boolean addUser(String username, String password, String role) {
+    public boolean addUser(String username, String password) {
         boolean output = true;
         try {
             PreparedStatement ps = con.prepareStatement("INSERT INTO users VALUES(?,?,?)");
             ps.setString(1, username);
             ps.setString(2, Crypto.encrypt(password));
-            ps.setString(3, role);
+            ps.setString(3, "staff");
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -941,13 +958,5 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return income;
-    }
-    public static void main(String[] args) {
-        Database db = new Database();
-        
-        System.out.println(db.getProductID("Round Gallon"));
-        
-        
-        db.closeConnection();
     }
 }
