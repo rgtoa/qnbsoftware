@@ -365,9 +365,6 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stockbtnMouseClicked"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="stockbtn.setVisible(!this.role.equals(&quot;delivery&quot;));"/>
-              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
