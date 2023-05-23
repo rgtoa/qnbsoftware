@@ -2222,7 +2222,6 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
                                   <Component id="reportsComboBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="252" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel19" alignment="1" max="32767" attributes="0"/>
@@ -2595,9 +2594,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editstockbtnActionPerformed"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="editstockbtn.setVisible(false);&#xd;&#xa;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="stocklbl">
               <Properties>

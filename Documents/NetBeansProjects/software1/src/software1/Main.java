@@ -1872,8 +1872,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(authreportsLayout.createSequentialGroup()
                             .addGap(248, 248, 248)
-                            .addComponent(reportsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(reportsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, authreportsLayout.createSequentialGroup()
@@ -1981,7 +1980,6 @@ public class Main extends javax.swing.JFrame {
         editstockbtn.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
         editstockbtn.setForeground(new java.awt.Color(10, 64, 83));
         editstockbtn.setText("Edit Stock");
-        editstockbtn.setVisible(false);
         editstockbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editstockbtnActionPerformed(evt);
@@ -3013,7 +3011,6 @@ public class Main extends javax.swing.JFrame {
             isAuth = true;
             databasebtn.setVisible(true);
             authenticbtn.setText("Reports");
-            editstockbtn.setVisible(true);
             
             showCard(authreports);
             boldCard(authenticbtn);
