@@ -68,7 +68,7 @@ public class OrderPopup extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -152,7 +152,7 @@ public class OrderPopup extends javax.swing.JPanel {
 
         RemoveCurrentOrder.setBackground(new java.awt.Color(235, 89, 89));
         RemoveCurrentOrder.setForeground(new java.awt.Color(34, 73, 87));
-        RemoveCurrentOrder.setText("Current Order");
+        RemoveCurrentOrder.setText("Selected Product");
         RemoveCurrentOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RemoveCurrentOrderActionPerformed(evt);
@@ -166,7 +166,12 @@ public class OrderPopup extends javax.swing.JPanel {
 
         RemoveAllOrders.setBackground(new java.awt.Color(235, 89, 89));
         RemoveAllOrders.setForeground(new java.awt.Color(34, 73, 87));
-        RemoveAllOrders.setText("All Orders");
+        RemoveAllOrders.setText("All Products");
+        RemoveAllOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveAllOrdersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -196,9 +201,7 @@ public class OrderPopup extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(popuptotalprice)
                         .addComponent(jLabel2))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel3)))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ConfirmOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,6 +243,13 @@ public class OrderPopup extends javax.swing.JPanel {
         this.list.remove(jTable1.getSelectedRow()); // REMOVE FROM LIST
         ((DefaultTableModel)jTable1.getModel()).removeRow(jTable1.getSelectedRow()); // UPDATE TABLE
     }//GEN-LAST:event_RemoveCurrentOrderActionPerformed
+
+    private void RemoveAllOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveAllOrdersActionPerformed
+        this.total = 0; // UPDATE TOTAL
+        popuptotalprice.setText(""+total); // SHOW NEW TOTAL
+        this.list.clear(); // EMPTY LIST
+        ((DefaultTableModel)jTable1.getModel()).setRowCount(0); // UPDATE TABLE
+    }//GEN-LAST:event_RemoveAllOrdersActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
