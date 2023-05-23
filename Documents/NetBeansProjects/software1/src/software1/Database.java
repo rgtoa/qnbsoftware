@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +98,8 @@ public class Database {
                             if (table.equals("users")) ps = con.prepareStatement("INSERT INTO users VALUES(?,?,?)");
                             else ps = con.prepareStatement("INSERT INTO customers VALUES(?,?,?,?,?,?,?)");
                             for(int i = 0; i < col.length; i++) 
-                                ps.setString(i+1, col[i]);
+                                ps.setString(i+1, col[i].equals("null") ? null : col[i]);
+                            
                         }
                         case "products" -> {
                             ps = con.prepareStatement("INSERT INTO products VALUES(?,?,?,?)");
@@ -109,21 +111,21 @@ public class Database {
                         case "orders" -> {
                             ps = con.prepareStatement("INSERT INTO orders VALUES(?,?,?,?,?,?,?,?,?)");
                             ps.setLong(1, Long.parseLong(col[0]));
-                            ps.setString(2, col[1]);
+                            ps.setString(2, col[1].equals("null") ? null : col[1]);
                             ps.setString(3, col[2]);
                             ps.setString(4, col[3]);
                             ps.setFloat(5, Float.parseFloat(col[4]));
                             ps.setFloat(6, Float.parseFloat(col[5]));
                             ps.setBoolean(7, col[6].equals("1"));
                             ps.setDate(8, Date.valueOf(col[7]));
-                            ps.setDate(9, Date.valueOf(col[8]));
+                            ps.setDate(9, col[8].equals("null") ? null : Date.valueOf(col[8]));
                         }
                         case "deliveries" -> {
                             ps = con.prepareStatement("INSERT INTO deliveries VALUES(?,?,?,?)");
                             ps.setLong(1, Long.parseLong(col[0]));
                             ps.setInt(2, Integer.parseInt(col[1]));
                             ps.setString(3, col[2]);
-                            ps.setDate(4, Date.valueOf(col[3]));
+                            ps.setDate(4, col[3].equals("null") ? null : Date.valueOf(col[3]));
                         }
                         default -> {return false;}
                     }
@@ -537,6 +539,29 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cID;
+    }
+    public HashSet<String> searchCustomer (String[] name) {
+        HashSet<String> output = new HashSet<>();
+        try {
+            // TRY ID
+            PreparedStatement ps = con.prepareStatement("SELECT CustomerID FROM customers WHERE CustomerID=?");
+            ps.setString(1, name[0].trim());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) output.add(rs.getString("CustomerID"));
+            // TRY FIRST NAME && LAST NAME FOR EACH WORD
+            for (String s : name) {
+                ps = con.prepareStatement("SELECT * FROM customers WHERE FirstName LIKE ? OR LastName LIKE ?");
+                ps.setString(1, "%" + s + "%");
+                ps.setString(2, "%" + s + "%");
+                rs = ps.executeQuery();
+                while (rs.next()) output.add(rs.getString("CustomerID"));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
     }
     public int getProductID(String name) {
         int id = -1;
@@ -1053,6 +1078,7 @@ public class Database {
     }
     public static void main(String[] args) {
         Database db = new Database();
+//        db.backup();
         db.recover("QNBDatabaseBackup2023-05-23.qnbdata");
         db.closeConnection();
     }
