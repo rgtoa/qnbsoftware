@@ -80,7 +80,8 @@ public class Login extends javax.swing.JFrame {
         qnbposlogo2.setText(" ");
         qnbposlogo2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        exitbtnlogin.setText("jLabel1");
+        exitbtnlogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitbtnlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/software1/x.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -89,21 +90,19 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(303, 303, 303)
                 .addComponent(qnbposlogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
-                .addComponent(exitbtnlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap(312, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitbtnlogin)
+                .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(qnbposlogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(exitbtnlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(exitbtnlogin)
+                .addGap(22, 22, 22)
+                .addComponent(qnbposlogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         login.add(jPanel16);
@@ -242,7 +241,8 @@ public class Login extends javax.swing.JFrame {
         qnbposlogo.setText(" ");
         qnbposlogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel1.setText("exit");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/software1/x.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -251,20 +251,20 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addGap(305, 305, 305)
                 .addComponent(qnbposlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap(319, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(20, 20, 20))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(qnbposlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel13.setBackground(new java.awt.Color(229, 229, 229));
@@ -481,7 +481,7 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    private void popupMsg(String msg) {
+    private void showMsg(String msg) {
         GlassPanePopup.closePopupLast();
         GlassPanePopup.showPopup(new Message(msg));
     }
@@ -496,15 +496,19 @@ public class Login extends javax.swing.JFrame {
     private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
         Database db = new Database();
         String uname = userfield.getText();
+        if (!uname.matches("[a-zA-Z0-9]+")) {
+            showMsg("Invalid Username");
+            return;
+        }
         char[] pass = passfield.getPassword();
         char[] cpass = confirmpassfield.getPassword();
         try {
             // CHECK FIRST FOR USERNAME AND PASSWORD MATCH BEFORE AUTHENTICATING
             if (!Arrays.equals(pass, cpass)) {
-                popupMsg("passwords do not match");
+                showMsg("passwords do not match");
             }
             else if (db.checkUser(uname)) {
-                popupMsg("existing user");
+                showMsg("existing user");
             }
             else {
                 RegisterAuth obj = new RegisterAuth(
@@ -542,7 +546,7 @@ public class Login extends javax.swing.JFrame {
         }
         else {
             System.out.println("WRONG USERNAME OR PASSWORD");
-            popupMsg("invalid username/password");
+            showMsg("invalid username/password");
         }
         db.closeConnection();
         System.out.println("login end");

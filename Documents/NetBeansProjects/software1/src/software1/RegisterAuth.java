@@ -6,17 +6,15 @@ import glasspanepopup.GlassPanePopup;
 public class RegisterAuth extends javax.swing.JPanel {
     private char[] password;
     private final String username;
-    private final String role;
     /**
      * Creates new form RegisterAuth
      * @param username
      * @param password
      */
-    public RegisterAuth(String username, char[] password, String role) {
+    public RegisterAuth(String username, char[] password) {
         initComponents();
         this.password = password;
         this.username = username;
-        this.role = role;
     }
 
     /**
@@ -87,7 +85,7 @@ public class RegisterAuth extends javax.swing.JPanel {
                 System.out.println("wrong auth");
                 popupMsg("Wrong Authentication");
             }
-            else if (!db.addUser(username, String.valueOf(password), role)){ //TRY TO REGISTER USER
+            else if (!db.addUser(username, String.valueOf(password))){ //TRY TO REGISTER USER
                 // CODE FOR REGISTRATION ERROR IN SQL
                 System.out.println("sql error");
                 popupMsg("SQL error");
