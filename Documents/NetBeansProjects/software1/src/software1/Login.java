@@ -481,7 +481,7 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    private void popupMsg(String msg) {
+    private void showMsg(String msg) {
         GlassPanePopup.closePopupLast();
         GlassPanePopup.showPopup(new Message(msg));
     }
@@ -496,15 +496,19 @@ public class Login extends javax.swing.JFrame {
     private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
         Database db = new Database();
         String uname = userfield.getText();
+        if (!uname.matches("[a-zA-Z0-9]+")) {
+            showMsg("Invalid Username");
+            return;
+        }
         char[] pass = passfield.getPassword();
         char[] cpass = confirmpassfield.getPassword();
         try {
             // CHECK FIRST FOR USERNAME AND PASSWORD MATCH BEFORE AUTHENTICATING
             if (!Arrays.equals(pass, cpass)) {
-                popupMsg("passwords do not match");
+                showMsg("passwords do not match");
             }
             else if (db.checkUser(uname)) {
-                popupMsg("existing user");
+                showMsg("existing user");
             }
             else {
                 RegisterAuth obj = new RegisterAuth(
@@ -542,7 +546,7 @@ public class Login extends javax.swing.JFrame {
         }
         else {
             System.out.println("WRONG USERNAME OR PASSWORD");
-            popupMsg("invalid username/password");
+            showMsg("invalid username/password");
         }
         db.closeConnection();
         System.out.println("login end");
