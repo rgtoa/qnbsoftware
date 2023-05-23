@@ -76,16 +76,26 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
                           <Component id="qnbposlogo2" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace pref="312" max="32767" attributes="0"/>
+                          <EmptySpace pref="253" max="32767" attributes="0"/>
+                          <Component id="exitbtnlogin" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="qnbposlogo2" min="-2" pref="92" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="qnbposlogo2" min="-2" pref="92" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Component id="exitbtnlogin" min="-2" pref="35" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -101,6 +111,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value=" "/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="exitbtnlogin">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jLabel1"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -123,9 +138,9 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="187" pref="187" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jPanel18" min="-2" max="-2" attributes="0"/>
                                       <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                                       <Component id="jPanel20" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jPanel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -133,7 +148,7 @@
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
+                          <EmptySpace pref="188" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -144,7 +159,7 @@
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jPanel18" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                           <Component id="jPanel20" min="-2" max="-2" attributes="0"/>
@@ -409,7 +424,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
                           <Component id="qnbposlogo" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace pref="319" max="32767" attributes="0"/>
+                          <EmptySpace pref="259" max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -419,6 +436,11 @@
                           <EmptySpace pref="47" max="32767" attributes="0"/>
                           <Component id="qnbposlogo" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -434,6 +456,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value=" "/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="exit"/>
                   </Properties>
                 </Component>
               </SubComponents>

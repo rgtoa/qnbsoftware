@@ -100,6 +100,7 @@ public class TextEditPopup extends javax.swing.JPanel {
         lblsubtitle.setText("<subtitle>");
 
         cancelbtn.setBackground(new java.awt.Color(235, 89, 89));
+        cancelbtn.setForeground(new java.awt.Color(34, 73, 87));
         cancelbtn.setText("Cancel");
         cancelbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

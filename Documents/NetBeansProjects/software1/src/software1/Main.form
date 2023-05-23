@@ -216,7 +216,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="deliverbtn" min="-2" pref="96" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -272,8 +272,9 @@
                       <Component id="authenticbtn" min="-2" pref="120" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="databasebtn" min="-2" pref="93" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -383,7 +384,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="signoutbtn" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -422,6 +423,11 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="exitbtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="exit"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="tabcontent">
@@ -581,7 +587,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="productqty" min="-2" pref="50" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="stockLabel" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Component id="stockLabel" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                               <Component id="productdesc1" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -653,7 +659,7 @@
                 <Component class="javax.swing.JSpinner" name="productqty">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="1" maximum="15" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                      <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
                     </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[50, 22]"/>
@@ -841,7 +847,7 @@
                                   <Component id="amount1field" alignment="0" pref="186" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="109" max="32767" attributes="0"/>
+                          <EmptySpace pref="110" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1169,7 +1175,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="653" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="652" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -1207,7 +1213,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" pref="1076" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="1083" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -1736,7 +1742,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane5" alignment="1" pref="1076" max="32767" attributes="0"/>
+                          <Component id="jScrollPane5" alignment="1" pref="1083" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -2232,7 +2238,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="587" max="-2" attributes="0"/>
                       <Component id="reportsComboBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="591" max="32767" attributes="0"/>
+                      <EmptySpace pref="593" max="32767" attributes="0"/>
                   </Group>
                   <Component id="background7" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -3818,7 +3824,7 @@
                           <Component id="deleterow5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jScrollPane10" pref="444" max="32767" attributes="0"/>
+                      <Component id="jScrollPane10" pref="446" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="background12" min="-2" max="-2" attributes="0"/>
                   </Group>
