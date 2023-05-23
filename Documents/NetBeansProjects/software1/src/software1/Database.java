@@ -1,9 +1,16 @@
 package software1;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Database {    
@@ -28,24 +35,109 @@ public class Database {
     }
     public void backup() {
         try {
-            ResultSet users = con.createStatement().executeQuery("SELECT * FROM users"); //username-password-role
-            ResultSet customers = con.createStatement().executeQuery("SELECT * FROM customers");
-            ResultSet products = con.createStatement().executeQuery("SELECT * FROM products");
-            ResultSet orders = con.createStatement().executeQuery("SELECT * FROM orders");
-            ResultSet deliveries = con.createStatement().executeQuery("SELECT * FROM deliveries");
+            Map<String, ResultSet> tables = new LinkedHashMap<>();//users -> customers -> products -> orders -> deliveries
+            tables.put("users",con.createStatement().executeQuery("SELECT * FROM users")); //username-password-role
+            tables.put("customers",con.createStatement().executeQuery("SELECT * FROM customers"));
+            tables.put("products",con.createStatement().executeQuery("SELECT * FROM products"));
+            tables.put("orders",con.createStatement().executeQuery("SELECT * FROM orders"));
+            tables.put("deliveries",con.createStatement().executeQuery("SELECT * FROM deliveries"));
             
-            String content = "QNB Backup " + LocalDate.now()+"\n";
+            String date = ""+LocalDate.now();
+            String content = "QNB Database Backup " + date +"\n";
             
-            // backup users
-            content += "users\n";
-            while (users.next()) {
-                content += users.getString("username") + ",";
+            // backup tables loop
+            for(Map.Entry<String, ResultSet> entry : tables.entrySet()) {
+                String table = entry.getKey();
+                ResultSet rs = entry.getValue();
+                content += table + "{\n";
+                while (rs.next()) {
+                    int cols = rs.getMetaData().getColumnCount();
+                    for (int i = 1; i <= cols; i++) {
+                        content += rs.getString(i) + ";";
+                    }
+                    
+                    content = content.substring(0, content.length()-1) + "\n"; //remove last ';' then next line
+                }
+                content += "}\n";
             }
-            content += "end";
             
-        } catch (SQLException ex) {
+            //create file
+            FileWriter writer = new FileWriter("QNBDatabaseBackup" + date + ".qnbdata");
+            writer.write(content);
+            writer.close();
+            System.out.println("File Write Success");
+        } catch (SQLException | IOException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public boolean recover(String filePath) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line = reader.readLine();
+            // check first line
+            if (!line.startsWith("QNB Database Backup")) return false;
+            //Delete Existing Data (to overwrite)
+            System.out.println("Removing data from tables ");
+            con.createStatement().executeUpdate("DELETE FROM deliveries");
+            con.createStatement().executeUpdate("DELETE FROM orders");
+            con.createStatement().executeUpdate("DELETE FROM products");
+            con.createStatement().executeUpdate("DELETE FROM customers");
+            con.createStatement().executeUpdate("DELETE FROM users");
+            System.out.println("Data Removed");
+            while((line = reader.readLine()) != null) {
+                String table = line.substring(0, line.indexOf('{'));
+                System.out.println("Recovering table " + table);
+                
+                System.out.println("Placing Backup Data into table " + table);
+                PreparedStatement ps;
+                while((line = reader.readLine()) != null && !line.startsWith("}")) {
+                    String[] col = line.split(";");
+                    switch(table) {
+                        case "users", "customers" -> {
+                            if (table.equals("users")) ps = con.prepareStatement("INSERT INTO users VALUES(?,?,?)");
+                            else ps = con.prepareStatement("INSERT INTO customers VALUES(?,?,?,?,?,?,?)");
+                            for(int i = 0; i < col.length; i++) 
+                                ps.setString(i+1, col[i]);
+                        }
+                        case "products" -> {
+                            ps = con.prepareStatement("INSERT INTO products VALUES(?,?,?,?)");
+                            ps.setInt(1, Integer.parseInt(col[0]));
+                            ps.setString(2, col[1]);
+                            ps.setFloat(3, Float.parseFloat(col[2]));
+                            ps.setInt(4, Integer.parseInt(col[3]));
+                        }
+                        case "orders" -> {
+                            ps = con.prepareStatement("INSERT INTO orders VALUES(?,?,?,?,?,?,?,?,?)");
+                            ps.setLong(1, Long.parseLong(col[0]));
+                            ps.setString(2, col[1]);
+                            ps.setString(3, col[2]);
+                            ps.setString(4, col[3]);
+                            ps.setFloat(5, Float.parseFloat(col[4]));
+                            ps.setFloat(6, Float.parseFloat(col[5]));
+                            ps.setBoolean(7, col[6].equals("1"));
+                            ps.setDate(8, Date.valueOf(col[7]));
+                            ps.setDate(9, Date.valueOf(col[8]));
+                        }
+                        case "deliveries" -> {
+                            ps = con.prepareStatement("INSERT INTO deliveries VALUES(?,?,?,?)");
+                            ps.setLong(1, Long.parseLong(col[0]));
+                            ps.setInt(2, Integer.parseInt(col[1]));
+                            ps.setString(3, col[2]);
+                            ps.setDate(4, Date.valueOf(col[3]));
+                        }
+                        default -> {return false;}
+                    }
+                    ps.executeUpdate();
+                    ps.close();
+                }
+                System.out.println("Recover Success");
+            }
+            System.out.println("Recover Complete");
+            return true;
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     public ArrayList<ArrayList<Object>> getTableList(String table) {
         ArrayList<ArrayList<Object>> output = new ArrayList<>();
@@ -958,5 +1050,10 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return income;
+    }
+    public static void main(String[] args) {
+        Database db = new Database();
+        db.recover("QNBDatabaseBackup2023-05-23.qnbdata");
+        db.closeConnection();
     }
 }
