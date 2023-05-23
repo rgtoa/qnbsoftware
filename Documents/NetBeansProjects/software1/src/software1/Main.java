@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.awt.geom.RoundRectangle2D;
 import java.io.FileNotFoundException;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -38,10 +39,6 @@ public class Main extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         System.out.println("owner?"+role.equals("owner"));
         
-        if (this.role.equals("delivery")) {
-            showCard(pendingdeliver);
-            boldCard(deliverbtn);
-        }
         refreshPendingTransact();
         refreshCompleteTransact();
         refreshPendingDelivery();
@@ -3088,10 +3085,13 @@ public class Main extends javax.swing.JFrame {
             System.out.println("updating stock");
             String[] names = prodNames.split(",");
             String[] qtys = prodQTY.split(",");
+            List<String> lowStock = new ArrayList<>();
             for (int i = 0; i < names.length; i++) {
                 System.out.println(names[i]);
                 int productID = db.getProductID(names[i]);
-                db.updateStock(productID, db.getStock(productID) - Integer.parseInt(qtys[i]));
+                int newStock = db.getStock(productID) - Integer.parseInt(qtys[i]);
+                db.updateStock(productID, newStock);
+                if (newStock <= 5) lowStock.add(names[i]);
             }
             // check for change
             boolean hasChange = amount > totPrice;
@@ -3114,6 +3114,14 @@ public class Main extends javax.swing.JFrame {
             refreshPendingTransact();
             showCard(pendingtransac);
             boldCard(transacbtn);
+            if (!lowStock.isEmpty()) {
+                //prepare lowstock message
+                String msg = "Low Stock: ";
+                for (String s : lowStock) {
+                    msg += s + ", ";
+                }
+                showMsg(msg.strip().substring(msg.length()-1));
+            }
         });
         GlassPanePopup.showPopup(obj); 
         
