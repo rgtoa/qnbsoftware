@@ -431,6 +431,7 @@ public class Main extends javax.swing.JFrame {
         financeicon = new javax.swing.JLabel();
         reportsComboBox = new javax.swing.JComboBox<>();
         background7 = new software1.Background();
+        backUpbtn = new javax.swing.JButton();
         stocks = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         stocktbl = new javax.swing.JTable();
@@ -1827,6 +1828,10 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        backUpbtn.setBackground(new java.awt.Color(23, 90, 115));
+        backUpbtn.setForeground(new java.awt.Color(255, 255, 255));
+        backUpbtn.setText("Backup");
+
         javax.swing.GroupLayout authreportsLayout = new javax.swing.GroupLayout(authreports);
         authreports.setLayout(authreportsLayout);
         authreportsLayout.setHorizontalGroup(
@@ -1853,6 +1858,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(reportsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(591, Short.MAX_VALUE))
             .addComponent(background7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(authreportsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backUpbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         authreportsLayout.setVerticalGroup(
             authreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1871,7 +1880,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(genreport4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreport5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreport6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addGap(54, 54, 54)
+                .addComponent(backUpbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(background7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -3029,11 +3040,11 @@ public class Main extends javax.swing.JFrame {
         }
         final boolean isWalkIn = paymentcheckbox.isSelected() && radiowalkin.isSelected();
         //check details
-        if (customerdetails.getSelectedIndex() == 0 && !isWalkIn && fnamefield.getText().trim().equals("") ||
+        if (customerdetails.getSelectedIndex() == 0 && !isWalkIn && (fnamefield.getText().trim().equals("") ||
                 lnamefield.getText().trim().equals("") ||
                 housefield.getText().trim().equals("") ||
                 brgyfield.getText().trim().equals("") ||
-                cityfield.getText().trim().equals("")) {
+                cityfield.getText().trim().equals(""))) {
             showMsg("Incomplete Details");
             return;
         }
@@ -3799,6 +3810,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel authenticbtn;
     private javax.swing.JPanel authentictab;
     private javax.swing.JPanel authreports;
+    private javax.swing.JButton backUpbtn;
     private software1.Background background1;
     private software1.Background background10;
     private software1.Background background11;

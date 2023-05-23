@@ -49,8 +49,6 @@ public class Login extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         registerbtn = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabelRole = new javax.swing.JLabel();
         loginbtn2 = new javax.swing.JLabel();
         userfield = new javax.swing.JTextField();
         userLabel = new javax.swing.JLabel();
@@ -322,14 +320,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(23, 90, 115));
-        jComboBox1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Delivery" }));
-
-        jLabelRole.setForeground(new java.awt.Color(10, 64, 83));
-        jLabelRole.setText("Role:");
-
         loginbtn2.setForeground(new java.awt.Color(10, 64, 83));
         loginbtn2.setText("Already have an account?");
         loginbtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -343,11 +333,6 @@ public class Login extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabelRole)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,13 +346,10 @@ public class Login extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelRole)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
+                .addGap(20, 20, 20)
                 .addComponent(registerbtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginbtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(loginbtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -508,13 +490,11 @@ public class Login extends javax.swing.JFrame {
             else {
                 RegisterAuth obj = new RegisterAuth(
                         userfield.getText(),
-                        passfield.getPassword(),
-                        jComboBox1.getItemAt(jComboBox1.getSelectedIndex()).toLowerCase()
+                        passfield.getPassword()
                 );
                 userfield.setText("");
                 passfield.setText("");
                 confirmpassfield.setText("");
-                jComboBox1.setSelectedIndex(0);
                 GlassPanePopup.showPopup(obj);
             }
         } finally {
@@ -597,11 +577,9 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel confirmpassLabel;
     private javax.swing.JPasswordField confirmpassfield;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabelPass;
-    private javax.swing.JLabel jLabelRole;
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel16;
