@@ -28,7 +28,6 @@ public class Login extends javax.swing.JFrame {
         login = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         qnbposlogo2 = new javax.swing.JLabel();
-        exitbtnlogin = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         userfield1 = new javax.swing.JTextField();
@@ -43,7 +42,6 @@ public class Login extends javax.swing.JFrame {
         signup = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         qnbposlogo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         passLabel = new javax.swing.JLabel();
@@ -80,9 +78,6 @@ public class Login extends javax.swing.JFrame {
         qnbposlogo2.setText(" ");
         qnbposlogo2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        exitbtnlogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        exitbtnlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/software1/x.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -91,16 +86,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(303, 303, 303)
                 .addComponent(qnbposlogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(312, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exitbtnlogin)
-                .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addComponent(exitbtnlogin)
-                .addGap(22, 22, 22)
+                .addGap(41, 41, 41)
                 .addComponent(qnbposlogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -241,9 +231,6 @@ public class Login extends javax.swing.JFrame {
         qnbposlogo.setText(" ");
         qnbposlogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/software1/x.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
@@ -252,17 +239,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(305, 305, 305)
                 .addComponent(qnbposlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(319, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(20, 20, 20))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(qnbposlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -600,8 +581,6 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel confirmpassLabel;
     private javax.swing.JPasswordField confirmpassfield;
-    private javax.swing.JLabel exitbtnlogin;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabelPass;
