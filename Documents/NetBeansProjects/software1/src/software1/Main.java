@@ -2996,6 +2996,11 @@ public class Main extends javax.swing.JFrame {
                 showMsg("No Products Added");
                 return;
             }
+            float prc = 0;
+            for (Object[] o : cart) {
+                prc += (Float) o[3];
+            }
+            paymentcheckbox.setText("Full Payment (Php " + prc + ")");
             showCard(form);
         });
         GlassPanePopup.showPopup(obj);
